@@ -1,0 +1,60 @@
+[gd_scene load_steps=9 format=3 uid="uid://ccea0vhxlnlp4"]
+
+[ext_resource type="Texture2D" uid="uid://ciwwfqk5v1mp1" path="res://assets/sprites/neon_warp.png" id="1_cd7f0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fgo06"]
+atlas = ExtResource("1_cd7f0")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n607s"]
+atlas = ExtResource("1_cd7f0")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ww0d"]
+atlas = ExtResource("1_cd7f0")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4cn74"]
+atlas = ExtResource("1_cd7f0")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v3my0"]
+atlas = ExtResource("1_cd7f0")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dmb8t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fgo06")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n607s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ww0d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4cn74")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v3my0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gbkmt"]
+radius = 10.0499
+
+[node name="Area2D" type="Area2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_dmb8t")
+frame_progress = 0.16501
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -12)
+shape = SubResource("CircleShape2D_gbkmt")

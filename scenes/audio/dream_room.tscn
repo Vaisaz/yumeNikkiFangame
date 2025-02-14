@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dms3nd57u0aeq"]
+
+[ext_resource type="AudioStream" uid="uid://dcfeui4uvhswd" path="res://assets/audio/dream_room.mp3" id="1_cunk3"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_cunk3")
+autoplay = true
