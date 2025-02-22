@@ -11,4 +11,4 @@ func _on_area_exited(_area):
 		
 func _input(_event):
 	if interact and Input.is_action_just_pressed("interact"):
-		get_tree().change_scene_to_file("res://scenes/locations/dream_room.tscn")
+		get_tree().change_scene_to_file("res://scenes/locations/nexus.tscn")
