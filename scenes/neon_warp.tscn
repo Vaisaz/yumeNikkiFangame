@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://ccea0vhxlnlp4"]
 
-[ext_resource type="Texture2D" uid="uid://ciwwfqk5v1mp1" path="res://assets/sprites/neon_warp.png" id="1_cd7f0"]
+[ext_resource type="Texture2D" uid="uid://ciwwfqk5v1mp1" path="res://assets/sprites/warps/neon_warp.png" id="1_cd7f0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fgo06"]
 atlas = ExtResource("1_cd7f0")
@@ -45,16 +45,17 @@ animations = [{
 "speed": 6.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_gbkmt"]
-radius = 10.0499
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q3wb2"]
+radius = 11.0
 
-[node name="Area2D" type="Area2D"]
+[node name="StaticBody2D" type="StaticBody2D"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_dmb8t")
+autoplay = "default"
 frame_progress = 0.16501
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -12)
-shape = SubResource("CircleShape2D_gbkmt")
+position = Vector2(0, -16)
+shape = SubResource("CapsuleShape2D_q3wb2")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ciwwfqk5v1mp1"
-path="res://.godot/imported/neon_warp.png-5cd344f60c9b96fbebd4fc462c27ea0a.ctex"
+uid="uid://k37gud87ttvy"
+path="res://.godot/imported/jon_sprite_v2.png-02917680c40bf1bbf8651eb033b9f6bd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/neon_warp.png"
-dest_files=["res://.godot/imported/neon_warp.png-5cd344f60c9b96fbebd4fc462c27ea0a.ctex"]
+source_file="res://assets/sprites/main/jon_sprite_v2.png"
+dest_files=["res://.godot/imported/jon_sprite_v2.png-02917680c40bf1bbf8651eb033b9f6bd.ctex"]
 
 [params]
 

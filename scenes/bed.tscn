@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dj1tfr8thu8lm"]
 
-[ext_resource type="Texture2D" uid="uid://dplfm51axd8qa" path="res://assets/sprites/bed.png" id="1_1cjvv"]
+[ext_resource type="Texture2D" uid="uid://dplfm51axd8qa" path="res://assets/sprites/main/bed.png" id="1_78e0n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3b5tt"]
 size = Vector2(32, 10)
@@ -10,7 +10,7 @@ collision_layer = 2
 collision_mask = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_1cjvv")
+texture = ExtResource("1_78e0n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -2)

@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://bbv0r40mh2fmf"]
+
+[ext_resource type="Texture2D" uid="uid://bmavqo1byjmug" path="res://assets/sprites/warps/happy_warp.png" id="1_gwy0s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3160t"]
+atlas = ExtResource("1_gwy0s")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rx0fg"]
+atlas = ExtResource("1_gwy0s")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_skw8x"]
+atlas = ExtResource("1_gwy0s")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gk645"]
+atlas = ExtResource("1_gwy0s")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ut61n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3160t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rx0fg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_skw8x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gk645")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fi8ms"]
+height = 28.0
+
+[node name="StaticBody2D" type="StaticBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_ut61n")
+animation = &"new_animation"
+autoplay = "new_animation"
+frame_progress = 0.359038
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -15)
+shape = SubResource("CapsuleShape2D_fi8ms")

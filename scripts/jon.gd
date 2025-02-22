@@ -21,3 +21,7 @@ func _physics_process(_delta):
 	velocity = input_direction * speed
 	
 	move_and_slide()
+
+func _input(_event):
+	if Input.is_action_just_pressed("wake_up") and !get_tree().current_scene.scene_file_path == "res://scenes/locations/room.tscn":
+		get_tree().change_scene_to_file("res://scenes/locations/room.tscn")

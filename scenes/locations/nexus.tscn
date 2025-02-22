@@ -1,11 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://dr21yfhjoldoo"]
+[gd_scene load_steps=12 format=3 uid="uid://dr21yfhjoldoo"]
 
-[ext_resource type="Texture2D" uid="uid://bkwg4d84vpwnn" path="res://assets/sprites/pixel_tiles.png" id="1_hfvtc"]
-[ext_resource type="Texture2D" uid="uid://b4g07ub54tlj2" path="res://assets/sprites/black.jpg" id="1_r6exr"]
+[ext_resource type="Texture2D" uid="uid://bkwg4d84vpwnn" path="res://assets/sprites/main/pixel_tiles.png" id="1_hfvtc"]
+[ext_resource type="Texture2D" uid="uid://b4g07ub54tlj2" path="res://assets/sprites/main/black.jpg" id="1_r6exr"]
 [ext_resource type="PackedScene" uid="uid://cjwndxthtkfak" path="res://scenes/main_dream_doors.tscn" id="3_hu4mw"]
 [ext_resource type="PackedScene" uid="uid://d1jbh8q1vrdd6" path="res://scenes/jon.tscn" id="4_1wn3d"]
 [ext_resource type="Script" path="res://scripts/door_dream_interaction.gd" id="4_f0p0w"]
 [ext_resource type="PackedScene" uid="uid://bq7poye12ywvu" path="res://scenes/audio/nexus.tscn" id="6_em1cg"]
+[ext_resource type="PackedScene" uid="uid://ccea0vhxlnlp4" path="res://scenes/neon_warp.tscn" id="7_e5u10"]
+[ext_resource type="PackedScene" uid="uid://bbv0r40mh2fmf" path="res://scenes/happy_warp.tscn" id="8_0nmn3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bpo8m"]
 texture = ExtResource("1_hfvtc")
@@ -59,16 +61,22 @@ tile_set = SubResource("TileSet_mit48")
 format = 2
 layer_0/tile_data = PackedInt32Array(-65538, 0, 0, -65537, 131072, 0, -131072, 393216, 0, -131071, 0, 0, -3, 0, 0, -65534, 262144, 0, -65536, 655360, 0, 65534, 655360, 0, 131068, 655360, 0, 196606, 458752, 0, 0, 458752, 0, 131074, 458752, 0, 65539, 458752, 0, 131069, 0, 0, 65535, 0, 0, 65537, 0, 0, 2, 0, 0, 196607, 262144, 0, -65535, 262144, 0, 131071, 393216, 0, 65536, 262144, 0, 131072, 262144, 0, 65533, 262144, 0, -2, 262144, 0, 65538, 262144, 0, 262140, 0, 0, 262147, 393216, 0, 196602, 393216, 0, 131077, 131072, 0, 65531, 131072, 0, 4, 458752, 0, 327678, 458752, 0, 196609, 262144, 0, -131075, 458752, 0)
 
-[node name="StaticBody2D" parent="." instance=ExtResource("3_hu4mw")]
+[node name="neon_warp" parent="." instance=ExtResource("7_e5u10")]
+position = Vector2(-30, 137)
+
+[node name="happy_warp" parent="." instance=ExtResource("8_0nmn3")]
+position = Vector2(28, 136)
+
+[node name="dream_doors" parent="." instance=ExtResource("3_hu4mw")]
 position = Vector2(0, -48)
 
-[node name="interaction" type="Area2D" parent="StaticBody2D"]
+[node name="interaction" type="Area2D" parent="dream_doors"]
 position = Vector2(48, 62)
 collision_layer = 8
 collision_mask = 8
 script = ExtResource("4_f0p0w")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D/interaction"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="dream_doors/interaction"]
 position = Vector2(-48, -62)
 shape = SubResource("RectangleShape2D_27h8x")
 
@@ -81,5 +89,5 @@ zoom = Vector2(5, 5)
 
 [node name="AudioStreamPlayer" parent="." instance=ExtResource("6_em1cg")]
 
-[connection signal="area_entered" from="StaticBody2D/interaction" to="StaticBody2D/interaction" method="_on_area_entered"]
-[connection signal="area_exited" from="StaticBody2D/interaction" to="StaticBody2D/interaction" method="_on_area_exited"]
+[connection signal="area_entered" from="dream_doors/interaction" to="dream_doors/interaction" method="_on_area_entered"]
+[connection signal="area_exited" from="dream_doors/interaction" to="dream_doors/interaction" method="_on_area_exited"]

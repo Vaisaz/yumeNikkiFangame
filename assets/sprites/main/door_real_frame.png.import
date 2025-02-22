@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bbd8jkai6b8vi"
-path="res://.godot/imported/walltrue.png-d0ee8aab2a520a21db8b574bc85c8097.ctex"
+uid="uid://bdenadlrv8lvr"
+path="res://.godot/imported/door_real_frame.png-14062487a5b0701ad0f64d59b8b990f7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/walltrue.png"
-dest_files=["res://.godot/imported/walltrue.png-d0ee8aab2a520a21db8b574bc85c8097.ctex"]
+source_file="res://assets/sprites/main/door_real_frame.png"
+dest_files=["res://.godot/imported/door_real_frame.png-14062487a5b0701ad0f64d59b8b990f7.ctex"]
 
 [params]
 

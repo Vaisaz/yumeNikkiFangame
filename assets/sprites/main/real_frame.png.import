@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2oej4vr4mwqy"
-path="res://.godot/imported/corners.png-5e7a74715bee700a1dea339ac6a21d83.ctex"
+uid="uid://hvup2vunu455"
+path="res://.godot/imported/real_frame.png-1acef01c6d4d3e26a5273611411478eb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/corners.png"
-dest_files=["res://.godot/imported/corners.png-5e7a74715bee700a1dea339ac6a21d83.ctex"]
+source_file="res://assets/sprites/main/real_frame.png"
+dest_files=["res://.godot/imported/real_frame.png-1acef01c6d4d3e26a5273611411478eb.ctex"]
 
 [params]
 

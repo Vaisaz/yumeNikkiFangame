@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://coey0umd3x5mk"
-path="res://.godot/imported/line.png-bf9fb0972676915ba0a263b30a3171f4.ctex"
+uid="uid://dplfm51axd8qa"
+path="res://.godot/imported/bed.png-ac5854f17a58d327286e62451ca87870.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/line.png"
-dest_files=["res://.godot/imported/line.png-bf9fb0972676915ba0a263b30a3171f4.ctex"]
+source_file="res://assets/sprites/main/bed.png"
+dest_files=["res://.godot/imported/bed.png-ac5854f17a58d327286e62451ca87870.ctex"]
 
 [params]
 
