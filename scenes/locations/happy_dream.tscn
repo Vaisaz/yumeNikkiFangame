@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://d0jh7omnvfxod"]
+
+[ext_resource type="Texture2D" uid="uid://3a7wlxbyn60s" path="res://assets/sprites/happy_dream/tiles.png" id="1_g8k8r"]
+[ext_resource type="PackedScene" uid="uid://36u30mp6epub" path="res://scenes/giggly.tscn" id="2_shd53"]
+[ext_resource type="Script" path="res://scripts/giggly_interaction.gd" id="3_rm67d"]
+[ext_resource type="PackedScene" uid="uid://d1jbh8q1vrdd6" path="res://scenes/jon.tscn" id="4_6p538"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ffa6v"]
+texture = ExtResource("1_g8k8r")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_m2e66"]
+sources/0 = SubResource("TileSetAtlasSource_ffa6v")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vydhk"]
+size = Vector2(14, 16)
+
+[node name="happy_dream" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_m2e66")
+format = 2
+layer_0/tile_data = PackedInt32Array(196606, 262144, 0, 196607, 131072, 0, 131072, 327680, 0, 131073, 393216, 0, 131070, 0, 0, 131071, 0, 0, 65536, 0, 0, 65537, 0, 0, 65538, 0, 0, 131074, 0, 0, 196610, 0, 0, 196609, 0, 0, 196608, 0, 0, 262143, 0, 0, 262142, 0, 0, 262141, 0, 0, 196605, 0, 0, 131069, 0, 0)
+
+[node name="StaticBody2D" parent="." instance=ExtResource("2_shd53")]
+
+[node name="interaction" type="Area2D" parent="StaticBody2D"]
+position = Vector2(48, 62)
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("3_rm67d")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D/interaction"]
+position = Vector2(-48, -70)
+shape = SubResource("RectangleShape2D_vydhk")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("4_6p538")]
+position = Vector2(1, 11)
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+position = Vector2(-1, -26)
+zoom = Vector2(5, 5)
+
+[connection signal="area_entered" from="StaticBody2D/interaction" to="StaticBody2D/interaction" method="_on_area_entered"]
+[connection signal="area_exited" from="StaticBody2D/interaction" to="StaticBody2D/interaction" method="_on_area_exited"]

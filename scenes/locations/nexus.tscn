@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://dr21yfhjoldoo"]
+[gd_scene load_steps=14 format=3 uid="uid://dr21yfhjoldoo"]
 
 [ext_resource type="Texture2D" uid="uid://bkwg4d84vpwnn" path="res://assets/sprites/main/pixel_tiles.png" id="1_hfvtc"]
 [ext_resource type="Texture2D" uid="uid://b4g07ub54tlj2" path="res://assets/sprites/main/black.jpg" id="1_r6exr"]
 [ext_resource type="PackedScene" uid="uid://cjwndxthtkfak" path="res://scenes/main_dream_doors.tscn" id="3_hu4mw"]
 [ext_resource type="PackedScene" uid="uid://d1jbh8q1vrdd6" path="res://scenes/jon.tscn" id="4_1wn3d"]
 [ext_resource type="Script" path="res://scripts/door_dream_interaction.gd" id="4_f0p0w"]
+[ext_resource type="Script" path="res://scripts/happy_warp_intearction.gd" id="5_f1g08"]
 [ext_resource type="PackedScene" uid="uid://bq7poye12ywvu" path="res://scenes/audio/nexus.tscn" id="6_em1cg"]
 [ext_resource type="PackedScene" uid="uid://ccea0vhxlnlp4" path="res://scenes/neon_warp.tscn" id="7_e5u10"]
 [ext_resource type="PackedScene" uid="uid://bbv0r40mh2fmf" path="res://scenes/happy_warp.tscn" id="8_0nmn3"]
@@ -46,6 +47,9 @@ texture = ExtResource("1_hfvtc")
 [sub_resource type="TileSet" id="TileSet_mit48"]
 sources/0 = SubResource("TileSetAtlasSource_bpo8m")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w6rhi"]
+size = Vector2(21, 29)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_27h8x"]
 size = Vector2(16, 32)
 
@@ -66,6 +70,16 @@ position = Vector2(-30, 137)
 
 [node name="happy_warp" parent="." instance=ExtResource("8_0nmn3")]
 position = Vector2(28, 136)
+
+[node name="interaction" type="Area2D" parent="happy_warp"]
+position = Vector2(48, 62)
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("5_f1g08")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="happy_warp/interaction"]
+position = Vector2(-47.5, -76.5)
+shape = SubResource("RectangleShape2D_w6rhi")
 
 [node name="dream_doors" parent="." instance=ExtResource("3_hu4mw")]
 position = Vector2(0, -48)
@@ -89,5 +103,7 @@ zoom = Vector2(5, 5)
 
 [node name="AudioStreamPlayer" parent="." instance=ExtResource("6_em1cg")]
 
+[connection signal="area_entered" from="happy_warp/interaction" to="happy_warp/interaction" method="_on_area_entered"]
+[connection signal="area_exited" from="happy_warp/interaction" to="happy_warp/interaction" method="_on_area_exited"]
 [connection signal="area_entered" from="dream_doors/interaction" to="dream_doors/interaction" method="_on_area_entered"]
 [connection signal="area_exited" from="dream_doors/interaction" to="dream_doors/interaction" method="_on_area_exited"]
