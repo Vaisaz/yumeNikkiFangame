@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://becvkf33de065"]
+[gd_scene load_steps=28 format=3 uid="uid://becvkf33de065"]
 
 [ext_resource type="Texture2D" uid="uid://b4g07ub54tlj2" path="res://assets/sprites/main/black.jpg" id="1_hgo00"]
 [ext_resource type="Texture2D" uid="uid://cpwubbf4cjm7w" path="res://assets/sprites/main/line_for_doors.png" id="2_mxfs6"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://scripts/bed_interaction.gd" id="7_w7mfb"]
 [ext_resource type="Texture2D" uid="uid://bdenadlrv8lvr" path="res://assets/sprites/main/door_real_frame.png" id="8_s0isu"]
 [ext_resource type="PackedScene" uid="uid://vf6gj7wfsye1" path="res://scenes/main_doors.tscn" id="11_0hkut"]
+[ext_resource type="Texture2D" uid="uid://7wenk2xchq43" path="res://assets/sprites/happy_dream/giggly.png" id="12_b1syx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_575h7"]
 texture = ExtResource("2_mxfs6")
@@ -236,6 +237,42 @@ sources/6 = SubResource("TileSetAtlasSource_78cy4")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0w2vb"]
 size = Vector2(32, 15)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_jqtyf"]
+atlas = ExtResource("12_b1syx")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jrkjp"]
+atlas = ExtResource("12_b1syx")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ge3dt"]
+atlas = ExtResource("12_b1syx")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tfem8"]
+atlas = ExtResource("12_b1syx")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_utux7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jqtyf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jrkjp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ge3dt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tfem8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Room" type="Node2D"]
 
 [node name="black" type="Sprite2D" parent="."]
@@ -269,6 +306,12 @@ position = Vector2(-47, -43)
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 position = Vector2(-1, -26)
 zoom = Vector2(5, 5)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D/Camera2D"]
+position = Vector2(1, 0)
+scale = Vector2(7.21875, 4.0625)
+sprite_frames = SubResource("SpriteFrames_utux7")
+autoplay = "default"
 
 [node name="StaticBody2D2" parent="." instance=ExtResource("11_0hkut")]
 position = Vector2(40, 16)
