@@ -1,0 +1,70 @@
+[gd_scene load_steps=9 format=3 uid="uid://bpx2iit6mo2ej"]
+
+[ext_resource type="Texture2D" uid="uid://cxhgkbruiuada" path="res://assets/sprites/number_dream/grapheme-color-synesthesia-sprite-sheet.png" id="1_ytcgy"]
+[ext_resource type="PackedScene" uid="uid://d1jbh8q1vrdd6" path="res://scenes/jon.tscn" id="2_fsr8c"]
+[ext_resource type="Texture2D" uid="uid://ba20j2xlyw0tn" path="res://assets/sprites/number_dream/number_world_tiles.png" id="2_gpsle"]
+[ext_resource type="Texture2D" uid="uid://bo2bqycyfr2lk" path="res://assets/sprites/number_dream/number_dream_background_1.png" id="3_3okoh"]
+[ext_resource type="Texture2D" uid="uid://b820bmxtn3kbd" path="res://assets/sprites/number_dream/number_dream_background_2 (2).png" id="4_3a31x"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pb0yj"]
+texture = ExtResource("1_ytcgy")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iur61"]
+texture = ExtResource("2_gpsle")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_vsjea"]
+sources/0 = SubResource("TileSetAtlasSource_pb0yj")
+sources/1 = SubResource("TileSetAtlasSource_iur61")
+
+[node name="number_dream" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_vsjea")
+format = 2
+layer_0/tile_data = PackedInt32Array(-393224, 196609, 0, -327688, 196609, 0, -393223, 65537, 0, -327687, 65537, 0, -262151, 65537, 0, -393222, 65537, 0, -327686, 65537, 0, -262150, 65537, 0, -196614, 1, 0, -393221, 65537, 0, -327685, 65537, 0, -262149, 65537, 0, -196613, 1, 0, -393228, 196609, 0, -327692, 131073, 0, -393227, 196609, 0, -327691, 196609, 0, -262155, 131073, 0, -393226, 196609, 0, -327690, 196609, 0, -262154, 196609, 0, -196618, 196609, 1, -393225, 196609, 0, -327689, 196609, 0, -262153, 196609, 0, -196617, 196609, 0, -131081, 196609, 1, -262152, 196609, 0, -196616, 196609, 0, -131080, 196609, 0, -65544, 196609, 1, -196615, 1, 0, -131079, 65537, 1, -65543, 65537, 1, -131078, 65537, 1, -65542, 65537, 1, -131077, 65537, 0, -65541, 65537, 0, -393229, 131073, 0, -131076, 262145, 0, -131075, 327681, 0, -65540, 262145, 1, -65539, 327681, 1)
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.1, 0.1)
+motion_mirroring = Vector2(1000, 500)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+scale = Vector2(10, 10)
+texture = ExtResource("3_3okoh")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.2, 0.2)
+motion_mirroring = Vector2(1000, 500)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+scale = Vector2(10, 10)
+texture = ExtResource("4_3a31x")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_fsr8c")]
+position = Vector2(1, 0)
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+position = Vector2(-1, -26)
+zoom = Vector2(5, 5)
