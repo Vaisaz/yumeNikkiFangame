@@ -1,0 +1,76 @@
+[gd_scene load_steps=11 format=3 uid="uid://fu2n24m2nqnf"]
+
+[ext_resource type="Script" path="res://scripts/neon_blob.gd" id="1_k3csi"]
+[ext_resource type="Texture2D" uid="uid://ck34dqpc4fmy6" path="res://assets/sprites/neon_dream/spritesheet.png" id="1_of380"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s6lli"]
+atlas = ExtResource("1_of380")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5hmfk"]
+atlas = ExtResource("1_of380")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m6bby"]
+atlas = ExtResource("1_of380")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1uqil"]
+atlas = ExtResource("1_of380")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_liiem"]
+atlas = ExtResource("1_of380")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2c4rn"]
+animations = [{
+"frames": [{
+"duration": 0.8,
+"texture": SubResource("AtlasTexture_s6lli")
+}, {
+"duration": 0.8,
+"texture": SubResource("AtlasTexture_5hmfk")
+}, {
+"duration": 0.8,
+"texture": SubResource("AtlasTexture_m6bby")
+}, {
+"duration": 0.8,
+"texture": SubResource("AtlasTexture_1uqil")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_liiem")
+}],
+"loop": true,
+"name": &"push",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_chnnn"]
+size = Vector2(28, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_13e3c"]
+size = Vector2(38, 28.5)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -11)
+sprite_frames = SubResource("SpriteFrames_2c4rn")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -10)
+shape = SubResource("RectangleShape2D_chnnn")
+
+[node name="interaction" type="Area2D" parent="."]
+script = ExtResource("1_k3csi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interaction"]
+position = Vector2(1, -10)
+shape = SubResource("RectangleShape2D_13e3c")
