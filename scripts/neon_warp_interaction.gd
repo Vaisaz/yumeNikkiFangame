@@ -1,7 +1,6 @@
 extends Area2D
 
 var interact: bool = false
-@onready var animated_sprite_2d = $"../AnimatedSprite2D"
 
 func _on_area_entered(area):
 	if area.is_in_group("Player"):
@@ -12,6 +11,4 @@ func _on_area_exited(_area):
 		
 func _input(_event):
 	if interact and Input.is_action_just_pressed("interact"):
-		animated_sprite_2d.play("push")
-		await get_tree().create_timer(2).timeout
-		animated_sprite_2d.play("default")
+		get_tree().change_scene_to_file("res://scenes/locations/neon_dream.tscn")

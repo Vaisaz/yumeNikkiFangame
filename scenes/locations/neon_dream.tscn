@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://dr155rncg3jot"]
+
+[ext_resource type="Texture2D" uid="uid://b4g07ub54tlj2" path="res://assets/sprites/main/black.jpg" id="1_fj0fy"]
+[ext_resource type="PackedScene" uid="uid://d1jbh8q1vrdd6" path="res://scenes/jon.tscn" id="2_5xmfk"]
+[ext_resource type="PackedScene" uid="uid://xc2xhvu62mnx" path="res://scenes/neon_blob.tscn" id="3_235o3"]
+
+[node name="neon_dream" type="Node2D"]
+
+[node name="black" type="Sprite2D" parent="."]
+position = Vector2(1.00012, -62.0001)
+scale = Vector2(1.31621, 1.55486)
+texture = ExtResource("1_fj0fy")
+
+[node name="TileMap" type="TileMap" parent="."]
+format = 2
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_5xmfk")]
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+position = Vector2(-1, -26)
+zoom = Vector2(5, 5)
+
+[node name="StaticBody2D" parent="." instance=ExtResource("3_235o3")]
+position = Vector2(59, 58)

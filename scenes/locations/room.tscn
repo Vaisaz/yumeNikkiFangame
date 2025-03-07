@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://becvkf33de065"]
+[gd_scene load_steps=27 format=3 uid="uid://becvkf33de065"]
 
 [ext_resource type="Texture2D" uid="uid://b4g07ub54tlj2" path="res://assets/sprites/main/black.jpg" id="1_hgo00"]
 [ext_resource type="Texture2D" uid="uid://cpwubbf4cjm7w" path="res://assets/sprites/main/line_for_doors.png" id="2_mxfs6"]
@@ -9,11 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://bbd8jkai6b8vi" path="res://assets/sprites/main/walltrue.png" id="6_uvogr"]
 [ext_resource type="PackedScene" uid="uid://d1jbh8q1vrdd6" path="res://scenes/jon.tscn" id="7_4mhao"]
 [ext_resource type="Texture2D" uid="uid://c2oej4vr4mwqy" path="res://assets/sprites/main/corners.png" id="7_a2km5"]
-[ext_resource type="Script" path="res://scripts/bed_interaction.gd" id="7_w7mfb"]
 [ext_resource type="Texture2D" uid="uid://bdenadlrv8lvr" path="res://assets/sprites/main/door_real_frame.png" id="8_s0isu"]
 [ext_resource type="PackedScene" uid="uid://vf6gj7wfsye1" path="res://scenes/main_doors.tscn" id="11_0hkut"]
 [ext_resource type="Texture2D" uid="uid://7wenk2xchq43" path="res://assets/sprites/happy_dream/giggly.png" id="12_b1syx"]
-[ext_resource type="PackedScene" uid="uid://fu2n24m2nqnf" path="res://scenes/neon_blob.tscn" id="14_gqq5i"]
+[ext_resource type="PackedScene" uid="uid://xc2xhvu62mnx" path="res://scenes/neon_blob.tscn" id="14_gqq5i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_575h7"]
 texture = ExtResource("2_mxfs6")
@@ -235,9 +234,6 @@ sources/3 = SubResource("TileSetAtlasSource_bgkv0")
 sources/0 = SubResource("TileSetAtlasSource_575h7")
 sources/6 = SubResource("TileSetAtlasSource_78cy4")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0w2vb"]
-size = Vector2(32, 15)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_jqtyf"]
 atlas = ExtResource("12_b1syx")
 region = Rect2(96, 0, 32, 32)
@@ -291,16 +287,6 @@ layer_0/tile_data = PackedInt32Array(131068, 131073, 0, 131069, 196609, 0, 19660
 [node name="StaticBody2D" parent="." instance=ExtResource("6_fy8e4")]
 position = Vector2(-48, -62)
 
-[node name="interaction" type="Area2D" parent="StaticBody2D"]
-position = Vector2(48, 62)
-collision_layer = 8
-collision_mask = 8
-script = ExtResource("7_w7mfb")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D/interaction"]
-position = Vector2(-48, -61.5)
-shape = SubResource("RectangleShape2D_0w2vb")
-
 [node name="CharacterBody2D" parent="." instance=ExtResource("7_4mhao")]
 position = Vector2(-47, -43)
 
@@ -319,7 +305,4 @@ autoplay = "default"
 position = Vector2(40, 16)
 
 [node name="StaticBody2D3" parent="." instance=ExtResource("14_gqq5i")]
-position = Vector2(29, -17)
-
-[connection signal="area_entered" from="StaticBody2D/interaction" to="StaticBody2D/interaction" method="_on_area_entered"]
-[connection signal="area_exited" from="StaticBody2D/interaction" to="StaticBody2D/interaction" method="_on_area_exited"]
+position = Vector2(31, -14)
