@@ -17,4 +17,3 @@ func _input(_event):
 		await get_tree().create_timer(1).timeout
 		animated_sprite_2d.play("default")
 		interact = true
-

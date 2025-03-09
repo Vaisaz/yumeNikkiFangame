@@ -17,11 +17,12 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-TransitionAnimation="*res://scripts/transition_animation.gd"
+Transition="*res://scenes/transition_animation.tscn"
 
 [display]
 
 window/stretch/mode="viewport"
+window/stretch/aspect="ignore"
 window/stretch/scale_mode="integer"
 
 [input]

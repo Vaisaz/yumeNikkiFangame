@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://becvkf33de065"]
+[gd_scene load_steps=70 format=3 uid="uid://becvkf33de065"]
 
 [ext_resource type="Texture2D" uid="uid://b4g07ub54tlj2" path="res://assets/sprites/main/black.jpg" id="1_hgo00"]
 [ext_resource type="Texture2D" uid="uid://cpwubbf4cjm7w" path="res://assets/sprites/main/line_for_doors.png" id="2_mxfs6"]
@@ -15,7 +15,6 @@
 [ext_resource type="Script" path="res://scripts/bed_interaction.gd" id="14_fffuy"]
 [ext_resource type="PackedScene" uid="uid://xc2xhvu62mnx" path="res://scenes/neon_blob.tscn" id="14_gqq5i"]
 [ext_resource type="Texture2D" uid="uid://flbkixwwrmrj" path="res://assets/sprites/transition_animation.png" id="16_b4a5b"]
-[ext_resource type="Script" path="res://scripts/stop_animation.gd" id="17_r7p8c"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_575h7"]
 texture = ExtResource("2_mxfs6")
@@ -432,7 +431,7 @@ region = Rect2(190, 0, 190, 108)
 atlas = ExtResource("16_b4a5b")
 region = Rect2(0, 0, 190, 108)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_tfglf"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_42fem"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -599,7 +598,7 @@ autoplay = "default"
 [node name="StaticBody2D2" parent="." instance=ExtResource("11_0hkut")]
 position = Vector2(40, 16)
 
-[node name="interaction" type="Area2D" parent="StaticBody2D2"]
+[node name="interaction" type="Area2D" parent="StaticBody2D2" groups=["Interactable"]]
 position = Vector2(48, 62)
 collision_layer = 8
 collision_mask = 8
@@ -615,10 +614,8 @@ visible = false
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="StaticBody2D2/interaction/CanvasLayer"]
 position = Vector2(575, 325)
 scale = Vector2(6.05263, 6.01852)
-sprite_frames = SubResource("SpriteFrames_tfglf")
-script = ExtResource("17_r7p8c")
+sprite_frames = SubResource("SpriteFrames_42fem")
 
 [connection signal="area_entered" from="StaticBody2D2/interaction" to="StaticBody2D2/interaction" method="_on_area_entered"]
 [connection signal="area_exited" from="StaticBody2D2/interaction" to="StaticBody2D2/interaction" method="_on_area_exited"]
-[connection signal="animation_finished" from="StaticBody2D2/interaction/CanvasLayer/AnimatedSprite2D2" to="StaticBody2D2/interaction" method="_on_animated_sprite_2d_2_animation_finished"]
 [connection signal="ready" from="StaticBody2D2/interaction/CanvasLayer/AnimatedSprite2D2" to="StaticBody2D2/interaction/CanvasLayer/AnimatedSprite2D2" method="_on_ready"]
