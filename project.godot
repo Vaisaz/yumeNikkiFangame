@@ -15,8 +15,13 @@ run/main_scene="res://scenes/locations/room.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+TransitionAnimation="*res://scripts/transition_animation.gd"
+
 [display]
 
+window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
 
 [input]

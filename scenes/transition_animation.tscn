@@ -1,6 +1,7 @@
-[gd_scene load_steps=42 format=3 uid="uid://bhh6s6a2ilw0o"]
+[gd_scene load_steps=43 format=3 uid="uid://bhh6s6a2ilw0o"]
 
 [ext_resource type="Texture2D" uid="uid://flbkixwwrmrj" path="res://assets/sprites/transition_animation.png" id="1_75xnl"]
+[ext_resource type="Script" path="res://scripts/transition_animation.gd" id="1_qrgho"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gw2qc"]
 atlas = ExtResource("1_75xnl")
@@ -218,7 +219,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_kygwt")
 }, {
-"duration": 10.0,
+"duration": 25.0,
 "texture": SubResource("AtlasTexture_3n6i3")
 }, {
 "duration": 1.0,
@@ -284,6 +285,7 @@ animations = [{
 }]
 
 [node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_qrgho")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(577, 324)
@@ -293,10 +295,5 @@ autoplay = "default"
 frame = 38
 frame_progress = 1.0
 
-[node name="ColorRect" type="ColorRect" parent="."]
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

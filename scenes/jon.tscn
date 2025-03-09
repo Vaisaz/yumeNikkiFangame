@@ -187,3 +187,4 @@ position = Vector2(0, -8.5)
 shape = SubResource("RectangleShape2D_fcoh3")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="area_entered" from="Interaction" to="Interaction" method="_on_area_entered"]
