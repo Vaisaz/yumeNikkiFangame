@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://d1jbh8q1vrdd6" path="res://scenes/jon.tscn" id="7_4mhao"]
 [ext_resource type="PackedScene" uid="uid://dms3nd57u0aeq" path="res://scenes/audio/dream_room.tscn" id="8_b5tge"]
 [ext_resource type="PackedScene" uid="uid://vf6gj7wfsye1" path="res://scenes/main_doors.tscn" id="11_t80xo"]
-[ext_resource type="Script" path="res://scripts/door_interaction.gd" id="12_owyl7"]
+[ext_resource type="Script" path="res://scripts/interaction_scripts/door_interaction.gd" id="12_owyl7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_575h7"]
 texture = ExtResource("5_junx1")

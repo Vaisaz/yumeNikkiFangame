@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://becvkf33de065"]
+[gd_scene load_steps=69 format=3 uid="uid://becvkf33de065"]
 
 [ext_resource type="Texture2D" uid="uid://b4g07ub54tlj2" path="res://assets/sprites/main/black.jpg" id="1_hgo00"]
 [ext_resource type="Texture2D" uid="uid://cpwubbf4cjm7w" path="res://assets/sprites/main/line_for_doors.png" id="2_mxfs6"]
@@ -12,8 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bdenadlrv8lvr" path="res://assets/sprites/main/door_real_frame.png" id="8_s0isu"]
 [ext_resource type="PackedScene" uid="uid://vf6gj7wfsye1" path="res://scenes/main_doors.tscn" id="11_0hkut"]
 [ext_resource type="Texture2D" uid="uid://7wenk2xchq43" path="res://assets/sprites/happy_dream/giggly.png" id="12_b1syx"]
-[ext_resource type="Script" path="res://scripts/bed_interaction.gd" id="14_fffuy"]
-[ext_resource type="PackedScene" uid="uid://xc2xhvu62mnx" path="res://scenes/neon_blob.tscn" id="14_gqq5i"]
+[ext_resource type="Script" path="res://scripts/interaction_scripts/bed_interaction.gd" id="14_fffuy"]
 [ext_resource type="Texture2D" uid="uid://flbkixwwrmrj" path="res://assets/sprites/transition_animation.png" id="16_b4a5b"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_575h7"]
@@ -577,9 +576,6 @@ layer_0/tile_data = PackedInt32Array(131068, 131073, 0, 131069, 196609, 0, 19660
 
 [node name="StaticBody2D" parent="." instance=ExtResource("6_fy8e4")]
 position = Vector2(-48, -62)
-
-[node name="StaticBody2D3" parent="." instance=ExtResource("14_gqq5i")]
-position = Vector2(31, -14)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("7_4mhao")]
 position = Vector2(-47, -43)

@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://3a7wlxbyn60s" path="res://assets/sprites/happy_dream/tiles.png" id="1_g8k8r"]
 [ext_resource type="PackedScene" uid="uid://36u30mp6epub" path="res://scenes/giggly.tscn" id="2_shd53"]
-[ext_resource type="Script" path="res://scripts/giggly_interaction.gd" id="3_rm67d"]
+[ext_resource type="Script" path="res://scripts/interaction_scripts/giggly_interaction.gd" id="3_rm67d"]
 [ext_resource type="PackedScene" uid="uid://d1jbh8q1vrdd6" path="res://scenes/jon.tscn" id="4_6p538"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ffa6v"]

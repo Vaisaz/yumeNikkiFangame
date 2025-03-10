@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 var interact: bool = false
+var transitioning:bool = false
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var canvas_layer = $"."
 
