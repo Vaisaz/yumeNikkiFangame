@@ -36,5 +36,9 @@ func _input(_event):
 	if Input.is_action_just_pressed("wake_up") and !get_tree().current_scene.scene_file_path == "res://scenes/locations/room.tscn" and Transition.canvas_layer.visible == false:
 		Transition.playing_animation()
 		await Transition.animated_sprite_2d.animation_finished
+		Transition.waking_sleeping_2d.visible = true
+		Transition.waking_sleeping_2d.play("waking")
+		await Transition.waking_sleeping_2d.animation_finished
+		Transition.waking_sleeping_2d.visible = false
 		get_tree().change_scene_to_file("res://scenes/locations/room.tscn")
 		Transition.ending_animation()
