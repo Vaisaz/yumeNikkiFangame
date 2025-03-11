@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dr21yfhjoldoo"]
+[gd_scene load_steps=19 format=3 uid="uid://dr21yfhjoldoo"]
 
 [ext_resource type="Texture2D" uid="uid://bkwg4d84vpwnn" path="res://assets/sprites/main/pixel_tiles.png" id="1_hfvtc"]
 [ext_resource type="Texture2D" uid="uid://b4g07ub54tlj2" path="res://assets/sprites/main/black.jpg" id="1_r6exr"]
@@ -10,7 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://bq7poye12ywvu" path="res://scenes/audio/nexus.tscn" id="6_em1cg"]
 [ext_resource type="PackedScene" uid="uid://ccea0vhxlnlp4" path="res://scenes/neon_warp.tscn" id="7_e5u10"]
 [ext_resource type="PackedScene" uid="uid://bbv0r40mh2fmf" path="res://scenes/happy_warp.tscn" id="8_0nmn3"]
+[ext_resource type="PackedScene" uid="uid://c1s8mfal8dbj3" path="res://assets/audio/sound.tscn" id="9_2qw35"]
 [ext_resource type="PackedScene" uid="uid://soo5rpy2bpqo" path="res://scenes/number_warp.tscn" id="10_0csyf"]
+[ext_resource type="AudioStream" uid="uid://cukph5fc4tjge" path="res://assets/audio/door_sound.mp3" id="10_1233v"]
 [ext_resource type="Script" path="res://scripts/interaction_scripts/number_warp_interaction.gd" id="11_n0jro"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bpo8m"]
@@ -106,6 +108,9 @@ script = ExtResource("4_f0p0w")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="dream_doors/interaction"]
 position = Vector2(-48, -62)
 shape = SubResource("RectangleShape2D_27h8x")
+
+[node name="DoorSound" parent="dream_doors/interaction" instance=ExtResource("9_2qw35")]
+stream = ExtResource("10_1233v")
 
 [node name="number_warp" parent="." instance=ExtResource("10_0csyf")]
 position = Vector2(0, 180)

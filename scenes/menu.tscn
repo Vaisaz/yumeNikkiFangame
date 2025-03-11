@@ -1,0 +1,77 @@
+[gd_scene load_steps=11 format=3 uid="uid://ui0arx0m6ovu"]
+
+[ext_resource type="Script" path="res://scripts/menu.gd" id="1_avuxm"]
+[ext_resource type="Texture2D" uid="uid://c7nv35fhq6e5p" path="res://assets/menu/game_name.png" id="2_higod"]
+[ext_resource type="Texture2D" uid="uid://bd1v6nw18gufc" path="res://assets/menu/start.png" id="2_hmxh8"]
+[ext_resource type="Texture2D" uid="uid://co7tigpewar03" path="res://assets/menu/guide.png" id="3_ipyst"]
+[ext_resource type="Texture2D" uid="uid://drkcpx41onmxi" path="res://assets/menu/start_hover.png" id="3_t4e0y"]
+[ext_resource type="Texture2D" uid="uid://bgmgwxndu1pqy" path="res://assets/menu/quit.png" id="4_86bph"]
+[ext_resource type="Texture2D" uid="uid://bixt42qfnhxt8" path="res://assets/menu/guide_hover.png" id="5_uyjen"]
+[ext_resource type="PackedScene" uid="uid://c1s8mfal8dbj3" path="res://assets/audio/sound.tscn" id="6_b1flr"]
+[ext_resource type="AudioStream" uid="uid://cjw8n3n8l5bai" path="res://assets/audio/menu.mp3" id="7_0fxc6"]
+[ext_resource type="Texture2D" uid="uid://d0yg5d136sowo" path="res://assets/menu/quit_hover.png" id="7_gd150"]
+
+[node name="menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_avuxm")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -107.0
+offset_top = -49.0
+offset_right = -43.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+
+[node name="Start" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("2_hmxh8")
+texture_hover = ExtResource("3_t4e0y")
+
+[node name="Guide" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("3_ipyst")
+texture_hover = ExtResource("5_uyjen")
+
+[node name="Quit" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("4_86bph")
+texture_hover = ExtResource("7_gd150")
+
+[node name="GameName" type="Sprite2D" parent="."]
+position = Vector2(577, 176)
+scale = Vector2(3, 3)
+texture = ExtResource("2_higod")
+
+[node name="Menu" parent="." instance=ExtResource("6_b1flr")]
+stream = ExtResource("7_0fxc6")
+autoplay = true
+
+[connection signal="focus_entered" from="VBoxContainer/Start" to="." method="_on_start_focus_entered"]
+[connection signal="focus_exited" from="VBoxContainer/Start" to="." method="_on_start_focus_exited"]
+[connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]

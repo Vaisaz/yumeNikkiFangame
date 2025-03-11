@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://d4knyms2ff0c2"]
+[gd_scene load_steps=23 format=3 uid="uid://d4knyms2ff0c2"]
 
 [ext_resource type="Texture2D" uid="uid://b4g07ub54tlj2" path="res://assets/sprites/main/black.jpg" id="1_hgo00"]
 [ext_resource type="Texture2D" uid="uid://ynh4otbjgj8e" path="res://assets/sprites/main/room.png" id="2_ns3rm"]
@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://dms3nd57u0aeq" path="res://scenes/audio/dream_room.tscn" id="8_b5tge"]
 [ext_resource type="PackedScene" uid="uid://vf6gj7wfsye1" path="res://scenes/main_doors.tscn" id="11_t80xo"]
 [ext_resource type="Script" path="res://scripts/interaction_scripts/door_interaction.gd" id="12_owyl7"]
+[ext_resource type="PackedScene" uid="uid://c1s8mfal8dbj3" path="res://assets/audio/sound.tscn" id="13_saars"]
+[ext_resource type="AudioStream" uid="uid://cukph5fc4tjge" path="res://assets/audio/door_sound.mp3" id="14_5naay"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_575h7"]
 texture = ExtResource("5_junx1")
@@ -248,6 +250,10 @@ script = ExtResource("12_owyl7")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D2/interaction"]
 position = Vector2(-48, -62.25)
 shape = SubResource("RectangleShape2D_77tpd")
+
+[node name="DoorSound" parent="StaticBody2D2/interaction" instance=ExtResource("13_saars")]
+position = Vector2(-48, -62)
+stream = ExtResource("14_5naay")
 
 [connection signal="area_entered" from="StaticBody2D2/interaction" to="StaticBody2D2/interaction" method="_on_area_entered"]
 [connection signal="area_exited" from="StaticBody2D2/interaction" to="StaticBody2D2/interaction" method="_on_area_exited"]

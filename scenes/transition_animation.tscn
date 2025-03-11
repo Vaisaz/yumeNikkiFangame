@@ -448,8 +448,8 @@ visible = false
 script = ExtResource("1_8u8o2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(577, 324)
-scale = Vector2(6.05263, 6.01852)
+position = Vector2(575, 324)
+scale = Vector2(6.07368, 6.01852)
 sprite_frames = SubResource("SpriteFrames_qxyj5")
 frame = 19
 frame_progress = 1.0
