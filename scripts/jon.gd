@@ -17,7 +17,7 @@ func _physics_process(_delta):
 	else:
 		transitioning = false
 		if input_direction == Vector2(0, 0):
-			animated_sprite_2d.play("idle")
+			animated_sprite_2d.stop()
 		elif input_direction == Vector2(0, -1):
 			animated_sprite_2d.play("up")
 		elif input_direction == Vector2(0, 1):
@@ -26,7 +26,19 @@ func _physics_process(_delta):
 			animated_sprite_2d.play("left")
 		elif input_direction == Vector2(1, 0):
 			animated_sprite_2d.play("right")
-
+		elif input_direction == Vector2(1, 1):
+			input_direction = Vector2(0, 0)
+			animated_sprite_2d.play("idle")
+		elif input_direction == Vector2(1, -1):
+			input_direction = Vector2(0, 0)
+			animated_sprite_2d.play("idle")
+		elif input_direction == Vector2(-1, 1):
+			input_direction = Vector2(0, 0)
+			animated_sprite_2d.play("idle")
+		elif input_direction == Vector2(-1, -1):
+			input_direction = Vector2(0, 0)
+			animated_sprite_2d.play("idle")
+		
 		velocity = input_direction * speed
 	
 	if !transitioning:
