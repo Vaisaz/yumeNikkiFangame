@@ -1,0 +1,68 @@
+[gd_scene load_steps=10 format=3 uid="uid://60h65rjg1pd3"]
+
+[ext_resource type="Texture2D" uid="uid://cl4eyxqadwqqk" path="res://assets/sprites/happy_dream/banana_creature.png" id="1_gf7jc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k2vsp"]
+atlas = ExtResource("1_gf7jc")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wr6cm"]
+atlas = ExtResource("1_gf7jc")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gmm8f"]
+atlas = ExtResource("1_gf7jc")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7t83n"]
+atlas = ExtResource("1_gf7jc")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1t4w0"]
+atlas = ExtResource("1_gf7jc")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ffxxq"]
+atlas = ExtResource("1_gf7jc")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_splls"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k2vsp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wr6cm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gmm8f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7t83n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1t4w0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ffxxq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n686v"]
+size = Vector2(30, 33)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_splls")
+autoplay = "default"
+frame_progress = 0.470544
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -16.5)
+shape = SubResource("RectangleShape2D_n686v")

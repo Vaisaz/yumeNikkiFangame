@@ -47,18 +47,24 @@ scale = Vector2(3, 3)
 [node name="Start" type="TextureButton" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+mouse_filter = 2
+button_mask = 0
 texture_normal = ExtResource("2_hmxh8")
 texture_hover = ExtResource("3_t4e0y")
 
 [node name="Guide" type="TextureButton" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+mouse_filter = 2
+button_mask = 0
 texture_normal = ExtResource("3_ipyst")
 texture_hover = ExtResource("5_uyjen")
 
 [node name="Quit" type="TextureButton" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+mouse_filter = 2
+button_mask = 0
 texture_normal = ExtResource("4_86bph")
 texture_hover = ExtResource("7_gd150")
 

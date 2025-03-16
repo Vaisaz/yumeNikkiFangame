@@ -1,9 +1,11 @@
-[gd_scene load_steps=66 format=3 uid="uid://d1jbh8q1vrdd6"]
+[gd_scene load_steps=68 format=3 uid="uid://d1jbh8q1vrdd6"]
 
 [ext_resource type="Script" path="res://scripts/jon.gd" id="1_c544l"]
 [ext_resource type="Texture2D" uid="uid://k37gud87ttvy" path="res://assets/sprites/main/jon_sprite_v2.png" id="2_sgdv6"]
 [ext_resource type="Texture2D" uid="uid://dve0ilnbymyyt" path="res://assets/sprites/main/jon_sprite_v3.png" id="3_6crik"]
+[ext_resource type="PackedScene" uid="uid://c1s8mfal8dbj3" path="res://assets/audio/sound.tscn" id="5_di2oi"]
 [ext_resource type="Texture2D" uid="uid://flbkixwwrmrj" path="res://assets/sprites/transition_animation.png" id="5_nbb65"]
+[ext_resource type="AudioStream" uid="uid://bsya7vvgo8ds7" path="res://assets/audio/walk_sound.wav" id="6_k1caw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w8bcn"]
 atlas = ExtResource("2_sgdv6")
@@ -480,6 +482,11 @@ visible = false
 position = Vector2(575, 325)
 scale = Vector2(6.05263, 6.01852)
 sprite_frames = SubResource("SpriteFrames_x7ky2")
+
+[node name="Sound" parent="." instance=ExtResource("5_di2oi")]
+stream = ExtResource("6_k1caw")
+
+[node name="StepTimer" type="Timer" parent="."]
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="area_entered" from="Interaction" to="Interaction" method="_on_area_entered"]

@@ -11,7 +11,7 @@ func _on_area_exited(_area):
 	interact = false
 		
 func _input(_event):
-	if interact and Input.is_action_just_pressed("interact"):
+	if interact and Input.is_action_just_pressed("interact") and Inventory.inventory_layer.visible == false:
 		interact = false
 		animated_sprite_2d.play("pushed")
 		await get_tree().create_timer(1).timeout

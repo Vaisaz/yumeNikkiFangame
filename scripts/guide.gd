@@ -16,6 +16,7 @@ var messages = [
 	"I think you already know how to dream, simply go to bed.",
 	"To move, you can use W, A, S, D and arrow keys.",
 	"To interact, you can use E, Space or Enter keys.",
+	"To open your inventory while dreaming, you can use Esc key",
 	"And to wake up, you can only use M key.",
 	"Movement and interaction also apply in the layer of reality in which you normally reside.",
 	"What do I mean by these keys, is this a video game or something?",
@@ -42,7 +43,7 @@ var faces = [
 
 var random = RandomNumberGenerator.new()
 var index = 0
-var message_displayed = false
+var message_displayed: bool = false
 var can_teleport: bool = false
 
 @onready var creator = $Stare
@@ -65,11 +66,11 @@ func show_message():
 			creator.texture = faces[3]
 		elif index == 10:
 			creator.texture = faces[0]
-		elif index == 16:
-			creator.texture = faces[1]
 		elif index == 17:
-			creator.texture = faces[0]
+			creator.texture = faces[1]
 		elif index == 18:
+			creator.texture = faces[0]
+		elif index == 19:
 			creator.texture = faces[2]
 			can_teleport = true
 		for character in messages[index]:

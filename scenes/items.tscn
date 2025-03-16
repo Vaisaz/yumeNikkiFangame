@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c4env62tm1yvg"]
+
+[ext_resource type="Script" path="res://scripts/test_inventory_inveraction.gd" id="1_gyfs3"]
+
+[node name="Items" type="Node2D"]
+script = ExtResource("1_gyfs3")
