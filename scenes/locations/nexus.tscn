@@ -66,7 +66,7 @@ size = Vector2(400, 551.875)
 [node name="nexus" type="Node2D"]
 
 [node name="black" type="Sprite2D" parent="."]
-position = Vector2(1, -62)
+position = Vector2(2, -64)
 scale = Vector2(1.30281, 1.52486)
 texture = ExtResource("1_r6exr")
 

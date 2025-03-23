@@ -15,6 +15,12 @@ var item_texture_hover = [
 	$InventoryLayer/InventoryChoosed/second
 ]
 
+@onready var equipped = $InventoryLayer/SoulChoosed/Equipped
+@onready var lv = $InventoryLayer/SoulChoosed/LVLabel
+@onready var hp = $InventoryLayer/SoulChoosed/HPLabel
+@onready var at = $InventoryLayer/SoulChoosed/ATLabel
+@onready var xp = $InventoryLayer/SoulChoosed/XPLabel
+
 @onready var soul_button = $InventoryLayer/Buttons/Soul
 @onready var inventory_button = $InventoryLayer/Buttons/Inventory
 @onready var quit_button = $InventoryLayer/Buttons/Quit
@@ -34,6 +40,8 @@ func _ready():
 	quit_button.texture_focused = quit_button.texture_hover
 		
 func _on_soul_pressed():
+	hp.text = "HP: %d/%d" % [Combat.player_current_health, Combat.player_max_health]
+	at.text = "AT: %d" % Combat.player_attack
 	soul_choosed.visible = true
 	inventory_choosed.visible = false
 
@@ -50,11 +58,13 @@ func _on_quit_pressed():
 func _on_first_pressed():
 	soul_choosed.visible = false
 	inventory_choosed.visible = false
+	equipped.texture = $InventoryLayer/InventoryChoosed/first.texture_normal
 	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_HIDDEN)
 	inventory_button.grab_focus()
 	
 func _on_second_pressed():
 	soul_choosed.visible = false
 	inventory_choosed.visible = false
+	equipped.texture = $InventoryLayer/InventoryChoosed/second.texture_normal
 	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_HIDDEN)
 	inventory_button.grab_focus()

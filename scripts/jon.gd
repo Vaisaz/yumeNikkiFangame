@@ -11,12 +11,12 @@ func _physics_process(_delta):
 	var x_axis = Input.get_axis("left", "right")
 	var y_axis = Input.get_axis("up", "down")
 	var input_direction = Vector2(x_axis, y_axis)
-	if Transition.canvas_layer.visible == true:
+	if Transition.canvas_layer.visible:
 		transitioning = true
 		animated_sprite_2d.play("idle")
 		input_direction = Vector2(0, 0)
 		Transition.wait()
-	elif Inventory.inventory_layer.visible == true:
+	elif Inventory.inventory_layer.visible:
 		input_direction = Vector2(0, 0)
 	else:
 		transitioning = false
@@ -53,7 +53,7 @@ var inventory_pressed = false
 func _input(_event):
 	if Input.is_action_pressed("up") or Input.is_action_pressed("down") or Input.is_action_pressed("left") or Input.is_action_pressed("right"):
 		pass
-	if Input.is_action_just_pressed("wake_up") and !get_tree().current_scene.scene_file_path == "res://scenes/locations/room.tscn" and Transition.canvas_layer.visible == false:
+	if Input.is_action_just_pressed("wake_up") and !get_tree().current_scene.scene_file_path == "res://scenes/locations/room.tscn" and !Transition.canvas_layer.visible:
 		Transition.playing_animation()
 		await Transition.animated_sprite_2d.animation_finished
 		Transition.waking_sleeping_2d.visible = true

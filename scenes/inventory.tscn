@@ -192,6 +192,10 @@ theme_override_fonts/font = ExtResource("11_b2qpm")
 text = "XP:
 "
 
+[node name="Equipped" type="Sprite2D" parent="InventoryLayer/SoulChoosed"]
+position = Vector2(388, 551)
+scale = Vector2(3, 3)
+
 [node name="InventoryChoosed" type="CanvasLayer" parent="InventoryLayer"]
 visible = false
 

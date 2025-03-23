@@ -1,0 +1,229 @@
+[gd_scene load_steps=16 format=3 uid="uid://cee12bto8qsua"]
+
+[ext_resource type="Script" path="res://scripts/combat.gd" id="1_5fjro"]
+[ext_resource type="Texture2D" uid="uid://b8fabkydvdqry" path="res://assets/combat/combat_frame.png" id="2_6qdto"]
+[ext_resource type="FontFile" uid="uid://lx0uvqrmjjg6" path="res://assets/retro_gaming.ttf" id="2_6u174"]
+[ext_resource type="Texture2D" uid="uid://co1plrjdjp3mh" path="res://assets/combat/combat_buttons/run.png" id="4_0ak0y"]
+[ext_resource type="Texture2D" uid="uid://bft2hrwsc408i" path="res://assets/combat/combat_buttons/run_hover.png" id="5_tdtmc"]
+[ext_resource type="Texture2D" uid="uid://dl7www1p1c22y" path="res://assets/combat/combat_buttons/fight.png" id="6_p7dgb"]
+[ext_resource type="Texture2D" uid="uid://dbfqbaed4lnbx" path="res://assets/combat/combat_buttons/fight_hover.png" id="7_h40jt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xwg25"]
+atlas = ExtResource("2_6qdto")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_seqem"]
+atlas = ExtResource("2_6qdto")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_afoxk"]
+atlas = ExtResource("2_6qdto")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dhr7j"]
+atlas = ExtResource("2_6qdto")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bdyli"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xwg25")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_seqem")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_afoxk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dhr7j")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_yq4wf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_swxnq"]
+bg_color = Color(1, 0.0909422, 0.0594648, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_efuuh"]
+bg_color = Color(1, 1, 0, 1)
+
+[node name="Combat" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5fjro")
+
+[node name="Combat" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="Combat"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.31092, 6.52894e-05, 0.310918, 1)
+
+[node name="Enemy" type="Sprite2D" parent="Combat"]
+position = Vector2(575, 236)
+scale = Vector2(6, 6)
+
+[node name="CombatFrame" type="AnimatedSprite2D" parent="Combat"]
+position = Vector2(574, 236)
+scale = Vector2(9, 9)
+sprite_frames = SubResource("SpriteFrames_bdyli")
+autoplay = "default"
+
+[node name="You" type="Label" parent="Combat"]
+modulate = Color(0.996078, 1, 0, 1)
+self_modulate = Color(1, 1, 0.32549, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -83.0
+offset_top = 117.0
+offset_right = 23.0
+offset_bottom = 143.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+theme_override_fonts/font = ExtResource("2_6u174")
+text = "YOU
+"
+label_settings = SubResource("LabelSettings_yq4wf")
+
+[node name="EnemyBar" type="ProgressBar" parent="Combat"]
+offset_left = 382.0
+offset_top = 21.0
+offset_right = 778.0
+offset_bottom = 66.0
+theme_override_fonts/font = ExtResource("2_6u174")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/background = SubResource("StyleBoxFlat_swxnq")
+theme_override_styles/fill = SubResource("StyleBoxFlat_efuuh")
+step = 1.0
+value = 50.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="Combat/EnemyBar"]
+modulate = Color(0.428719, 0.000127354, 0.428716, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -106.0
+offset_top = -20.5
+offset_bottom = 5.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+theme_override_fonts/font = ExtResource("2_6u174")
+text = "HP: 50/100
+"
+label_settings = SubResource("LabelSettings_yq4wf")
+
+[node name="PlayerBar" type="ProgressBar" parent="Combat"]
+offset_left = 375.0
+offset_top = 585.0
+offset_right = 771.0
+offset_bottom = 630.0
+theme_override_fonts/font = ExtResource("2_6u174")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/background = SubResource("StyleBoxFlat_swxnq")
+theme_override_styles/fill = SubResource("StyleBoxFlat_efuuh")
+max_value = 25.0
+step = 1.0
+value = 25.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="Combat/PlayerBar"]
+modulate = Color(0.428719, 0.000127354, 0.428716, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -106.0
+offset_top = -20.5
+offset_bottom = 5.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+theme_override_fonts/font = ExtResource("2_6u174")
+text = "HP: 25/25
+"
+label_settings = SubResource("LabelSettings_yq4wf")
+
+[node name="FightButton" type="TextureButton" parent="Combat"]
+offset_left = 108.0
+offset_top = 415.0
+offset_right = 172.0
+offset_bottom = 455.0
+scale = Vector2(4, 4)
+texture_normal = ExtResource("6_p7dgb")
+texture_hover = ExtResource("7_h40jt")
+
+[node name="RunButton" type="TextureButton" parent="Combat"]
+offset_left = 788.0
+offset_top = 419.0
+offset_right = 852.0
+offset_bottom = 459.0
+scale = Vector2(4, 4)
+texture_normal = ExtResource("4_0ak0y")
+texture_hover = ExtResource("5_tdtmc")
+
+[node name="DamageEnemy" type="Label" parent="Combat"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -110.0
+offset_top = -196.0
+offset_right = -74.0
+offset_bottom = -160.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(6, 6)
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_6u174")
+text = "-10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DamagePlayer" type="Label" parent="Combat"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -108.0
+offset_top = 54.0
+offset_right = -72.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(6, 6)
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_6u174")
+text = "-10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Combat/FightButton" to="." method="_on_fight_button_pressed"]
+[connection signal="pressed" from="Combat/RunButton" to="." method="_on_run_button_pressed"]
