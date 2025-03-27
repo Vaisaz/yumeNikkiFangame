@@ -1,11 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://d0jh7omnvfxod"]
+[gd_scene load_steps=14 format=3 uid="uid://d0jh7omnvfxod"]
 
+[ext_resource type="Texture2D" uid="uid://bqua316ypuuok" path="res://assets/sprites/happy_dream/happy_background.png" id="1_d4nht"]
 [ext_resource type="Texture2D" uid="uid://3a7wlxbyn60s" path="res://assets/sprites/happy_dream/tiles.png" id="1_g8k8r"]
+[ext_resource type="Texture2D" uid="uid://bysb7m37k7a8q" path="res://assets/sprites/happy_dream/happy_background_2.png" id="2_8xt47"]
 [ext_resource type="PackedScene" uid="uid://36u30mp6epub" path="res://scenes/giggly.tscn" id="2_shd53"]
 [ext_resource type="Script" path="res://scripts/interaction_scripts/giggly_interaction.gd" id="3_rm67d"]
 [ext_resource type="PackedScene" uid="uid://d1jbh8q1vrdd6" path="res://scenes/jon.tscn" id="4_6p538"]
 [ext_resource type="PackedScene" uid="uid://60h65rjg1pd3" path="res://scenes/banana_creature.tscn" id="5_u8p5r"]
 [ext_resource type="Script" path="res://scripts/interaction_scripts/banana_creature_interaction.gd" id="6_j4mom"]
+[ext_resource type="PackedScene" uid="uid://cn7t5qquv062e" path="res://scenes/giggler.tscn" id="10_42bvy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ffa6v"]
 texture = ExtResource("1_g8k8r")
@@ -28,6 +31,26 @@ size = Vector2(44, 44)
 
 [node name="happy_dream" type="Node2D"]
 
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.1, 0.1)
+motion_mirroring = Vector2(500, 250)
+
+[node name="HappyBackground" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(134, 44)
+scale = Vector2(5, 5)
+texture = ExtResource("1_d4nht")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.25, 0.25)
+motion_mirroring = Vector2(400, 200)
+
+[node name="HappyBackground2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(1, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("2_8xt47")
+
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_m2e66")
 format = 2
@@ -45,13 +68,6 @@ script = ExtResource("3_rm67d")
 position = Vector2(-48, -70)
 shape = SubResource("RectangleShape2D_vydhk")
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("4_6p538")]
-position = Vector2(1, 11)
-
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
-position = Vector2(-1, -26)
-zoom = Vector2(5, 5)
-
 [node name="StaticBody2D2" parent="." instance=ExtResource("5_u8p5r")]
 position = Vector2(91, 95)
 
@@ -63,6 +79,16 @@ script = ExtResource("6_j4mom")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2/interaction"]
 position = Vector2(0, -17)
 shape = SubResource("RectangleShape2D_2gddm")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("4_6p538")]
+position = Vector2(1, 11)
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+position = Vector2(-1, -26)
+zoom = Vector2(5, 5)
+
+[node name="CharacterBody2D2" parent="." instance=ExtResource("10_42bvy")]
+position = Vector2(-61, 51)
 
 [connection signal="area_entered" from="StaticBody2D/interaction" to="StaticBody2D/interaction" method="_on_area_entered"]
 [connection signal="area_exited" from="StaticBody2D/interaction" to="StaticBody2D/interaction" method="_on_area_exited"]

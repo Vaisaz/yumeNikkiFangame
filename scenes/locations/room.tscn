@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://becvkf33de065"]
+[gd_scene load_steps=69 format=3 uid="uid://becvkf33de065"]
 
 [ext_resource type="Texture2D" uid="uid://b4g07ub54tlj2" path="res://assets/sprites/main/black.jpg" id="1_hgo00"]
 [ext_resource type="Texture2D" uid="uid://cpwubbf4cjm7w" path="res://assets/sprites/main/line_for_doors.png" id="2_mxfs6"]
@@ -13,7 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://vf6gj7wfsye1" path="res://scenes/main_doors.tscn" id="11_0hkut"]
 [ext_resource type="Texture2D" uid="uid://7wenk2xchq43" path="res://assets/sprites/happy_dream/giggly.png" id="12_b1syx"]
 [ext_resource type="Script" path="res://scripts/interaction_scripts/bed_interaction.gd" id="14_fffuy"]
-[ext_resource type="PackedScene" uid="uid://cn7t5qquv062e" path="res://scenes/giggler.tscn" id="15_06nh7"]
 [ext_resource type="Texture2D" uid="uid://flbkixwwrmrj" path="res://assets/sprites/transition_animation.png" id="16_b4a5b"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_575h7"]
@@ -612,9 +611,6 @@ visible = false
 position = Vector2(575, 325)
 scale = Vector2(6.05263, 6.01852)
 sprite_frames = SubResource("SpriteFrames_42fem")
-
-[node name="StaticBody2D3" parent="." instance=ExtResource("15_06nh7")]
-position = Vector2(38, -16)
 
 [connection signal="area_entered" from="StaticBody2D2/interaction" to="StaticBody2D2/interaction" method="_on_area_entered"]
 [connection signal="area_exited" from="StaticBody2D2/interaction" to="StaticBody2D2/interaction" method="_on_area_exited"]

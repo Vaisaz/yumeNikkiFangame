@@ -2,17 +2,20 @@ extends Control
 
 var item_texture = [
 	preload("res://assets/inventory/items/banana.png"),
-	preload("res://assets/inventory/items/watches.png")
+	preload("res://assets/inventory/items/watches.png"),
+	preload("res://assets/inventory/items/wnp.png")
 ]
 
 var item_texture_hover = [
 	preload("res://assets/inventory/items/banana_hover.png"),
-	preload("res://assets/inventory/items/watches_hover.png")
+	preload("res://assets/inventory/items/watches_hover.png"),
+	preload("res://assets/inventory/items/wnp_hover.png")
 ]
 
 @onready var items = [
 	$InventoryLayer/InventoryChoosed/first,
-	$InventoryLayer/InventoryChoosed/second
+	$InventoryLayer/InventoryChoosed/second,
+	$InventoryLayer/InventoryChoosed/third
 ]
 
 @onready var equipped = $InventoryLayer/SoulChoosed/Equipped
@@ -31,7 +34,8 @@ var item_texture_hover = [
 
 var index = 0
 var banana_has_interacted: bool = false
-var watches_has_interacted:bool = false
+var watches_has_interacted: bool = false
+var wnp_has_interacted: bool = false
 
 func _ready():
 	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_HIDDEN)

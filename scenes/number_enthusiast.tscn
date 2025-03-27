@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=3 uid="uid://bh562ayvwf3l"]
+
+[ext_resource type="Texture2D" uid="uid://dt5miursdmkmw" path="res://assets/sprites/number_dream/number_enthusiast.png" id="1_c6bkt"]
+[ext_resource type="Script" path="res://scripts/number_enthusiast_interaction.gd" id="2_m6qsl"]
+[ext_resource type="Texture2D" uid="uid://beh4pnr72b2sx" path="res://assets/blank_frame_bigger.png" id="3_gkcvf"]
+[ext_resource type="FontFile" uid="uid://lx0uvqrmjjg6" path="res://assets/retro_gaming.ttf" id="4_qrs41"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ndkhw"]
+size = Vector2(16, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yx5ud"]
+size = Vector2(25, 40)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+
+[node name="NumberEnthusiast" type="Sprite2D" parent="."]
+position = Vector2(-1, -16)
+texture = ExtResource("1_c6bkt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, -16)
+shape = SubResource("RectangleShape2D_ndkhw")
+
+[node name="interaction" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("2_m6qsl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interaction"]
+position = Vector2(-1.5, -16)
+shape = SubResource("RectangleShape2D_yx5ud")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="BlankFrameBigger" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(578, 524)
+scale = Vector2(4, 3.01563)
+texture = ExtResource("3_gkcvf")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/BlankFrameBigger"]
+offset_left = -126.0
+offset_top = -30.0
+offset_right = 126.0
+offset_bottom = 30.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="CanvasLayer/BlankFrameBigger"]
+offset_left = -122.0
+offset_top = -25.8653
+offset_right = 124.0
+offset_bottom = 22.1347
+theme_override_colors/font_color = Color(0, 0.886275, 0, 1)
+theme_override_fonts/font = ExtResource("4_qrs41")
+theme_override_font_sizes/font_size = 8
+
+[connection signal="area_entered" from="interaction" to="interaction" method="_on_area_entered"]
+[connection signal="area_exited" from="interaction" to="interaction" method="_on_area_exited"]

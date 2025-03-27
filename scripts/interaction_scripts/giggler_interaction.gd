@@ -8,6 +8,7 @@ var player_current_health = Combat.player_current_health
 func _on_area_entered(area):
 	if area.is_in_group("Player"):
 		$"..".queue_free()
+		GlobalVariables.debounce = true
 		Combat.enemy_texture.texture = load("res://assets/combat/giggler.png")
 		Combat.enemy_max_health = 100
 		Combat.enemy_current_health = 100

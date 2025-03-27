@@ -22,6 +22,10 @@ func _input(_event):
 				Inventory.items[Inventory.index].texture_normal = Inventory.item_texture[1]
 				Inventory.items[Inventory.index].texture_hover = Inventory.item_texture_hover[1]
 				Inventory.items[Inventory.index].disabled = false
+			if Inventory.index == 2 and Inventory.items[Inventory.index].disabled and !Inventory.watches_has_interacted:
+				Inventory.items[Inventory.index].texture_normal = Inventory.item_texture[1]
+				Inventory.items[Inventory.index].texture_hover = Inventory.item_texture_hover[1]
+				Inventory.items[Inventory.index].disabled = false
 			if !Inventory.watches_has_interacted:
 				Inventory.watches_has_interacted = true
 				Inventory.index += 1
