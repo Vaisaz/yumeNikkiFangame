@@ -56,6 +56,7 @@ func _on_fight_button_pressed():
 		await get_tree().create_timer(0.1).timeout
 		if enemy_current_health == 0:
 			GlobalVariables.debounce = false
+			GlobalVariables.in_combat = false
 			combat_layer.visible = false
 			DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_HIDDEN)
 		else:
@@ -101,9 +102,12 @@ func _on_fight_button_pressed():
 			run_button.disabled = false
 			if enemy_current_health == 0:
 				GlobalVariables.debounce = false
+				GlobalVariables.in_combat = false
 				combat_layer.visible = false
 				DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_HIDDEN)
 		
 func _on_run_button_pressed():
 	combat_layer.visible = false
+	GlobalVariables.debounce = false
+	GlobalVariables.in_combat = false
 	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_HIDDEN)
