@@ -5,4 +5,6 @@ chůze - W, A, S, D, Arrows
 
 interakce - E, Space, Enter
 
+inventář - Escape, Ctrl
+
 probuzení - M
