@@ -45,7 +45,7 @@ func show_message():
 		message_displayed = true
 
 func _input(event):
-	if interaction_times == 0 and event.is_action_pressed("interact") and message_displayed and interact and Input.is_action_just_pressed("interact") and Transition.canvas_layer.visible == false and Inventory.inventory_layer.visible == false:
+	if interaction_times == 0 and !Inventory.wnp_has_interacted and event.is_action_pressed("interact") and message_displayed and interact and Input.is_action_just_pressed("interact") and Transition.canvas_layer.visible == false and Inventory.inventory_layer.visible == false:
 		GlobalVariables.debounce = true
 		print(index)
 		canvas_layer.visible = true
@@ -57,7 +57,7 @@ func _input(event):
 		message_displayed = false
 		index += 1
 		show_message()
-	if interaction_times == 1 and event.is_action_pressed("interact") and message_displayed and interact and Input.is_action_just_pressed("interact") and Transition.canvas_layer.visible == false and Inventory.inventory_layer.visible == false:
+	if interaction_times == 1 and !Inventory.wnp_has_interacted and event.is_action_pressed("interact") and message_displayed and interact and Input.is_action_just_pressed("interact") and Transition.canvas_layer.visible == false and Inventory.inventory_layer.visible == false:
 		GlobalVariables.debounce = true
 		for item_count in Inventory.items:
 			print(item_count)
@@ -90,6 +90,7 @@ func _input(event):
 		if index == 8:
 			canvas_layer.visible = false
 			GlobalVariables.debounce = false
+			return
 		message_displayed = false
 		index += 1
 		show_message()

@@ -23,7 +23,7 @@ func _on_area_entered(area):
 		Combat.enemy_current_health = 100
 		Combat.enemy_attack = 1
 		Combat.enemy_health(Combat.enemy_current_health, Combat.enemy_max_health)
-		Combat.player_health(player_current_health, player_max_health)
+		Combat.player_health()
 		print("interacted")
 		Combat.combat_layer.visible = true
 		DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_VISIBLE)

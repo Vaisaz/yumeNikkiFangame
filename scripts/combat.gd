@@ -26,8 +26,7 @@ func _ready():
 	fight_button.disabled = false
 	run_button.disabled = false
 
-@warning_ignore("shadowed_variable")
-func player_health(player_current_health, player_max_health):
+func player_health():
 	player_bar.max_value = player_max_health
 	player_bar.value = player_current_health
 	player_label.text = "HP: %d/%d" % [player_current_health, player_max_health]
@@ -61,7 +60,7 @@ func _on_fight_button_pressed():
 			DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_HIDDEN)
 		else:
 			player_current_health = player_current_health - enemy_attack
-			player_health(player_current_health, player_max_health)
+			player_health()
 			you.visible = false
 			await get_tree().create_timer(0.1).timeout
 			you.visible = true
@@ -76,7 +75,7 @@ func _on_fight_button_pressed():
 				get_tree().quit()
 	if turn == 2:
 		player_current_health = player_current_health - enemy_attack
-		player_health(player_current_health, player_max_health)
+		player_health()
 		you.visible = false
 		await get_tree().create_timer(0.1).timeout
 		you.visible = true

@@ -229,4 +229,4 @@ disabled = true
 [connection signal="pressed" from="InventoryLayer/Buttons/Quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="InventoryLayer/InventoryChoosed/first" to="." method="_on_first_pressed"]
 [connection signal="pressed" from="InventoryLayer/InventoryChoosed/second" to="." method="_on_second_pressed"]
-[connection signal="pressed" from="InventoryLayer/InventoryChoosed/third" to="." method="_on_second_pressed"]
+[connection signal="pressed" from="InventoryLayer/InventoryChoosed/third" to="." method="_on_third_pressed"]
