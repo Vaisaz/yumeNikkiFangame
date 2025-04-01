@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dt5miursdmkmw" path="res://assets/sprites/number_dream/number_enthusiast.png" id="1_c6bkt"]
 [ext_resource type="Script" path="res://scripts/number_enthusiast_interaction.gd" id="2_m6qsl"]
 [ext_resource type="Texture2D" uid="uid://beh4pnr72b2sx" path="res://assets/blank_frame_bigger.png" id="3_gkcvf"]
-[ext_resource type="FontFile" uid="uid://lx0uvqrmjjg6" path="res://assets/retro_gaming.ttf" id="4_qrs41"]
+[ext_resource type="FontFile" uid="uid://b5lqlis8c3a4k" path="res://assets/I-pixel-u.ttf" id="4_6qddw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ndkhw"]
 size = Vector2(16, 32)
@@ -47,11 +47,11 @@ color = Color(0, 0, 0, 1)
 
 [node name="Label" type="Label" parent="CanvasLayer/BlankFrameBigger"]
 offset_left = -122.0
-offset_top = -25.8653
-offset_right = 124.0
-offset_bottom = 22.1347
+offset_top = -25.8652
+offset_right = -17.0
+offset_bottom = -14.8652
 theme_override_colors/font_color = Color(0, 0.886275, 0, 1)
-theme_override_fonts/font = ExtResource("4_qrs41")
+theme_override_fonts/font = ExtResource("4_6qddw")
 theme_override_font_sizes/font_size = 8
 
 [connection signal="area_entered" from="interaction" to="interaction" method="_on_area_entered"]

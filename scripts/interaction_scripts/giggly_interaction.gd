@@ -11,6 +11,10 @@ func _on_area_exited(_area):
 	
 func _input(_event):
 	if interact and Input.is_action_just_pressed("interact") and Transition.canvas_layer.visible == false and Inventory.inventory_layer.visible == false and !Combat.combat_layer.visible:
+		if is_instance_valid($"../../Giggler1"):
+			$"../../Giggler1".queue_free()
+		if is_instance_valid($"../../Giggler2"):
+			$"../../Giggler2".queue_free()
 		Transition.playing_animation()
 		await Transition.animated_sprite_2d.animation_finished
 		Transition.ending_animation()

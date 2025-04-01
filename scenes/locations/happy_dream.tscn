@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://d0jh7omnvfxod"]
+[gd_scene load_steps=12 format=3 uid="uid://d0jh7omnvfxod"]
 
 [ext_resource type="Texture2D" uid="uid://bqua316ypuuok" path="res://assets/sprites/happy_dream/happy_background.png" id="1_d4nht"]
 [ext_resource type="Texture2D" uid="uid://3a7wlxbyn60s" path="res://assets/sprites/happy_dream/tiles.png" id="1_g8k8r"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" path="res://scripts/interaction_scripts/giggly_interaction.gd" id="3_rm67d"]
 [ext_resource type="PackedScene" uid="uid://d1jbh8q1vrdd6" path="res://scenes/jon.tscn" id="4_6p538"]
 [ext_resource type="PackedScene" uid="uid://60h65rjg1pd3" path="res://scenes/banana_creature.tscn" id="5_u8p5r"]
-[ext_resource type="Script" path="res://scripts/interaction_scripts/banana_creature_interaction.gd" id="6_j4mom"]
 [ext_resource type="PackedScene" uid="uid://cn7t5qquv062e" path="res://scenes/giggler.tscn" id="10_42bvy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ffa6v"]
@@ -25,9 +24,6 @@ sources/0 = SubResource("TileSetAtlasSource_ffa6v")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vydhk"]
 size = Vector2(14, 16)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2gddm"]
-size = Vector2(44, 44)
 
 [node name="happy_dream" type="Node2D"]
 
@@ -68,32 +64,21 @@ script = ExtResource("3_rm67d")
 position = Vector2(-48, -70)
 shape = SubResource("RectangleShape2D_vydhk")
 
-[node name="StaticBody2D2" parent="." instance=ExtResource("5_u8p5r")]
-position = Vector2(91, 95)
-
-[node name="interaction" type="Area2D" parent="StaticBody2D2"]
-collision_layer = 8
-collision_mask = 8
-script = ExtResource("6_j4mom")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2/interaction"]
-position = Vector2(0, -17)
-shape = SubResource("RectangleShape2D_2gddm")
+[node name="BananaCreature" parent="." instance=ExtResource("5_u8p5r")]
+position = Vector2(94, 102)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("4_6p538")]
-position = Vector2(1, 11)
+position = Vector2(0, 31)
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 position = Vector2(-1, -26)
 zoom = Vector2(5, 5)
 
-[node name="CharacterBody2D2" parent="." instance=ExtResource("10_42bvy")]
+[node name="Giggler1" parent="." instance=ExtResource("10_42bvy")]
 position = Vector2(-61, 51)
 
-[node name="CharacterBody2D3" parent="." instance=ExtResource("10_42bvy")]
+[node name="Giggler2" parent="." instance=ExtResource("10_42bvy")]
 position = Vector2(199, -42)
 
 [connection signal="area_entered" from="StaticBody2D/interaction" to="StaticBody2D/interaction" method="_on_area_entered"]
 [connection signal="area_exited" from="StaticBody2D/interaction" to="StaticBody2D/interaction" method="_on_area_exited"]
-[connection signal="area_entered" from="StaticBody2D2/interaction" to="StaticBody2D2/interaction" method="_on_area_entered"]
-[connection signal="area_exited" from="StaticBody2D2/interaction" to="StaticBody2D2/interaction" method="_on_area_exited"]

@@ -2,17 +2,18 @@ extends Area2D
 
 var messages = [
 	"",
-	"I am a number enthusiast.",
-	"I gave a big portion of my life to numbers and 
-	there is still a lot to uncover.",
-	"I will give you an item, maybe one day you will 
-	become a number enthusiast yourself.",
-	"I could also benefit from you.",
-	"Talk to me again and I will give you the item.",
-	"You have acquired WNPV10.127",
-	"WNPV10.127 stands for:
+	"I AM A NUMBER ENTHUSIAST.",
+	"I GAVE A BIG PORTION OF MY LIFE TO NUMBERS
+	AND THERE IS STILL A LOT TO UNCOVER.",
+	"I WILL GIVE YOU AN ITEM, MAYBE ONE DAY YOU
+	WILL BECOME A NUMBER ENTHUSIAST YOURSELF.",
+	"I COULD ALSO BENEFIT FROM YOU.",
+	"TALK TO ME AGAIN AND I WILL GIVE YOU THE
+	ITEM.",
+	"YOU HAVE ACQUIRED WNPV10.127",
+	"WNPV10.127 STANDS FOR:
 	WEAK NUMBER PISTOL VERSION 10.127",
-	"I hope I am giving this to good hands."
+	"I HOPE I AM GIVING THIS TO GOOD HANDS."
 ]
 
 var interact: bool = false
@@ -86,7 +87,7 @@ func _input(event):
 		GlobalVariables.debounce = true
 		print(index)
 		canvas_layer.visible = true
-		if index == 10:
+		if index == 8:
 			canvas_layer.visible = false
 			GlobalVariables.debounce = false
 		message_displayed = false

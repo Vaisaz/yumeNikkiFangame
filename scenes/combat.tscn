@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/combat.gd" id="1_5fjro"]
 [ext_resource type="Texture2D" uid="uid://b8fabkydvdqry" path="res://assets/combat/combat_frame.png" id="2_6qdto"]
-[ext_resource type="FontFile" uid="uid://lx0uvqrmjjg6" path="res://assets/retro_gaming.ttf" id="2_6u174"]
+[ext_resource type="FontFile" uid="uid://b5lqlis8c3a4k" path="res://assets/I-pixel-u.ttf" id="3_xqqe6"]
 [ext_resource type="Texture2D" uid="uid://co1plrjdjp3mh" path="res://assets/combat/combat_buttons/run.png" id="4_0ak0y"]
 [ext_resource type="Texture2D" uid="uid://bft2hrwsc408i" path="res://assets/combat/combat_buttons/run_hover.png" id="5_tdtmc"]
 [ext_resource type="Texture2D" uid="uid://dl7www1p1c22y" path="res://assets/combat/combat_buttons/fight.png" id="6_p7dgb"]
@@ -97,7 +97,7 @@ offset_bottom = 143.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(4, 4)
-theme_override_fonts/font = ExtResource("2_6u174")
+theme_override_fonts/font = ExtResource("3_xqqe6")
 text = "YOU
 "
 label_settings = SubResource("LabelSettings_yq4wf")
@@ -107,7 +107,6 @@ offset_left = 382.0
 offset_top = 21.0
 offset_right = 778.0
 offset_bottom = 66.0
-theme_override_fonts/font = ExtResource("2_6u174")
 theme_override_font_sizes/font_size = 25
 theme_override_styles/background = SubResource("StyleBoxFlat_swxnq")
 theme_override_styles/fill = SubResource("StyleBoxFlat_efuuh")
@@ -129,7 +128,7 @@ offset_bottom = 5.5
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2, 2)
-theme_override_fonts/font = ExtResource("2_6u174")
+theme_override_fonts/font = ExtResource("3_xqqe6")
 text = "HP: 50/100
 "
 label_settings = SubResource("LabelSettings_yq4wf")
@@ -139,7 +138,6 @@ offset_left = 375.0
 offset_top = 585.0
 offset_right = 771.0
 offset_bottom = 630.0
-theme_override_fonts/font = ExtResource("2_6u174")
 theme_override_font_sizes/font_size = 25
 theme_override_styles/background = SubResource("StyleBoxFlat_swxnq")
 theme_override_styles/fill = SubResource("StyleBoxFlat_efuuh")
@@ -162,7 +160,7 @@ offset_bottom = 5.5
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2, 2)
-theme_override_fonts/font = ExtResource("2_6u174")
+theme_override_fonts/font = ExtResource("3_xqqe6")
 text = "HP: 25/25
 "
 label_settings = SubResource("LabelSettings_yq4wf")
@@ -200,7 +198,6 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(6, 6)
 theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_6u174")
 text = "-10"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -220,7 +217,6 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(6, 6)
 theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_6u174")
 text = "-10"
 horizontal_alignment = 1
 vertical_alignment = 1

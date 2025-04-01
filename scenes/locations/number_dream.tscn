@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bpx2iit6mo2ej"]
+[gd_scene load_steps=22 format=3 uid="uid://bpx2iit6mo2ej"]
 
 [ext_resource type="Texture2D" uid="uid://cxhgkbruiuada" path="res://assets/sprites/number_dream/grapheme-color-synesthesia-sprite-sheet.png" id="1_ytcgy"]
 [ext_resource type="PackedScene" uid="uid://d1jbh8q1vrdd6" path="res://scenes/jon.tscn" id="2_fsr8c"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://b820bmxtn3kbd" path="res://assets/sprites/number_dream/number_dream_background_2 (2).png" id="4_3a31x"]
 [ext_resource type="Texture2D" uid="uid://kcy3kv3g3wdt" path="res://assets/sprites/number_dream/number_world_tiles_4.png" id="5_whhf3"]
 [ext_resource type="PackedScene" uid="uid://bh562ayvwf3l" path="res://scenes/number_enthusiast.tscn" id="9_lk1no"]
+[ext_resource type="PackedScene" uid="uid://soo5rpy2bpqo" path="res://scenes/number_warp.tscn" id="9_o35rl"]
+[ext_resource type="Script" path="res://scripts/interaction_scripts/number_warp_interaction.gd" id="10_aygll"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_h5cjx"]
 tile_data = PackedInt32Array(0, 0, 0, 1, 65536, 0, 2, 131072, 0, 3, 196608, 0, 4, 262144, 0, 5, 327680, 0, 6, 393216, 0, 7, 458752, 0, 8, 524288, 0, 9, 589824, 0)
@@ -99,6 +101,9 @@ pattern_0 = SubResource("TileMapPattern_h5cjx")
 pattern_1 = SubResource("TileMapPattern_rbiy0")
 pattern_2 = SubResource("TileMapPattern_d50tq")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2dgxm"]
+size = Vector2(19, 20)
+
 [node name="number_dream" type="Node2D"]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
@@ -133,10 +138,23 @@ layer_0/tile_data = PackedInt32Array(-393224, 196609, 0, -327688, 196609, 0, -39
 layer_1/tile_data = PackedInt32Array(-262147, 65536, 0, -262148, 0, 0, 917541, 0, 0, 917542, 131072, 0, 393298, 0, 0, 393299, 196608, 0, 721024, 0, 0, 721025, 262144, 0, 721032, 0, 0, 721033, 262144, 0)
 
 [node name="StaticBody2D" parent="." instance=ExtResource("9_lk1no")]
-position = Vector2(78, 128)
+position = Vector2(82, 140)
+
+[node name="number_warp" parent="." instance=ExtResource("9_o35rl")]
+position = Vector2(80, 26)
+
+[node name="interaction" type="Area2D" parent="number_warp"]
+position = Vector2(48, 62)
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("10_aygll")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="number_warp/interaction"]
+position = Vector2(-47.5, -70)
+shape = SubResource("RectangleShape2D_2dgxm")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_fsr8c")]
-position = Vector2(75, 15)
+position = Vector2(80, 19)
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 position = Vector2(-1, -26)
@@ -160,3 +178,6 @@ polygon = PackedVector2Array(-80, -16, -80, -23, -80, -23, -48, -23, -48, -17, -
 [node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Collisions"]
 position = Vector2(2064, 240)
 polygon = PackedVector2Array(-80, -16, -80, -23, -80, -23, -48, -23, -48, -16, -16, -16, 48, -16, 48, -23, 80, -23, 80, -16, 176, -16, 176, -143, 145, -176, 25, -176, -104, -176, -144, -176, -144, -48, -113, -16)
+
+[connection signal="area_entered" from="number_warp/interaction" to="number_warp/interaction" method="_on_area_entered"]
+[connection signal="area_exited" from="number_warp/interaction" to="number_warp/interaction" method="_on_area_exited"]

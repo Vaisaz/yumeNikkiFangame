@@ -69,10 +69,12 @@ func _input(_event):
 		Transition.ending_animation()
 	if Input.is_action_just_pressed("inventory") and !get_tree().current_scene.scene_file_path == "res://scenes/locations/room.tscn" and !GlobalVariables.debounce:
 		if !inventory_pressed:
+			GlobalVariables.in_combat = true
 			Inventory.inventory_layer.visible = true
 			Inventory.soul_button.grab_focus()
 			inventory_pressed = true
 		else:
+			GlobalVariables.in_combat = false
 			DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_HIDDEN)
 			Inventory.inventory_layer.visible = false
 			Inventory.soul_choosed.visible = false

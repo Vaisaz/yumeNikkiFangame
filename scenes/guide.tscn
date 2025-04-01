@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://scripts/guide.gd" id="1_salb2"]
 [ext_resource type="Texture2D" uid="uid://c53ac8dbormin" path="res://assets/guide/god/stare.png" id="2_8kgwf"]
+[ext_resource type="FontFile" uid="uid://b5lqlis8c3a4k" path="res://assets/I-pixel-u.ttf" id="3_65ncp"]
 [ext_resource type="PackedScene" uid="uid://c1s8mfal8dbj3" path="res://assets/audio/sound.tscn" id="3_pdjf1"]
-[ext_resource type="FontFile" uid="uid://lx0uvqrmjjg6" path="res://assets/retro_gaming.ttf" id="3_tyo8x"]
 [ext_resource type="AudioStream" uid="uid://cukph5fc4tjge" path="res://assets/audio/door_sound.mp3" id="4_s5gy5"]
 
 [node name="Control" type="Control"]
@@ -46,7 +46,7 @@ grow_vertical = 0
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.541176, 0, 0.180392, 1)
-theme_override_fonts/font = ExtResource("3_tyo8x")
+theme_override_fonts/font = ExtResource("3_65ncp")
 theme_override_font_sizes/font_size = 20
 text = "
 "

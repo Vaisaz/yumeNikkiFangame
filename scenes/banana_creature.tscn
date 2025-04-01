@@ -1,6 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://60h65rjg1pd3"]
+[gd_scene load_steps=14 format=3 uid="uid://60h65rjg1pd3"]
 
 [ext_resource type="Texture2D" uid="uid://cl4eyxqadwqqk" path="res://assets/sprites/happy_dream/banana_creature.png" id="1_gf7jc"]
+[ext_resource type="Texture2D" uid="uid://beh4pnr72b2sx" path="res://assets/blank_frame_bigger.png" id="2_3k247"]
+[ext_resource type="FontFile" uid="uid://b5lqlis8c3a4k" path="res://assets/I-pixel-u.ttf" id="3_426ix"]
+[ext_resource type="Script" path="res://scripts/interaction_scripts/banana_creature_interaction.gd" id="4_6pdmq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k2vsp"]
 atlas = ExtResource("1_gf7jc")
@@ -55,6 +58,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n686v"]
 size = Vector2(30, 33)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cua4k"]
+size = Vector2(44, 44)
+
 [node name="StaticBody2D" type="StaticBody2D"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -66,3 +72,39 @@ frame_progress = 0.470544
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -16.5)
 shape = SubResource("RectangleShape2D_n686v")
+
+[node name="interaction" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("4_6pdmq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interaction"]
+position = Vector2(0, -17)
+shape = SubResource("RectangleShape2D_cua4k")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="BlankFrameBigger" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(578, 524)
+scale = Vector2(4, 3.01563)
+texture = ExtResource("2_3k247")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/BlankFrameBigger"]
+offset_left = -126.0
+offset_top = -30.0
+offset_right = 126.0
+offset_bottom = 30.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="CanvasLayer/BlankFrameBigger"]
+offset_left = -122.0
+offset_top = -25.8652
+offset_right = -17.0
+offset_bottom = -14.8652
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("3_426ix")
+theme_override_font_sizes/font_size = 8
+
+[connection signal="area_entered" from="interaction" to="interaction" method="_on_area_entered"]
+[connection signal="area_exited" from="interaction" to="interaction" method="_on_area_exited"]
