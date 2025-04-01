@@ -3,7 +3,10 @@ extends Area2D
 var messages = [
 	"",
 	"YOU HAVE ACQUIRED:
-	BANANA"
+	BANANA",
+	"GIVES AND TAKES:
+	+25 HP
+	-5 AT"
 ]
 
 var index = 0
@@ -36,7 +39,7 @@ func _input(event):
 		GlobalVariables.debounce = true
 		GlobalVariables.in_combat = true
 		canvas_layer.visible = true
-		if index == 1:
+		if index == 2:
 			canvas_layer.visible = false
 			GlobalVariables.debounce = false
 			GlobalVariables.in_combat = false
@@ -45,7 +48,7 @@ func _input(event):
 		message_displayed = false
 		index += 1
 		show_message()
-	if interaction_times == 1 and interact and !Inventory.banana_has_interacted and Input.is_action_just_pressed("interact"):
+	if interaction_times == 1 and interact and !Inventory.banana_has_interacted:
 		for item_count in Inventory.items:
 			print(item_count)
 			if Inventory.index == 0 and Inventory.items[Inventory.index].disabled and !Inventory.banana_has_interacted:
@@ -62,5 +65,6 @@ func _input(event):
 				Inventory.items[Inventory.index].disabled = false
 			if !Inventory.banana_has_interacted:
 				Inventory.banana_has_interacted = true
+				interaction_times = 2
 				Inventory.index += 1
 				

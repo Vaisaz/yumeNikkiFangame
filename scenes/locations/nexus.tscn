@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dr21yfhjoldoo"]
+[gd_scene load_steps=21 format=3 uid="uid://dr21yfhjoldoo"]
 
 [ext_resource type="Texture2D" uid="uid://bkwg4d84vpwnn" path="res://assets/sprites/main/pixel_tiles.png" id="1_hfvtc"]
 [ext_resource type="Texture2D" uid="uid://b4g07ub54tlj2" path="res://assets/sprites/main/black.jpg" id="1_r6exr"]
@@ -15,7 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://cukph5fc4tjge" path="res://assets/audio/door_sound.mp3" id="10_1233v"]
 [ext_resource type="Script" path="res://scripts/interaction_scripts/number_warp_interaction.gd" id="11_n0jro"]
 [ext_resource type="PackedScene" uid="uid://xyib0c1l8y3v" path="res://scenes/test_inventory.tscn" id="15_wvg0s"]
-[ext_resource type="Script" path="res://scripts/test_inventory_inveraction.gd" id="16_bhrm6"]
+[ext_resource type="PackedScene" uid="uid://7qlcvxsvyst5" path="res://scenes/lemonade_stand.tscn" id="16_qhsxs"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bpo8m"]
 texture = ExtResource("1_hfvtc")
@@ -60,13 +60,10 @@ size = Vector2(19, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_27h8x"]
 size = Vector2(16, 32)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ywvd4"]
-size = Vector2(400, 551.875)
-
 [node name="nexus" type="Node2D"]
 
 [node name="black" type="Sprite2D" parent="."]
-position = Vector2(2, -64)
+position = Vector2(259, -139)
 scale = Vector2(1.30281, 1.52486)
 texture = ExtResource("1_r6exr")
 
@@ -139,18 +136,12 @@ zoom = Vector2(5, 5)
 
 [node name="AudioStreamPlayer" parent="." instance=ExtResource("6_em1cg")]
 
-[node name="StaticBody2D3" parent="." instance=ExtResource("15_wvg0s")]
-position = Vector2(-1, -139)
-scale = Vector2(0.16, 0.16)
+[node name="Test" parent="." instance=ExtResource("15_wvg0s")]
+position = Vector2(-3, -263)
+scale = Vector2(0.5, 0.5)
 
-[node name="interaction" type="Area2D" parent="StaticBody2D3"]
-collision_layer = 8
-collision_mask = 8
-script = ExtResource("16_bhrm6")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3/interaction"]
-position = Vector2(6.25, -6.24999)
-shape = SubResource("RectangleShape2D_ywvd4")
+[node name="Lemonade" parent="." instance=ExtResource("16_qhsxs")]
+position = Vector2(141, -26)
 
 [connection signal="area_entered" from="neon_warp/interaction" to="neon_warp/interaction" method="_on_area_entered"]
 [connection signal="area_exited" from="neon_warp/interaction" to="neon_warp/interaction" method="_on_area_exited"]
@@ -160,5 +151,3 @@ shape = SubResource("RectangleShape2D_ywvd4")
 [connection signal="area_exited" from="dream_doors/interaction" to="dream_doors/interaction" method="_on_area_exited"]
 [connection signal="area_entered" from="number_warp/interaction" to="number_warp/interaction" method="_on_area_entered"]
 [connection signal="area_exited" from="number_warp/interaction" to="number_warp/interaction" method="_on_area_exited"]
-[connection signal="area_entered" from="StaticBody2D3/interaction" to="StaticBody2D3/interaction" method="_on_area_entered"]
-[connection signal="area_exited" from="StaticBody2D3/interaction" to="StaticBody2D3/interaction" method="_on_area_exited"]

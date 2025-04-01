@@ -192,6 +192,16 @@ theme_override_fonts/font = ExtResource("11_pu7wn")
 text = "XP:
 "
 
+[node name="COLabel" type="Label" parent="InventoryLayer/SoulChoosed"]
+offset_left = 614.0
+offset_top = 260.0
+offset_right = 668.0
+offset_bottom = 283.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("11_pu7wn")
+text = "CO:
+"
+
 [node name="Equipped" type="Sprite2D" parent="InventoryLayer/SoulChoosed"]
 position = Vector2(388, 551)
 scale = Vector2(3, 3)

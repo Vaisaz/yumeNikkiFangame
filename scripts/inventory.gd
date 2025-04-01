@@ -3,13 +3,15 @@ extends Control
 var item_texture = [
 	preload("res://assets/inventory/items/banana.png"),
 	preload("res://assets/inventory/items/watches.png"),
-	preload("res://assets/inventory/items/wnp.png")
+	preload("res://assets/inventory/items/wnp.png"),
+	preload("res://assets/inventory/items/lemonade.png")
 ]
 
 var item_texture_hover = [
 	preload("res://assets/inventory/items/banana_hover.png"),
 	preload("res://assets/inventory/items/watches_hover.png"),
-	preload("res://assets/inventory/items/wnp_hover.png")
+	preload("res://assets/inventory/items/wnp_hover.png"),
+	preload("res://assets/inventory/items/lemonade_hover.png")
 ]
 
 @onready var items = [
@@ -23,6 +25,7 @@ var item_texture_hover = [
 @onready var hp = $InventoryLayer/SoulChoosed/HPLabel
 @onready var at = $InventoryLayer/SoulChoosed/ATLabel
 @onready var xp = $InventoryLayer/SoulChoosed/XPLabel
+@onready var co = $InventoryLayer/SoulChoosed/COLabel
 
 @onready var soul_button = $InventoryLayer/Buttons/Soul
 @onready var inventory_button = $InventoryLayer/Buttons/Inventory
@@ -38,6 +41,8 @@ var watches_has_interacted: bool = false
 var wnp_has_interacted: bool = false
 var rng = RandomNumberGenerator.new()
 
+var coins = 10
+
 func _ready():
 	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_HIDDEN)
 	soul_button.texture_focused = soul_button.texture_hover
@@ -47,6 +52,7 @@ func _ready():
 func _on_soul_pressed():
 	hp.text = "HP: %d/%d" % [Combat.player_current_health, Combat.player_max_health]
 	at.text = "AT: %d" % Combat.player_attack
+	co.text = "CO: %d" % coins
 	soul_choosed.visible = true
 	inventory_choosed.visible = false
 
