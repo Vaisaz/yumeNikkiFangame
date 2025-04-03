@@ -42,6 +42,7 @@ var wnp_has_interacted: bool = false
 var rng = RandomNumberGenerator.new()
 
 var coins = 10
+var add_coins
 
 func _ready():
 	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_HIDDEN)
@@ -59,9 +60,14 @@ func _on_soul_pressed():
 func _on_inventory_pressed():
 	inventory_choosed.visible = true
 	soul_choosed.visible = false
-	if !$InventoryLayer/InventoryChoosed/first.disabled:
+	if !$InventoryLayer/InventoryChoosed/first.disabled or !$InventoryLayer/InventoryChoosed/second.disabled or !$InventoryLayer/InventoryChoosed/third.disabled:
+		if !$InventoryLayer/InventoryChoosed/first.disabled:
+			$InventoryLayer/InventoryChoosed/first.grab_focus()
+		if !$InventoryLayer/InventoryChoosed/second.disabled:
+			$InventoryLayer/InventoryChoosed/second.grab_focus()
+		if !$InventoryLayer/InventoryChoosed/third.disabled:
+			$InventoryLayer/InventoryChoosed/third.grab_focus()
 		DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_VISIBLE)
-		$InventoryLayer/InventoryChoosed/first.grab_focus()
 
 func _on_quit_pressed():
 	get_tree().quit()
@@ -73,7 +79,17 @@ var wnp_equipped = false
 func _on_first_pressed():
 	soul_choosed.visible = false
 	inventory_choosed.visible = false
-	equipped.texture = $InventoryLayer/InventoryChoosed/first.texture_normal
+	if $InventoryLayer/InventoryChoosed/first.texture_normal == load("res://assets/inventory/items/lemonade.png"):
+		$InventoryLayer/InventoryChoosed/first.texture_normal = null
+		$InventoryLayer/InventoryChoosed/first.texture_hover = null
+		$InventoryLayer/InventoryChoosed/first.disabled = true
+		if Combat.player_current_health <= Combat.player_max_health:
+			Combat.player_current_health += 25
+		if Combat.player_current_health > Combat.player_max_health:
+			Combat.player_current_health = Combat.player_max_health
+		index = 0
+	else: 
+		equipped.texture = $InventoryLayer/InventoryChoosed/first.texture_normal
 	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_HIDDEN)
 	inventory_button.grab_focus()
 	if equipped.texture == load("res://assets/inventory/items/banana.png") and !banana_equipped:
@@ -95,7 +111,17 @@ func _on_first_pressed():
 func _on_second_pressed():
 	soul_choosed.visible = false
 	inventory_choosed.visible = false
-	equipped.texture = $InventoryLayer/InventoryChoosed/second.texture_normal
+	if $InventoryLayer/InventoryChoosed/second.texture_normal == load("res://assets/inventory/items/lemonade.png"):
+		$InventoryLayer/InventoryChoosed/second.texture_normal = null
+		$InventoryLayer/InventoryChoosed/second.texture_hover = null
+		$InventoryLayer/InventoryChoosed/second.disabled = true
+		if Combat.player_current_health <= Combat.player_max_health:
+			Combat.player_current_health += 25
+		if Combat.player_current_health > Combat.player_max_health:
+			Combat.player_current_health = Combat.player_max_health
+		index = 0
+	else: 
+		equipped.texture = $InventoryLayer/InventoryChoosed/second.texture_normal
 	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_HIDDEN)
 	inventory_button.grab_focus()
 	if equipped.texture == load("res://assets/inventory/items/banana.png") and !banana_equipped:
@@ -119,7 +145,17 @@ func _on_second_pressed():
 func _on_third_pressed():
 	soul_choosed.visible = false
 	inventory_choosed.visible = false
-	equipped.texture = $InventoryLayer/InventoryChoosed/second.texture_normal
+	if $InventoryLayer/InventoryChoosed/third.texture_normal == load("res://assets/inventory/items/lemonade.png"):
+		$InventoryLayer/InventoryChoosed/third.texture_normal = null
+		$InventoryLayer/InventoryChoosed/third.texture_hover = null
+		$InventoryLayer/InventoryChoosed/third.disabled = true
+		if Combat.player_current_health <= Combat.player_max_health:
+			Combat.player_current_health += 25
+		if Combat.player_current_health > Combat.player_max_health:
+			Combat.player_current_health = Combat.player_max_health
+		index = 0
+	else: 
+		equipped.texture = $InventoryLayer/InventoryChoosed/third.texture_normal
 	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_HIDDEN)
 	inventory_button.grab_focus()
 	if equipped.texture == load("res://assets/inventory/items/banana.png") and !banana_equipped:

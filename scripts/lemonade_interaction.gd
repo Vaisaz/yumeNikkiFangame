@@ -3,7 +3,9 @@ extends Area2D
 var messages = [
 	"",
 	"YOU HAVE ACQUIRED:
-	LEMONADE",
+	LEMONADE
+	
+	ONE USE ITEM",
 	"GIVES AND TAKES:
 	+25 HP
 	0 AT"
@@ -38,7 +40,7 @@ func show_message():
 		message_displayed = true
 		
 func _input(event):
-	if interaction_times == 0 and interact and event.is_action_pressed("interact") and message_displayed and interact and Input.is_action_just_pressed("interact") and Transition.canvas_layer.visible == false and Inventory.inventory_layer.visible == false:
+	if interaction_times == 0 and interact and event.is_action_pressed("interact") and message_displayed and interact and Input.is_action_just_pressed("interact") and Transition.canvas_layer.visible == false and Inventory.inventory_layer.visible == false and Inventory.coins >= 5:
 		if has_interacted:
 			interaction_times = 1
 			has_interacted = false
@@ -52,11 +54,12 @@ func _input(event):
 			GlobalVariables.debounce = false
 			GlobalVariables.in_combat = false
 			interaction_times = 1
+			index = 0
 			return
 		message_displayed = false
 		index += 1
 		show_message()
-	if interaction_times == 1 and message_displayed and interact and Transition.canvas_layer.visible == false and Inventory.inventory_layer.visible == false and Inventory.coins >= 0:
+	if interaction_times == 1 and message_displayed and interact and Transition.canvas_layer.visible == false and Inventory.inventory_layer.visible == false and Inventory.coins >= 5:
 		for item_count in Inventory.items:
 			print(item_count)
 			if Inventory.index == 0 and Inventory.items[Inventory.index].disabled and !has_interacted:
@@ -77,3 +80,5 @@ func _input(event):
 				interaction_times = 2
 				Inventory.index += 1
 				
+		if interaction_times == 2 and message_displayed and interact and Transition.canvas_layer.visible == false and Inventory.inventory_layer.visible == false and Inventory.coins >= 0:\
+			interaction_times = 0

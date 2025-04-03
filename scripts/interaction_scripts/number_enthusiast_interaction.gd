@@ -59,6 +59,7 @@ func _input(event):
 		show_message()
 	if interaction_times == 1 and !Inventory.wnp_has_interacted and event.is_action_pressed("interact") and message_displayed and interact and Input.is_action_just_pressed("interact") and Transition.canvas_layer.visible == false and Inventory.inventory_layer.visible == false:
 		GlobalVariables.debounce = true
+		Inventory.index = 0
 		for item_count in Inventory.items:
 			print(item_count)
 			if Inventory.index == 0 and Inventory.items[Inventory.index].disabled and !Inventory.wnp_has_interacted:
@@ -67,20 +68,22 @@ func _input(event):
 				Inventory.items[Inventory.index].disabled = false
 				GlobalVariables.debounce = false
 				interaction_times = interaction_times + 1
+				Inventory.wnp_has_interacted = true
 			if Inventory.index == 1 and Inventory.items[Inventory.index].disabled and !Inventory.wnp_has_interacted:
 				Inventory.items[Inventory.index].texture_normal = Inventory.item_texture[2]
 				Inventory.items[Inventory.index].texture_hover = Inventory.item_texture_hover[2]
 				Inventory.items[Inventory.index].disabled = false
 				GlobalVariables.debounce = false
 				interaction_times = interaction_times + 1
+				Inventory.wnp_has_interacted = true
 			if Inventory.index == 2 and Inventory.items[Inventory.index].disabled and !Inventory.wnp_has_interacted:
 				Inventory.items[Inventory.index].texture_normal = Inventory.item_texture[2]
 				Inventory.items[Inventory.index].texture_hover = Inventory.item_texture_hover[2]
 				Inventory.items[Inventory.index].disabled = false
 				GlobalVariables.debounce = false
 				interaction_times = interaction_times + 1
-			if !Inventory.wnp_has_interacted:
 				Inventory.wnp_has_interacted = true
+			if !Inventory.wnp_has_interacted:
 				Inventory.index += 1
 				
 	if interaction_times == 2 and event.is_action_pressed("interact") and message_displayed and interact and Input.is_action_just_pressed("interact") and Transition.canvas_layer.visible == false and Inventory.inventory_layer.visible == false:

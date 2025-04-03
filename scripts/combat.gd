@@ -54,9 +54,12 @@ func _on_fight_button_pressed():
 		enemy_texture.visible = true
 		await get_tree().create_timer(0.1).timeout
 		if enemy_current_health == 0:
+			Inventory.coins += Inventory.add_coins
 			GlobalVariables.debounce = false
 			GlobalVariables.in_combat = false
 			combat_layer.visible = false
+			fight_button.disabled = false
+			run_button.disabled = false
 			DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_HIDDEN)
 		else:
 			player_current_health = player_current_health - enemy_attack
@@ -100,9 +103,12 @@ func _on_fight_button_pressed():
 			fight_button.disabled = false
 			run_button.disabled = false
 			if enemy_current_health == 0:
+				Inventory.coins += Inventory.add_coins
 				GlobalVariables.debounce = false
 				GlobalVariables.in_combat = false
 				combat_layer.visible = false
+				fight_button.disabled = false
+				run_button.disabled = false
 				DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_HIDDEN)
 		
 func _on_run_button_pressed():

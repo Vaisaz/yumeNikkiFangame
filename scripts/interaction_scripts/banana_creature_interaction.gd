@@ -49,22 +49,28 @@ func _input(event):
 		index += 1
 		show_message()
 	if interaction_times == 1 and interact and !Inventory.banana_has_interacted:
+		Inventory.index = 0
 		for item_count in Inventory.items:
 			print(item_count)
 			if Inventory.index == 0 and Inventory.items[Inventory.index].disabled and !Inventory.banana_has_interacted:
 				Inventory.items[Inventory.index].texture_normal = Inventory.item_texture[0]
 				Inventory.items[Inventory.index].texture_hover = Inventory.item_texture_hover[0]
 				Inventory.items[Inventory.index].disabled = false
+				interaction_times = 2
+				Inventory.banana_has_interacted = true
 			if Inventory.index == 1 and Inventory.items[Inventory.index].disabled and !Inventory.banana_has_interacted:
 				Inventory.items[Inventory.index].texture_normal = Inventory.item_texture[0]
 				Inventory.items[Inventory.index].texture_hover = Inventory.item_texture_hover[0]
 				Inventory.items[Inventory.index].disabled = false
+				interaction_times = 2
+				Inventory.banana_has_interacted = true
 			if Inventory.index == 2 and Inventory.items[Inventory.index].disabled and !Inventory.banana_has_interacted:
 				Inventory.items[Inventory.index].texture_normal = Inventory.item_texture[0]
 				Inventory.items[Inventory.index].texture_hover = Inventory.item_texture_hover[0]
 				Inventory.items[Inventory.index].disabled = false
-			if !Inventory.banana_has_interacted:
-				Inventory.banana_has_interacted = true
 				interaction_times = 2
+				Inventory.banana_has_interacted = true
+			if !Inventory.banana_has_interacted:
 				Inventory.index += 1
+				print(index)
 				
