@@ -76,20 +76,20 @@ var banana_equipped = false
 var watches_equipped = false
 var wnp_equipped = false
 
-func _on_first_pressed():
+func item_on_equip(item_index):
 	soul_choosed.visible = false
 	inventory_choosed.visible = false
-	if $InventoryLayer/InventoryChoosed/first.texture_normal == load("res://assets/inventory/items/lemonade.png"):
-		$InventoryLayer/InventoryChoosed/first.texture_normal = null
-		$InventoryLayer/InventoryChoosed/first.texture_hover = null
-		$InventoryLayer/InventoryChoosed/first.disabled = true
+	if items[item_index].texture_normal == load("res://assets/inventory/items/lemonade.png"):
+		items[item_index].texture_normal = null
+		items[item_index].texture_hover = null
+		items[item_index].disabled = true
 		if Combat.player_current_health <= Combat.player_max_health:
 			Combat.player_current_health += 25
 		if Combat.player_current_health > Combat.player_max_health:
 			Combat.player_current_health = Combat.player_max_health
 		index = 0
 	else: 
-		equipped.texture = $InventoryLayer/InventoryChoosed/first.texture_normal
+		equipped.texture = items[item_index].texture_normal
 	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_HIDDEN)
 	inventory_button.grab_focus()
 	if equipped.texture == load("res://assets/inventory/items/banana.png") and !banana_equipped:
@@ -100,7 +100,7 @@ func _on_first_pressed():
 		banana_equipped = true
 		watches_equipped = false
 		wnp_equipped = false
-	if equipped.texture == load("res://assets/inventory/items/watches.png") and !watches_equipped:
+	elif equipped.texture == load("res://assets/inventory/items/watches.png") and !watches_equipped:
 		Combat.player_attack = 10
 		Combat.player_max_health = 50
 		Combat.player_attack = Combat.player_attack + 10
@@ -108,73 +108,60 @@ func _on_first_pressed():
 		watches_equipped = true	
 		wnp_equipped = false
 	
-func _on_second_pressed():
+func item_on_unequip():
 	soul_choosed.visible = false
 	inventory_choosed.visible = false
-	if $InventoryLayer/InventoryChoosed/second.texture_normal == load("res://assets/inventory/items/lemonade.png"):
-		$InventoryLayer/InventoryChoosed/second.texture_normal = null
-		$InventoryLayer/InventoryChoosed/second.texture_hover = null
-		$InventoryLayer/InventoryChoosed/second.disabled = true
-		if Combat.player_current_health <= Combat.player_max_health:
-			Combat.player_current_health += 25
-		if Combat.player_current_health > Combat.player_max_health:
-			Combat.player_current_health = Combat.player_max_health
-		index = 0
-	else: 
-		equipped.texture = $InventoryLayer/InventoryChoosed/second.texture_normal
 	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_HIDDEN)
 	inventory_button.grab_focus()
-	if equipped.texture == load("res://assets/inventory/items/banana.png") and !banana_equipped:
+	if equipped.texture == load("res://assets/inventory/items/banana.png") and banana_equipped:
 		Combat.player_attack = 10
 		Combat.player_max_health = 50
-		Combat.player_attack -= 5
-		Combat.player_max_health += 25
-		print(Combat.player_attack)
-		banana_equipped = true
+		banana_equipped = false
 		watches_equipped = false
 		wnp_equipped = false
-	if equipped.texture == load("res://assets/inventory/items/watches.png") and !watches_equipped:
+		equipped.texture = null
+	elif equipped.texture == load("res://assets/inventory/items/watches.png") and watches_equipped:
 		Combat.player_attack = 10
 		Combat.player_max_health = 50
-		Combat.player_attack = Combat.player_attack + 10
-		print(Combat.player_attack)
 		banana_equipped = false
-		watches_equipped = true	
+		watches_equipped = false
 		wnp_equipped = false
+		equipped.texture = null
+	
+var equip: bool = false
+
+func _on_first_pressed():
+	if !equip:
+		item_on_equip(0)
+		equip = true
+	elif equip and !$InventoryLayer/InventoryChoosed/first.texture_normal == load("res://assets/inventory/items/lemonade.png"):
+		if equipped.texture == items[0].texture_normal:
+			item_on_unequip()
+		elif !equipped.texture == items[0].texture_normal:
+			item_on_equip(0)
+			equip = false
+	
+func _on_second_pressed():
+	if !equip:
+		item_on_equip(1)
+		equip = true
+	elif equip and !$InventoryLayer/InventoryChoosed/first.texture_normal == load("res://assets/inventory/items/lemonade.png"):
+		if equipped.texture == items[1].texture_normal:
+			item_on_unequip()
+		elif !equipped.texture == items[1].texture_normal:
+			item_on_equip(1)
+			equip = false
 		
 func _on_third_pressed():
-	soul_choosed.visible = false
-	inventory_choosed.visible = false
-	if $InventoryLayer/InventoryChoosed/third.texture_normal == load("res://assets/inventory/items/lemonade.png"):
-		$InventoryLayer/InventoryChoosed/third.texture_normal = null
-		$InventoryLayer/InventoryChoosed/third.texture_hover = null
-		$InventoryLayer/InventoryChoosed/third.disabled = true
-		if Combat.player_current_health <= Combat.player_max_health:
-			Combat.player_current_health += 25
-		if Combat.player_current_health > Combat.player_max_health:
-			Combat.player_current_health = Combat.player_max_health
-		index = 0
-	else: 
-		equipped.texture = $InventoryLayer/InventoryChoosed/third.texture_normal
-	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_HIDDEN)
-	inventory_button.grab_focus()
-	if equipped.texture == load("res://assets/inventory/items/banana.png") and !banana_equipped:
-		Combat.player_attack = 10
-		Combat.player_max_health = 50
-		Combat.player_attack -= 5
-		Combat.player_max_health += 25
-		print(Combat.player_attack)
-		banana_equipped = true
-		watches_equipped = false
-		wnp_equipped = false
-	if equipped.texture == load("res://assets/inventory/items/watches.png") and !watches_equipped:
-		Combat.player_attack = 10
-		Combat.player_max_health = 50
-		Combat.player_attack = Combat.player_attack + 10
-		print(Combat.player_attack)
-		banana_equipped = false
-		watches_equipped = true	
-		wnp_equipped = false
+	if !equip:
+		item_on_equip(2)
+		equip = true
+	elif equip and !$InventoryLayer/InventoryChoosed/first.texture_normal == load("res://assets/inventory/items/lemonade.png"):
+		if equipped.texture == items[2].texture_normal:
+			item_on_unequip()
+		elif !equipped.texture == items[2].texture_normal:
+			item_on_equip(2)
+			equip = false
 
 
 #func _process(_delta):
