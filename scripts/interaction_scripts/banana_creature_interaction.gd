@@ -9,13 +9,21 @@ var messages = [
 	-5 AT"
 ]
 
+var soul_blips = [
+	load("res://assets/audio/soul_blips/soul1.wav"),
+	load("res://assets/audio/soul_blips/soul2.wav"),
+	load("res://assets/audio/soul_blips/soul3.wav")
+]
+
 var index = 0
 var interact: bool = false
 var message_displayed: bool = false
 var interaction_times = 0
+var random = RandomNumberGenerator.new()
 
 @onready var label = $"../CanvasLayer/BlankFrameBigger/Label"
 @onready var canvas_layer = $"../CanvasLayer"
+@onready var sound = $"../Sound"
 
 func _on_area_entered(area):
 	if area.is_in_group("Player"):
@@ -30,6 +38,8 @@ func show_message():
 	if index < messages.size():
 		label.text = ""
 		for character in messages[index]:
+			sound.stream =soul_blips[random.randi_range(0, 2)]
+			sound.play()
 			label.text += character
 			await get_tree().create_timer(0.05).timeout
 		message_displayed = true

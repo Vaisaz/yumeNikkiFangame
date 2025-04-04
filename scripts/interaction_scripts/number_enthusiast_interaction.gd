@@ -16,15 +16,29 @@ var messages = [
 	"I HOPE I AM GIVING THIS TO GOOD HANDS."
 ]
 
+var blips = [
+	load("res://assets/audio/number_enthusiast_blips/1.wav"),
+	load("res://assets/audio/number_enthusiast_blips/2.wav"),
+	load("res://assets/audio/number_enthusiast_blips/3.wav")
+]
+
+var soul_blips = [
+	load("res://assets/audio/soul_blips/soul1.wav"),
+	load("res://assets/audio/soul_blips/soul2.wav"),
+	load("res://assets/audio/soul_blips/soul3.wav")
+]
+
 var interact: bool = false
 var interaction_times = 0
 
 var random = RandomNumberGenerator.new()
 var index = 0
 var message_displayed: bool = false
+var random_blips = RandomNumberGenerator.new()
 
 @onready var label = $"../CanvasLayer/BlankFrameBigger/Label"
 @onready var canvas_layer = $"../CanvasLayer"
+@onready var sound = $"../Sound"
 
 func _on_area_entered(area):
 	if area.is_in_group("Player"):
@@ -40,6 +54,15 @@ func show_message():
 	if index < messages.size():
 		label.text = ""
 		for character in messages[index]:
+			if index <= 5:
+				sound.stream = blips[random_blips.randi_range(0, 2)]
+				sound.play()
+			elif index > 5 and index < 8:
+				sound.stream = soul_blips[random_blips.randi_range(0, 2)]
+				sound.play()
+			elif index == 8:
+				sound.stream = blips[random_blips.randi_range(0, 2)]
+				sound.play()
 			label.text += character
 			await get_tree().create_timer(0.05).timeout
 		message_displayed = true

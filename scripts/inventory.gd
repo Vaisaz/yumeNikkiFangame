@@ -115,63 +115,60 @@ func item_on_unequip():
 	inventory_choosed.visible = false
 	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_HIDDEN)
 	inventory_button.grab_focus()
-	if equipped.texture == load("res://assets/inventory/items/banana.png") and banana_equipped:
-		Combat.player_attack = 10
-		Combat.player_max_health = 50
-		banana_equipped = false
-		watches_equipped = false
-		wnp_equipped = false
-		equipped.texture = null
-	elif equipped.texture == load("res://assets/inventory/items/watches.png") and watches_equipped:
-		Combat.player_attack = 10
-		Combat.player_max_health = 50
-		banana_equipped = false
-		watches_equipped = false
-		wnp_equipped = false
-		equipped.texture = null
+	Combat.player_attack = 10
+	Combat.player_max_health = 50
+	banana_equipped = false
+	watches_equipped = false
+	wnp_equipped = false
+	equipped.texture = null
 	
 var equip: bool = false
 
 func _on_first_pressed():
-	if $InventoryLayer/InventoryChoosed/first.texture_normal == load("res://assets/inventory/items/lemonade.png"):
-		equip = false
-	if !equip:
+	if items[0].texture_normal == load("res://assets/inventory/items/lemonade.png"):
 		item_on_equip(0)
-		equip = true
-	elif equip and !$InventoryLayer/InventoryChoosed/first.texture_normal == load("res://assets/inventory/items/lemonade.png"):
-		if equipped.texture == items[0].texture_normal:
-			item_on_unequip()
-		elif !equipped.texture == items[0].texture_normal:
+	else:
+		if !equip:
 			item_on_equip(0)
-			equip = false
+			equip = true
+		elif equip:
+			if items[0].texture_normal == equipped.texture:
+				item_on_unequip()
+				equip = false	
+			elif !items[0].texture_normal == equipped.texture:
+				item_on_equip(0)
+				equip = true	
 		
 	
 func _on_second_pressed():
-	if $InventoryLayer/InventoryChoosed/first.texture_normal == load("res://assets/inventory/items/lemonade.png"):
-		equip = false
-	if !equip:
+	if items[1].texture_normal == load("res://assets/inventory/items/lemonade.png"):
 		item_on_equip(1)
-		equip = true
-	elif equip and !$InventoryLayer/InventoryChoosed/first.texture_normal == load("res://assets/inventory/items/lemonade.png"):
-		if equipped.texture == items[1].texture_normal:
-			item_on_unequip()
-		elif !equipped.texture == items[1].texture_normal:
+	else:
+		if !equip:
 			item_on_equip(1)
-			equip = false
+			equip = true
+		elif equip:
+			if items[1].texture_normal == equipped.texture:
+				item_on_unequip()
+				equip = false	
+			elif !items[1].texture_normal == equipped.texture:
+				item_on_equip(1)
+				equip = true	
 		
 func _on_third_pressed():
-	if $InventoryLayer/InventoryChoosed/first.texture_normal == load("res://assets/inventory/items/lemonade.png"):
-		equip = false
-	if !equip:
+	if items[2].texture_normal == load("res://assets/inventory/items/lemonade.png"):
 		item_on_equip(2)
-		equip = true
-	elif equip and !$InventoryLayer/InventoryChoosed/first.texture_normal == load("res://assets/inventory/items/lemonade.png"):
-		if equipped.texture == items[2].texture_normal:
-			item_on_unequip()
-		elif !equipped.texture == items[2].texture_normal:
+	else:
+		if !equip:
 			item_on_equip(2)
-			equip = false
-
+			equip = true
+		elif equip:
+			if items[2].texture_normal == equipped.texture:
+				item_on_unequip()
+				equip = false	
+			elif !items[2].texture_normal == equipped.texture:
+				item_on_equip(2)
+				equip = true	
 
 #func _process(_delta):
 	#var random_number = rng.randi_range(-2, 2)

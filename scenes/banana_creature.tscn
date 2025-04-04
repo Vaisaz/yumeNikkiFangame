@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://60h65rjg1pd3"]
+[gd_scene load_steps=15 format=3 uid="uid://60h65rjg1pd3"]
 
 [ext_resource type="Texture2D" uid="uid://cl4eyxqadwqqk" path="res://assets/sprites/happy_dream/banana_creature.png" id="1_gf7jc"]
 [ext_resource type="Texture2D" uid="uid://beh4pnr72b2sx" path="res://assets/blank_frame_bigger.png" id="2_3k247"]
 [ext_resource type="FontFile" uid="uid://b5lqlis8c3a4k" path="res://assets/I-pixel-u.ttf" id="3_426ix"]
 [ext_resource type="Script" path="res://scripts/interaction_scripts/banana_creature_interaction.gd" id="4_6pdmq"]
+[ext_resource type="PackedScene" uid="uid://c1s8mfal8dbj3" path="res://assets/audio/sound.tscn" id="5_uqf1r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k2vsp"]
 atlas = ExtResource("1_gf7jc")
@@ -105,6 +106,8 @@ offset_bottom = -14.8652
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_fonts/font = ExtResource("3_426ix")
 theme_override_font_sizes/font_size = 8
+
+[node name="Sound" parent="." instance=ExtResource("5_uqf1r")]
 
 [connection signal="area_entered" from="interaction" to="interaction" method="_on_area_entered"]
 [connection signal="area_exited" from="interaction" to="interaction" method="_on_area_exited"]

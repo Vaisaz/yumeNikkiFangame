@@ -15,14 +15,28 @@ var messages = [
 	0 AT"
 ]
 
+var blips = [
+	load("res://assets/audio/lemonade_blips/blip1.wav"),
+	load("res://assets/audio/lemonade_blips/blip2.wav"),
+	load("res://assets/audio/lemonade_blips/blip3.wav")
+]
+
+var soul_blips = [
+	load("res://assets/audio/soul_blips/soul1.wav"),
+	load("res://assets/audio/soul_blips/soul2.wav"),
+	load("res://assets/audio/soul_blips/soul3.wav")
+]
+
 var index = 0
 var interact: bool = false
 var message_displayed: bool = false
 var interaction_times = 0
 var has_interacted: bool = false
+var random = RandomNumberGenerator.new()
 
 @onready var label = $"../CanvasLayer/BlankFrameBigger/Label"
 @onready var canvas_layer = $"../CanvasLayer"
+@onready var sound = $"../Sound"
 
 func _on_area_entered(area):
 	print("entered")
@@ -39,6 +53,12 @@ func show_message():
 	if index < messages.size():
 		label.text = ""
 		for character in messages[index]:
+			if index <= 4:
+				sound.stream = blips[random.randi_range(0, 2)]
+				sound.play()
+			elif index > 4:
+				sound.stream =soul_blips[random.randi_range(0, 2)]
+				sound.play()
 			label.text += character
 			await get_tree().create_timer(0.05).timeout
 		message_displayed = true
@@ -85,19 +105,27 @@ func _input(event):
 				Inventory.items[Inventory.index].texture_normal = Inventory.item_texture[3]
 				Inventory.items[Inventory.index].texture_hover = Inventory.item_texture_hover[3]
 				Inventory.items[Inventory.index].disabled = false
-			if Inventory.index == 1 and Inventory.items[Inventory.index].disabled and !has_interacted:
-				Inventory.items[Inventory.index].texture_normal = Inventory.item_texture[3]
-				Inventory.items[Inventory.index].texture_hover = Inventory.item_texture_hover[3]
-				Inventory.items[Inventory.index].disabled = false
-			if Inventory.index == 2 and Inventory.items[Inventory.index].disabled and !has_interacted:
-				Inventory.items[Inventory.index].texture_normal = Inventory.item_texture[3]
-				Inventory.items[Inventory.index].texture_hover = Inventory.item_texture_hover[3]
-				Inventory.items[Inventory.index].disabled = false
-			if !has_interacted:
 				Inventory.lemonade_has_interacted = true
 				has_interacted = true
 				Inventory.coins -= 5
 				interaction_times = 2
+			if Inventory.index == 1 and Inventory.items[Inventory.index].disabled and !has_interacted:
+				Inventory.items[Inventory.index].texture_normal = Inventory.item_texture[3]
+				Inventory.items[Inventory.index].texture_hover = Inventory.item_texture_hover[3]
+				Inventory.items[Inventory.index].disabled = false
+				Inventory.lemonade_has_interacted = true
+				has_interacted = true
+				Inventory.coins -= 5
+				interaction_times = 2
+			if Inventory.index == 2 and Inventory.items[Inventory.index].disabled and !has_interacted:
+				Inventory.items[Inventory.index].texture_normal = Inventory.item_texture[3]
+				Inventory.items[Inventory.index].texture_hover = Inventory.item_texture_hover[3]
+				Inventory.items[Inventory.index].disabled = false
+				Inventory.lemonade_has_interacted = true
+				has_interacted = true
+				Inventory.coins -= 5
+				interaction_times = 2
+			if !has_interacted:
 				Inventory.index += 1
 				
 		if interaction_times == 2 and message_displayed and interact and Transition.canvas_layer.visible == false and Inventory.inventory_layer.visible == false and Inventory.coins >= 0:\
