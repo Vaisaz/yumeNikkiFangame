@@ -41,6 +41,8 @@ var watches_has_interacted: bool = false
 var wnp_has_interacted: bool = false
 var rng = RandomNumberGenerator.new()
 
+var lemonade_has_interacted: bool = false
+
 var coins = 10
 var add_coins
 
@@ -131,6 +133,8 @@ func item_on_unequip():
 var equip: bool = false
 
 func _on_first_pressed():
+	if $InventoryLayer/InventoryChoosed/first.texture_normal == load("res://assets/inventory/items/lemonade.png"):
+		equip = false
 	if !equip:
 		item_on_equip(0)
 		equip = true
@@ -140,8 +144,11 @@ func _on_first_pressed():
 		elif !equipped.texture == items[0].texture_normal:
 			item_on_equip(0)
 			equip = false
+		
 	
 func _on_second_pressed():
+	if $InventoryLayer/InventoryChoosed/first.texture_normal == load("res://assets/inventory/items/lemonade.png"):
+		equip = false
 	if !equip:
 		item_on_equip(1)
 		equip = true
@@ -153,6 +160,8 @@ func _on_second_pressed():
 			equip = false
 		
 func _on_third_pressed():
+	if $InventoryLayer/InventoryChoosed/first.texture_normal == load("res://assets/inventory/items/lemonade.png"):
+		equip = false
 	if !equip:
 		item_on_equip(2)
 		equip = true

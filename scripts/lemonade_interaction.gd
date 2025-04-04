@@ -2,6 +2,10 @@ extends Area2D
 
 var messages = [
 	"",
+	"YO",
+	"WANNA BUY SOME LEMONADE?",
+	"IT'LL COST YA 5 COINS",
+	"JUST TALK TO ME AGAIN AND I'LL SELL YOU ONE",
 	"YOU HAVE ACQUIRED:
 	LEMONADE
 	
@@ -41,25 +45,40 @@ func show_message():
 		
 func _input(event):
 	if interaction_times == 0 and interact and event.is_action_pressed("interact") and message_displayed and interact and Input.is_action_just_pressed("interact") and Transition.canvas_layer.visible == false and Inventory.inventory_layer.visible == false and Inventory.coins >= 5:
-		if has_interacted:
-			interaction_times = 1
+		if Inventory.lemonade_has_interacted:
+			interaction_times = 2
 			has_interacted = false
 			return
 		print("works")
 		GlobalVariables.debounce = true
 		GlobalVariables.in_combat = true
 		canvas_layer.visible = true
-		if index == 2:
+		print(index)
+		if index == 4:
 			canvas_layer.visible = false
 			GlobalVariables.debounce = false
 			GlobalVariables.in_combat = false
 			interaction_times = 1
-			index = 0
+			message_displayed = true
+		else:
+			message_displayed = false
+			index += 1
+			show_message()
+	elif interaction_times == 1 and interact and event.is_action_pressed("interact") and message_displayed and interact and Input.is_action_just_pressed("interact") and Transition.canvas_layer.visible == false and Inventory.inventory_layer.visible == false and Inventory.coins >= 5:
+		GlobalVariables.debounce = true
+		GlobalVariables.in_combat = true
+		canvas_layer.visible = true
+		print(index)
+		if index == 6:
+			canvas_layer.visible = false
+			GlobalVariables.debounce = false
+			GlobalVariables.in_combat = false
+			interaction_times = 2
 			return
 		message_displayed = false
 		index += 1
 		show_message()
-	if interaction_times == 1 and message_displayed and interact and Transition.canvas_layer.visible == false and Inventory.inventory_layer.visible == false and Inventory.coins >= 5:
+	elif interaction_times == 2 and message_displayed and interact and Transition.canvas_layer.visible == false and Inventory.inventory_layer.visible == false and Inventory.coins >= 5:
 		for item_count in Inventory.items:
 			print(item_count)
 			if Inventory.index == 0 and Inventory.items[Inventory.index].disabled and !has_interacted:
@@ -75,6 +94,7 @@ func _input(event):
 				Inventory.items[Inventory.index].texture_hover = Inventory.item_texture_hover[3]
 				Inventory.items[Inventory.index].disabled = false
 			if !has_interacted:
+				Inventory.lemonade_has_interacted = true
 				has_interacted = true
 				Inventory.coins -= 5
 				interaction_times = 2

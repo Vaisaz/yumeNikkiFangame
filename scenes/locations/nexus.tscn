@@ -127,6 +127,10 @@ script = ExtResource("11_n0jro")
 position = Vector2(-47.5, -70)
 shape = SubResource("RectangleShape2D_w6rhi")
 
+[node name="LemonadeStand" parent="." instance=ExtResource("16_qhsxs")]
+position = Vector2(81, -54)
+scale = Vector2(0.6, 0.6)
+
 [node name="CharacterBody2D" parent="." instance=ExtResource("4_1wn3d")]
 position = Vector2(1, -24)
 
@@ -139,9 +143,6 @@ zoom = Vector2(5, 5)
 [node name="Test" parent="." instance=ExtResource("15_wvg0s")]
 position = Vector2(-3, -263)
 scale = Vector2(0.5, 0.5)
-
-[node name="Lemonade" parent="." instance=ExtResource("16_qhsxs")]
-position = Vector2(141, -26)
 
 [connection signal="area_entered" from="neon_warp/interaction" to="neon_warp/interaction" method="_on_area_entered"]
 [connection signal="area_exited" from="neon_warp/interaction" to="neon_warp/interaction" method="_on_area_exited"]

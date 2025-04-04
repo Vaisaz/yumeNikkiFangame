@@ -17,7 +17,7 @@ func _physics_process(_delta):
 		animated_sprite_2d.play("idle")
 		input_direction = Vector2(0, 0)
 		Transition.wait()
-	elif Inventory.inventory_layer.visible:
+	elif Inventory.inventory_layer.visible or GlobalVariables.debounce:
 		velocity = input_direction * 0
 		input_direction = Vector2(0, 0)
 	else:
