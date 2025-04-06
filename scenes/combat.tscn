@@ -1,12 +1,17 @@
-[gd_scene load_steps=16 format=3 uid="uid://cee12bto8qsua"]
+[gd_scene load_steps=21 format=3 uid="uid://cee12bto8qsua"]
 
 [ext_resource type="Script" path="res://scripts/combat.gd" id="1_5fjro"]
 [ext_resource type="Texture2D" uid="uid://b8fabkydvdqry" path="res://assets/combat/combat_frame.png" id="2_6qdto"]
 [ext_resource type="FontFile" uid="uid://b5lqlis8c3a4k" path="res://assets/I-pixel-u.ttf" id="3_xqqe6"]
 [ext_resource type="Texture2D" uid="uid://co1plrjdjp3mh" path="res://assets/combat/combat_buttons/run.png" id="4_0ak0y"]
 [ext_resource type="Texture2D" uid="uid://bft2hrwsc408i" path="res://assets/combat/combat_buttons/run_hover.png" id="5_tdtmc"]
+[ext_resource type="Texture2D" uid="uid://y7hoiefh43ed" path="res://assets/combat/combat_buttons/items.png" id="6_k4tlg"]
 [ext_resource type="Texture2D" uid="uid://dl7www1p1c22y" path="res://assets/combat/combat_buttons/fight.png" id="6_p7dgb"]
 [ext_resource type="Texture2D" uid="uid://dbfqbaed4lnbx" path="res://assets/combat/combat_buttons/fight_hover.png" id="7_h40jt"]
+[ext_resource type="Texture2D" uid="uid://crud48yia660j" path="res://assets/combat/combat_buttons/items_hover.png" id="7_un8uj"]
+[ext_resource type="PackedScene" uid="uid://c1s8mfal8dbj3" path="res://assets/audio/sound.tscn" id="9_m10k8"]
+[ext_resource type="AudioStream" uid="uid://vixrae60piee" path="res://assets/audio/old_man_blips/ringsuf.mp3" id="10_6t5dc"]
+[ext_resource type="Texture2D" uid="uid://ye0kpsgym586" path="res://assets/inventory/frame_kozetsu_bigger.png" id="11_5ef3c"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xwg25"]
 atlas = ExtResource("2_6qdto")
@@ -90,10 +95,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -83.0
-offset_top = 117.0
-offset_right = 23.0
-offset_bottom = 143.0
+offset_left = -67.0
+offset_top = 166.0
+offset_right = 39.0
+offset_bottom = 192.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(4, 4)
@@ -122,8 +127,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -106.0
+offset_left = -98.0
 offset_top = -20.5
+offset_right = 8.0
 offset_bottom = 5.5
 grow_horizontal = 2
 grow_vertical = 2
@@ -154,8 +160,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -106.0
+offset_left = -102.0
 offset_top = -20.5
+offset_right = 4.0
 offset_bottom = 5.5
 grow_horizontal = 2
 grow_vertical = 2
@@ -174,52 +181,78 @@ scale = Vector2(4, 4)
 texture_normal = ExtResource("6_p7dgb")
 texture_hover = ExtResource("7_h40jt")
 
-[node name="RunButton" type="TextureButton" parent="Combat"]
-offset_left = 788.0
+[node name="ItemsButton" type="TextureButton" parent="Combat"]
+offset_left = 802.0
 offset_top = 419.0
-offset_right = 852.0
+offset_right = 866.0
 offset_bottom = 459.0
 scale = Vector2(4, 4)
+texture_normal = ExtResource("6_k4tlg")
+texture_hover = ExtResource("7_un8uj")
+
+[node name="RunButton" type="TextureButton" parent="Combat"]
+offset_left = 513.0
+offset_top = 416.0
+offset_right = 577.0
+offset_bottom = 456.0
+scale = Vector2(2, 2)
 texture_normal = ExtResource("4_0ak0y")
 texture_hover = ExtResource("5_tdtmc")
 
-[node name="DamageEnemy" type="Label" parent="Combat"]
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -110.0
-offset_top = -196.0
-offset_right = -74.0
-offset_bottom = -160.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(6, 6)
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-text = "-10"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="CombatSound" parent="Combat" instance=ExtResource("9_m10k8")]
+stream = ExtResource("10_6t5dc")
 
-[node name="DamagePlayer" type="Label" parent="Combat"]
+[node name="ItemsLayer" type="CanvasLayer" parent="Combat"]
 visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -108.0
-offset_top = 54.0
-offset_right = -72.0
-offset_bottom = 90.0
+
+[node name="ColorRect" type="ColorRect" parent="Combat/ItemsLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 89.0
+offset_top = 84.0
+offset_right = -79.0
+offset_bottom = -82.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(6, 6)
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-text = "-10"
-horizontal_alignment = 1
-vertical_alignment = 1
+color = Color(0, 0, 0, 1)
+
+[node name="FrameKozetsuBigger" type="Sprite2D" parent="Combat/ItemsLayer"]
+position = Vector2(582.5, 326)
+scale = Vector2(3.85547, 1.89844)
+texture = ExtResource("11_5ef3c")
+
+[node name="first" type="TextureButton" parent="Combat/ItemsLayer"]
+visible = false
+offset_left = 207.0
+offset_top = 176.0
+offset_right = 271.0
+offset_bottom = 216.0
+scale = Vector2(3, 3)
+mouse_filter = 1
+disabled = true
+
+[node name="second" type="TextureButton" parent="Combat/ItemsLayer"]
+visible = false
+offset_left = 482.0
+offset_top = 177.0
+offset_right = 546.0
+offset_bottom = 217.0
+scale = Vector2(3, 3)
+disabled = true
+
+[node name="third" type="TextureButton" parent="Combat/ItemsLayer"]
+visible = false
+offset_left = 755.0
+offset_top = 178.0
+offset_right = 819.0
+offset_bottom = 218.0
+scale = Vector2(3, 3)
+disabled = true
 
 [connection signal="pressed" from="Combat/FightButton" to="." method="_on_fight_button_pressed"]
+[connection signal="pressed" from="Combat/ItemsButton" to="." method="_on_items_button_pressed"]
 [connection signal="pressed" from="Combat/RunButton" to="." method="_on_run_button_pressed"]
+[connection signal="pressed" from="Combat/ItemsLayer/first" to="." method="_on_first_pressed"]
+[connection signal="pressed" from="Combat/ItemsLayer/second" to="." method="_on_second_pressed"]
+[connection signal="pressed" from="Combat/ItemsLayer/third" to="." method="_on_third_pressed"]

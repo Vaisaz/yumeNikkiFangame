@@ -17,33 +17,62 @@ func _physics_process(_delta):
 		animated_sprite_2d.play("idle")
 		input_direction = Vector2(0, 0)
 		Transition.wait()
-	elif Inventory.inventory_layer.visible or GlobalVariables.debounce:
+	elif Inventory.inventory_layer.visible:
 		velocity = input_direction * 0
 		input_direction = Vector2(0, 0)
+	elif GlobalVariables.debounce:
+		velocity = input_direction * 0
+		animated_sprite_2d.stop()
+		input_direction = Vector2(0, 0)
 	else:
-		transitioning = false
-		if input_direction == Vector2(0, 0):
-			animated_sprite_2d.stop()
-		elif input_direction == Vector2(0, -1):
-			animated_sprite_2d.play("up")
-		elif input_direction == Vector2(0, 1):
-			animated_sprite_2d.play("down")
-		elif input_direction == Vector2(-1, 0):
-			animated_sprite_2d.play("left")
-		elif input_direction == Vector2(1, 0):
-			animated_sprite_2d.play("right")
-		elif input_direction == Vector2(1, 1):
-			input_direction = Vector2(0, 0)
-			animated_sprite_2d.play("idle")
-		elif input_direction == Vector2(1, -1):
-			input_direction = Vector2(0, 0)
-			animated_sprite_2d.play("idle")
-		elif input_direction == Vector2(-1, 1):
-			input_direction = Vector2(0, 0)
-			animated_sprite_2d.play("idle")
-		elif input_direction == Vector2(-1, -1):
-			input_direction = Vector2(0, 0)
-			animated_sprite_2d.play("idle")
+		if GlobalVariables.outfit == 1:
+			transitioning = false
+			if input_direction == Vector2(0, 0):
+				animated_sprite_2d.stop()
+			elif input_direction == Vector2(0, -1):
+				animated_sprite_2d.play("up")
+			elif input_direction == Vector2(0, 1):
+				animated_sprite_2d.play("down")
+			elif input_direction == Vector2(-1, 0):
+				animated_sprite_2d.play("left")
+			elif input_direction == Vector2(1, 0):
+				animated_sprite_2d.play("right")
+			elif input_direction == Vector2(1, 1):
+				input_direction = Vector2(0, 0)
+				animated_sprite_2d.play("idle")
+			elif input_direction == Vector2(1, -1):
+				input_direction = Vector2(0, 0)
+				animated_sprite_2d.play("idle")
+			elif input_direction == Vector2(-1, 1):
+				input_direction = Vector2(0, 0)
+				animated_sprite_2d.play("idle")
+			elif input_direction == Vector2(-1, -1):
+				input_direction = Vector2(0, 0)
+				animated_sprite_2d.play("idle")
+		elif GlobalVariables.outfit == 2:
+			transitioning = false
+			if input_direction == Vector2(0, 0):
+				animated_sprite_2d.stop()
+			elif input_direction == Vector2(0, -1):
+				animated_sprite_2d.play("up")
+			elif input_direction == Vector2(0, 1):
+				animated_sprite_2d.play("down")
+			elif input_direction == Vector2(-1, 0):
+				animated_sprite_2d.play("left")
+			elif input_direction == Vector2(1, 0):
+				animated_sprite_2d.play("right")
+			elif input_direction == Vector2(1, 1):
+				input_direction = Vector2(0, 0)
+				animated_sprite_2d.play("idle")
+			elif input_direction == Vector2(1, -1):
+				input_direction = Vector2(0, 0)
+				animated_sprite_2d.play("idle")
+			elif input_direction == Vector2(-1, 1):
+				input_direction = Vector2(0, 0)
+				animated_sprite_2d.play("idle")
+			elif input_direction == Vector2(-1, -1):
+				input_direction = Vector2(0, 0)
+				animated_sprite_2d.play("idle")
 		
 		if GlobalVariables.debounce:
 			velocity = input_direction * 0
@@ -59,14 +88,40 @@ func _input(_event):
 	if Input.is_action_pressed("up") or Input.is_action_pressed("down") or Input.is_action_pressed("left") or Input.is_action_pressed("right"):
 		pass
 	if Input.is_action_just_pressed("wake_up") and !get_tree().current_scene.scene_file_path == "res://scenes/locations/room.tscn" and !Transition.canvas_layer.visible and !GlobalVariables.debounce:
-		Transition.playing_animation()
-		await Transition.animated_sprite_2d.animation_finished
-		Transition.waking_sleeping_2d.visible = true
-		Transition.waking_sleeping_2d.play("waking")
-		await Transition.waking_sleeping_2d.animation_finished
-		Transition.waking_sleeping_2d.visible = false
-		get_tree().change_scene_to_file("res://scenes/locations/room.tscn")
-		Transition.ending_animation()
+		if GlobalVariables.outfit == 2:
+			GlobalVariables.in_combat = true
+			Transition.combat_transition_animation.visible = true
+			Transition.combat_transition_animation.play("default")
+			Transition.canvas_layer.visible = true
+			Transition.animated_sprite_2d.visible = false
+			await Transition.combat_transition_animation.animation_finished
+			Transition.combat_transition_animation.visible = false
+			Transition.canvas_layer.visible = false
+			Transition.animated_sprite_2d.visible = true
+			GlobalVariables.debounce = true
+			Combat.player_current_health = Combat.player_max_health
+			Combat.player_attack = 0
+			Combat.enemy_max_health = Combat.player_max_health
+			Combat.enemy_current_health = Combat.player_max_health
+			Combat.enemy_texture.texture = load("res://assets/inventory/dream_eye/1.png")
+			Combat.enemy_attack = Combat.player_max_health - 1
+			Combat.enemy_health(Combat.enemy_current_health, Combat.enemy_max_health)
+			Combat.player_health()
+			Combat.combat_layer.visible = true
+			DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_VISIBLE)
+		else:
+			Transition.playing_animation()
+			GlobalVariables.in_combat = true
+			GlobalVariables.debounce = true
+			await Transition.animated_sprite_2d.animation_finished
+			Transition.waking_sleeping_2d.visible = true
+			Transition.waking_sleeping_2d.play("waking")
+			await Transition.waking_sleeping_2d.animation_finished
+			Transition.waking_sleeping_2d.visible = false
+			get_tree().change_scene_to_file("res://scenes/locations/room.tscn")
+			GlobalVariables.in_combat = false
+			GlobalVariables.debounce = false
+			Transition.ending_animation()
 	if Input.is_action_just_pressed("inventory") and !get_tree().current_scene.scene_file_path == "res://scenes/locations/room.tscn" and !GlobalVariables.debounce:
 		if !inventory_pressed:
 			GlobalVariables.in_combat = true

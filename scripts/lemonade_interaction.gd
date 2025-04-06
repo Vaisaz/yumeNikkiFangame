@@ -37,6 +37,7 @@ var random = RandomNumberGenerator.new()
 @onready var label = $"../CanvasLayer/BlankFrameBigger/Label"
 @onready var canvas_layer = $"../CanvasLayer"
 @onready var sound = $"../Sound"
+@onready var register_sound = $"../RegisterSound"
 
 func _on_area_entered(area):
 	print("entered")
@@ -66,6 +67,7 @@ func show_message():
 func _input(event):
 	if interaction_times == 0 and interact and event.is_action_pressed("interact") and message_displayed and interact and Input.is_action_just_pressed("interact") and Transition.canvas_layer.visible == false and Inventory.inventory_layer.visible == false and Inventory.coins >= 5:
 		if Inventory.lemonade_has_interacted:
+			register_sound.play()
 			interaction_times = 2
 			has_interacted = false
 			return
@@ -85,6 +87,8 @@ func _input(event):
 			index += 1
 			show_message()
 	elif interaction_times == 1 and interact and event.is_action_pressed("interact") and message_displayed and interact and Input.is_action_just_pressed("interact") and Transition.canvas_layer.visible == false and Inventory.inventory_layer.visible == false and Inventory.coins >= 5:
+		if index == 4:
+			register_sound.play()
 		GlobalVariables.debounce = true
 		GlobalVariables.in_combat = true
 		canvas_layer.visible = true
@@ -104,6 +108,8 @@ func _input(event):
 			if Inventory.index == 0 and Inventory.items[Inventory.index].disabled and !has_interacted:
 				Inventory.items[Inventory.index].texture_normal = Inventory.item_texture[3]
 				Inventory.items[Inventory.index].texture_hover = Inventory.item_texture_hover[3]
+				Combat.items[Inventory.index].texture_normal = Inventory.item_texture[3]
+				Combat.items[Inventory.index].texture_hover = Inventory.item_texture_hover[3]
 				Inventory.items[Inventory.index].disabled = false
 				Inventory.lemonade_has_interacted = true
 				has_interacted = true
@@ -112,6 +118,8 @@ func _input(event):
 			if Inventory.index == 1 and Inventory.items[Inventory.index].disabled and !has_interacted:
 				Inventory.items[Inventory.index].texture_normal = Inventory.item_texture[3]
 				Inventory.items[Inventory.index].texture_hover = Inventory.item_texture_hover[3]
+				Combat.items[Inventory.index].texture_normal = Inventory.item_texture[3]
+				Combat.items[Inventory.index].texture_hover = Inventory.item_texture_hover[3]
 				Inventory.items[Inventory.index].disabled = false
 				Inventory.lemonade_has_interacted = true
 				has_interacted = true
@@ -120,6 +128,8 @@ func _input(event):
 			if Inventory.index == 2 and Inventory.items[Inventory.index].disabled and !has_interacted:
 				Inventory.items[Inventory.index].texture_normal = Inventory.item_texture[3]
 				Inventory.items[Inventory.index].texture_hover = Inventory.item_texture_hover[3]
+				Combat.items[Inventory.index].texture_normal = Inventory.item_texture[3]
+				Combat.items[Inventory.index].texture_hover = Inventory.item_texture_hover[3]
 				Inventory.items[Inventory.index].disabled = false
 				Inventory.lemonade_has_interacted = true
 				has_interacted = true

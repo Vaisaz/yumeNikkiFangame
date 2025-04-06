@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dr21yfhjoldoo"]
+[gd_scene load_steps=22 format=3 uid="uid://dr21yfhjoldoo"]
 
 [ext_resource type="Texture2D" uid="uid://bkwg4d84vpwnn" path="res://assets/sprites/main/pixel_tiles.png" id="1_hfvtc"]
 [ext_resource type="Texture2D" uid="uid://b4g07ub54tlj2" path="res://assets/sprites/main/black.jpg" id="1_r6exr"]
@@ -16,6 +16,7 @@
 [ext_resource type="Script" path="res://scripts/interaction_scripts/number_warp_interaction.gd" id="11_n0jro"]
 [ext_resource type="PackedScene" uid="uid://xyib0c1l8y3v" path="res://scenes/test_inventory.tscn" id="15_wvg0s"]
 [ext_resource type="PackedScene" uid="uid://7qlcvxsvyst5" path="res://scenes/lemonade_stand.tscn" id="16_qhsxs"]
+[ext_resource type="PackedScene" uid="uid://xh5egcbkopwb" path="res://scenes/old_man.tscn" id="17_ccgwb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bpo8m"]
 texture = ExtResource("1_hfvtc")
@@ -139,10 +140,14 @@ position = Vector2(-1, -26)
 zoom = Vector2(5, 5)
 
 [node name="AudioStreamPlayer" parent="." instance=ExtResource("6_em1cg")]
+autoplay = false
 
 [node name="Test" parent="." instance=ExtResource("15_wvg0s")]
 position = Vector2(-3, -263)
 scale = Vector2(0.5, 0.5)
+
+[node name="StaticBody2D" parent="." instance=ExtResource("17_ccgwb")]
+position = Vector2(87, 114)
 
 [connection signal="area_entered" from="neon_warp/interaction" to="neon_warp/interaction" method="_on_area_entered"]
 [connection signal="area_exited" from="neon_warp/interaction" to="neon_warp/interaction" method="_on_area_exited"]

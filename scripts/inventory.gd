@@ -21,6 +21,7 @@ var item_texture_hover = [
 ]
 
 @onready var equipped = $InventoryLayer/SoulChoosed/Equipped
+@onready var soul = $InventoryLayer/SoulChoosed/SoulLabel
 @onready var lv = $InventoryLayer/SoulChoosed/LVLabel
 @onready var hp = $InventoryLayer/SoulChoosed/HPLabel
 @onready var at = $InventoryLayer/SoulChoosed/ATLabel
@@ -34,6 +35,8 @@ var item_texture_hover = [
 @onready var inventory_layer = $InventoryLayer
 @onready var soul_choosed = $InventoryLayer/SoulChoosed
 @onready var inventory_choosed = $InventoryLayer/InventoryChoosed
+
+@onready var eye = $InventoryLayer/SoulChoosed/AnimatedSprite2D
 
 var index = 0
 var banana_has_interacted: bool = false
@@ -127,6 +130,8 @@ var equip: bool = false
 func _on_first_pressed():
 	if items[0].texture_normal == load("res://assets/inventory/items/lemonade.png"):
 		item_on_equip(0)
+	elif items[0].texture_normal == load("res://assets/inventory/items/hope.png"):
+		get_tree().quit()
 	else:
 		if !equip:
 			item_on_equip(0)

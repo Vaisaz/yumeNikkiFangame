@@ -9,6 +9,7 @@ var transitions = 0
 @onready var canvas_layer = $"."
 @onready var waking_sleeping_2d = $WakingSleeping
 @onready var combat_transition_animation = $CombatTransitionAnimation
+@onready var color_rect = $ColorRect
 
 func playing_animation():
 	canvas_layer.visible = true
@@ -21,6 +22,12 @@ func ending_animation():
 	animated_sprite_2d.play("second")
 	await animated_sprite_2d.animation_finished
 	canvas_layer.visible = false
+	
+func ending_animation_full():
+	canvas_layer.visible = true
+	animated_sprite_2d.play("second")
+	await animated_sprite_2d.animation_finished
+	canvas_layer.visible = false	
 	
 #func playing_combat_transition_animation():
 	#canvas_layer.visible = true

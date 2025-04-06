@@ -2,6 +2,7 @@ extends Control
 
 @onready var fight_button = $Combat/FightButton
 @onready var run_button = $Combat/RunButton
+@onready var items_button = $Combat/ItemsButton
 @onready var combat_layer = $Combat
 
 @onready var enemy_texture = $Combat/Enemy
@@ -11,6 +12,14 @@ extends Control
 @onready var player_bar = $Combat/PlayerBar
 @onready var player_label = $Combat/PlayerBar/Label
 @onready var you = $Combat/You
+
+@onready var combat_sound = $Combat/CombatSound
+
+@onready var items = [
+	$Combat/ItemsLayer/first,
+	$Combat/ItemsLayer/second,
+	$Combat/ItemsLayer/third
+]
 
 var rng = RandomNumberGenerator.new()
 
@@ -37,7 +46,7 @@ func enemy_health(enemy_current_health, enemy_max_health):
 	enemy_bar.value = enemy_current_health
 	enemy_label.text = "HP: %d/%d" % [enemy_current_health, enemy_max_health]
 
-func _on_fight_button_pressed():
+func combat(player_attack, damaged):
 	var turn = rng.randi_range(1, 2)
 	print(turn)
 	fight_button.disabled = true
@@ -45,22 +54,27 @@ func _on_fight_button_pressed():
 	if turn == 1:
 		enemy_current_health = enemy_current_health - player_attack
 		enemy_health(enemy_current_health, enemy_max_health)
-		enemy_texture.visible = false
-		await get_tree().create_timer(0.1).timeout
-		enemy_texture.visible = true
-		await get_tree().create_timer(0.1).timeout
-		enemy_texture.visible = false
-		await get_tree().create_timer(0.1).timeout
-		enemy_texture.visible = true
-		await get_tree().create_timer(0.1).timeout
-		if enemy_current_health == 0:
-			Inventory.coins += Inventory.add_coins
-			GlobalVariables.debounce = false
-			GlobalVariables.in_combat = false
-			combat_layer.visible = false
-			fight_button.disabled = false
-			run_button.disabled = false
-			DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_HIDDEN)
+		if damaged:
+			enemy_texture.visible = false
+			await get_tree().create_timer(0.1).timeout
+			enemy_texture.visible = true
+			await get_tree().create_timer(0.1).timeout
+			enemy_texture.visible = false
+			await get_tree().create_timer(0.1).timeout
+			enemy_texture.visible = true
+			await get_tree().create_timer(0.1).timeout
+		if enemy_current_health <= 0:
+			if enemy_texture.texture == load("res://assets/combat/old_man_sprite_sheet.png"):
+				old_man_defeat()
+			else:
+				combat_sound.stop()
+				Inventory.coins += Inventory.add_coins
+				GlobalVariables.debounce = false
+				GlobalVariables.in_combat = false
+				combat_layer.visible = false
+				fight_button.disabled = false
+				run_button.disabled = false
+				DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_HIDDEN)
 		else:
 			player_current_health = player_current_health - enemy_attack
 			player_health()
@@ -74,8 +88,22 @@ func _on_fight_button_pressed():
 			await get_tree().create_timer(0.1).timeout
 			fight_button.disabled = false
 			run_button.disabled = false
-			if player_current_health == 0:
-				get_tree().quit()
+			if player_current_health <= 0:
+				if GlobalVariables.outfit == 1:
+					combat_sound.stop()
+					GlobalVariables.debounce = true
+					GlobalVariables.in_combat = true
+					fight_button.disabled = false
+					run_button.disabled = false
+					combat_layer.visible = false
+					DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_HIDDEN)
+					get_tree().change_scene_to_file("res://scenes/locations/room.tscn")
+					Transition.ending_animation_full()
+					GlobalVariables.debounce = false
+					GlobalVariables.in_combat = false
+					player_current_health = 1
+				else:
+					get_tree().quit()
 	if turn == 2:
 		player_current_health = player_current_health - enemy_attack
 		player_health()
@@ -87,32 +115,126 @@ func _on_fight_button_pressed():
 		await get_tree().create_timer(0.1).timeout
 		you.visible = true
 		await get_tree().create_timer(0.1).timeout
-		if player_current_health == 0:
-			get_tree().quit()
+		if player_current_health <= 0:
+			if GlobalVariables.outfit == 1:
+					combat_sound.stop()
+					GlobalVariables.debounce = true
+					GlobalVariables.in_combat = true
+					fight_button.disabled = false
+					run_button.disabled = false
+					combat_layer.visible = false
+					DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_HIDDEN)
+					get_tree().change_scene_to_file("res://scenes/locations/room.tscn")
+					Transition.ending_animation_full()
+					GlobalVariables.debounce = false
+					GlobalVariables.in_combat = false
+					player_current_health = 1
+			else:
+				get_tree().quit()
 		else:
 			enemy_current_health = enemy_current_health - player_attack
 			enemy_health(enemy_current_health, enemy_max_health)
-			enemy_texture.visible = false
-			await get_tree().create_timer(0.1).timeout
-			enemy_texture.visible = true
-			await get_tree().create_timer(0.1).timeout
-			enemy_texture.visible = false
-			await get_tree().create_timer(0.1).timeout
-			enemy_texture.visible = true
-			await get_tree().create_timer(0.1).timeout
+			if damaged:
+				enemy_texture.visible = false
+				await get_tree().create_timer(0.1).timeout
+				enemy_texture.visible = true
+				await get_tree().create_timer(0.1).timeout
+				enemy_texture.visible = false
+				await get_tree().create_timer(0.1).timeout
+				enemy_texture.visible = true
+				await get_tree().create_timer(0.1).timeout
 			fight_button.disabled = false
 			run_button.disabled = false
-			if enemy_current_health == 0:
-				Inventory.coins += Inventory.add_coins
-				GlobalVariables.debounce = false
-				GlobalVariables.in_combat = false
-				combat_layer.visible = false
-				fight_button.disabled = false
-				run_button.disabled = false
-				DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_HIDDEN)
+			if enemy_current_health <= 0:
+				if enemy_texture.texture == load("res://assets/combat/old_man_sprite_sheet.png"):
+					old_man_defeat()
+				else:
+					combat_sound.stop()
+					Inventory.coins += Inventory.add_coins
+					GlobalVariables.debounce = false
+					GlobalVariables.in_combat = false
+					combat_layer.visible = false
+					fight_button.disabled = false
+					run_button.disabled = false
+					DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_HIDDEN)
+
+func _on_fight_button_pressed():
+	combat(player_attack, true)
 		
 func _on_run_button_pressed():
 	combat_layer.visible = false
 	GlobalVariables.debounce = false
 	GlobalVariables.in_combat = false
+	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_HIDDEN)
+
+func _on_items_button_pressed():
+	$Combat/ItemsLayer.visible = true
+	if !$Combat/ItemsLayer/first.texture_normal == null:
+		$Combat/ItemsLayer/first.disabled = false
+		$Combat/ItemsLayer/first.visible = true
+		
+	if !$Combat/ItemsLayer/second.texture_normal == null:
+		$Combat/ItemsLayer/second.disabled = false
+		$Combat/ItemsLayer/second.visible = true
+		
+	if !$Combat/ItemsLayer/third.texture_normal == null:
+		$Combat/ItemsLayer/third.disabled = false
+		$Combat/ItemsLayer/third.visible = true
+
+func _on_first_pressed():
+	$Combat/ItemsLayer.visible = false
+	Inventory.item_on_equip(0)
+	combat(0, false)
+	items[0].disabled = true
+	items[0].visible = false
+	items[0].texture_normal = null
+	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_VISIBLE)
+	
+func _on_second_pressed():
+	$Combat/ItemsLayer.visible = false
+	Inventory.item_on_equip(1)
+	combat(0, false)
+	items[1].disabled = true
+	items[1].visible = false
+	items[1].texture_normal = null
+	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_VISIBLE)
+	
+func _on_third_pressed():
+	$Combat/ItemsLayer.visible = false
+	Inventory.item_on_equip(2)
+	combat(0, false)
+	items[2].disabled = true
+	items[2].visible = false
+	items[2].texture_normal = null
+	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_VISIBLE)
+	
+func _input(event):
+	if Input.is_action_just_pressed("ui_cancel"):
+		$Combat/ItemsLayer.visible = false
+
+func old_man_defeat():
+	GlobalVariables.outfit = 2
+	get_tree().change_scene_to_file("res://scenes/locations/dream_room.tscn")
+	combat_sound.stop()
+	Inventory.coins += Inventory.add_coins
+	items[0].texture_normal = load("res://assets/inventory/items/hope.png")
+	items[0].texture_hover = load("res://assets/inventory/items/hope_hover.png")
+	items[0].visible = true
+	items[0].disabled = false
+	items[1].visible = false
+	items[1].disabled = true
+	items[2].visible = false
+	items[2].disabled = true
+	run_button.disabled = true
+	run_button.visible = false
+	GlobalVariables.debounce = false
+	GlobalVariables.in_combat = false
+	combat_layer.visible = false
+	fight_button.disabled = false
+	run_button.disabled = false
+	Inventory.eye.visible = false
+	Inventory.soul.visible = false
+	Inventory.hp.visible = false
+	Inventory.at.visible = false
+	Inventory.co.visible = false
 	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_HIDDEN)
