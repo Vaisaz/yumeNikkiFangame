@@ -22,7 +22,7 @@ func _on_area_entered(area):
 		Combat.enemy_texture.texture = load("res://assets/combat/giggler.png")
 		Combat.enemy_max_health = 100
 		Combat.enemy_current_health = 100
-		Combat.enemy_attack = 50
+		Combat.enemy_attack = 1
 		Combat.enemy_health(Combat.enemy_current_health, Combat.enemy_max_health)
 		Combat.player_health()
 		print("interacted")

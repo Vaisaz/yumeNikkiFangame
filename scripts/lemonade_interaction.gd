@@ -105,38 +105,45 @@ func _input(event):
 	elif interaction_times == 2 and message_displayed and interact and Transition.canvas_layer.visible == false and Inventory.inventory_layer.visible == false and Inventory.coins >= 5:
 		for item_count in Inventory.items:
 			print(item_count)
-			if Inventory.index == 0 and Inventory.items[Inventory.index].disabled and !has_interacted:
-				Inventory.items[Inventory.index].texture_normal = Inventory.item_texture[3]
-				Inventory.items[Inventory.index].texture_hover = Inventory.item_texture_hover[3]
-				Combat.items[Inventory.index].texture_normal = Inventory.item_texture[3]
-				Combat.items[Inventory.index].texture_hover = Inventory.item_texture_hover[3]
-				Inventory.items[Inventory.index].disabled = false
-				Inventory.lemonade_has_interacted = true
-				has_interacted = true
-				Inventory.coins -= 5
-				interaction_times = 2
-			if Inventory.index == 1 and Inventory.items[Inventory.index].disabled and !has_interacted:
-				Inventory.items[Inventory.index].texture_normal = Inventory.item_texture[3]
-				Inventory.items[Inventory.index].texture_hover = Inventory.item_texture_hover[3]
-				Combat.items[Inventory.index].texture_normal = Inventory.item_texture[3]
-				Combat.items[Inventory.index].texture_hover = Inventory.item_texture_hover[3]
-				Inventory.items[Inventory.index].disabled = false
-				Inventory.lemonade_has_interacted = true
-				has_interacted = true
-				Inventory.coins -= 5
-				interaction_times = 2
-			if Inventory.index == 2 and Inventory.items[Inventory.index].disabled and !has_interacted:
-				Inventory.items[Inventory.index].texture_normal = Inventory.item_texture[3]
-				Inventory.items[Inventory.index].texture_hover = Inventory.item_texture_hover[3]
-				Combat.items[Inventory.index].texture_normal = Inventory.item_texture[3]
-				Combat.items[Inventory.index].texture_hover = Inventory.item_texture_hover[3]
-				Inventory.items[Inventory.index].disabled = false
-				Inventory.lemonade_has_interacted = true
-				has_interacted = true
-				Inventory.coins -= 5
-				interaction_times = 2
+			if Inventory.index == 0:
+				item_give_structure()
+			if Inventory.index == 1:
+				item_give_structure()
+			if Inventory.index == 2:
+				item_give_structure()
+			if Inventory.index == 3:
+				item_give_structure()
+			if Inventory.index == 4:
+				item_give_structure()
+			if Inventory.index == 5:
+				item_give_structure()
+			if Inventory.index == 6:
+				item_give_structure()
+			if Inventory.index == 7:
+				item_give_structure()
+			if Inventory.index == 8:
+				item_give_structure()
+			if Inventory.index == 9:
+				item_give_structure()
+			if Inventory.index == 10:
+				item_give_structure()	
+			if Inventory.index == 11:
+				item_give_structure()
 			if !has_interacted:
 				Inventory.index += 1
 				
 		if interaction_times == 2 and message_displayed and interact and Transition.canvas_layer.visible == false and Inventory.inventory_layer.visible == false and Inventory.coins >= 0:\
 			interaction_times = 0
+
+func item_give_structure():
+	if Inventory.items[Inventory.index].disabled and !has_interacted:
+		Inventory.items[Inventory.index].texture_normal = Inventory.item_texture[3]
+		Inventory.items[Inventory.index].texture_hover = Inventory.item_texture_hover[3]
+		Combat.items[Inventory.index].texture_normal = Inventory.item_texture[3]
+		Combat.items[Inventory.index].texture_hover = Inventory.item_texture_hover[3]
+		Combat.items[Inventory.index].disabled = false
+		Inventory.items[Inventory.index].disabled = false
+		Inventory.lemonade_has_interacted = true
+		has_interacted = true
+		Inventory.coins -= 5
+		interaction_times = 2

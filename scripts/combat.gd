@@ -18,7 +18,16 @@ extends Control
 @onready var items = [
 	$Combat/ItemsLayer/first,
 	$Combat/ItemsLayer/second,
-	$Combat/ItemsLayer/third
+	$Combat/ItemsLayer/third,
+	$Combat/ItemsLayer/fourth,
+	$Combat/ItemsLayer/fifth,
+	$Combat/ItemsLayer/sixth,
+	$Combat/ItemsLayer/seventh,
+	$Combat/ItemsLayer/eighth,
+	$Combat/ItemsLayer/ninth,
+	$Combat/ItemsLayer/tenth,
+	$Combat/ItemsLayer/eleventh,
+	$Combat/ItemsLayer/twelfth
 ]
 
 var rng = RandomNumberGenerator.new()
@@ -181,34 +190,52 @@ func _on_items_button_pressed():
 		$Combat/ItemsLayer/third.disabled = false
 		$Combat/ItemsLayer/third.visible = true
 
-func _on_first_pressed():
+func on_pressed_structure(num):
 	$Combat/ItemsLayer.visible = false
-	Inventory.item_on_equip(0)
+	Inventory.item_on_equip(num)
 	combat(0, false)
-	items[0].disabled = true
-	items[0].visible = false
-	items[0].texture_normal = null
+	items[num].disabled = true
+	items[num].visible = false
+	items[num].texture_normal = null
 	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_VISIBLE)
+
+func _on_first_pressed():
+	on_pressed_structure(0)
 	
 func _on_second_pressed():
-	$Combat/ItemsLayer.visible = false
-	Inventory.item_on_equip(1)
-	combat(0, false)
-	items[1].disabled = true
-	items[1].visible = false
-	items[1].texture_normal = null
-	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_VISIBLE)
+	on_pressed_structure(1)
 	
 func _on_third_pressed():
-	$Combat/ItemsLayer.visible = false
-	Inventory.item_on_equip(2)
-	combat(0, false)
-	items[2].disabled = true
-	items[2].visible = false
-	items[2].texture_normal = null
-	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_VISIBLE)
+	on_pressed_structure(2)
 	
-func _input(event):
+func _on_fourth_pressed():
+	on_pressed_structure(3)
+	
+func _on_fifth_pressed():
+	on_pressed_structure(4)
+	
+func _on_sixth_pressed():
+	on_pressed_structure(5)
+	
+func _on_seventh_pressed():
+	on_pressed_structure(6)
+	
+func _on_eighth_pressed():
+	on_pressed_structure(7)
+	
+func _on_ninth_pressed():
+	on_pressed_structure(8)
+	
+func _on_tenth_pressed():
+	on_pressed_structure(9)
+	
+func _on_eleventh_pressed():
+	on_pressed_structure(10)
+	
+func _on_twelfth_pressed():
+	on_pressed_structure(11)
+	
+func _input(_event):
 	if Input.is_action_just_pressed("ui_cancel"):
 		$Combat/ItemsLayer.visible = false
 

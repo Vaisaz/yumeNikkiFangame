@@ -210,27 +210,102 @@ scale = Vector2(3, 3)
 visible = false
 
 [node name="first" type="TextureButton" parent="InventoryLayer/InventoryChoosed"]
-offset_left = 322.0
+offset_left = 318.0
 offset_top = 73.0
-offset_right = 386.0
+offset_right = 382.0
 offset_bottom = 113.0
 scale = Vector2(3, 3)
 mouse_filter = 1
 disabled = true
 
 [node name="second" type="TextureButton" parent="InventoryLayer/InventoryChoosed"]
-offset_left = 597.0
+offset_left = 595.0
 offset_top = 74.0
-offset_right = 661.0
+offset_right = 659.0
 offset_bottom = 114.0
 scale = Vector2(3, 3)
 disabled = true
 
 [node name="third" type="TextureButton" parent="InventoryLayer/InventoryChoosed"]
+offset_left = 869.0
+offset_top = 73.0
+offset_right = 933.0
+offset_bottom = 113.0
+scale = Vector2(3, 3)
+disabled = true
+
+[node name="fourth" type="TextureButton" parent="InventoryLayer/InventoryChoosed"]
+offset_left = 317.0
+offset_top = 204.0
+offset_right = 381.0
+offset_bottom = 244.0
+scale = Vector2(3, 3)
+mouse_filter = 1
+disabled = true
+
+[node name="fifth" type="TextureButton" parent="InventoryLayer/InventoryChoosed"]
+offset_left = 596.0
+offset_top = 206.0
+offset_right = 660.0
+offset_bottom = 246.0
+scale = Vector2(3, 3)
+disabled = true
+
+[node name="sixth" type="TextureButton" parent="InventoryLayer/InventoryChoosed"]
+offset_left = 869.0
+offset_top = 206.0
+offset_right = 933.0
+offset_bottom = 246.0
+scale = Vector2(3, 3)
+disabled = true
+
+[node name="seventh" type="TextureButton" parent="InventoryLayer/InventoryChoosed"]
+offset_left = 318.0
+offset_top = 344.0
+offset_right = 382.0
+offset_bottom = 384.0
+scale = Vector2(3, 3)
+mouse_filter = 1
+disabled = true
+
+[node name="eighth" type="TextureButton" parent="InventoryLayer/InventoryChoosed"]
+offset_left = 595.0
+offset_top = 345.0
+offset_right = 659.0
+offset_bottom = 385.0
+scale = Vector2(3, 3)
+disabled = true
+
+[node name="ninth" type="TextureButton" parent="InventoryLayer/InventoryChoosed"]
 offset_left = 870.0
-offset_top = 75.0
+offset_top = 346.0
 offset_right = 934.0
-offset_bottom = 115.0
+offset_bottom = 386.0
+scale = Vector2(3, 3)
+disabled = true
+
+[node name="tenth" type="TextureButton" parent="InventoryLayer/InventoryChoosed"]
+offset_left = 318.0
+offset_top = 485.0
+offset_right = 382.0
+offset_bottom = 525.0
+scale = Vector2(3, 3)
+mouse_filter = 1
+disabled = true
+
+[node name="eleventh" type="TextureButton" parent="InventoryLayer/InventoryChoosed"]
+offset_left = 595.0
+offset_top = 486.0
+offset_right = 659.0
+offset_bottom = 526.0
+scale = Vector2(3, 3)
+disabled = true
+
+[node name="twelfth" type="TextureButton" parent="InventoryLayer/InventoryChoosed"]
+offset_left = 870.0
+offset_top = 487.0
+offset_right = 934.0
+offset_bottom = 527.0
 scale = Vector2(3, 3)
 disabled = true
 
@@ -240,3 +315,12 @@ disabled = true
 [connection signal="pressed" from="InventoryLayer/InventoryChoosed/first" to="." method="_on_first_pressed"]
 [connection signal="pressed" from="InventoryLayer/InventoryChoosed/second" to="." method="_on_second_pressed"]
 [connection signal="pressed" from="InventoryLayer/InventoryChoosed/third" to="." method="_on_third_pressed"]
+[connection signal="pressed" from="InventoryLayer/InventoryChoosed/fourth" to="." method="_on_fourth_pressed"]
+[connection signal="pressed" from="InventoryLayer/InventoryChoosed/fifth" to="." method="_on_fifth_pressed"]
+[connection signal="pressed" from="InventoryLayer/InventoryChoosed/sixth" to="." method="_on_sixth_pressed"]
+[connection signal="pressed" from="InventoryLayer/InventoryChoosed/seventh" to="." method="_on_seventh_pressed"]
+[connection signal="pressed" from="InventoryLayer/InventoryChoosed/eighth" to="." method="_on_eighth_pressed"]
+[connection signal="pressed" from="InventoryLayer/InventoryChoosed/ninth" to="." method="_on_ninth_pressed"]
+[connection signal="pressed" from="InventoryLayer/InventoryChoosed/tenth" to="." method="_on_tenth_pressed"]
+[connection signal="pressed" from="InventoryLayer/InventoryChoosed/eleventh" to="." method="_on_eleventh_pressed"]
+[connection signal="pressed" from="InventoryLayer/InventoryChoosed/twelfth" to="." method="_on_twelfth_pressed"]

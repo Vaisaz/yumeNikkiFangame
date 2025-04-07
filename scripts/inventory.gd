@@ -17,7 +17,16 @@ var item_texture_hover = [
 @onready var items = [
 	$InventoryLayer/InventoryChoosed/first,
 	$InventoryLayer/InventoryChoosed/second,
-	$InventoryLayer/InventoryChoosed/third
+	$InventoryLayer/InventoryChoosed/third,
+	$InventoryLayer/InventoryChoosed/fourth,
+	$InventoryLayer/InventoryChoosed/fifth,
+	$InventoryLayer/InventoryChoosed/sixth,
+	$InventoryLayer/InventoryChoosed/seventh,
+	$InventoryLayer/InventoryChoosed/eighth,
+	$InventoryLayer/InventoryChoosed/ninth,
+	$InventoryLayer/InventoryChoosed/tenth,
+	$InventoryLayer/InventoryChoosed/eleventh,
+	$InventoryLayer/InventoryChoosed/twelfth
 ]
 
 @onready var equipped = $InventoryLayer/SoulChoosed/Equipped
@@ -46,7 +55,7 @@ var rng = RandomNumberGenerator.new()
 
 var lemonade_has_interacted: bool = false
 
-var coins = 10
+var coins = 100
 var add_coins
 
 func _ready():
@@ -127,53 +136,58 @@ func item_on_unequip():
 	
 var equip: bool = false
 
-func _on_first_pressed():
-	if items[0].texture_normal == load("res://assets/inventory/items/lemonade.png"):
-		item_on_equip(0)
-	elif items[0].texture_normal == load("res://assets/inventory/items/hope.png"):
+func on_pressed_structure(num):
+	if items[num].texture_normal == load("res://assets/inventory/items/lemonade.png"):
+		item_on_equip(num)
+	elif num == 0 and items[0].texture_normal == load("res://assets/inventory/items/hope.png"):
 		get_tree().quit()
 	else:
 		if !equip:
-			item_on_equip(0)
+			item_on_equip(num)
 			equip = true
 		elif equip:
-			if items[0].texture_normal == equipped.texture:
+			if items[num].texture_normal == equipped.texture:
 				item_on_unequip()
 				equip = false	
-			elif !items[0].texture_normal == equipped.texture:
-				item_on_equip(0)
+			elif !items[num].texture_normal == equipped.texture:
+				item_on_equip(num)
 				equip = true	
+
+func _on_first_pressed():
+	on_pressed_structure(0)
 		
-	
 func _on_second_pressed():
-	if items[1].texture_normal == load("res://assets/inventory/items/lemonade.png"):
-		item_on_equip(1)
-	else:
-		if !equip:
-			item_on_equip(1)
-			equip = true
-		elif equip:
-			if items[1].texture_normal == equipped.texture:
-				item_on_unequip()
-				equip = false	
-			elif !items[1].texture_normal == equipped.texture:
-				item_on_equip(1)
-				equip = true	
+	on_pressed_structure(1)
 		
 func _on_third_pressed():
-	if items[2].texture_normal == load("res://assets/inventory/items/lemonade.png"):
-		item_on_equip(2)
-	else:
-		if !equip:
-			item_on_equip(2)
-			equip = true
-		elif equip:
-			if items[2].texture_normal == equipped.texture:
-				item_on_unequip()
-				equip = false	
-			elif !items[2].texture_normal == equipped.texture:
-				item_on_equip(2)
-				equip = true	
+	on_pressed_structure(2)
+
+func _on_fourth_pressed():
+	on_pressed_structure(3)
+				
+func _on_fifth_pressed():
+	on_pressed_structure(4)
+		
+func _on_sixth_pressed():
+	on_pressed_structure(5)
+
+func _on_seventh_pressed():
+	on_pressed_structure(6)
+				
+func _on_eighth_pressed():
+	on_pressed_structure(7)
+				
+func _on_ninth_pressed():
+	on_pressed_structure(8)
+	
+func _on_tenth_pressed():
+	on_pressed_structure(9)
+	
+func _on_eleventh_pressed():
+	on_pressed_structure(10)
+	
+func _on_twelfth_pressed():
+	on_pressed_structure(11)
 
 #func _process(_delta):
 	#var random_number = rng.randi_range(-2, 2)

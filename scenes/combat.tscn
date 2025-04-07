@@ -223,30 +223,101 @@ scale = Vector2(3.85547, 1.89844)
 texture = ExtResource("11_5ef3c")
 
 [node name="first" type="TextureButton" parent="Combat/ItemsLayer"]
-visible = false
-offset_left = 207.0
-offset_top = 176.0
-offset_right = 271.0
-offset_bottom = 216.0
+offset_left = 168.0
+offset_top = 126.0
+offset_right = 232.0
+offset_bottom = 166.0
 scale = Vector2(3, 3)
 mouse_filter = 1
 disabled = true
 
 [node name="second" type="TextureButton" parent="Combat/ItemsLayer"]
-visible = false
-offset_left = 482.0
-offset_top = 177.0
-offset_right = 546.0
-offset_bottom = 217.0
+offset_left = 375.0
+offset_top = 126.0
+offset_right = 439.0
+offset_bottom = 166.0
 scale = Vector2(3, 3)
 disabled = true
 
 [node name="third" type="TextureButton" parent="Combat/ItemsLayer"]
-visible = false
-offset_left = 755.0
-offset_top = 178.0
-offset_right = 819.0
-offset_bottom = 218.0
+offset_left = 582.0
+offset_top = 126.0
+offset_right = 646.0
+offset_bottom = 166.0
+scale = Vector2(3, 3)
+disabled = true
+
+[node name="fourth" type="TextureButton" parent="Combat/ItemsLayer"]
+offset_left = 791.0
+offset_top = 125.0
+offset_right = 855.0
+offset_bottom = 165.0
+scale = Vector2(3, 3)
+disabled = true
+
+[node name="fifth" type="TextureButton" parent="Combat/ItemsLayer"]
+offset_left = 170.0
+offset_top = 273.0
+offset_right = 234.0
+offset_bottom = 313.0
+scale = Vector2(3, 3)
+mouse_filter = 1
+disabled = true
+
+[node name="sixth" type="TextureButton" parent="Combat/ItemsLayer"]
+offset_left = 377.0
+offset_top = 273.0
+offset_right = 441.0
+offset_bottom = 313.0
+scale = Vector2(3, 3)
+disabled = true
+
+[node name="seventh" type="TextureButton" parent="Combat/ItemsLayer"]
+offset_left = 584.0
+offset_top = 273.0
+offset_right = 648.0
+offset_bottom = 313.0
+scale = Vector2(3, 3)
+disabled = true
+
+[node name="eighth" type="TextureButton" parent="Combat/ItemsLayer"]
+offset_left = 793.0
+offset_top = 272.0
+offset_right = 857.0
+offset_bottom = 312.0
+scale = Vector2(3, 3)
+disabled = true
+
+[node name="ninth" type="TextureButton" parent="Combat/ItemsLayer"]
+offset_left = 172.0
+offset_top = 430.0
+offset_right = 236.0
+offset_bottom = 470.0
+scale = Vector2(3, 3)
+mouse_filter = 1
+disabled = true
+
+[node name="tenth" type="TextureButton" parent="Combat/ItemsLayer"]
+offset_left = 379.0
+offset_top = 430.0
+offset_right = 443.0
+offset_bottom = 470.0
+scale = Vector2(3, 3)
+disabled = true
+
+[node name="eleventh" type="TextureButton" parent="Combat/ItemsLayer"]
+offset_left = 586.0
+offset_top = 430.0
+offset_right = 650.0
+offset_bottom = 470.0
+scale = Vector2(3, 3)
+disabled = true
+
+[node name="twelfth" type="TextureButton" parent="Combat/ItemsLayer"]
+offset_left = 795.0
+offset_top = 429.0
+offset_right = 859.0
+offset_bottom = 469.0
 scale = Vector2(3, 3)
 disabled = true
 
@@ -256,3 +327,12 @@ disabled = true
 [connection signal="pressed" from="Combat/ItemsLayer/first" to="." method="_on_first_pressed"]
 [connection signal="pressed" from="Combat/ItemsLayer/second" to="." method="_on_second_pressed"]
 [connection signal="pressed" from="Combat/ItemsLayer/third" to="." method="_on_third_pressed"]
+[connection signal="pressed" from="Combat/ItemsLayer/fourth" to="." method="_on_fourth_pressed"]
+[connection signal="pressed" from="Combat/ItemsLayer/fifth" to="." method="_on_fifth_pressed"]
+[connection signal="pressed" from="Combat/ItemsLayer/sixth" to="." method="_on_sixth_pressed"]
+[connection signal="pressed" from="Combat/ItemsLayer/seventh" to="." method="_on_seventh_pressed"]
+[connection signal="pressed" from="Combat/ItemsLayer/eighth" to="." method="_on_eighth_pressed"]
+[connection signal="pressed" from="Combat/ItemsLayer/ninth" to="." method="_on_ninth_pressed"]
+[connection signal="pressed" from="Combat/ItemsLayer/tenth" to="." method="_on_tenth_pressed"]
+[connection signal="pressed" from="Combat/ItemsLayer/eleventh" to="." method="_on_eleventh_pressed"]
+[connection signal="pressed" from="Combat/ItemsLayer/twelfth" to="." method="_on_twelfth_pressed"]
