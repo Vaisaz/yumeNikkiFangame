@@ -35,6 +35,10 @@ var rng = RandomNumberGenerator.new()
 var player_max_health = 50
 var player_current_health = 50
 var player_attack = 10
+var xp = 0
+var max_xp = 25
+var add_xp = 0
+var lv = 1
 
 var enemy_max_health 
 var enemy_current_health
@@ -55,9 +59,49 @@ func enemy_health(enemy_current_health, enemy_max_health):
 	enemy_bar.value = enemy_current_health
 	enemy_label.text = "HP: %d/%d" % [enemy_current_health, enemy_max_health]
 
+func leveling():
+	xp += add_xp
+	if xp >= 25 and lv == 1:
+		player_max_health = 55
+		player_attack = 15
+		lv = 2
+		if xp > 25:
+			xp -= 25
+		else:
+			xp = 0
+		max_xp = 50
+	elif xp >= 50 and lv == 2:
+		player_max_health = 60
+		player_attack = 20
+		lv = 3
+		if xp > 25:
+			xp -= 25
+		else:
+			xp = 0
+		max_xp = 200
+	elif xp >= 200 and lv == 3:
+		player_max_health = 80
+		player_attack = 40
+		lv = 4
+		if xp > 25:
+			xp -= 25
+		else:
+			xp = 0
+		max_xp = 450
+	elif xp >= 450 and lv == 4:
+		player_max_health = 100
+		player_attack = 60
+		lv = 5
+		if xp > 25:
+			xp -= 25
+		else:
+			xp = 0
+		max_xp = 0
+	player_current_health = player_max_health
+		
+
 func combat(player_attack, damaged):
 	var turn = rng.randi_range(1, 2)
-	print(turn)
 	fight_button.disabled = true
 	run_button.disabled = true
 	if turn == 1:
@@ -76,6 +120,7 @@ func combat(player_attack, damaged):
 			if enemy_texture.texture == load("res://assets/combat/old_man_sprite_sheet.png"):
 				old_man_defeat()
 			else:
+				leveling()
 				combat_sound.stop()
 				Inventory.coins += Inventory.add_coins
 				GlobalVariables.debounce = false
@@ -158,6 +203,7 @@ func combat(player_attack, damaged):
 				if enemy_texture.texture == load("res://assets/combat/old_man_sprite_sheet.png"):
 					old_man_defeat()
 				else:
+					leveling()
 					combat_sound.stop()
 					Inventory.coins += Inventory.add_coins
 					GlobalVariables.debounce = false

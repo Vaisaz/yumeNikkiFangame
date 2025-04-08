@@ -4,14 +4,16 @@ var item_texture = [
 	preload("res://assets/inventory/items/banana.png"),
 	preload("res://assets/inventory/items/watches.png"),
 	preload("res://assets/inventory/items/wnp.png"),
-	preload("res://assets/inventory/items/lemonade.png")
+	preload("res://assets/inventory/items/lemonade.png"),
+	preload("res://assets/inventory/items/dice.png")
 ]
 
 var item_texture_hover = [
 	preload("res://assets/inventory/items/banana_hover.png"),
 	preload("res://assets/inventory/items/watches_hover.png"),
 	preload("res://assets/inventory/items/wnp_hover.png"),
-	preload("res://assets/inventory/items/lemonade_hover.png")
+	preload("res://assets/inventory/items/lemonade_hover.png"),
+	preload("res://assets/inventory/items/dice_hover.png")
 ]
 
 @onready var items = [
@@ -51,6 +53,7 @@ var index = 0
 var banana_has_interacted: bool = false
 var watches_has_interacted: bool = false
 var wnp_has_interacted: bool = false
+var dice_has_interacted:bool = false
 var rng = RandomNumberGenerator.new()
 
 var lemonade_has_interacted: bool = false
@@ -68,6 +71,8 @@ func _on_soul_pressed():
 	hp.text = "HP: %d/%d" % [Combat.player_current_health, Combat.player_max_health]
 	at.text = "AT: %d" % Combat.player_attack
 	co.text = "CO: %d" % coins
+	lv.text = "LV: %d" % Combat.lv
+	xp.text = "XP: %d/%d" % [Combat.xp, Combat.max_xp]
 	soul_choosed.visible = true
 	inventory_choosed.visible = false
 
@@ -89,6 +94,7 @@ func _on_quit_pressed():
 var banana_equipped = false
 var watches_equipped = false
 var wnp_equipped = false
+var dice_equipped = false
 
 func item_on_equip(item_index):
 	soul_choosed.visible = false
@@ -114,6 +120,7 @@ func item_on_equip(item_index):
 		banana_equipped = true
 		watches_equipped = false
 		wnp_equipped = false
+		dice_equipped = false
 	elif equipped.texture == load("res://assets/inventory/items/watches.png") and !watches_equipped:
 		Combat.player_attack = 10
 		Combat.player_max_health = 50
@@ -121,6 +128,14 @@ func item_on_equip(item_index):
 		banana_equipped = false
 		watches_equipped = true	
 		wnp_equipped = false
+		dice_equipped = false
+	elif equipped.texture == load("res://assets/inventory/items/dice.png") and !dice_equipped:
+		Combat.player_attack = 10
+		Combat.player_max_health = 50
+		banana_equipped = false
+		watches_equipped = false	
+		wnp_equipped = false
+		dice_equipped = true
 	
 func item_on_unequip():
 	soul_choosed.visible = false
@@ -189,14 +204,14 @@ func _on_eleventh_pressed():
 func _on_twelfth_pressed():
 	on_pressed_structure(11)
 
-#func _process(_delta):
-	#var random_number = rng.randi_range(-2, 2)
-	#if equipped.texture == load("res://assets/inventory/items/wnp.png") and !wnp_equipped:
-		#Combat.player_attack += random_number
-		#at.text = "AT: %d" % Combat.player_attack
-		#banana_equipped = false
-		#watches_equipped = false
-	#print(random_number)
-	#set_process(false)
-	#await get_tree().create_timer(0.1).timeout
-	#set_process(true)
+func _process(_delta):
+	if dice_equipped:
+		var random_number = rng.randi_range(-2, 2)
+		if random_number < 0:
+			Combat.player_attack = 0
+		else:
+			Combat.player_attack += random_number
+		at.text = "AT: %d" % Combat.player_attack
+		set_process(false)
+		await get_tree().create_timer(0.1).timeout
+		set_process(true)

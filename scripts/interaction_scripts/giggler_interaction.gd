@@ -8,6 +8,7 @@ var player_current_health = Combat.player_current_health
 func _on_area_entered(area):
 	if area.is_in_group("Player"):
 		Inventory.add_coins = 5
+		Combat.add_xp = 15
 		GlobalVariables.in_combat = true
 		Transition.combat_transition_animation.visible = true
 		Transition.combat_transition_animation.play("default")
