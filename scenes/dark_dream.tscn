@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://btrqv11ldc5xw"]
-
-[node name="DarkDream" type="Node2D"]
-
-[node name="TileMap" type="TileMap" parent="."]
-format = 2

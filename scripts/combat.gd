@@ -59,6 +59,19 @@ func enemy_health(enemy_current_health, enemy_max_health):
 	enemy_bar.value = enemy_current_health
 	enemy_label.text = "HP: %d/%d" % [enemy_current_health, enemy_max_health]
 
+func leveling_structure(xp_value, lv_value, max_xp_update, max_health, attack):
+	xp += add_xp
+	if xp >= xp_value and lv == lv_value:
+		player_max_health = max_health
+		player_attack = attack
+		lv = lv_value
+		if xp > xp_value:
+			xp -= xp_value
+		else:
+			xp = 0
+		max_xp = max_xp_update
+		player_current_health = player_max_health
+
 func leveling():
 	xp += add_xp
 	if xp >= 25 and lv == 1:
@@ -70,6 +83,7 @@ func leveling():
 		else:
 			xp = 0
 		max_xp = 50
+		player_current_health = player_max_health
 	elif xp >= 50 and lv == 2:
 		player_max_health = 60
 		player_attack = 20
@@ -79,6 +93,7 @@ func leveling():
 		else:
 			xp = 0
 		max_xp = 200
+		player_current_health = player_max_health
 	elif xp >= 200 and lv == 3:
 		player_max_health = 80
 		player_attack = 40
@@ -88,6 +103,7 @@ func leveling():
 		else:
 			xp = 0
 		max_xp = 450
+		player_current_health = player_max_health
 	elif xp >= 450 and lv == 4:
 		player_max_health = 100
 		player_attack = 60
@@ -97,7 +113,7 @@ func leveling():
 		else:
 			xp = 0
 		max_xp = 0
-	player_current_health = player_max_health
+		player_current_health = player_max_health
 		
 
 func combat(player_attack, damaged):
