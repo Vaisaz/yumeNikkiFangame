@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://d24lh6rmasgnm"]
+
+[ext_resource type="Texture2D" uid="uid://cj36ivprra6lo" path="res://assets/sprites/dark_dream/old_man_doors.png" id="1_s62do"]
+[ext_resource type="Script" path="res://scripts/interaction_scripts/interaction_old_man_doors.gd" id="2_1t2kg"]
+[ext_resource type="PackedScene" uid="uid://c1s8mfal8dbj3" path="res://assets/audio/sound.tscn" id="3_ho4dn"]
+[ext_resource type="AudioStream" uid="uid://cukph5fc4tjge" path="res://assets/audio/door_sound.mp3" id="4_65j4u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dkuib"]
+size = Vector2(16, 23.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s683q"]
+size = Vector2(16, 32)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+texture = ExtResource("1_s62do")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -3.75)
+shape = SubResource("RectangleShape2D_dkuib")
+
+[node name="interaction" type="Area2D" parent="."]
+position = Vector2(48, 62)
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("2_1t2kg")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="interaction"]
+position = Vector2(-48, -62)
+shape = SubResource("RectangleShape2D_s683q")
+
+[node name="DoorSound" parent="interaction" instance=ExtResource("3_ho4dn")]
+stream = ExtResource("4_65j4u")
+
+[connection signal="area_entered" from="interaction" to="interaction" method="_on_area_entered"]
+[connection signal="area_exited" from="interaction" to="interaction" method="_on_area_exited"]

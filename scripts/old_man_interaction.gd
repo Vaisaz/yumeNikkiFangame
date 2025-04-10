@@ -2,8 +2,8 @@ extends Area2D
 
 var messages = [
 	"",
-	"IT HAS BEEN A LONG TIME SINCE I SAW
-	SOMEONE DOWN HERE",
+	"IT HAS BEEN A LONG TIME SINCE I SAW SOMEONE
+	DOWN HERE",
 	"IT IS NOT IMPOSSIBLE TO GET HERE",
 	"HOWEVER, IT IS TOUGHT TO GET OUT",
 	"IT REQUIRES SOMETHING YOU HAVE FORGOTTEN",
@@ -53,7 +53,7 @@ func _input(event):
 		GlobalVariables.debounce = true
 		GlobalVariables.in_combat = true
 		canvas_layer.visible = true
-		if index == 7:
+		if index == 8:
 			canvas_layer.visible = false
 			GlobalVariables.debounce = false
 			GlobalVariables.in_combat = false

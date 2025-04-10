@@ -310,4 +310,6 @@ func old_man_defeat():
 	Inventory.hp.visible = false
 	Inventory.at.visible = false
 	Inventory.co.visible = false
+	Inventory.xp.visible = false
+	Inventory.lv.visible = false
 	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_HIDDEN)
