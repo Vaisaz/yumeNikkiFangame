@@ -1,7 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://cn7t5qquv062e"]
+[gd_scene load_steps=9 format=3 uid="uid://cn7t5qquv062e"]
 
 [ext_resource type="Texture2D" uid="uid://jxohybkec4pl" path="res://assets/sprites/happy_dream/giggler_sprite_sheet.png" id="1_3i3v7"]
-[ext_resource type="Script" path="res://scripts/enemy_combat_scripts/giggler/giggler_follow.gd" id="1_tsmkq"]
 [ext_resource type="Script" path="res://scripts/interaction_scripts/giggler_interaction.gd" id="2_qt60r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vtqbg"]
@@ -45,7 +44,6 @@ size = Vector2(17, 27.25)
 size = Vector2(27, 33)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
-script = ExtResource("1_tsmkq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -16)
