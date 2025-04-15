@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://d0jh7omnvfxod"]
+[gd_scene load_steps=32 format=3 uid="uid://d0jh7omnvfxod"]
 
 [ext_resource type="Texture2D" uid="uid://bqua316ypuuok" path="res://assets/sprites/happy_dream/happy_background.png" id="1_d4nht"]
 [ext_resource type="Texture2D" uid="uid://3a7wlxbyn60s" path="res://assets/sprites/happy_dream/tiles.png" id="1_g8k8r"]
@@ -287,6 +287,12 @@ size = Vector2(14, 16)
 [sub_resource type="CircleShape2D" id="CircleShape2D_0mrly"]
 radius = 94.4299
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6nyar"]
+size = Vector2(103, 2328.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fyx8x"]
+size = Vector2(2742.5, 65)
+
 [node name="happy_dream" type="Node2D"]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
@@ -327,7 +333,7 @@ position = Vector2(-48, -70)
 shape = SubResource("RectangleShape2D_vydhk")
 
 [node name="BananaCreature" parent="." instance=ExtResource("5_u8p5r")]
-position = Vector2(141, 160)
+position = Vector2(178, 189)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("4_6p538")]
 position = Vector2(0, 31)
@@ -359,6 +365,25 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Giggler2/EnemyRadius"]
 position = Vector2(0, -14)
 shape = SubResource("CircleShape2D_0mrly")
+
+[node name="Collisions" type="StaticBody2D" parent="."]
+position = Vector2(-462, 186)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions"]
+position = Vector2(107.5, -945.5)
+shape = SubResource("RectangleShape2D_6nyar")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Collisions"]
+position = Vector2(2829, -950)
+shape = SubResource("RectangleShape2D_6nyar")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Collisions"]
+position = Vector2(1456, 190)
+shape = SubResource("RectangleShape2D_fyx8x")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Collisions"]
+position = Vector2(1442, -2100)
+shape = SubResource("RectangleShape2D_fyx8x")
 
 [connection signal="area_entered" from="StaticBody2D/interaction" to="StaticBody2D/interaction" method="_on_area_entered"]
 [connection signal="area_exited" from="StaticBody2D/interaction" to="StaticBody2D/interaction" method="_on_area_exited"]
