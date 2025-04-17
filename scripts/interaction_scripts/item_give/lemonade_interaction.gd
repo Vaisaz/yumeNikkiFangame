@@ -65,9 +65,10 @@ func show_message():
 		message_displayed = true
 		
 func _input(event):
-	if interaction_times == 0 and interact and event.is_action_pressed("interact") and message_displayed and interact and Input.is_action_just_pressed("interact") and Transition.canvas_layer.visible == false and Inventory.inventory_layer.visible == false and Inventory.coins >= 5:
+	if interact:
+		Inventory.items_disabled_checker()
+	if interaction_times == 0 and interact and event.is_action_pressed("interact") and message_displayed and interact and Input.is_action_just_pressed("interact") and Transition.canvas_layer.visible == false and Inventory.inventory_layer.visible == false and Inventory.coins >= 5 and !Inventory.all_items_enabled:
 		if Inventory.lemonade_has_interacted:
-			register_sound.play()
 			interaction_times = 2
 			has_interacted = false
 			return
@@ -103,6 +104,8 @@ func _input(event):
 		index += 1
 		show_message()
 	elif interaction_times == 2 and message_displayed and interact and Transition.canvas_layer.visible == false and Inventory.inventory_layer.visible == false and Inventory.coins >= 5:
+		if !Inventory.index >= 12:
+			register_sound.play()
 		for item_count in Inventory.items:
 			print(item_count)
 			if Inventory.index == 0:

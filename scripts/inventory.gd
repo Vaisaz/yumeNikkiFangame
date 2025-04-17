@@ -77,16 +77,13 @@ func _on_soul_pressed():
 	inventory_choosed.visible = false
 
 func _on_inventory_pressed():
+	items_disabled_checker()
 	inventory_choosed.visible = true
 	soul_choosed.visible = false
-	if !$InventoryLayer/InventoryChoosed/first.disabled or !$InventoryLayer/InventoryChoosed/second.disabled or !$InventoryLayer/InventoryChoosed/third.disabled:
-		if !$InventoryLayer/InventoryChoosed/first.disabled:
-			$InventoryLayer/InventoryChoosed/first.grab_focus()
-		if !$InventoryLayer/InventoryChoosed/second.disabled:
-			$InventoryLayer/InventoryChoosed/second.grab_focus()
-		if !$InventoryLayer/InventoryChoosed/third.disabled:
-			$InventoryLayer/InventoryChoosed/third.grab_focus()
-		DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_VISIBLE)
+	for n in 12:
+		if !items[n].disabled:
+			items[n].grab_focus()
+			DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_VISIBLE)
 
 func _on_quit_pressed():
 	get_tree().quit()
@@ -152,6 +149,7 @@ func item_on_unequip():
 var equip: bool = false
 
 func on_pressed_structure(num):
+	Inventory.index = 0
 	if items[num].texture_normal == load("res://assets/inventory/items/lemonade.png"):
 		item_on_equip(num)
 	elif num == 0 and items[0].texture_normal == load("res://assets/inventory/items/hope.png"):
@@ -215,3 +213,13 @@ func _process(_delta):
 		set_process(false)
 		await get_tree().create_timer(0.1).timeout
 		set_process(true)
+		
+var all_items_enabled: bool = false
+		
+func items_disabled_checker():
+	for n in 12:
+		if !items[n].disabled:
+			all_items_enabled = true
+		elif items[n].disabled:
+			all_items_enabled = false
+			return

@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://bh562ayvwf3l"]
 
 [ext_resource type="Texture2D" uid="uid://dt5miursdmkmw" path="res://assets/sprites/number_dream/number_enthusiast.png" id="1_c6bkt"]
-[ext_resource type="Script" path="res://scripts/interaction_scripts/number_enthusiast_interaction.gd" id="2_m6qsl"]
+[ext_resource type="Script" path="res://scripts/interaction_scripts/item_give/number_enthusiast_interaction.gd" id="2_m6qsl"]
 [ext_resource type="Texture2D" uid="uid://beh4pnr72b2sx" path="res://assets/blank_frame_bigger.png" id="3_gkcvf"]
 [ext_resource type="FontFile" uid="uid://b5lqlis8c3a4k" path="res://assets/I-pixel-u.ttf" id="4_6qddw"]
 [ext_resource type="PackedScene" uid="uid://c1s8mfal8dbj3" path="res://assets/audio/sound.tscn" id="5_vtpio"]

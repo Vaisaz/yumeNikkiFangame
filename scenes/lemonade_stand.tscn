@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://7qlcvxsvyst5"]
 
 [ext_resource type="Texture2D" uid="uid://bot1756xcpfjl" path="res://assets/sprites/main/lemonade_stand_guy_sheet.png" id="1_rwk07"]
-[ext_resource type="Script" path="res://scripts/lemonade_interaction.gd" id="2_llt6y"]
+[ext_resource type="Script" path="res://scripts/interaction_scripts/item_give/lemonade_interaction.gd" id="2_llt6y"]
 [ext_resource type="Texture2D" uid="uid://beh4pnr72b2sx" path="res://assets/blank_frame_bigger.png" id="3_7613i"]
 [ext_resource type="FontFile" uid="uid://b5lqlis8c3a4k" path="res://assets/I-pixel-u.ttf" id="4_4u3ex"]
 [ext_resource type="PackedScene" uid="uid://c1s8mfal8dbj3" path="res://assets/audio/sound.tscn" id="5_53xcf"]
