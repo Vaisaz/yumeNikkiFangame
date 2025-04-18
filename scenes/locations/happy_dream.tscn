@@ -288,10 +288,10 @@ size = Vector2(14, 16)
 radius = 94.4299
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6nyar"]
-size = Vector2(103, 2328.5)
+size = Vector2(87, 2360)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fyx8x"]
-size = Vector2(2742.5, 65)
+size = Vector2(2811.63, 65)
 
 [node name="happy_dream" type="Node2D"]
 
@@ -370,19 +370,19 @@ shape = SubResource("CircleShape2D_0mrly")
 position = Vector2(-462, 186)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions"]
-position = Vector2(107.5, -945.5)
+position = Vector2(115.5, -952)
 shape = SubResource("RectangleShape2D_6nyar")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Collisions"]
-position = Vector2(2829, -950)
+position = Vector2(2836, -952)
 shape = SubResource("RectangleShape2D_6nyar")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Collisions"]
-position = Vector2(1456, 190)
+position = Vector2(1476, 197)
 shape = SubResource("RectangleShape2D_fyx8x")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Collisions"]
-position = Vector2(1442, -2100)
+position = Vector2(1477, -2101)
 shape = SubResource("RectangleShape2D_fyx8x")
 
 [connection signal="area_entered" from="StaticBody2D/interaction" to="StaticBody2D/interaction" method="_on_area_entered"]

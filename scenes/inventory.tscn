@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://sxehq5ji44xm"]
+[gd_scene load_steps=24 format=3 uid="uid://sxehq5ji44xm"]
 
 [ext_resource type="Script" path="res://scripts/inventory.gd" id="1_g2hi5"]
 [ext_resource type="Texture2D" uid="uid://c0rntsul0u3x4" path="res://assets/inventory/inventory_frame.png" id="1_y1dyy"]
@@ -11,6 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://ye0kpsgym586" path="res://assets/inventory/frame_kozetsu_bigger.png" id="9_hhqae"]
 [ext_resource type="Texture2D" uid="uid://bvhnrj63o8vr3" path="res://assets/inventory/dream_eye/dream_eye.png" id="10_ymfx7"]
 [ext_resource type="FontFile" uid="uid://b5lqlis8c3a4k" path="res://assets/I-pixel-u.ttf" id="11_pu7wn"]
+[ext_resource type="Texture2D" uid="uid://crkdkhpy0yrss" path="res://assets/large_frame.png" id="12_ebbbx"]
+[ext_resource type="Texture2D" uid="uid://bv840pk7h6nh5" path="res://assets/inventory/leave_to_title.png" id="13_e7apf"]
+[ext_resource type="Texture2D" uid="uid://bvo7gir3k1rv7" path="res://assets/inventory/leave_to_title_hover.png" id="14_dshdp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nt2w2"]
 atlas = ExtResource("10_ymfx7")
@@ -309,6 +312,32 @@ offset_bottom = 527.0
 scale = Vector2(3, 3)
 disabled = true
 
+[node name="QuitChoosed" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="QuitFrame" type="Sprite2D" parent="QuitChoosed"]
+position = Vector2(692, 326)
+scale = Vector2(3, 3)
+texture = ExtResource("12_ebbbx")
+
+[node name="Leave" type="TextureButton" parent="QuitChoosed"]
+offset_left = 561.0
+offset_top = 173.0
+offset_right = 625.0
+offset_bottom = 205.0
+scale = Vector2(4, 4)
+texture_normal = ExtResource("13_e7apf")
+texture_hover = ExtResource("14_dshdp")
+
+[node name="QuitSecond" type="TextureButton" parent="QuitChoosed"]
+offset_left = 561.0
+offset_top = 348.0
+offset_right = 625.0
+offset_bottom = 380.0
+scale = Vector2(4, 4)
+texture_normal = ExtResource("6_s8scw")
+texture_hover = ExtResource("7_n4dys")
+
 [connection signal="pressed" from="InventoryLayer/Buttons/Soul" to="." method="_on_soul_pressed"]
 [connection signal="pressed" from="InventoryLayer/Buttons/Inventory" to="." method="_on_inventory_pressed"]
 [connection signal="pressed" from="InventoryLayer/Buttons/Quit" to="." method="_on_quit_pressed"]
@@ -324,3 +353,5 @@ disabled = true
 [connection signal="pressed" from="InventoryLayer/InventoryChoosed/tenth" to="." method="_on_tenth_pressed"]
 [connection signal="pressed" from="InventoryLayer/InventoryChoosed/eleventh" to="." method="_on_eleventh_pressed"]
 [connection signal="pressed" from="InventoryLayer/InventoryChoosed/twelfth" to="." method="_on_twelfth_pressed"]
+[connection signal="pressed" from="QuitChoosed/Leave" to="." method="_on_leave_pressed"]
+[connection signal="pressed" from="QuitChoosed/QuitSecond" to="." method="_on_quit_second_pressed"]

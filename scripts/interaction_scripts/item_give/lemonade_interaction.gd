@@ -88,8 +88,8 @@ func _input(event):
 			index += 1
 			show_message()
 	elif interaction_times == 1 and interact and event.is_action_pressed("interact") and message_displayed and interact and Input.is_action_just_pressed("interact") and Transition.canvas_layer.visible == false and Inventory.inventory_layer.visible == false and Inventory.coins >= 5:
-		if index == 4:
-			register_sound.play()
+		#if index == 4:
+			#register_sound.play()
 		GlobalVariables.debounce = true
 		GlobalVariables.in_combat = true
 		canvas_layer.visible = true

@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://crud48yia660j" path="res://assets/combat/combat_buttons/items_hover.png" id="7_un8uj"]
 [ext_resource type="PackedScene" uid="uid://c1s8mfal8dbj3" path="res://assets/audio/sound.tscn" id="9_m10k8"]
 [ext_resource type="AudioStream" uid="uid://vixrae60piee" path="res://assets/audio/old_man_blips/ringsuf.mp3" id="10_6t5dc"]
-[ext_resource type="Texture2D" uid="uid://ye0kpsgym586" path="res://assets/inventory/frame_kozetsu_bigger.png" id="11_5ef3c"]
+[ext_resource type="Texture2D" uid="uid://crkdkhpy0yrss" path="res://assets/large_frame.png" id="12_rxb6p"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xwg25"]
 atlas = ExtResource("2_6qdto")
@@ -218,9 +218,9 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="FrameKozetsuBigger" type="Sprite2D" parent="Combat/ItemsLayer"]
-position = Vector2(582.5, 326)
-scale = Vector2(3.85547, 1.89844)
-texture = ExtResource("11_5ef3c")
+position = Vector2(581.5, 327.432)
+scale = Vector2(3.94, 3.864)
+texture = ExtResource("12_rxb6p")
 
 [node name="first" type="TextureButton" parent="Combat/ItemsLayer"]
 offset_left = 168.0

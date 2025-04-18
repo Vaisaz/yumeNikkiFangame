@@ -1,28 +1,32 @@
 extends Node
 
 var messages = [
-	"Hello and welcome to a layer of reality.",
-	"The layer of reality which supplements irrationality.",
-	"The layer of reality which is accessed through dreaming.",
-	"The layer which makes your reality more complete.",
-	"Who am I, you ask?",
-	"I don't want to satisfy you with your question, so i'll end my response with just that.",
-	"If you're wondering why I don't open my mouth when I talk, 
-	it's because my vocal cords aren't well developed.",
-	"So I transfer my thoughts to your mind.",
-	"It definitely doesn't have to do with me being lazy or something!",
+	"HELLO AND WELCOME TO A LAYER OF REALITY.",
+	"THE LAYER OF REALITY WHICH SUPPLEMENTS IRRATIONALITY.",
+	"THE LAYER OF REALITY WHICH IS ACCESSED THROUGH DREAMING.",
+	"THE LAYER WHICH MAKES YOUR REALITY MORE COMPLETE.",
+	"WHO AM I, YOU ASK?",
+	"I DON'T WANT TO SATISFY YOU WITH YOUR QUESTION, SO I'LL
+	END MY RESPONSE WITH JUST THAT.",
+	"IF YOU'RE WONDERING WHY I DON'T OPEN MY MOUTH WHEN I TALK,
+	IT'S BECAUSE MY VOCAL CORDS AREN'T WELL DEVELOPED.",
+	"SO I TRANSFER MY THOUGHTS TO YOUR MIND.",
+	"IT DEFINITELY DOESN'T HAVE TO DO WITH ME BEING LAZY OR
+	SOMETHING!",
 	"ANYWAY!",
-	"I'm supposed to tell you how to dream and how to move in this layer.",
-	"I think you already know how to dream, simply go to bed.",
-	"To move, you can use W, A, S, D and arrow keys.",
-	"To interact, you can use E, Space or Enter keys.",
-	"To open your inventory while dreaming, you can use Esc key",
-	"And to wake up, you can only use M key.",
-	"Movement and interaction also apply in the layer of reality in which you normally reside.",
-	"What do I mean by these keys, is this a video game or something?",
-	"Well, let's just break the fourth wall now.",
-	"Enjoy my game!"
-	]
+	"I'M SUPPOSED TO TELL YOU HOW TO DREAM AND HOW TO MOVE
+	IN THIS LAYER.",
+	"I THINK YOU ALREADY KNOW HOW TO DREAM, SIMPLY GO TO BED.",
+	"TO MOVE, YOU CAN USE W, A, S, D AND ARROW KEYS.",
+	"TO INTERACT, YOU CAN USE E, SPACE OR ENTER KEYS.",
+	"TO OPEN YOUR INVENTORY WHILE DREAMING, YOU CAN USE ESC KEY.",
+	"AND TO WAKE UP, YOU CAN ONLY USE M KEY.",
+	"MOVEMENT AND INTERACTION ALSO APPLY IN THE LAYER OF REALITY
+	IN WHICH YOU NORMALLY RESIDE.",
+	"WHAT DO I MEAN BY THESE KEYS, IS THIS A VIDEO GAME OR SOMETHING?",
+	"WELL, LET'S JUST BREAK THE FOURTH WALL NOW.",
+	"ENJOY MY GAME!"
+]
 var beeps = [
 	preload("res://assets/guide/beeps/1.wav"),
 	preload("res://assets/guide/beeps/2.wav"),

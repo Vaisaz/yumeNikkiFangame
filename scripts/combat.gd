@@ -47,6 +47,7 @@ var enemy_attack
 func _ready():
 	fight_button.disabled = false
 	run_button.disabled = false
+	items_button.disabled = false
 
 func player_health():
 	player_bar.max_value = player_max_health
@@ -120,6 +121,7 @@ func combat(player_attack, damaged):
 	var turn = rng.randi_range(1, 2)
 	fight_button.disabled = true
 	run_button.disabled = true
+	items_button.disabled = true
 	if turn == 1:
 		enemy_current_health = enemy_current_health - player_attack
 		enemy_health(enemy_current_health, enemy_max_health)
@@ -144,6 +146,7 @@ func combat(player_attack, damaged):
 				combat_layer.visible = false
 				fight_button.disabled = false
 				run_button.disabled = false
+				items_button.disabled = false
 				DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_HIDDEN)
 		else:
 			player_current_health = player_current_health - enemy_attack
@@ -158,6 +161,7 @@ func combat(player_attack, damaged):
 			await get_tree().create_timer(0.1).timeout
 			fight_button.disabled = false
 			run_button.disabled = false
+			items_button.disabled = false
 			if player_current_health <= 0:
 				if GlobalVariables.outfit == 1:
 					combat_sound.stop()
@@ -165,6 +169,7 @@ func combat(player_attack, damaged):
 					GlobalVariables.in_combat = true
 					fight_button.disabled = false
 					run_button.disabled = false
+					items_button.disabled = false
 					combat_layer.visible = false
 					DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_HIDDEN)
 					get_tree().change_scene_to_file("res://scenes/locations/room.tscn")
@@ -192,6 +197,7 @@ func combat(player_attack, damaged):
 					GlobalVariables.in_combat = true
 					fight_button.disabled = false
 					run_button.disabled = false
+					items_button.disabled = false
 					combat_layer.visible = false
 					DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_HIDDEN)
 					get_tree().change_scene_to_file("res://scenes/locations/room.tscn")
@@ -215,6 +221,7 @@ func combat(player_attack, damaged):
 				await get_tree().create_timer(0.1).timeout
 			fight_button.disabled = false
 			run_button.disabled = false
+			items_button.disabled = false
 			if enemy_current_health <= 0:
 				if enemy_texture.texture == load("res://assets/combat/old_man_sprite_sheet.png"):
 					old_man_defeat()
@@ -227,6 +234,7 @@ func combat(player_attack, damaged):
 					combat_layer.visible = false
 					fight_button.disabled = false
 					run_button.disabled = false
+					items_button.disabled = false
 					DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_HIDDEN)
 
 func _on_fight_button_pressed():
@@ -255,6 +263,11 @@ func _on_items_button_pressed():
 func on_pressed_structure(num):
 	$Combat/ItemsLayer.visible = false
 	Inventory.item_on_equip(num)
+	player_health()
+	fight_button.disabled = true
+	run_button.disabled = true
+	items_button.disabled = true
+	await get_tree().create_timer(0.4).timeout
 	combat(0, false)
 	items[num].disabled = true
 	items[num].visible = false

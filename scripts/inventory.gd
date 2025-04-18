@@ -46,6 +46,7 @@ var item_texture_hover = [
 @onready var inventory_layer = $InventoryLayer
 @onready var soul_choosed = $InventoryLayer/SoulChoosed
 @onready var inventory_choosed = $InventoryLayer/InventoryChoosed
+@onready var quit_choosed = $QuitChoosed
 
 @onready var eye = $InventoryLayer/SoulChoosed/AnimatedSprite2D
 
@@ -68,6 +69,7 @@ func _ready():
 	quit_button.texture_focused = quit_button.texture_hover
 		
 func _on_soul_pressed():
+	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_HIDDEN)
 	hp.text = "HP: %d/%d" % [Combat.player_current_health, Combat.player_max_health]
 	at.text = "AT: %d" % Combat.player_attack
 	co.text = "CO: %d" % coins
@@ -75,17 +77,33 @@ func _on_soul_pressed():
 	xp.text = "XP: %d/%d" % [Combat.xp, Combat.max_xp]
 	soul_choosed.visible = true
 	inventory_choosed.visible = false
+	quit_choosed.visible = false
 
 func _on_inventory_pressed():
+	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_HIDDEN)
 	items_disabled_checker()
 	inventory_choosed.visible = true
 	soul_choosed.visible = false
+	quit_choosed.visible = false
 	for n in 12:
 		if !items[n].disabled:
 			items[n].grab_focus()
 			DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_VISIBLE)
 
 func _on_quit_pressed():
+	soul_choosed.visible = false
+	inventory_choosed.visible = false
+	quit_choosed.visible = true
+	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_VISIBLE)
+	
+func _on_leave_pressed():
+	get_tree().change_scene_to_file("res://scenes/menu.tscn")
+	inventory_layer.visible = false
+	soul_choosed.visible = false
+	inventory_choosed.visible = false
+	quit_choosed.visible = false
+	
+func _on_quit_second_pressed():
 	get_tree().quit()
 
 var banana_equipped = false

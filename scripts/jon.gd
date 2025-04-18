@@ -87,7 +87,7 @@ var inventory_pressed = false
 func _input(_event):
 	if Input.is_action_pressed("up") or Input.is_action_pressed("down") or Input.is_action_pressed("left") or Input.is_action_pressed("right"):
 		pass
-	if Input.is_action_just_pressed("wake_up") and !get_tree().current_scene.scene_file_path == "res://scenes/locations/room.tscn" and !Transition.canvas_layer.visible and !GlobalVariables.debounce:
+	if Input.is_action_just_pressed("wake_up") and !get_tree().current_scene.scene_file_path == "res://scenes/locations/room.tscn" and !Transition.canvas_layer.visible and !GlobalVariables.debounce and !Inventory.inventory_layer.visible:
 		if GlobalVariables.outfit == 2:
 			GlobalVariables.in_combat = true
 			Transition.combat_transition_animation.visible = true
@@ -133,5 +133,6 @@ func _input(_event):
 			DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_HIDDEN)
 			Inventory.inventory_layer.visible = false
 			Inventory.soul_choosed.visible = false
+			Inventory.quit_choosed.visible = false
 			Inventory.inventory_choosed.visible = false
 			inventory_pressed = false
