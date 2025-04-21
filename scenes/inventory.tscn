@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://sxehq5ji44xm"]
+[gd_scene load_steps=26 format=3 uid="uid://sxehq5ji44xm"]
 
 [ext_resource type="Script" path="res://scripts/inventory.gd" id="1_g2hi5"]
 [ext_resource type="Texture2D" uid="uid://c0rntsul0u3x4" path="res://assets/inventory/inventory_frame.png" id="1_y1dyy"]
@@ -14,6 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://crkdkhpy0yrss" path="res://assets/large_frame.png" id="12_ebbbx"]
 [ext_resource type="Texture2D" uid="uid://bv840pk7h6nh5" path="res://assets/inventory/leave_to_title.png" id="13_e7apf"]
 [ext_resource type="Texture2D" uid="uid://bvo7gir3k1rv7" path="res://assets/inventory/leave_to_title_hover.png" id="14_dshdp"]
+[ext_resource type="PackedScene" uid="uid://c1s8mfal8dbj3" path="res://assets/audio/sound.tscn" id="15_gfa0p"]
+[ext_resource type="AudioStream" uid="uid://bcr3cktgm5ed0" path="res://assets/audio/healed.wav" id="16_unk72"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nt2w2"]
 atlas = ExtResource("10_ymfx7")
@@ -337,6 +339,9 @@ offset_bottom = 380.0
 scale = Vector2(4, 4)
 texture_normal = ExtResource("6_s8scw")
 texture_hover = ExtResource("7_n4dys")
+
+[node name="HealedSound" parent="." instance=ExtResource("15_gfa0p")]
+stream = ExtResource("16_unk72")
 
 [connection signal="pressed" from="InventoryLayer/Buttons/Soul" to="." method="_on_soul_pressed"]
 [connection signal="pressed" from="InventoryLayer/Buttons/Inventory" to="." method="_on_inventory_pressed"]

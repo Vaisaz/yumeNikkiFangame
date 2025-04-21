@@ -64,9 +64,10 @@ func _input(event):
 			index += 1
 			show_message()
 	elif interaction_times == 1 and message_displayed and event.is_action_pressed("interact") and interact and Transition.canvas_layer.visible == false and Inventory.inventory_layer.visible == false:
-		if Inventory.index >= 12:
-			register_sound.play()
+		Inventory.index = 0
 		for item_count in 12:
+			if !Inventory.items[item_count].texture_normal == null:
+				register_sound.play()
 			Inventory.items[item_count].texture_normal = null
 			Inventory.items[item_count].texture_hover = null
 			Combat.items[item_count].texture_normal = null
@@ -79,10 +80,4 @@ func _input(event):
 			Inventory.dice_has_interacted = false
 			Inventory.wnp_has_interacted = false
 			print(item_count)
-		print("not part of loop")
-		Inventory.index = 0
-		interaction_times = 2
 		print(Inventory.index)
-				
-		if interaction_times == 2 and message_displayed and interact and Transition.canvas_layer.visible == false and Inventory.inventory_layer.visible == false:
-			interaction_times = 0

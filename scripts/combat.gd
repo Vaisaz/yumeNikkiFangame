@@ -13,6 +13,9 @@ extends Control
 @onready var player_label = $Combat/PlayerBar/Label
 @onready var you = $Combat/You
 
+@onready var damaged_sound = $DamagedSound
+@onready var leveled_sound = $LeveledSound
+
 @onready var combat_sound = $Combat/CombatSound
 
 @onready var items = [
@@ -78,6 +81,7 @@ func leveling():
 		Inventory.item_on_unequip()
 	xp += add_xp
 	if xp >= 25 and lv == 1:
+		leveled_sound.play()
 		player_max_health = 55
 		player_attack = 15
 		lv = 2
@@ -88,6 +92,7 @@ func leveling():
 		max_xp = 50
 		player_current_health = player_max_health
 	if xp >= 50 and lv == 2:
+		leveled_sound.play()
 		player_max_health = 60
 		player_attack = 20
 		lv = 3
@@ -98,6 +103,7 @@ func leveling():
 		max_xp = 200
 		player_current_health = player_max_health
 	if xp >= 200 and lv == 3:
+		leveled_sound.play()
 		player_max_health = 80
 		player_attack = 40
 		lv = 4
@@ -108,6 +114,7 @@ func leveling():
 		max_xp = 450
 		player_current_health = player_max_health
 	if xp >= 450 and lv == 4:
+		leveled_sound.play()
 		player_max_health = 100
 		player_attack = 60
 		lv = 5
@@ -128,6 +135,7 @@ func combat(player_attack, damaged):
 		enemy_current_health = enemy_current_health - player_attack
 		enemy_health(enemy_current_health, enemy_max_health)
 		if damaged:
+			damaged_sound.play()
 			enemy_texture.visible = false
 			await get_tree().create_timer(0.1).timeout
 			enemy_texture.visible = true
@@ -153,6 +161,7 @@ func combat(player_attack, damaged):
 		else:
 			player_current_health = player_current_health - enemy_attack
 			player_health()
+			damaged_sound.play()
 			you.visible = false
 			await get_tree().create_timer(0.1).timeout
 			you.visible = true
@@ -185,6 +194,7 @@ func combat(player_attack, damaged):
 	if turn == 2:
 		player_current_health = player_current_health - enemy_attack
 		player_health()
+		damaged_sound.play()
 		you.visible = false
 		await get_tree().create_timer(0.1).timeout
 		you.visible = true
@@ -215,6 +225,7 @@ func combat(player_attack, damaged):
 			enemy_current_health = enemy_current_health - player_attack
 			enemy_health(enemy_current_health, enemy_max_health)
 			if damaged:
+				damaged_sound.play()
 				enemy_texture.visible = false
 				await get_tree().create_timer(0.1).timeout
 				enemy_texture.visible = true
@@ -245,6 +256,7 @@ func _on_fight_button_pressed():
 	combat(player_attack, true)
 		
 func _on_run_button_pressed():
+	combat_sound.stop()
 	combat_layer.visible = false
 	GlobalVariables.debounce = false
 	GlobalVariables.in_combat = false

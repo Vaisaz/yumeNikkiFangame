@@ -50,6 +50,8 @@ var item_texture_hover = [
 
 @onready var eye = $InventoryLayer/SoulChoosed/AnimatedSprite2D
 
+@onready var healed_sound = $HealedSound
+
 var index = 0
 var banana_has_interacted: bool = false
 var watches_has_interacted: bool = false
@@ -141,6 +143,7 @@ func item_on_equip(item_index):
 		if Combat.player_current_health > Combat.player_max_health:
 			Combat.player_current_health = Combat.player_max_health
 		index = 0
+		healed_sound.play()
 	else: 
 		equipped.texture = items[item_index].texture_normal
 	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_HIDDEN)

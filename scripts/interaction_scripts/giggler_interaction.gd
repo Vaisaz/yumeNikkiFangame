@@ -7,8 +7,9 @@ var player_current_health = Combat.player_current_health
 
 func _on_area_entered(area):
 	if area.is_in_group("Player"):
+		Combat.combat_sound.stream = load("res://assets/audio/combat_music.mp3")
 		Inventory.add_coins = 2
-		Combat.add_xp = 50
+		Combat.add_xp = 5000
 		GlobalVariables.in_combat = true
 		Transition.combat_transition_animation.visible = true
 		Transition.combat_transition_animation.play("default")
@@ -29,4 +30,5 @@ func _on_area_entered(area):
 		print("interacted")
 		Combat.combat_layer.visible = true
 		DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_VISIBLE)
+		Combat.combat_sound.play()
 

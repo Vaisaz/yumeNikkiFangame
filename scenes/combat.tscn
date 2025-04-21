@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cee12bto8qsua"]
+[gd_scene load_steps=23 format=3 uid="uid://cee12bto8qsua"]
 
 [ext_resource type="Script" path="res://scripts/combat.gd" id="1_5fjro"]
 [ext_resource type="Texture2D" uid="uid://b8fabkydvdqry" path="res://assets/combat/combat_frame.png" id="2_6qdto"]
@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://c1s8mfal8dbj3" path="res://assets/audio/sound.tscn" id="9_m10k8"]
 [ext_resource type="AudioStream" uid="uid://vixrae60piee" path="res://assets/audio/old_man_blips/ringsuf.mp3" id="10_6t5dc"]
 [ext_resource type="Texture2D" uid="uid://crkdkhpy0yrss" path="res://assets/large_frame.png" id="12_rxb6p"]
+[ext_resource type="AudioStream" uid="uid://qwguq6dogun6" path="res://assets/audio/damaged.wav" id="13_msy7g"]
+[ext_resource type="AudioStream" uid="uid://bpum3gjidmvmh" path="res://assets/audio/leveled.wav" id="14_h5ib1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xwg25"]
 atlas = ExtResource("2_6qdto")
@@ -320,6 +322,12 @@ offset_right = 859.0
 offset_bottom = 469.0
 scale = Vector2(3, 3)
 disabled = true
+
+[node name="DamagedSound" parent="." instance=ExtResource("9_m10k8")]
+stream = ExtResource("13_msy7g")
+
+[node name="LeveledSound" parent="." instance=ExtResource("9_m10k8")]
+stream = ExtResource("14_h5ib1")
 
 [connection signal="pressed" from="Combat/FightButton" to="." method="_on_fight_button_pressed"]
 [connection signal="pressed" from="Combat/ItemsButton" to="." method="_on_items_button_pressed"]

@@ -87,7 +87,7 @@ position = Vector2(-47.5, -76.5)
 shape = SubResource("RectangleShape2D_w6rhi")
 
 [node name="happy_warp" parent="." instance=ExtResource("8_0nmn3")]
-position = Vector2(28, 136)
+position = Vector2(31, 136)
 
 [node name="interaction" type="Area2D" parent="happy_warp"]
 position = Vector2(48, 62)

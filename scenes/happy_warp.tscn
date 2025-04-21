@@ -39,10 +39,11 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fi8ms"]
-height = 28.0
+radius = 16.0
+height = 32.0
 
 [node name="happy_warp" type="StaticBody2D"]
-position = Vector2(28, 136)
+position = Vector2(-1, 0)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -16)

@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://beh4pnr72b2sx" path="res://assets/blank_frame_bigger.png" id="3_ccwmj"]
 [ext_resource type="FontFile" uid="uid://b5lqlis8c3a4k" path="res://assets/I-pixel-u.ttf" id="4_oreuy"]
 [ext_resource type="PackedScene" uid="uid://c1s8mfal8dbj3" path="res://assets/audio/sound.tscn" id="5_63o3j"]
-[ext_resource type="AudioStream" uid="uid://d0f8smbjcmcj7" path="res://assets/audio/lemonade_blips/register.wav" id="6_fswe1"]
+[ext_resource type="AudioStream" uid="uid://cgnkv72u5amew" path="res://assets/audio/trashed.wav" id="6_76yej"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ilv6s"]
 atlas = ExtResource("1_rj51t")
@@ -160,7 +160,7 @@ theme_override_font_sizes/font_size = 8
 [node name="Sound" parent="." instance=ExtResource("5_63o3j")]
 
 [node name="RegisterSound" parent="." instance=ExtResource("5_63o3j")]
-stream = ExtResource("6_fswe1")
+stream = ExtResource("6_76yej")
 volume_db = 15.0
 pitch_scale = 0.7
 panning_strength = 0.0
