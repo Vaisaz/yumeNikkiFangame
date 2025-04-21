@@ -46,7 +46,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q3wb2"]
-radius = 11.0
+radius = 17.0
+height = 34.0
 
 [node name="StaticBody2D" type="StaticBody2D"]
 

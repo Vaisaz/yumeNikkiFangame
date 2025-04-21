@@ -13,6 +13,7 @@ func _ready():
 
 func _on_start_pressed():
 	get_tree().change_scene_to_file("res://scenes/locations/room.tscn")
+	GlobalVariables.player_position = Vector2(-47,-43)
 
 func _on_guide_pressed():
 	get_tree().change_scene_to_file("res://scenes/guide.tscn")

@@ -12,6 +12,7 @@ func _on_area_exited(_area):
 	
 func _input(_event):
 	if interact and Input.is_action_just_pressed("interact") and Transition.canvas_layer.visible == false and Inventory.inventory_layer.visible == false and !Combat.combat_layer.visible:
+		GlobalVariables.player_position = Vector2(40,21)
 		Transition.playing_animation()
 		await Transition.animated_sprite_2d.animation_finished
 		door_sound.play()

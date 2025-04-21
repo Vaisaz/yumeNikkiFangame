@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dr21yfhjoldoo"]
+[gd_scene load_steps=22 format=3 uid="uid://dr21yfhjoldoo"]
 
 [ext_resource type="Texture2D" uid="uid://bkwg4d84vpwnn" path="res://assets/sprites/main/pixel_tiles.png" id="1_hfvtc"]
 [ext_resource type="Texture2D" uid="uid://b4g07ub54tlj2" path="res://assets/sprites/main/black.jpg" id="1_r6exr"]
@@ -16,6 +16,7 @@
 [ext_resource type="Script" path="res://scripts/interaction_scripts/number_warp_interaction.gd" id="11_n0jro"]
 [ext_resource type="PackedScene" uid="uid://xyib0c1l8y3v" path="res://scenes/test_inventory.tscn" id="15_wvg0s"]
 [ext_resource type="PackedScene" uid="uid://7qlcvxsvyst5" path="res://scenes/lemonade_stand.tscn" id="16_qhsxs"]
+[ext_resource type="PackedScene" uid="uid://dvwhyousdnx72" path="res://scenes/trash_guy.tscn" id="17_2skrs"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bpo8m"]
 texture = ExtResource("1_hfvtc")
@@ -130,6 +131,9 @@ shape = SubResource("RectangleShape2D_w6rhi")
 [node name="LemonadeStand" parent="." instance=ExtResource("16_qhsxs")]
 position = Vector2(81, -54)
 scale = Vector2(0.6, 0.6)
+
+[node name="StaticBody2D" parent="." instance=ExtResource("17_2skrs")]
+position = Vector2(146, -35)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("4_1wn3d")]
 position = Vector2(1, -24)

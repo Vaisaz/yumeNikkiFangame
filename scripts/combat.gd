@@ -74,6 +74,8 @@ func leveling_structure(xp_value, lv_value, max_xp_update, max_health, attack):
 		player_current_health = player_max_health
 
 func leveling():
+	if !Inventory.equipped.texture == null:
+		Inventory.item_on_unequip()
 	xp += add_xp
 	if xp >= 25 and lv == 1:
 		player_max_health = 55
@@ -85,32 +87,32 @@ func leveling():
 			xp = 0
 		max_xp = 50
 		player_current_health = player_max_health
-	elif xp >= 50 and lv == 2:
+	if xp >= 50 and lv == 2:
 		player_max_health = 60
 		player_attack = 20
 		lv = 3
-		if xp > 25:
-			xp -= 25
+		if xp > 50:
+			xp -= 50
 		else:
 			xp = 0
 		max_xp = 200
 		player_current_health = player_max_health
-	elif xp >= 200 and lv == 3:
+	if xp >= 200 and lv == 3:
 		player_max_health = 80
 		player_attack = 40
 		lv = 4
-		if xp > 25:
-			xp -= 25
+		if xp > 200:
+			xp -= 200
 		else:
 			xp = 0
 		max_xp = 450
 		player_current_health = player_max_health
-	elif xp >= 450 and lv == 4:
+	if xp >= 450 and lv == 4:
 		player_max_health = 100
 		player_attack = 60
 		lv = 5
-		if xp > 25:
-			xp -= 25
+		if xp > 450:
+			xp -= 450
 		else:
 			xp = 0
 		max_xp = 0
@@ -164,6 +166,7 @@ func combat(player_attack, damaged):
 			items_button.disabled = false
 			if player_current_health <= 0:
 				if GlobalVariables.outfit == 1:
+					GlobalVariables.player_position = Vector2(-47,-43)
 					combat_sound.stop()
 					GlobalVariables.debounce = true
 					GlobalVariables.in_combat = true
@@ -192,6 +195,7 @@ func combat(player_attack, damaged):
 		await get_tree().create_timer(0.1).timeout
 		if player_current_health <= 0:
 			if GlobalVariables.outfit == 1:
+					GlobalVariables.player_position = Vector2(-47,-43)
 					combat_sound.stop()
 					GlobalVariables.debounce = true
 					GlobalVariables.in_combat = true

@@ -7,8 +7,8 @@ var player_current_health = Combat.player_current_health
 
 func _on_area_entered(area):
 	if area.is_in_group("Player"):
-		Inventory.add_coins = 5
-		Combat.add_xp = 15
+		Inventory.add_coins = 2
+		Combat.add_xp = 50
 		GlobalVariables.in_combat = true
 		Transition.combat_transition_animation.visible = true
 		Transition.combat_transition_animation.play("default")
@@ -21,9 +21,9 @@ func _on_area_entered(area):
 		$"..".queue_free()
 		GlobalVariables.debounce = true
 		Combat.enemy_texture.texture = load("res://assets/combat/giggler.png")
-		Combat.enemy_max_health = 100
-		Combat.enemy_current_health = 100
-		Combat.enemy_attack = 1
+		Combat.enemy_max_health = 50
+		Combat.enemy_current_health = 50
+		Combat.enemy_attack = 20
 		Combat.enemy_health(Combat.enemy_current_health, Combat.enemy_max_health)
 		Combat.player_health()
 		print("interacted")

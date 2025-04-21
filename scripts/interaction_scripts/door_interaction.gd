@@ -19,6 +19,7 @@ func _input(_event):
 		if GlobalVariables.outfit == 2:
 			pass
 		else:
+			GlobalVariables.player_position = Vector2(1,-24)
 			Transition.playing_animation()
 			await Transition.animated_sprite_2d.animation_finished
 			door_sound.play()

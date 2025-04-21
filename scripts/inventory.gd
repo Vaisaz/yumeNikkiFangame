@@ -58,6 +58,7 @@ var dice_has_interacted:bool = false
 var rng = RandomNumberGenerator.new()
 
 var lemonade_has_interacted: bool = false
+var trash_has_interacted: bool = false
 
 var coins = 100
 var add_coins
@@ -111,6 +112,23 @@ var watches_equipped = false
 var wnp_equipped = false
 var dice_equipped = false
 
+func normal_health():
+	if Combat.lv == 1:
+		Combat.player_max_health = 50
+		Combat.player_attack = 10
+	elif Combat.lv == 2:
+		Combat.player_max_health = 55
+		Combat.player_attack = 15
+	elif Combat.lv == 3:
+		Combat.player_max_health = 60
+		Combat.player_attack = 20
+	elif Combat.lv == 4:
+		Combat.player_max_health = 80
+		Combat.player_attack = 40
+	elif Combat.lv == 5:
+		Combat.player_max_health = 100
+		Combat.player_attack = 60
+
 func item_on_equip(item_index):
 	soul_choosed.visible = false
 	inventory_choosed.visible = false
@@ -128,25 +146,22 @@ func item_on_equip(item_index):
 	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_HIDDEN)
 	inventory_button.grab_focus()
 	if equipped.texture == load("res://assets/inventory/items/banana.png") and !banana_equipped:
-		Combat.player_attack = 10
-		Combat.player_max_health = 50
+		normal_health()
 		Combat.player_attack -= 5
-		Combat.player_max_health += 25
+		Combat.player_max_health += 50
 		banana_equipped = true
 		watches_equipped = false
 		wnp_equipped = false
 		dice_equipped = false
-	elif equipped.texture == load("res://assets/inventory/items/watches.png") and !watches_equipped:
-		Combat.player_attack = 10
-		Combat.player_max_health = 50
-		Combat.player_attack = Combat.player_attack + 10
+	elif equipped.texture == load("res://assets/inventory/items/wnp.png") and !watches_equipped:
+		normal_health()
+		Combat.player_attack += 25
 		banana_equipped = false
 		watches_equipped = true	
 		wnp_equipped = false
 		dice_equipped = false
 	elif equipped.texture == load("res://assets/inventory/items/dice.png") and !dice_equipped:
-		Combat.player_attack = 10
-		Combat.player_max_health = 50
+		normal_health()
 		banana_equipped = false
 		watches_equipped = false	
 		wnp_equipped = false
@@ -157,8 +172,7 @@ func item_on_unequip():
 	inventory_choosed.visible = false
 	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_HIDDEN)
 	inventory_button.grab_focus()
-	Combat.player_attack = 10
-	Combat.player_max_health = 50
+	normal_health()
 	banana_equipped = false
 	watches_equipped = false
 	wnp_equipped = false
@@ -222,9 +236,9 @@ func _on_twelfth_pressed():
 
 func _process(_delta):
 	if dice_equipped:
-		var random_number = rng.randi_range(-2, 2)
+		var random_number = rng.randi_range(-1, 2)
 		if random_number < 0:
-			Combat.player_attack = 0
+			Combat.player_attack = 2
 		else:
 			Combat.player_attack += random_number
 		at.text = "AT: %d" % Combat.player_attack

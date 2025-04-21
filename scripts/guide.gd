@@ -91,6 +91,7 @@ func _input(event):
 			Transition.playing_animation()
 			await Transition.animated_sprite_2d.animation_finished
 			get_tree().change_scene_to_file("res://scenes/locations/room.tscn")
+			GlobalVariables.player_position = Vector2(-47,-43)
 			Transition.ending_animation()
 		index += 1
 		show_message()

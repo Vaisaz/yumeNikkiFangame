@@ -11,6 +11,7 @@ func _on_area_exited(_area):
 	
 func _input(_event):
 	if interact and Input.is_action_just_pressed("interact") and Transition.canvas_layer.visible == false and Inventory.inventory_layer.visible == false and !Combat.combat_layer.visible:
+		GlobalVariables.player_position = Vector2(28,149)
 		if is_instance_valid($"../../Giggler1"):
 			$"../../Giggler1".queue_free()
 		if is_instance_valid($"../../Giggler2"):

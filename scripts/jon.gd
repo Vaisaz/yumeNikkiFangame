@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var speed = 50
+@export var speed = 200
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var walk_sound = $Sound
 @onready var step_timer = $StepTimer
@@ -110,6 +110,7 @@ func _input(_event):
 			Combat.combat_layer.visible = true
 			DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_VISIBLE)
 		else:
+			GlobalVariables.player_position = Vector2(-47,-43)
 			Transition.playing_animation()
 			GlobalVariables.in_combat = true
 			GlobalVariables.debounce = true
@@ -136,3 +137,8 @@ func _input(_event):
 			Inventory.quit_choosed.visible = false
 			Inventory.inventory_choosed.visible = false
 			inventory_pressed = false
+			
+func _process(delta):
+	if get_tree().current_scene != GlobalVariables.current_scene:
+		$".".global_position = GlobalVariables.player_position
+	GlobalVariables.current_scene = get_tree().current_scene
