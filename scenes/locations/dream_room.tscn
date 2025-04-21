@@ -255,5 +255,9 @@ shape = SubResource("RectangleShape2D_77tpd")
 position = Vector2(-48, -62)
 stream = ExtResource("14_5naay")
 
+[node name="EndingCamera" type="Camera2D" parent="."]
+position = Vector2(-1, -26)
+enabled = false
+
 [connection signal="area_entered" from="StaticBody2D2/interaction" to="StaticBody2D2/interaction" method="_on_area_entered"]
 [connection signal="area_exited" from="StaticBody2D2/interaction" to="StaticBody2D2/interaction" method="_on_area_exited"]

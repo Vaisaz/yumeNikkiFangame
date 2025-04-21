@@ -50,6 +50,8 @@ func _physics_process(_delta):
 				input_direction = Vector2(0, 0)
 				animated_sprite_2d.play("idle")
 		elif GlobalVariables.outfit == 2:
+			$Camera2D.enabled = false
+			$"../EndingCamera".enabled = true
 			transitioning = false
 			if input_direction == Vector2(0, 0):
 				animated_sprite_2d.stop()

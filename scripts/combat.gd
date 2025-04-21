@@ -256,11 +256,42 @@ func _on_fight_button_pressed():
 	combat(player_attack, true)
 		
 func _on_run_button_pressed():
-	combat_sound.stop()
-	combat_layer.visible = false
-	GlobalVariables.debounce = false
-	GlobalVariables.in_combat = false
-	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_HIDDEN)
+	if enemy_texture.texture == load("res://assets/combat/old_man_sprite_sheet.png"):
+		player_current_health = player_current_health - enemy_attack
+		player_health()
+		damaged_sound.play()
+		you.visible = false
+		await get_tree().create_timer(0.1).timeout
+		you.visible = true
+		await get_tree().create_timer(0.1).timeout
+		you.visible = false
+		await get_tree().create_timer(0.1).timeout
+		you.visible = true
+		await get_tree().create_timer(0.1).timeout
+		if player_current_health <= 0:
+			if GlobalVariables.outfit == 1:
+					GlobalVariables.player_position = Vector2(-47,-43)
+					combat_sound.stop()
+					GlobalVariables.debounce = true
+					GlobalVariables.in_combat = true
+					fight_button.disabled = false
+					run_button.disabled = false
+					items_button.disabled = false
+					combat_layer.visible = false
+					DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_HIDDEN)
+					get_tree().change_scene_to_file("res://scenes/locations/room.tscn")
+					Transition.ending_animation_full()
+					GlobalVariables.debounce = false
+					GlobalVariables.in_combat = false
+					player_current_health = 1
+			else:
+				get_tree().quit()
+	else:	
+		combat_sound.stop()
+		combat_layer.visible = false
+		GlobalVariables.debounce = false
+		GlobalVariables.in_combat = false
+		DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_HIDDEN)
 
 func _on_items_button_pressed():
 	$Combat/ItemsLayer.visible = true
@@ -333,6 +364,7 @@ func _input(_event):
 func old_man_defeat():
 	GlobalVariables.outfit = 2
 	get_tree().change_scene_to_file("res://scenes/locations/dream_room.tscn")
+	GlobalVariables.player_position = Vector2(41,72)
 	combat_sound.stop()
 	Inventory.coins += Inventory.add_coins
 	items[0].texture_normal = load("res://assets/inventory/items/hope.png")
