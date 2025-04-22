@@ -1,53 +1,57 @@
-[gd_scene load_steps=7 format=3 uid="uid://bscdvyqwovqvi"]
+[gd_scene load_steps=8 format=3 uid="uid://bscdvyqwovqvi"]
 
-[ext_resource type="Texture2D" uid="uid://xlea1welmep6" path="res://assets/sprites/number_dream/nerd_1_sprite_sheet.png" id="1_c8d4l"]
+[ext_resource type="Texture2D" uid="uid://xlea1welmep6" path="res://assets/sprites/number_dream/nerd_1_sprite_sheet.png" id="1_eltdr"]
+[ext_resource type="Script" path="res://scripts/interaction_scripts/neon_enemy_interaction.gd" id="2_ktr84"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_c8jos"]
-atlas = ExtResource("1_c8d4l")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_foto1"]
-atlas = ExtResource("1_c8d4l")
+[sub_resource type="AtlasTexture" id="AtlasTexture_pty6e"]
+atlas = ExtResource("1_eltdr")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6newo"]
-atlas = ExtResource("1_c8d4l")
+[sub_resource type="AtlasTexture" id="AtlasTexture_s3hpt"]
+atlas = ExtResource("1_eltdr")
 region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_vef44"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_xysqn"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_c8jos")
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_pty6e")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_s3hpt")
 }],
 "loop": true,
-"name": &"idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 0.8,
-"texture": SubResource("AtlasTexture_foto1")
-}, {
-"duration": 0.8,
-"texture": SubResource("AtlasTexture_6newo")
-}],
-"loop": true,
-"name": &"run",
+"name": &"default",
 "speed": 2.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4630d"]
-size = Vector2(17, 27.25)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uwg8y"]
+size = Vector2(28, 32)
 
-[node name="StaticBody2D" type="StaticBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0y0nk"]
+size = Vector2(35, 39)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -16)
-sprite_frames = SubResource("SpriteFrames_vef44")
-animation = &"run"
-autoplay = "run"
-frame_progress = 0.562521
+sprite_frames = SubResource("SpriteFrames_xysqn")
+autoplay = "default"
+frame_progress = 0.514929
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, -14.375)
-shape = SubResource("RectangleShape2D_4630d")
+position = Vector2(1, -16)
+shape = SubResource("RectangleShape2D_uwg8y")
+
+[node name="interaction" type="Area2D" parent="."]
+position = Vector2(-1, 0)
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("2_ktr84")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interaction"]
+position = Vector2(1.5, -15.5)
+shape = SubResource("RectangleShape2D_0y0nk")
+
+[connection signal="area_entered" from="interaction" to="interaction" method="_on_area_entered"]
+[connection signal="area_exited" from="interaction" to="interaction" method="_on_area_exited"]

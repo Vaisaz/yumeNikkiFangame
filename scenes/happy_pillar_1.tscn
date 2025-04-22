@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://cjoqchq1agvuu"]
+
+[ext_resource type="Texture2D" uid="uid://ci3nbxbud67ha" path="res://assets/combat/happy_pillar_1.png" id="1_1njm0"]
+[ext_resource type="Script" path="res://scripts/interaction_scripts/neon_enemy_interaction.gd" id="2_aoer6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ukkq"]
+size = Vector2(14, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f7f3e"]
+size = Vector2(20, 38)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -16)
+texture = ExtResource("1_1njm0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -16)
+shape = SubResource("RectangleShape2D_3ukkq")
+
+[node name="interaction" type="Area2D" parent="."]
+position = Vector2(-1, 0)
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("2_aoer6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interaction"]
+position = Vector2(1.5, -16)
+shape = SubResource("RectangleShape2D_f7f3e")
+
+[connection signal="area_entered" from="interaction" to="interaction" method="_on_area_entered"]
+[connection signal="area_exited" from="interaction" to="interaction" method="_on_area_exited"]
