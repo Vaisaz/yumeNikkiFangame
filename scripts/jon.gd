@@ -140,7 +140,7 @@ func _input(_event):
 			Inventory.inventory_choosed.visible = false
 			inventory_pressed = false
 			
-func _process(delta):
+func _process(_delta):
 	if get_tree().current_scene != GlobalVariables.current_scene:
 		$".".global_position = GlobalVariables.player_position
 	GlobalVariables.current_scene = get_tree().current_scene

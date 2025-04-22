@@ -10,7 +10,7 @@ func _on_enemy_radius_area_entered(area):
 		print("entered")
 		interact = true
 
-func _on_enemy_radius_area_exited(area):
+func _on_enemy_radius_area_exited(_area):
 	interact = false
 	print("exited")
 

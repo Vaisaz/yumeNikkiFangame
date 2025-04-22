@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://cm5j2xpqapq2b"]
+
+[ext_resource type="Texture2D" uid="uid://d0gq7vdktbpwx" path="res://assets/sprites/happy_dream/dark_dream_warp.png" id="1_f2d8c"]
+[ext_resource type="Script" path="res://scripts/interaction_scripts/dark_dream_warp.gd" id="2_ed12y"]
+[ext_resource type="PackedScene" uid="uid://c1s8mfal8dbj3" path="res://assets/audio/sound.tscn" id="3_mh0wn"]
+[ext_resource type="AudioStream" uid="uid://cukph5fc4tjge" path="res://assets/audio/door_sound.mp3" id="4_cv05w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c0dq2"]
+size = Vector2(29, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h47ej"]
+size = Vector2(27, 18)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+texture = ExtResource("1_f2d8c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 3)
+shape = SubResource("RectangleShape2D_c0dq2")
+
+[node name="interaction" type="Area2D" parent="."]
+position = Vector2(48, 62)
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("2_ed12y")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="interaction"]
+position = Vector2(-47.5, -59)
+shape = SubResource("RectangleShape2D_h47ej")
+
+[node name="DoorSound" parent="interaction" instance=ExtResource("3_mh0wn")]
+stream = ExtResource("4_cv05w")
+
+[connection signal="area_entered" from="interaction" to="interaction" method="_on_area_entered"]
+[connection signal="area_exited" from="interaction" to="interaction" method="_on_area_exited"]

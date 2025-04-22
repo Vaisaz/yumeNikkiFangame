@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://d0jh7omnvfxod"]
+[gd_scene load_steps=40 format=3 uid="uid://d0jh7omnvfxod"]
 
 [ext_resource type="Texture2D" uid="uid://bqua316ypuuok" path="res://assets/sprites/happy_dream/happy_background.png" id="1_d4nht"]
 [ext_resource type="Texture2D" uid="uid://3a7wlxbyn60s" path="res://assets/sprites/happy_dream/tiles.png" id="1_g8k8r"]
@@ -16,6 +16,12 @@
 [ext_resource type="Script" path="res://scripts/enemy_combat_scripts/giggler/giggler_follow.gd" id="9_q8dq6"]
 [ext_resource type="PackedScene" uid="uid://cn7t5qquv062e" path="res://scenes/giggler.tscn" id="10_42bvy"]
 [ext_resource type="Texture2D" uid="uid://mfqpdks574yy" path="res://assets/sprites/happy_dream/house_3.png" id="10_p5207"]
+[ext_resource type="PackedScene" uid="uid://b1myglqldnaip" path="res://scenes/happy_sad_door.tscn" id="17_o0im2"]
+[ext_resource type="PackedScene" uid="uid://cm5j2xpqapq2b" path="res://scenes/dark_dream_warp.tscn" id="18_kb8fy"]
+[ext_resource type="Script" path="res://scripts/interaction_scripts/happy_sad_door_interaction.gd" id="18_kex3y"]
+[ext_resource type="Script" path="res://scripts/interaction_scripts/happy_sad_door_back.gd" id="18_xhbru"]
+[ext_resource type="PackedScene" uid="uid://c1s8mfal8dbj3" path="res://assets/audio/sound.tscn" id="19_y27by"]
+[ext_resource type="AudioStream" uid="uid://cukph5fc4tjge" path="res://assets/audio/door_sound.mp3" id="20_ubb45"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ffa6v"]
 texture = ExtResource("1_g8k8r")
@@ -287,11 +293,17 @@ size = Vector2(14, 16)
 [sub_resource type="CircleShape2D" id="CircleShape2D_0mrly"]
 radius = 94.4299
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o0d3n"]
+size = Vector2(16, 32)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6nyar"]
 size = Vector2(87, 2360)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fyx8x"]
 size = Vector2(2811.63, 65)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rppgh"]
+size = Vector2(64, 2363)
 
 [node name="happy_dream" type="Node2D"]
 
@@ -333,14 +345,7 @@ position = Vector2(-48, -70)
 shape = SubResource("RectangleShape2D_vydhk")
 
 [node name="BananaCreature" parent="." instance=ExtResource("5_u8p5r")]
-position = Vector2(178, 189)
-
-[node name="CharacterBody2D" parent="." instance=ExtResource("4_6p538")]
-position = Vector2(1, 23)
-
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
-position = Vector2(-1, -26)
-zoom = Vector2(5, 5)
+position = Vector2(227, 194)
 
 [node name="Giggler1" parent="." instance=ExtResource("10_42bvy")]
 position = Vector2(-61, 51)
@@ -366,6 +371,49 @@ collision_mask = 8
 position = Vector2(0, -14)
 shape = SubResource("CircleShape2D_0mrly")
 
+[node name="StaticBody2D2" parent="." instance=ExtResource("17_o0im2")]
+position = Vector2(1037, -281)
+
+[node name="interaction2" type="Area2D" parent="StaticBody2D2"]
+position = Vector2(851, -1374)
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("18_kex3y")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D2/interaction2"]
+position = Vector2(-851, 1374)
+shape = SubResource("RectangleShape2D_o0d3n")
+
+[node name="DoorSound" parent="StaticBody2D2/interaction2" instance=ExtResource("19_y27by")]
+position = Vector2(-81, 52)
+stream = ExtResource("20_ubb45")
+
+[node name="StaticBody2D4" parent="." instance=ExtResource("17_o0im2")]
+position = Vector2(1831, -7)
+
+[node name="interaction2" type="Area2D" parent="StaticBody2D4"]
+position = Vector2(48, 62)
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("18_xhbru")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D4/interaction2"]
+position = Vector2(-48, -62)
+shape = SubResource("RectangleShape2D_o0d3n")
+
+[node name="DoorSound" parent="StaticBody2D4/interaction2" instance=ExtResource("19_y27by")]
+stream = ExtResource("20_ubb45")
+
+[node name="StaticBody2D3" parent="." instance=ExtResource("18_kb8fy")]
+position = Vector2(1836, -1713)
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("4_6p538")]
+position = Vector2(1, 23)
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+position = Vector2(-1, -26)
+zoom = Vector2(5, 5)
+
 [node name="Collisions" type="StaticBody2D" parent="."]
 position = Vector2(-462, 186)
 
@@ -385,9 +433,21 @@ shape = SubResource("RectangleShape2D_fyx8x")
 position = Vector2(1477, -2101)
 shape = SubResource("RectangleShape2D_fyx8x")
 
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Collisions"]
+position = Vector2(1767, -952)
+shape = SubResource("RectangleShape2D_rppgh")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Collisions"]
+position = Vector2(1652, -951)
+shape = SubResource("RectangleShape2D_rppgh")
+
 [connection signal="area_entered" from="StaticBody2D/interaction" to="StaticBody2D/interaction" method="_on_area_entered"]
 [connection signal="area_exited" from="StaticBody2D/interaction" to="StaticBody2D/interaction" method="_on_area_exited"]
 [connection signal="area_entered" from="Giggler1/EnemyRadius" to="Giggler1" method="_on_enemy_radius_area_entered"]
 [connection signal="area_exited" from="Giggler1/EnemyRadius" to="Giggler1" method="_on_enemy_radius_area_exited"]
 [connection signal="area_entered" from="Giggler2/EnemyRadius" to="Giggler2" method="_on_enemy_radius_area_entered"]
 [connection signal="area_exited" from="Giggler2/EnemyRadius" to="Giggler2" method="_on_enemy_radius_area_exited"]
+[connection signal="area_entered" from="StaticBody2D2/interaction2" to="StaticBody2D2/interaction2" method="_on_area_entered"]
+[connection signal="area_exited" from="StaticBody2D2/interaction2" to="StaticBody2D2/interaction2" method="_on_area_exited"]
+[connection signal="area_entered" from="StaticBody2D4/interaction2" to="StaticBody2D4/interaction2" method="_on_area_entered"]
+[connection signal="area_exited" from="StaticBody2D4/interaction2" to="StaticBody2D4/interaction2" method="_on_area_exited"]
