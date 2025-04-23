@@ -10,6 +10,7 @@ var transitions = 0
 @onready var waking_sleeping_2d = $WakingSleeping
 @onready var combat_transition_animation = $CombatTransitionAnimation
 @onready var color_rect = $ColorRect
+@onready var sound = $Sound
 
 func playing_animation():
 	canvas_layer.visible = true

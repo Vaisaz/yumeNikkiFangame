@@ -1,9 +1,11 @@
-[gd_scene load_steps=87 format=3 uid="uid://bhh6s6a2ilw0o"]
+[gd_scene load_steps=98 format=3 uid="uid://bhh6s6a2ilw0o"]
 
 [ext_resource type="Script" path="res://scripts/interaction.gd" id="1_8u8o2"]
 [ext_resource type="Texture2D" uid="uid://flbkixwwrmrj" path="res://assets/sprites/transition_animation.png" id="1_75xnl"]
+[ext_resource type="Texture2D" uid="uid://3o5jjcyndcfs" path="res://assets/sprites/main/falling_sheet.png" id="3_m8ipy"]
 [ext_resource type="Texture2D" uid="uid://bc4jp4ikiqko" path="res://assets/sprites/waking_sleeping_animation.png" id="3_npa6v"]
 [ext_resource type="Texture2D" uid="uid://bacs3s7fugdcq" path="res://assets/sprites/combat_transition_animation.png" id="4_waf1m"]
+[ext_resource type="PackedScene" uid="uid://c1s8mfal8dbj3" path="res://assets/audio/sound.tscn" id="6_11grj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gw2qc"]
 atlas = ExtResource("1_75xnl")
@@ -291,6 +293,42 @@ animations = [{
 "speed": 35.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_4uf87"]
+atlas = ExtResource("3_m8ipy")
+region = Rect2(800, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fjfml"]
+atlas = ExtResource("3_m8ipy")
+region = Rect2(700, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fjuny"]
+atlas = ExtResource("3_m8ipy")
+region = Rect2(600, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_clopy"]
+atlas = ExtResource("3_m8ipy")
+region = Rect2(500, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q10gx"]
+atlas = ExtResource("3_m8ipy")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s7d28"]
+atlas = ExtResource("3_m8ipy")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_50wbk"]
+atlas = ExtResource("3_m8ipy")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vr4dn"]
+atlas = ExtResource("3_m8ipy")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8rsl3"]
+atlas = ExtResource("3_m8ipy")
+region = Rect2(0, 0, 100, 100)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_bcaty"]
 atlas = ExtResource("3_npa6v")
 region = Rect2(256, 0, 64, 64)
@@ -373,6 +411,38 @@ region = Rect2(256, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_x2oo3"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4uf87")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fjfml")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fjuny")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_clopy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q10gx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s7d28")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_50wbk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vr4dn")
+}, {
+"duration": 15.0,
+"texture": SubResource("AtlasTexture_8rsl3")
+}],
+"loop": false,
+"name": &"falling",
+"speed": 9.0
+}, {
 "frames": [{
 "duration": 5.0,
 "texture": SubResource("AtlasTexture_bcaty")
@@ -604,9 +674,11 @@ sprite_frames = SubResource("SpriteFrames_qxyj5")
 [node name="WakingSleeping" type="AnimatedSprite2D" parent="."]
 visible = false
 position = Vector2(567, 327)
-scale = Vector2(9, 9)
+scale = Vector2(6, 6)
 sprite_frames = SubResource("SpriteFrames_x2oo3")
-animation = &"waking"
+animation = &"falling"
+frame = 8
+frame_progress = 1.0
 
 [node name="CombatTransitionAnimation" type="AnimatedSprite2D" parent="."]
 visible = false
@@ -624,6 +696,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.435294, 0.192157, 0.596078, 1)
+
+[node name="Sound" parent="." instance=ExtResource("6_11grj")]
 
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
