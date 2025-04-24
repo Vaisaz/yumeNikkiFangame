@@ -10,7 +10,7 @@ var messages = [
 	"IT REQUIRES SOMETHING YOU HAVE LOST",
 	"CAN YOU REMEMBER IT?",
 	"CAN YOU FIND IT?",
-	"LET'S TRY OUR BEST, OKAY?"
+	"I SHALL HELP YOU FIND AND REMEMBER"
 ]
 
 var soul_blips = [
@@ -63,7 +63,7 @@ func _input(event):
 		index += 1
 		show_message()
 	if interaction_times == 1 and interact and interact:
-		Inventory.add_coins = 100
+		Inventory.add_coins = 0
 		GlobalVariables.in_combat = true
 		Transition.combat_transition_animation.visible = true
 		Transition.combat_transition_animation.play("default")
@@ -77,9 +77,9 @@ func _input(event):
 		GlobalVariables.debounce = true
 		Combat.enemy_texture.texture = load("res://assets/combat/old_man_sprite_sheet.png")
 		Combat.combat_sound.stream = load("res://assets/audio/old_man_blips/ringsuf.mp3")
-		Combat.enemy_max_health = 10
-		Combat.enemy_current_health = 10
-		Combat.enemy_attack = 1
+		Combat.enemy_max_health = 2000
+		Combat.enemy_current_health = 2000
+		Combat.enemy_attack = 50
 		Combat.enemy_health(Combat.enemy_current_health, Combat.enemy_max_health)
 		Combat.player_health()
 		print("interacted")

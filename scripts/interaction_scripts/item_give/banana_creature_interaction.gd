@@ -97,5 +97,4 @@ func item_give_structure():
 		Inventory.items[Inventory.index].texture_normal = Inventory.item_texture[0]
 		Inventory.items[Inventory.index].texture_hover = Inventory.item_texture_hover[0]
 		Inventory.items[Inventory.index].disabled = false
-		interaction_times = 2
 		Inventory.banana_has_interacted = true
