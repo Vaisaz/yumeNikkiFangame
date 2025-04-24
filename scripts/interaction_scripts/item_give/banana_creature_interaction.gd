@@ -91,6 +91,7 @@ func _input(event):
 				if Inventory.index == 11:
 					item_give_structure()
 				Inventory.index += 1
+			Inventory.index = 0
 
 func item_give_structure():
 	if Inventory.items[Inventory.index].disabled and !Inventory.banana_has_interacted:

@@ -104,7 +104,8 @@ func _input(event):
 		index += 1
 		show_message()
 	elif interaction_times == 2 and message_displayed and interact and Transition.canvas_layer.visible == false and Inventory.inventory_layer.visible == false and Inventory.coins >= 5:
-		if !Inventory.index >= 12:
+		Inventory.items_disabled_checker()
+		if !Inventory.all_items_enabled:
 			register_sound.play()
 		for item_count in Inventory.items:
 			print(item_count)
@@ -147,6 +148,7 @@ func item_give_structure():
 		Combat.items[Inventory.index].disabled = false
 		Inventory.items[Inventory.index].disabled = false
 		Inventory.lemonade_has_interacted = true
+		print("works")
 		has_interacted = true
 		Inventory.coins -= 5
 		interaction_times = 2
