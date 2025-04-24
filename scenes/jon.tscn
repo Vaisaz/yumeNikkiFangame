@@ -165,7 +165,7 @@ animations = [{
 size = Vector2(13, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fcoh3"]
-size = Vector2(24, 25)
+size = Vector2(17, 23)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gw2qc"]
 atlas = ExtResource("5_nbb65")
@@ -472,7 +472,7 @@ collision_layer = 8
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interaction"]
-position = Vector2(0, -8.5)
+position = Vector2(-0.5, -9.5)
 shape = SubResource("RectangleShape2D_fcoh3")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Interaction"]
