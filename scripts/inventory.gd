@@ -138,6 +138,9 @@ func item_on_equip(item_index):
 		items[item_index].texture_normal = null
 		items[item_index].texture_hover = null
 		items[item_index].disabled = true
+		Combat.items[item_index].disabled = true
+		Combat.items[item_index].texture_normal = null
+		Combat.items[item_index].texture_hover = null
 		if Combat.player_current_health <= Combat.player_max_health:
 			Combat.player_current_health += 25
 		if Combat.player_current_health > Combat.player_max_health:

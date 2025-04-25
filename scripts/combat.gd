@@ -316,9 +316,6 @@ func on_pressed_structure(num):
 	items_button.disabled = true
 	await get_tree().create_timer(0.4).timeout
 	combat(0, false)
-	items[num].disabled = true
-	items[num].visible = false
-	items[num].texture_normal = null
 	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_VISIBLE)
 
 func _on_first_pressed():

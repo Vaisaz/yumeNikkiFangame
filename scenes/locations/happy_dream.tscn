@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://d0jh7omnvfxod"]
+[gd_scene load_steps=42 format=3 uid="uid://d0jh7omnvfxod"]
 
 [ext_resource type="Texture2D" uid="uid://bqua316ypuuok" path="res://assets/sprites/happy_dream/happy_background.png" id="1_d4nht"]
 [ext_resource type="Texture2D" uid="uid://3a7wlxbyn60s" path="res://assets/sprites/happy_dream/tiles.png" id="1_g8k8r"]
@@ -22,6 +22,8 @@
 [ext_resource type="Script" path="res://scripts/interaction_scripts/happy_sad_door_back.gd" id="18_xhbru"]
 [ext_resource type="PackedScene" uid="uid://c1s8mfal8dbj3" path="res://assets/audio/sound.tscn" id="19_y27by"]
 [ext_resource type="AudioStream" uid="uid://cukph5fc4tjge" path="res://assets/audio/door_sound.mp3" id="20_ubb45"]
+[ext_resource type="AudioStream" uid="uid://bqhprd8a5owgh" path="res://assets/audio/happy_dream_beat.mp3" id="23_rw7nq"]
+[ext_resource type="Script" path="res://scripts/loopsound.gd" id="24_mmu80"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ffa6v"]
 texture = ExtResource("1_g8k8r")
@@ -434,12 +436,17 @@ position = Vector2(1477, -2101)
 shape = SubResource("RectangleShape2D_fyx8x")
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="Collisions"]
-position = Vector2(1767, -952)
+position = Vector2(1810, -952)
 shape = SubResource("RectangleShape2D_rppgh")
 
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="Collisions"]
-position = Vector2(1652, -951)
+position = Vector2(1609, -948)
 shape = SubResource("RectangleShape2D_rppgh")
+
+[node name="Loop" parent="." instance=ExtResource("19_y27by")]
+position = Vector2(-251, -791)
+stream = ExtResource("23_rw7nq")
+script = ExtResource("24_mmu80")
 
 [connection signal="area_entered" from="StaticBody2D/interaction" to="StaticBody2D/interaction" method="_on_area_entered"]
 [connection signal="area_exited" from="StaticBody2D/interaction" to="StaticBody2D/interaction" method="_on_area_exited"]
