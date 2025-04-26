@@ -256,7 +256,10 @@ func _on_fight_button_pressed():
 	combat(player_attack, true)
 		
 func _on_run_button_pressed():
-	if enemy_texture.texture == load("res://assets/combat/old_man_sprite_sheet.png") or player_current_health <= player_max_health * 0.5:	
+	if enemy_texture.texture == load("res://assets/inventory/dream_eye/1.png"):
+		run_button.disabled = true
+		run_button.visible = false
+	elif enemy_texture.texture == load("res://assets/combat/old_man_sprite_sheet.png") or player_current_health <= player_max_health * 0.5:	
 		player_current_health = player_current_health - enemy_attack
 		player_health()
 		damaged_sound.play()
@@ -307,13 +310,40 @@ func _on_items_button_pressed():
 func on_pressed_structure(num):
 	$Combat/ItemsLayer.visible = false
 	Inventory.item_on_equip(num)
-	player_health()
-	fight_button.disabled = true
-	run_button.disabled = true
-	items_button.disabled = true
-	await get_tree().create_timer(0.4).timeout
-	combat(0, false)
-	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_VISIBLE)
+	if items[0].texture_normal == load("res://assets/inventory/items/hope.png"):
+		fight_button.disabled = true
+		items_button.disabled = true
+		fight_button.visible = false
+		items_button.visible = false
+		enemy_texture.visible = false
+		you.visible = false
+		enemy_bar.visible = false
+		player_bar.visible = false
+		combat_sound.stop()
+		combat_sound.stream = load("res://assets/audio/picked_up.wav")
+		combat_sound.play()
+		await Combat.combat_sound.finished
+		enemy_texture.visible = true
+		enemy_texture.texture = load("res://assets/sprites/main/jon_sprite.png")
+		you.visible = true
+		await get_tree().create_timer(0.1).timeout
+		you.text = "YOU"
+		await get_tree().create_timer(0.1).timeout
+		you.text = "ME"
+		await get_tree().create_timer(0.1).timeout
+		you.text = "YOU"
+		await get_tree().create_timer(0.1).timeout
+		you.text = "ME"
+		await get_tree().create_timer(0.1).timeout
+		get_tree().quit()
+	else:
+		player_health()
+		fight_button.disabled = true
+		run_button.disabled = true
+		items_button.disabled = true
+		await get_tree().create_timer(0.4).timeout
+		combat(0, false)
+		DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_VISIBLE)
 
 func _on_first_pressed():
 	on_pressed_structure(0)
@@ -361,14 +391,14 @@ func old_man_defeat():
 	GlobalVariables.player_position = Vector2(41,72)
 	combat_sound.stop()
 	Inventory.coins += Inventory.add_coins
+	for n in 12:
+		if !items[n].disabled:
+			items[n].visible = true
+			items[n].disabled = false
 	items[0].texture_normal = load("res://assets/inventory/items/hope.png")
 	items[0].texture_hover = load("res://assets/inventory/items/hope_hover.png")
 	items[0].visible = true
 	items[0].disabled = false
-	items[1].visible = false
-	items[1].disabled = true
-	items[2].visible = false
-	items[2].disabled = true
 	run_button.disabled = true
 	run_button.visible = false
 	GlobalVariables.debounce = false

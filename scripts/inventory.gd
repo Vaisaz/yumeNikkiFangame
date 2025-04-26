@@ -190,8 +190,8 @@ func on_pressed_structure(num):
 	Inventory.index = 0
 	if items[num].texture_normal == load("res://assets/inventory/items/lemonade.png"):
 		item_on_equip(num)
-	elif num == 0 and items[0].texture_normal == load("res://assets/inventory/items/hope.png"):
-		get_tree().quit()
+	elif num == 0 and Combat.items[0].texture_normal == load("res://assets/inventory/items/hope.png"):
+		Combat.turn = 1
 	else:
 		if !equip:
 			item_on_equip(num)

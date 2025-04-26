@@ -91,6 +91,7 @@ func _input(_event):
 		pass
 	if Input.is_action_just_pressed("wake_up") and !get_tree().current_scene.scene_file_path == "res://scenes/locations/room.tscn" and !Transition.canvas_layer.visible and !GlobalVariables.debounce and !Inventory.inventory_layer.visible:
 		if GlobalVariables.outfit == 2:
+			Combat.combat_sound.stream = load("res://assets/audio/sanity_maintained.mp3")
 			GlobalVariables.in_combat = true
 			Transition.combat_transition_animation.visible = true
 			Transition.combat_transition_animation.play("default")
@@ -111,6 +112,7 @@ func _input(_event):
 			Combat.player_health()
 			Combat.combat_layer.visible = true
 			DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_VISIBLE)
+			Combat.combat_sound.play()
 		else:
 			GlobalVariables.player_position = Vector2(-47,-43)
 			Transition.playing_animation()
