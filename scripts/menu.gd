@@ -12,7 +12,10 @@ func _ready():
 	quit_button.texture_focused = quit_button.texture_hover
 
 func _on_start_pressed():
+	Transition.playing_animation()
+	await Transition.animated_sprite_2d.animation_finished
 	get_tree().change_scene_to_file("res://scenes/locations/room.tscn")
+	Transition.ending_animation()
 	GlobalVariables.player_position = Vector2(-47,-43)
 
 func _on_guide_pressed():

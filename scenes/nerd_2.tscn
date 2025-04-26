@@ -1,28 +1,28 @@
-[gd_scene load_steps=8 format=3 uid="uid://bscdvyqwovqvi"]
+[gd_scene load_steps=8 format=3 uid="uid://ccch66qpt262x"]
 
-[ext_resource type="Texture2D" uid="uid://xlea1welmep6" path="res://assets/sprites/number_dream/nerd_1_sprite_sheet.png" id="1_eltdr"]
-[ext_resource type="Script" path="res://scripts/interaction_scripts/nerd_interaction.gd" id="2_lx4w8"]
+[ext_resource type="Texture2D" uid="uid://d26636y4yrobb" path="res://assets/sprites/number_dream/nerd_2_sprite_sheet.png" id="1_x5dwe"]
+[ext_resource type="Script" path="res://scripts/interaction_scripts/nerd_2_interaction.gd" id="2_72gxi"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pty6e"]
-atlas = ExtResource("1_eltdr")
+[sub_resource type="AtlasTexture" id="AtlasTexture_iwkkj"]
+atlas = ExtResource("1_x5dwe")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_s3hpt"]
-atlas = ExtResource("1_eltdr")
+[sub_resource type="AtlasTexture" id="AtlasTexture_2xj3g"]
+atlas = ExtResource("1_x5dwe")
 region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_xysqn"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_ou35s"]
 animations = [{
 "frames": [{
-"duration": 0.5,
-"texture": SubResource("AtlasTexture_pty6e")
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iwkkj")
 }, {
-"duration": 0.5,
-"texture": SubResource("AtlasTexture_s3hpt")
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2xj3g")
 }],
 "loop": true,
 "name": &"default",
-"speed": 2.0
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uwg8y"]
@@ -32,12 +32,12 @@ size = Vector2(28, 32)
 size = Vector2(35, 39)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
+position = Vector2(1, 0)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -16)
-sprite_frames = SubResource("SpriteFrames_xysqn")
+sprite_frames = SubResource("SpriteFrames_ou35s")
 autoplay = "default"
-frame_progress = 0.514929
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, -16)
@@ -47,7 +47,7 @@ shape = SubResource("RectangleShape2D_uwg8y")
 position = Vector2(-1, 0)
 collision_layer = 8
 collision_mask = 8
-script = ExtResource("2_lx4w8")
+script = ExtResource("2_72gxi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="interaction"]
 position = Vector2(1.5, -15.5)

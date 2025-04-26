@@ -19,5 +19,5 @@ func _input(_event):
 		door_sound.play()
 		await door_sound.finished
 		Transition.ending_animation()
-		GlobalVariables.player_position = Vector2(1832,23)
+		GlobalVariables.player_position = Vector2(2920,136)
 		get_tree().change_scene_to_file("res://scenes/locations/happy_dream.tscn")

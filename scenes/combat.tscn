@@ -203,6 +203,7 @@ texture_hover = ExtResource("5_tdtmc")
 
 [node name="CombatSound" parent="Combat" instance=ExtResource("9_m10k8")]
 stream = ExtResource("10_6t5dc")
+max_distance = 10000.0
 
 [node name="ItemsLayer" type="CanvasLayer" parent="Combat"]
 visible = false
@@ -325,9 +326,11 @@ disabled = true
 
 [node name="DamagedSound" parent="." instance=ExtResource("9_m10k8")]
 stream = ExtResource("13_msy7g")
+max_distance = 10000.0
 
 [node name="LeveledSound" parent="." instance=ExtResource("9_m10k8")]
 stream = ExtResource("14_h5ib1")
+max_distance = 10000.0
 
 [connection signal="pressed" from="Combat/FightButton" to="." method="_on_fight_button_pressed"]
 [connection signal="pressed" from="Combat/ItemsButton" to="." method="_on_items_button_pressed"]

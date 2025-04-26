@@ -49,12 +49,10 @@ func _input(event):
 		Inventory.items_disabled_checker()
 	if interaction_times == 0 and interact and !Inventory.banana_has_interacted and event.is_action_pressed("interact") and message_displayed and interact and Input.is_action_just_pressed("interact") and Transition.canvas_layer.visible == false and Inventory.inventory_layer.visible == false and !Inventory.all_items_enabled:
 		GlobalVariables.debounce = true
-		GlobalVariables.in_combat = true
 		canvas_layer.visible = true
 		if index == 2:
 			canvas_layer.visible = false
 			GlobalVariables.debounce = false
-			GlobalVariables.in_combat = false
 			interaction_times = 1
 			return
 		message_displayed = false

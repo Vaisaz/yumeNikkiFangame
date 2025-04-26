@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dquja0o37bhrb"]
+[gd_scene load_steps=26 format=3 uid="uid://dquja0o37bhrb"]
 
 [ext_resource type="Texture2D" uid="uid://qcdw8ejar33" path="res://assets/sprites/random_dream/dice_sheet.png" id="1_71dxv"]
 [ext_resource type="Texture2D" uid="uid://cxhgkbruiuada" path="res://assets/sprites/number_dream/grapheme-color-synesthesia-sprite-sheet.png" id="2_n7psy"]
@@ -8,6 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://05a57gvmwbkl" path="res://dice_dance.tscn" id="6_2g7qc"]
 [ext_resource type="PackedScene" uid="uid://bbubvd8amhhsf" path="res://scenes/gambler.tscn" id="6_anpnb"]
 [ext_resource type="Script" path="res://scripts/interaction_scripts/dice_dance_interaction.gd" id="7_q2c1u"]
+[ext_resource type="PackedScene" uid="uid://c1s8mfal8dbj3" path="res://assets/audio/sound.tscn" id="9_kvt2f"]
+[ext_resource type="AudioStream" uid="uid://b4yapjbcjsajm" path="res://assets/audio/random_loop.mp3" id="10_mld2l"]
+[ext_resource type="Script" path="res://scripts/loopsound.gd" id="11_8em1w"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_tpv4h"]
 tile_data = PackedInt32Array(0, 0, 0, 65536, 0, 1, 1, 65536, 0, 65537, 65536, 1)
@@ -181,6 +184,11 @@ position = Vector2(346, -201)
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 position = Vector2(-1, -26)
 zoom = Vector2(5, 5)
+
+[node name="Loop" parent="." instance=ExtResource("9_kvt2f")]
+stream = ExtResource("10_mld2l")
+autoplay = true
+script = ExtResource("11_8em1w")
 
 [connection signal="area_entered" from="StaticBody2D3/interaction" to="StaticBody2D3/interaction" method="_on_area_entered"]
 [connection signal="area_exited" from="StaticBody2D3/interaction" to="StaticBody2D3/interaction" method="_on_area_exited"]

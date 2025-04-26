@@ -77,9 +77,9 @@ func _input(event):
 		GlobalVariables.debounce = true
 		Combat.enemy_texture.texture = load("res://assets/combat/old_man_sprite_sheet.png")
 		Combat.combat_sound.stream = load("res://assets/audio/old_man_blips/ringsuf.mp3")
-		Combat.enemy_max_health = 2000
-		Combat.enemy_current_health = 2000
-		Combat.enemy_attack = 24
+		Combat.enemy_max_health = 640
+		Combat.enemy_current_health = 640
+		Combat.enemy_attack = 20
 		Combat.enemy_health(Combat.enemy_current_health, Combat.enemy_max_health)
 		Combat.player_health()
 		print("interacted")

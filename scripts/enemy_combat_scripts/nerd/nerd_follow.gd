@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @onready var player = $"../CharacterBody2D"
 @onready var enemy_radius = $EnemyRadius
-var speed = 50
+var speed = 15
 var interact: bool = false
 
 func _on_enemy_radius_area_entered(area):

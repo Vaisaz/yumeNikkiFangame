@@ -8,8 +8,8 @@ var player_current_health = Combat.player_current_health
 func _on_area_entered(area):
 	if area.is_in_group("Player"):
 		Combat.combat_sound.stream = load("res://assets/audio/combat_music.mp3")
-		Inventory.add_coins = 2
-		Combat.add_xp = 10
+		Inventory.add_coins = 25
+		Combat.add_xp = 500
 		GlobalVariables.in_combat = true
 		Transition.combat_transition_animation.visible = true
 		Transition.combat_transition_animation.play("default")
@@ -21,10 +21,10 @@ func _on_area_entered(area):
 		Transition.animated_sprite_2d.visible = true
 		$"..".queue_free()
 		GlobalVariables.debounce = true
-		Combat.enemy_texture.texture = load("res://assets/combat/neon_enemy.png")
-		Combat.enemy_max_health = 25
-		Combat.enemy_current_health = 25
-		Combat.enemy_attack = 10
+		Combat.enemy_texture.texture = load("res://assets/combat/neon_creature.png")
+		Combat.enemy_max_health = 75
+		Combat.enemy_current_health = 75
+		Combat.enemy_attack = 25
 		Combat.enemy_health(Combat.enemy_current_health, Combat.enemy_max_health)
 		Combat.player_health()
 		print("interacted")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dr155rncg3jot"]
+[gd_scene load_steps=15 format=3 uid="uid://dr155rncg3jot"]
 
 [ext_resource type="Texture2D" uid="uid://b4g07ub54tlj2" path="res://assets/sprites/main/black.jpg" id="1_fj0fy"]
 [ext_resource type="PackedScene" uid="uid://d1jbh8q1vrdd6" path="res://scenes/jon.tscn" id="2_5xmfk"]
@@ -10,8 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://wscbak5wmg1a" path="res://assets/sprites/neon_dream/neon_dream_background_1.png" id="6_3j0ur"]
 [ext_resource type="PackedScene" uid="uid://c2r75xjwrmnl1" path="res://scenes/neon_creature.tscn" id="6_tab1d"]
 [ext_resource type="Script" path="res://scripts/enemy_combat_scripts/neon_creature/neon_creature_follow.gd" id="7_sg8d7"]
-[ext_resource type="Script" path="res://scripts/interaction_scripts/neon_warp_interaction.gd" id="9_trtq5"]
-[ext_resource type="PackedScene" uid="uid://27qeq0ii1oby" path="res://scenes/neon_warp_back.tscn" id="11_r62nw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aqpve"]
 texture = ExtResource("2_31o3t")
@@ -73,9 +71,6 @@ sources/1 = SubResource("TileSetAtlasSource_i5n00")
 [sub_resource type="CircleShape2D" id="CircleShape2D_oo22p"]
 radius = 94.4299
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_y3pmy"]
-size = Vector2(16, 20)
-
 [node name="neon_dream" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -86,15 +81,15 @@ layer_0/tile_data = PackedInt32Array(-655366, 0, 0, -589830, 0, 1, -655365, 6553
 [node name="StaticBody2D" parent="." instance=ExtResource("3_235o3")]
 position = Vector2(417, -23)
 
-[node name="NeonEnemy" parent="." instance=ExtResource("4_ofhwr")]
+[node name="CharacterBody2D2" parent="." instance=ExtResource("4_ofhwr")]
 position = Vector2(-59, 73)
 script = ExtResource("5_kh1fd")
 
-[node name="EnemyRadius" type="Area2D" parent="NeonEnemy"]
+[node name="EnemyRadius" type="Area2D" parent="CharacterBody2D2"]
 collision_layer = 8
 collision_mask = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NeonEnemy/EnemyRadius"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D2/EnemyRadius"]
 position = Vector2(0, -14)
 shape = SubResource("CircleShape2D_oo22p")
 
@@ -103,169 +98,12 @@ position = Vector2(-743.328, -337.363)
 script = ExtResource("7_sg8d7")
 
 [node name="EnemyRadius" type="Area2D" parent="NeonCreature"]
-collision_layer = 4
-collision_mask = 4
+collision_layer = 8
+collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NeonCreature/EnemyRadius"]
 position = Vector2(-8.67188, 15.3632)
 shape = SubResource("CircleShape2D_oo22p")
-
-[node name="NeonEnemy2" parent="." instance=ExtResource("4_ofhwr")]
-position = Vector2(1005, -19)
-script = ExtResource("5_kh1fd")
-
-[node name="EnemyRadius" type="Area2D" parent="NeonEnemy2"]
-collision_layer = 8
-collision_mask = 8
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NeonEnemy2/EnemyRadius"]
-position = Vector2(0, -14)
-shape = SubResource("CircleShape2D_oo22p")
-
-[node name="NeonEnemy3" parent="." instance=ExtResource("4_ofhwr")]
-position = Vector2(687, 363)
-script = ExtResource("5_kh1fd")
-
-[node name="EnemyRadius" type="Area2D" parent="NeonEnemy3"]
-collision_layer = 8
-collision_mask = 8
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NeonEnemy3/EnemyRadius"]
-position = Vector2(0, -14)
-shape = SubResource("CircleShape2D_oo22p")
-
-[node name="NeonEnemy4" parent="." instance=ExtResource("4_ofhwr")]
-position = Vector2(-65, -449)
-script = ExtResource("5_kh1fd")
-
-[node name="EnemyRadius" type="Area2D" parent="NeonEnemy4"]
-collision_layer = 8
-collision_mask = 8
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NeonEnemy4/EnemyRadius"]
-position = Vector2(0, -14)
-shape = SubResource("CircleShape2D_oo22p")
-
-[node name="NeonEnemy5" parent="." instance=ExtResource("4_ofhwr")]
-position = Vector2(76, -787)
-script = ExtResource("5_kh1fd")
-
-[node name="EnemyRadius" type="Area2D" parent="NeonEnemy5"]
-collision_layer = 8
-collision_mask = 8
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NeonEnemy5/EnemyRadius"]
-position = Vector2(0, -14)
-shape = SubResource("CircleShape2D_oo22p")
-
-[node name="NeonEnemy6" parent="." instance=ExtResource("4_ofhwr")]
-position = Vector2(-364, 90)
-script = ExtResource("5_kh1fd")
-
-[node name="EnemyRadius" type="Area2D" parent="NeonEnemy6"]
-collision_layer = 8
-collision_mask = 8
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NeonEnemy6/EnemyRadius"]
-position = Vector2(0, -14)
-shape = SubResource("CircleShape2D_oo22p")
-
-[node name="NeonEnemy7" parent="." instance=ExtResource("4_ofhwr")]
-position = Vector2(-487, 93)
-script = ExtResource("5_kh1fd")
-
-[node name="EnemyRadius" type="Area2D" parent="NeonEnemy7"]
-collision_layer = 8
-collision_mask = 8
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NeonEnemy7/EnemyRadius"]
-position = Vector2(0, -14)
-shape = SubResource("CircleShape2D_oo22p")
-
-[node name="NeonEnemy8" parent="." instance=ExtResource("4_ofhwr")]
-position = Vector2(-402, 202)
-script = ExtResource("5_kh1fd")
-
-[node name="EnemyRadius" type="Area2D" parent="NeonEnemy8"]
-collision_layer = 8
-collision_mask = 8
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NeonEnemy8/EnemyRadius"]
-position = Vector2(0, -14)
-shape = SubResource("CircleShape2D_oo22p")
-
-[node name="NeonEnemy9" parent="." instance=ExtResource("4_ofhwr")]
-position = Vector2(-534, 205)
-script = ExtResource("5_kh1fd")
-
-[node name="EnemyRadius" type="Area2D" parent="NeonEnemy9"]
-collision_layer = 8
-collision_mask = 8
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NeonEnemy9/EnemyRadius"]
-position = Vector2(0, -14)
-shape = SubResource("CircleShape2D_oo22p")
-
-[node name="NeonEnemy10" parent="." instance=ExtResource("4_ofhwr")]
-position = Vector2(-616, 88)
-script = ExtResource("5_kh1fd")
-
-[node name="EnemyRadius" type="Area2D" parent="NeonEnemy10"]
-collision_layer = 8
-collision_mask = 8
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NeonEnemy10/EnemyRadius"]
-position = Vector2(0, -14)
-shape = SubResource("CircleShape2D_oo22p")
-
-[node name="NeonEnemy11" parent="." instance=ExtResource("4_ofhwr")]
-position = Vector2(-468, 315)
-script = ExtResource("5_kh1fd")
-
-[node name="EnemyRadius" type="Area2D" parent="NeonEnemy11"]
-collision_layer = 8
-collision_mask = 8
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NeonEnemy11/EnemyRadius"]
-position = Vector2(0, -14)
-shape = SubResource("CircleShape2D_oo22p")
-
-[node name="NeonEnemy12" parent="." instance=ExtResource("4_ofhwr")]
-position = Vector2(-664, 215)
-script = ExtResource("5_kh1fd")
-
-[node name="EnemyRadius" type="Area2D" parent="NeonEnemy12"]
-collision_layer = 8
-collision_mask = 8
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NeonEnemy12/EnemyRadius"]
-position = Vector2(0, -14)
-shape = SubResource("CircleShape2D_oo22p")
-
-[node name="NeonEnemy13" parent="." instance=ExtResource("4_ofhwr")]
-position = Vector2(219, -102)
-script = ExtResource("5_kh1fd")
-
-[node name="EnemyRadius" type="Area2D" parent="NeonEnemy13"]
-collision_layer = 8
-collision_mask = 8
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NeonEnemy13/EnemyRadius"]
-position = Vector2(0, -14)
-shape = SubResource("CircleShape2D_oo22p")
-
-[node name="NeonWarp" parent="." instance=ExtResource("11_r62nw")]
-position = Vector2(79, -54)
-
-[node name="interaction" type="Area2D" parent="NeonWarp"]
-position = Vector2(48, 62)
-collision_layer = 8
-collision_mask = 8
-script = ExtResource("9_trtq5")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="NeonWarp/interaction"]
-position = Vector2(-48, -82)
-shape = SubResource("RectangleShape2D_y3pmy")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_5xmfk")]
 position = Vector2(80, -34)
@@ -294,33 +132,7 @@ position = Vector2(158, 83)
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("6_3j0ur")
 
-[connection signal="area_entered" from="NeonEnemy/EnemyRadius" to="NeonEnemy" method="_on_enemy_radius_area_entered"]
-[connection signal="area_exited" from="NeonEnemy/EnemyRadius" to="NeonEnemy" method="_on_enemy_radius_area_exited"]
-[connection signal="area_entered" from="NeonCreature/EnemyRadius" to="NeonCreature" method="_on_enemy_radius_area_entered"]
-[connection signal="area_exited" from="NeonCreature/EnemyRadius" to="NeonCreature" method="_on_enemy_radius_area_exited"]
-[connection signal="area_entered" from="NeonEnemy2/EnemyRadius" to="NeonEnemy2" method="_on_enemy_radius_area_entered"]
-[connection signal="area_exited" from="NeonEnemy2/EnemyRadius" to="NeonEnemy2" method="_on_enemy_radius_area_exited"]
-[connection signal="area_entered" from="NeonEnemy3/EnemyRadius" to="NeonEnemy3" method="_on_enemy_radius_area_entered"]
-[connection signal="area_exited" from="NeonEnemy3/EnemyRadius" to="NeonEnemy3" method="_on_enemy_radius_area_exited"]
-[connection signal="area_entered" from="NeonEnemy4/EnemyRadius" to="NeonEnemy4" method="_on_enemy_radius_area_entered"]
-[connection signal="area_exited" from="NeonEnemy4/EnemyRadius" to="NeonEnemy4" method="_on_enemy_radius_area_exited"]
-[connection signal="area_entered" from="NeonEnemy5/EnemyRadius" to="NeonEnemy5" method="_on_enemy_radius_area_entered"]
-[connection signal="area_exited" from="NeonEnemy5/EnemyRadius" to="NeonEnemy5" method="_on_enemy_radius_area_exited"]
-[connection signal="area_entered" from="NeonEnemy6/EnemyRadius" to="NeonEnemy6" method="_on_enemy_radius_area_entered"]
-[connection signal="area_exited" from="NeonEnemy6/EnemyRadius" to="NeonEnemy6" method="_on_enemy_radius_area_exited"]
-[connection signal="area_entered" from="NeonEnemy7/EnemyRadius" to="NeonEnemy7" method="_on_enemy_radius_area_entered"]
-[connection signal="area_exited" from="NeonEnemy7/EnemyRadius" to="NeonEnemy7" method="_on_enemy_radius_area_exited"]
-[connection signal="area_entered" from="NeonEnemy8/EnemyRadius" to="NeonEnemy8" method="_on_enemy_radius_area_entered"]
-[connection signal="area_exited" from="NeonEnemy8/EnemyRadius" to="NeonEnemy8" method="_on_enemy_radius_area_exited"]
-[connection signal="area_entered" from="NeonEnemy9/EnemyRadius" to="NeonEnemy9" method="_on_enemy_radius_area_entered"]
-[connection signal="area_exited" from="NeonEnemy9/EnemyRadius" to="NeonEnemy9" method="_on_enemy_radius_area_exited"]
-[connection signal="area_entered" from="NeonEnemy10/EnemyRadius" to="NeonEnemy10" method="_on_enemy_radius_area_entered"]
-[connection signal="area_exited" from="NeonEnemy10/EnemyRadius" to="NeonEnemy10" method="_on_enemy_radius_area_exited"]
-[connection signal="area_entered" from="NeonEnemy11/EnemyRadius" to="NeonEnemy11" method="_on_enemy_radius_area_entered"]
-[connection signal="area_exited" from="NeonEnemy11/EnemyRadius" to="NeonEnemy11" method="_on_enemy_radius_area_exited"]
-[connection signal="area_entered" from="NeonEnemy12/EnemyRadius" to="NeonEnemy12" method="_on_enemy_radius_area_entered"]
-[connection signal="area_exited" from="NeonEnemy12/EnemyRadius" to="NeonEnemy12" method="_on_enemy_radius_area_exited"]
-[connection signal="area_entered" from="NeonEnemy13/EnemyRadius" to="NeonEnemy13" method="_on_enemy_radius_area_entered"]
-[connection signal="area_exited" from="NeonEnemy13/EnemyRadius" to="NeonEnemy13" method="_on_enemy_radius_area_exited"]
-[connection signal="area_entered" from="NeonWarp/interaction" to="NeonWarp/interaction" method="_on_area_entered"]
-[connection signal="area_exited" from="NeonWarp/interaction" to="NeonWarp/interaction" method="_on_area_exited"]
+[connection signal="area_entered" from="CharacterBody2D2/EnemyRadius" to="CharacterBody2D2" method="_on_enemy_radius_area_entered"]
+[connection signal="area_exited" from="CharacterBody2D2/EnemyRadius" to="CharacterBody2D2" method="_on_enemy_radius_area_exited"]
+[connection signal="area_entered" from="NeonCreature/EnemyRadius" to="CharacterBody2D2" method="_on_enemy_radius_area_entered"]
+[connection signal="area_exited" from="NeonCreature/EnemyRadius" to="CharacterBody2D2" method="_on_enemy_radius_area_exited"]

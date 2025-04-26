@@ -20,7 +20,7 @@ func _physics_process(_delta):
 		velocity = direction * speed
 	if !interact:
 		velocity = direction * 0
-	if !GlobalVariables.in_combat:
+	if !GlobalVariables.in_combat and !GlobalVariables.debounce:
 		move_and_slide()
 
 #func _process(delta):
