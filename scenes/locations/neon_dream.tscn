@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dr155rncg3jot"]
+[gd_scene load_steps=21 format=3 uid="uid://dr155rncg3jot"]
 
 [ext_resource type="Texture2D" uid="uid://b4g07ub54tlj2" path="res://assets/sprites/main/black.jpg" id="1_fj0fy"]
 [ext_resource type="PackedScene" uid="uid://d1jbh8q1vrdd6" path="res://scenes/jon.tscn" id="2_5xmfk"]
@@ -12,6 +12,9 @@
 [ext_resource type="Script" path="res://scripts/enemy_combat_scripts/neon_creature/neon_creature_follow.gd" id="7_sg8d7"]
 [ext_resource type="Script" path="res://scripts/interaction_scripts/neon_warp_interaction.gd" id="9_trtq5"]
 [ext_resource type="PackedScene" uid="uid://27qeq0ii1oby" path="res://scenes/neon_warp_back.tscn" id="11_r62nw"]
+[ext_resource type="PackedScene" uid="uid://c1s8mfal8dbj3" path="res://assets/audio/sound.tscn" id="13_6a8p3"]
+[ext_resource type="AudioStream" uid="uid://vhfvs1yeumbw" path="res://assets/audio/neon_loop.mp3" id="14_p04mv"]
+[ext_resource type="Script" path="res://scripts/loopsound.gd" id="15_lp71i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aqpve"]
 texture = ExtResource("2_31o3t")
@@ -293,6 +296,11 @@ motion_mirroring = Vector2(250, 250)
 position = Vector2(158, 83)
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("6_3j0ur")
+
+[node name="Loop" parent="." instance=ExtResource("13_6a8p3")]
+stream = ExtResource("14_p04mv")
+autoplay = true
+script = ExtResource("15_lp71i")
 
 [connection signal="area_entered" from="NeonEnemy/EnemyRadius" to="NeonEnemy" method="_on_enemy_radius_area_entered"]
 [connection signal="area_exited" from="NeonEnemy/EnemyRadius" to="NeonEnemy" method="_on_enemy_radius_area_exited"]

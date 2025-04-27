@@ -13,10 +13,10 @@ var messages = [
 	"I SHALL HELP YOU FIND AND REMEMBER"
 ]
 
-var soul_blips = [
-	load("res://assets/audio/soul_blips/soul1.wav"),
-	load("res://assets/audio/soul_blips/soul2.wav"),
-	load("res://assets/audio/soul_blips/soul3.wav")
+var blips = [
+	load("res://assets/audio/old_man_blips/1.wav"),
+	load("res://assets/audio/old_man_blips/2.wav"),
+	load("res://assets/audio/old_man_blips/3.wav")
 ]
 
 var index = 0
@@ -42,7 +42,7 @@ func show_message():
 	if index < messages.size():
 		label.text = ""
 		for character in messages[index]:
-			sound.stream =soul_blips[random.randi_range(0, 2)]
+			sound.stream = blips[random.randi_range(0, 2)]
 			sound.play()
 			label.text += character
 			await get_tree().create_timer(0.05).timeout

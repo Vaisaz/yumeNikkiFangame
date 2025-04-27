@@ -58,6 +58,7 @@ func show_message():
 				sound.stream = blips[random.randi_range(0, 2)]
 				sound.play()
 			elif index > 4:
+				label.add_theme_color_override("font_color", Color8(255,255,255))
 				sound.stream =soul_blips[random.randi_range(0, 2)]
 				sound.play()
 			label.text += character

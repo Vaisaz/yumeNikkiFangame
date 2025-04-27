@@ -6,7 +6,7 @@ var messages = [
 	"HERE, HAVE A DICE",
 	"YOU HAVE ACQUIRED:
 	DICE",
-	"GIVE AND TAKES
+	"GIVES AND TAKES
 	0 HP
 	? AT",
 	"WIN BIG"
@@ -50,6 +50,15 @@ func show_message():
 	if index < messages.size():
 		label.text = ""
 		for character in messages[index]:
+			if index <= 2:
+				sound.stream = blips[random_blips.randi_range(0, 2)]
+				sound.play()
+			elif index > 2 and index < 5:
+				sound.stream = soul_blips[random_blips.randi_range(0, 2)]
+				sound.play()
+			elif index == 5:
+				sound.stream = blips[random_blips.randi_range(0, 2)]
+				sound.play()
 			label.text += character
 			await get_tree().create_timer(0.05).timeout
 		message_displayed = true
@@ -81,39 +90,45 @@ func item_give():
 	GlobalVariables.debounce = true
 	Inventory.index = 0
 	for item_count in Inventory.items:
-		print(item_count)
-		if Inventory.index == 0 and Inventory.items[Inventory.index].disabled and !Inventory.dice_has_interacted:
-			item_give_structure()
-		if Inventory.index == 1 and Inventory.items[Inventory.index].disabled and !Inventory.dice_has_interacted:
-			item_give_structure()
-		if Inventory.index == 2 and Inventory.items[Inventory.index].disabled and !Inventory.dice_has_interacted:
-			item_give_structure()
-		if Inventory.index == 3 and Inventory.items[Inventory.index].disabled and !Inventory.dice_has_interacted:
-			item_give_structure()
-		if Inventory.index == 4 and Inventory.items[Inventory.index].disabled and !Inventory.dice_has_interacted:
-			item_give_structure()
-		if Inventory.index == 5 and Inventory.items[Inventory.index].disabled and !Inventory.dice_has_interacted:
-			item_give_structure()
-		if Inventory.index == 6 and Inventory.items[Inventory.index].disabled and !Inventory.dice_has_interacted:
-			item_give_structure()
-		if Inventory.index == 7 and Inventory.items[Inventory.index].disabled and !Inventory.dice_has_interacted:
-			item_give_structure()
-		if Inventory.index == 8 and Inventory.items[Inventory.index].disabled and !Inventory.dice_has_interacted:
-			item_give_structure()
-		if Inventory.index == 9 and Inventory.items[Inventory.index].disabled and !Inventory.dice_has_interacted:
-			item_give_structure()
-		if Inventory.index == 10 and Inventory.items[Inventory.index].disabled and !Inventory.dice_has_interacted:
-			item_give_structure()
-		if Inventory.index == 11 and Inventory.items[Inventory.index].disabled and !Inventory.dice_has_interacted:
-			item_give_structure()
-		if !Inventory.dice_has_interacted:
-			Inventory.index += 1
+		Inventory.items_disabled_checker()
+		if !Inventory.all_items_enabled:
+			print(item_count)
+			if Inventory.index == 0 and Inventory.items[Inventory.index].disabled and !Inventory.dice_has_interacted:
+				item_give_structure()
+			if Inventory.index == 1 and Inventory.items[Inventory.index].disabled and !Inventory.dice_has_interacted:
+				item_give_structure()
+			if Inventory.index == 2 and Inventory.items[Inventory.index].disabled and !Inventory.dice_has_interacted:
+				item_give_structure()
+			if Inventory.index == 3 and Inventory.items[Inventory.index].disabled and !Inventory.dice_has_interacted:
+				item_give_structure()
+			if Inventory.index == 4 and Inventory.items[Inventory.index].disabled and !Inventory.dice_has_interacted:
+				item_give_structure()
+			if Inventory.index == 5 and Inventory.items[Inventory.index].disabled and !Inventory.dice_has_interacted:
+				item_give_structure()
+			if Inventory.index == 6 and Inventory.items[Inventory.index].disabled and !Inventory.dice_has_interacted:
+				item_give_structure()
+			if Inventory.index == 7 and Inventory.items[Inventory.index].disabled and !Inventory.dice_has_interacted:
+				item_give_structure()
+			if Inventory.index == 8 and Inventory.items[Inventory.index].disabled and !Inventory.dice_has_interacted:
+				item_give_structure()
+			if Inventory.index == 9 and Inventory.items[Inventory.index].disabled and !Inventory.dice_has_interacted:
+				item_give_structure()
+			if Inventory.index == 10 and Inventory.items[Inventory.index].disabled and !Inventory.dice_has_interacted:
+				item_give_structure()
+			if Inventory.index == 11 and Inventory.items[Inventory.index].disabled and !Inventory.dice_has_interacted:
+				item_give_structure()
+			if !Inventory.dice_has_interacted:
+				Inventory.index += 1
+		Inventory.index
 
 func _process(_delta):
-	var red = random.randi_range(0, 255)
-	var green = random.randi_range(0, 255)
-	var blue = random.randi_range(0, 255)
-	label.add_theme_color_override("font_color", Color8(red, green, blue))
-	set_process(false)
-	await get_tree().create_timer(0.1).timeout
-	set_process(true)
+	if index > 2 and index < 5:
+		label.add_theme_color_override("font_color", Color8(255,255,255))
+	else:
+		var red = random.randi_range(0, 255)
+		var green = random.randi_range(0, 255)
+		var blue = random.randi_range(0, 255)
+		label.add_theme_color_override("font_color", Color8(red, green, blue))
+		set_process(false)
+		await get_tree().create_timer(0.1).timeout
+		set_process(true)

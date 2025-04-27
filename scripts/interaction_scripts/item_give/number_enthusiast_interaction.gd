@@ -10,9 +10,12 @@ var messages = [
 	"I COULD ALSO BENEFIT FROM YOU.",
 	"TALK TO ME AGAIN AND I WILL GIVE YOU THE
 	ITEM.",
-	"YOU HAVE ACQUIRED WNPV10.127",
-	"WNPV10.127 STANDS FOR:
+	"YOU HAVE ACQUIRED WNPV10.127
+	WNPV10.127 STANDS FOR:
 	WEAK NUMBER PISTOL VERSION 10.127",
+	"GIVES AND TAKES
+	0 HP
+	+25 AT",
 	"I HOPE I AM GIVING THIS TO GOOD HANDS."
 ]
 
@@ -58,9 +61,11 @@ func show_message():
 				sound.stream = blips[random_blips.randi_range(0, 2)]
 				sound.play()
 			elif index > 5 and index < 8:
+				label.add_theme_color_override("font_color", Color8(255,255,255))
 				sound.stream = soul_blips[random_blips.randi_range(0, 2)]
 				sound.play()
 			elif index == 8:
+				label.add_theme_color_override("font_color", Color8(0,256,0))
 				sound.stream = blips[random_blips.randi_range(0, 2)]
 				sound.play()
 			label.text += character
@@ -86,28 +91,30 @@ func _input(event):
 			GlobalVariables.debounce = true
 			Inventory.index = 0
 			for item_count in Inventory.items:
-				print(item_count)
-				if Inventory.index == 0 and Inventory.items[Inventory.index].disabled and !Inventory.wnp_has_interacted:
-					Inventory.items[Inventory.index].texture_normal = Inventory.item_texture[2]
-					Inventory.items[Inventory.index].texture_hover = Inventory.item_texture_hover[2]
-					Inventory.items[Inventory.index].disabled = false
-					GlobalVariables.debounce = false
-					interaction_times = interaction_times + 1
-					Inventory.wnp_has_interacted = true
-				if Inventory.index == 1 and Inventory.items[Inventory.index].disabled and !Inventory.wnp_has_interacted:
-					Inventory.items[Inventory.index].texture_normal = Inventory.item_texture[2]
-					Inventory.items[Inventory.index].texture_hover = Inventory.item_texture_hover[2]
-					Inventory.items[Inventory.index].disabled = false
-					GlobalVariables.debounce = false
-					interaction_times = interaction_times + 1
-					Inventory.wnp_has_interacted = true
-				if Inventory.index == 2 and Inventory.items[Inventory.index].disabled and !Inventory.wnp_has_interacted:
-					Inventory.items[Inventory.index].texture_normal = Inventory.item_texture[2]
-					Inventory.items[Inventory.index].texture_hover = Inventory.item_texture_hover[2]
-					Inventory.items[Inventory.index].disabled = false
-					GlobalVariables.debounce = false
-					interaction_times = interaction_times + 1
-					Inventory.wnp_has_interacted = true
+				if Inventory.index == 0:
+					item_give_structure()
+				if Inventory.index == 1:
+					item_give_structure()
+				if Inventory.index == 2:
+					item_give_structure()
+				if Inventory.index == 3:
+					item_give_structure()
+				if Inventory.index == 4:
+					item_give_structure()
+				if Inventory.index == 5:
+					item_give_structure()
+				if Inventory.index == 6:
+					item_give_structure()
+				if Inventory.index == 7:
+					item_give_structure()
+				if Inventory.index == 8:
+					item_give_structure()
+				if Inventory.index == 9:
+					item_give_structure()
+				if Inventory.index == 10:
+					item_give_structure()	
+				if Inventory.index == 11:
+					item_give_structure()
 				if !Inventory.wnp_has_interacted:
 					Inventory.index += 1
 				
@@ -122,3 +129,12 @@ func _input(event):
 		message_displayed = false
 		index += 1
 		show_message()
+		
+func item_give_structure():
+	if Inventory.items[Inventory.index].disabled and !Inventory.wnp_has_interacted:
+		Inventory.items[Inventory.index].texture_normal = Inventory.item_texture[2]
+		Inventory.items[Inventory.index].texture_hover = Inventory.item_texture_hover[2]
+		Inventory.items[Inventory.index].disabled = false
+		GlobalVariables.debounce = false
+		interaction_times = interaction_times + 1
+		Inventory.wnp_has_interacted = true

@@ -111,6 +111,8 @@ func _input(_event):
 			Combat.enemy_health(Combat.enemy_current_health, Combat.enemy_max_health)
 			Combat.player_health()
 			Combat.combat_layer.visible = true
+			Combat.items_button.visible = false
+			Combat.items_button.disabled = true
 			DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_VISIBLE)
 			Combat.combat_sound.play()
 		else:

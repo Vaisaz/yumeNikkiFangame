@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://d0jh7omnvfxod"]
+[gd_scene load_steps=45 format=3 uid="uid://d0jh7omnvfxod"]
 
 [ext_resource type="Texture2D" uid="uid://bqua316ypuuok" path="res://assets/sprites/happy_dream/happy_background.png" id="1_d4nht"]
 [ext_resource type="Texture2D" uid="uid://3a7wlxbyn60s" path="res://assets/sprites/happy_dream/tiles.png" id="1_g8k8r"]
@@ -22,6 +22,8 @@
 [ext_resource type="Script" path="res://scripts/interaction_scripts/happy_sad_door_back.gd" id="18_xhbru"]
 [ext_resource type="PackedScene" uid="uid://c1s8mfal8dbj3" path="res://assets/audio/sound.tscn" id="19_y27by"]
 [ext_resource type="AudioStream" uid="uid://cukph5fc4tjge" path="res://assets/audio/door_sound.mp3" id="20_ubb45"]
+[ext_resource type="Texture2D" uid="uid://beh4pnr72b2sx" path="res://assets/blank_frame_bigger.png" id="20_ys8k2"]
+[ext_resource type="FontFile" uid="uid://b5lqlis8c3a4k" path="res://assets/I-pixel-u.ttf" id="21_0tkt5"]
 [ext_resource type="AudioStream" uid="uid://bqhprd8a5owgh" path="res://assets/audio/happy_dream_beat.mp3" id="23_rw7nq"]
 [ext_resource type="Script" path="res://scripts/loopsound.gd" id="24_mmu80"]
 
@@ -919,6 +921,32 @@ shape = SubResource("RectangleShape2D_o0d3n")
 [node name="DoorSound" parent="StaticBody2D2/interaction2" instance=ExtResource("19_y27by")]
 position = Vector2(-81, 52)
 stream = ExtResource("20_ubb45")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="StaticBody2D2"]
+visible = false
+
+[node name="BlankFrameBigger" type="Sprite2D" parent="StaticBody2D2/CanvasLayer"]
+position = Vector2(578, 524)
+scale = Vector2(4, 3.01563)
+texture = ExtResource("20_ys8k2")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D2/CanvasLayer/BlankFrameBigger"]
+offset_left = -126.0
+offset_top = -30.0
+offset_right = 126.0
+offset_bottom = 30.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="StaticBody2D2/CanvasLayer/BlankFrameBigger"]
+offset_left = -122.0
+offset_top = -25.8652
+offset_right = -17.0
+offset_bottom = -14.8652
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("21_0tkt5")
+theme_override_font_sizes/font_size = 8
+
+[node name="Sound" parent="StaticBody2D2" instance=ExtResource("19_y27by")]
 
 [node name="StaticBody2D4" parent="." instance=ExtResource("17_o0im2")]
 position = Vector2(2919, 110)

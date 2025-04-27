@@ -254,6 +254,9 @@ func combat(player_attack, damaged):
 
 func _on_fight_button_pressed():
 	combat(player_attack, true)
+	if enemy_texture.texture == load("res://assets/inventory/dream_eye/1.png"):
+		items_button.visible = true
+		items_button.disabled = false
 		
 func _on_run_button_pressed():
 	if enemy_texture.texture == load("res://assets/inventory/dream_eye/1.png"):
@@ -321,6 +324,7 @@ func on_pressed_structure(num):
 		player_bar.visible = false
 		combat_sound.stop()
 		combat_sound.stream = load("res://assets/audio/picked_up.wav")
+		await get_tree().create_timer(0.5).timeout
 		combat_sound.play()
 		await Combat.combat_sound.finished
 		enemy_texture.visible = true

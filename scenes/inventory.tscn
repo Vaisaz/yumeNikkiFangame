@@ -343,6 +343,8 @@ texture_hover = ExtResource("7_n4dys")
 [node name="HealedSound" parent="." instance=ExtResource("15_gfa0p")]
 stream = ExtResource("16_unk72")
 
+[node name="EquipUnequipSound" parent="." instance=ExtResource("15_gfa0p")]
+
 [connection signal="pressed" from="InventoryLayer/Buttons/Soul" to="." method="_on_soul_pressed"]
 [connection signal="pressed" from="InventoryLayer/Buttons/Inventory" to="." method="_on_inventory_pressed"]
 [connection signal="pressed" from="InventoryLayer/Buttons/Quit" to="." method="_on_quit_pressed"]

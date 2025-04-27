@@ -131,6 +131,8 @@ func normal_health():
 		Combat.player_max_health = 100
 		Combat.player_attack = 60
 
+@onready var equipped_unequipped_sound = $EquipUnequipSound
+
 func item_on_equip(item_index):
 	soul_choosed.visible = false
 	inventory_choosed.visible = false
@@ -151,6 +153,8 @@ func item_on_equip(item_index):
 		equipped.texture = items[item_index].texture_normal
 	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_HIDDEN)
 	inventory_button.grab_focus()
+	equipped_unequipped_sound.stream = load("res://assets/audio/equipped.wav")
+	equipped_unequipped_sound.play()
 	if equipped.texture == load("res://assets/inventory/items/banana.png") and !banana_equipped:
 		normal_health()
 		Combat.player_attack -= 5
@@ -174,6 +178,8 @@ func item_on_equip(item_index):
 		dice_equipped = true
 	
 func item_on_unequip():
+	equipped_unequipped_sound.stream = load("res://assets/audio/unequipped.wav")
+	equipped_unequipped_sound.play()
 	soul_choosed.visible = false
 	inventory_choosed.visible = false
 	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_HIDDEN)
