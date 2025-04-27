@@ -9,7 +9,7 @@ func _on_area_entered(area):
 	if area.is_in_group("Player"):
 		Combat.combat_sound.stream = load("res://assets/audio/combat_music.mp3")
 		Inventory.add_coins = 5
-		Combat.add_xp = 25
+		Combat.add_xp = 20
 		GlobalVariables.in_combat = true
 		Transition.combat_transition_animation.visible = true
 		Transition.combat_transition_animation.play("default")

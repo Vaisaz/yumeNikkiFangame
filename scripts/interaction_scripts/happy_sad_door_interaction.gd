@@ -43,7 +43,7 @@ func show_message():
 		message_displayed = true
 
 func _input(event):
-	if event.is_action_pressed("interact") and message_displayed and interact and Input.is_action_just_pressed("interact") and Transition.canvas_layer.visible == false and Inventory.inventory_layer.visible == false:
+	if Combat.lv <= 4 and event.is_action_pressed("interact") and message_displayed and interact and Input.is_action_just_pressed("interact") and Transition.canvas_layer.visible == false and Inventory.inventory_layer.visible == false:
 		GlobalVariables.debounce = true
 		canvas_layer.visible = true
 		if index == 1:
@@ -54,11 +54,13 @@ func _input(event):
 		index += 1
 		show_message()
 	elif Combat.lv == 5 and interact and Input.is_action_just_pressed("interact") and Transition.canvas_layer.visible == false and Inventory.inventory_layer.visible == false and !Combat.combat_layer.visible:
+		GlobalVariables.debounce = true
 		Transition.playing_animation()
 		await Transition.animated_sprite_2d.animation_finished
 		door_sound.play()
 		await door_sound.finished
 		Transition.ending_animation()
+		GlobalVariables.debounce = false
 		GlobalVariables.player_position = Vector2(2920,136)
 		get_tree().change_scene_to_file("res://scenes/locations/happy_dream.tscn")
 	

@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var speed = 200
+@export var speed = 50
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var walk_sound = $Sound
 @onready var step_timer = $StepTimer

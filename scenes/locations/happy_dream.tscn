@@ -814,7 +814,7 @@ position = Vector2(1003, -105)
 script = ExtResource("9_q8dq6")
 
 [node name="EnemyRadius" type="Area2D" parent="Giggler1"]
-collision_layer = 4
+collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Giggler1/EnemyRadius"]
@@ -826,7 +826,7 @@ position = Vector2(898, -296)
 script = ExtResource("9_q8dq6")
 
 [node name="EnemyRadius" type="Area2D" parent="Giggler2"]
-collision_layer = 4
+collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Giggler2/EnemyRadius"]
@@ -838,7 +838,7 @@ position = Vector2(805, -129)
 script = ExtResource("9_q8dq6")
 
 [node name="EnemyRadius" type="Area2D" parent="Giggler3"]
-collision_layer = 4
+collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Giggler3/EnemyRadius"]
@@ -850,7 +850,7 @@ position = Vector2(1032, -392)
 script = ExtResource("9_q8dq6")
 
 [node name="EnemyRadius" type="Area2D" parent="Giggler4"]
-collision_layer = 4
+collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Giggler4/EnemyRadius"]
@@ -862,7 +862,7 @@ position = Vector2(880, 34)
 script = ExtResource("9_q8dq6")
 
 [node name="EnemyRadius" type="Area2D" parent="Giggler5"]
-collision_layer = 4
+collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Giggler5/EnemyRadius"]
@@ -874,7 +874,7 @@ position = Vector2(1039, 89)
 script = ExtResource("9_q8dq6")
 
 [node name="EnemyRadius" type="Area2D" parent="Giggler6"]
-collision_layer = 4
+collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Giggler6/EnemyRadius"]
@@ -886,7 +886,7 @@ position = Vector2(983, -227)
 script = ExtResource("9_q8dq6")
 
 [node name="EnemyRadius" type="Area2D" parent="Giggler7"]
-collision_layer = 4
+collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Giggler7/EnemyRadius"]
@@ -898,7 +898,7 @@ position = Vector2(864, -451)
 script = ExtResource("9_q8dq6")
 
 [node name="EnemyRadius" type="Area2D" parent="Giggler8"]
-collision_layer = 4
+collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Giggler8/EnemyRadius"]

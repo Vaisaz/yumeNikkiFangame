@@ -13,7 +13,8 @@ config_version=5
 config/name="yumeNikkiFangame"
 run/main_scene="res://scenes/menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://icon.svg"
+boot_splash/image="res://assets/dream_eye_start.png"
+config/icon="res://assets/inventory/dream_eye/1.png"
 
 [autoload]
 
@@ -24,6 +25,7 @@ GlobalVariables="*res://scenes/global_variables.tscn"
 
 [display]
 
+window/size/mode=3
 window/stretch/mode="viewport"
 window/stretch/aspect="ignore"
 window/stretch/scale_mode="integer"

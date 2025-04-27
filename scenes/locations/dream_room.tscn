@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://d4knyms2ff0c2"]
+[gd_scene load_steps=24 format=3 uid="uid://d4knyms2ff0c2"]
 
 [ext_resource type="Texture2D" uid="uid://b4g07ub54tlj2" path="res://assets/sprites/main/black.jpg" id="1_hgo00"]
 [ext_resource type="Texture2D" uid="uid://ynh4otbjgj8e" path="res://assets/sprites/main/room.png" id="2_ns3rm"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://scripts/interaction_scripts/door_interaction.gd" id="12_owyl7"]
 [ext_resource type="PackedScene" uid="uid://c1s8mfal8dbj3" path="res://assets/audio/sound.tscn" id="13_saars"]
 [ext_resource type="AudioStream" uid="uid://cukph5fc4tjge" path="res://assets/audio/door_sound.mp3" id="14_5naay"]
+[ext_resource type="PackedScene" uid="uid://bd2kl6dw5vh6y" path="res://scenes/table.tscn" id="15_c4axf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_575h7"]
 texture = ExtResource("5_junx1")
@@ -228,6 +229,9 @@ position = Vector2(-48, -62)
 position = Vector2(48, 62)
 collision_layer = 8
 collision_mask = 8
+
+[node name="Table" parent="." instance=ExtResource("15_c4axf")]
+position = Vector2(32, -69)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("7_4mhao")]
 position = Vector2(-47, -43)

@@ -9,7 +9,7 @@ func _on_area_entered(area):
 	if area.is_in_group("Player"):
 		Combat.combat_sound.stream = load("res://assets/audio/combat_music.mp3")
 		Inventory.add_coins = 2
-		Combat.add_xp = 5000
+		Combat.add_xp = 50
 		GlobalVariables.in_combat = true
 		Transition.combat_transition_animation.visible = true
 		Transition.combat_transition_animation.play("default")
@@ -22,8 +22,8 @@ func _on_area_entered(area):
 		$"..".queue_free()
 		GlobalVariables.debounce = true
 		Combat.enemy_texture.texture = load("res://assets/combat/giggler.png")
-		Combat.enemy_max_health = 100
-		Combat.enemy_current_health = 100
+		Combat.enemy_max_health = 120
+		Combat.enemy_current_health = 120
 		Combat.enemy_attack = 20
 		Combat.enemy_health(Combat.enemy_current_health, Combat.enemy_max_health)
 		Combat.player_health()

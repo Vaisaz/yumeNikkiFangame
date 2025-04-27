@@ -83,11 +83,9 @@ func item_give_structure():
 	Inventory.items[Inventory.index].texture_normal = Inventory.item_texture[4]
 	Inventory.items[Inventory.index].texture_hover = Inventory.item_texture_hover[4]
 	Inventory.items[Inventory.index].disabled = false
-	GlobalVariables.debounce = false
 	Inventory.dice_has_interacted = true
 
 func item_give():
-	GlobalVariables.debounce = true
 	Inventory.index = 0
 	for item_count in Inventory.items:
 		Inventory.items_disabled_checker()

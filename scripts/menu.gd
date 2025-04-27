@@ -16,9 +16,13 @@ func _on_start_pressed():
 	await Transition.animated_sprite_2d.animation_finished
 	get_tree().change_scene_to_file("res://scenes/locations/room.tscn")
 	Transition.ending_animation()
+	GlobalVariables.debounce = false
+	GlobalVariables.in_combat = false
 	GlobalVariables.player_position = Vector2(-47,-43)
 
 func _on_guide_pressed():
+	GlobalVariables.debounce = false
+	GlobalVariables.in_combat = false
 	get_tree().change_scene_to_file("res://scenes/guide.tscn")
 
 func _on_quit_pressed():

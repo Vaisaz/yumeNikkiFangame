@@ -77,10 +77,10 @@ func leveling_structure(xp_value, lv_value, max_xp_update, max_health, attack):
 		player_current_health = player_max_health
 
 func leveling():
-	if !Inventory.equipped.texture == null:
-		Inventory.item_on_unequip()
 	xp += add_xp
 	if xp >= 25 and lv == 1:
+		if !Inventory.equipped.texture == null:
+			Inventory.item_on_unequip()
 		leveled_sound.play()
 		player_max_health = 55
 		player_attack = 15
@@ -92,6 +92,8 @@ func leveling():
 		max_xp = 50
 		player_current_health = player_max_health
 	if xp >= 50 and lv == 2:
+		if !Inventory.equipped.texture == null:
+			Inventory.item_on_unequip()
 		leveled_sound.play()
 		player_max_health = 60
 		player_attack = 20
@@ -103,6 +105,8 @@ func leveling():
 		max_xp = 200
 		player_current_health = player_max_health
 	if xp >= 200 and lv == 3:
+		if !Inventory.equipped.texture == null:
+			Inventory.item_on_unequip()
 		leveled_sound.play()
 		player_max_health = 80
 		player_attack = 40
@@ -114,6 +118,8 @@ func leveling():
 		max_xp = 450
 		player_current_health = player_max_health
 	if xp >= 450 and lv == 4:
+		if !Inventory.equipped.texture == null:
+			Inventory.item_on_unequip()
 		leveled_sound.play()
 		player_max_health = 100
 		player_attack = 60

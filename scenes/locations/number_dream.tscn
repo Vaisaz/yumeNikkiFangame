@@ -178,7 +178,7 @@ position = Vector2(-66, 232)
 
 [node name="interaction" type="Area2D" parent="DiceDance"]
 position = Vector2(48, 62)
-collision_layer = 8
+collision_layer = 0
 collision_mask = 8
 script = ExtResource("13_vv5ie")
 
@@ -192,7 +192,7 @@ script = ExtResource("14_i2mny")
 
 [node name="EnemyRadius" type="Area2D" parent="Nerd1"]
 position = Vector2(9, -31)
-collision_layer = 4
+collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Nerd1/EnemyRadius"]
@@ -205,7 +205,7 @@ script = ExtResource("14_i2mny")
 
 [node name="EnemyRadius" type="Area2D" parent="Nerd2"]
 position = Vector2(9, -31)
-collision_layer = 4
+collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Nerd2/EnemyRadius"]
@@ -218,7 +218,7 @@ script = ExtResource("14_i2mny")
 
 [node name="EnemyRadius" type="Area2D" parent="Nerd3"]
 position = Vector2(9, -30)
-collision_layer = 4
+collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Nerd3/EnemyRadius"]
@@ -231,7 +231,7 @@ script = ExtResource("14_i2mny")
 
 [node name="EnemyRadius" type="Area2D" parent="Nerd4"]
 position = Vector2(9, -30)
-collision_layer = 4
+collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Nerd4/EnemyRadius"]
@@ -244,7 +244,7 @@ script = ExtResource("14_i2mny")
 
 [node name="EnemyRadius" type="Area2D" parent="Nerd5"]
 position = Vector2(9, -30)
-collision_layer = 4
+collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Nerd5/EnemyRadius"]
@@ -257,7 +257,7 @@ script = ExtResource("14_i2mny")
 
 [node name="EnemyRadius" type="Area2D" parent="Nerd6"]
 position = Vector2(9, -30)
-collision_layer = 4
+collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Nerd6/EnemyRadius"]
@@ -270,7 +270,7 @@ script = ExtResource("14_i2mny")
 
 [node name="EnemyRadius" type="Area2D" parent="Nerd7"]
 position = Vector2(9, -31)
-collision_layer = 4
+collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Nerd7/EnemyRadius"]
@@ -283,7 +283,7 @@ script = ExtResource("14_i2mny")
 
 [node name="EnemyRadius" type="Area2D" parent="Nerd8"]
 position = Vector2(9, -31)
-collision_layer = 4
+collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Nerd8/EnemyRadius"]
@@ -296,7 +296,7 @@ script = ExtResource("14_i2mny")
 
 [node name="EnemyRadius" type="Area2D" parent="Nerd9"]
 position = Vector2(9, -31)
-collision_layer = 4
+collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Nerd9/EnemyRadius"]
