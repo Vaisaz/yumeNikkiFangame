@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://d0jh7omnvfxod"]
+[gd_scene load_steps=46 format=3 uid="uid://d0jh7omnvfxod"]
 
 [ext_resource type="Texture2D" uid="uid://bqua316ypuuok" path="res://assets/sprites/happy_dream/happy_background.png" id="1_d4nht"]
 [ext_resource type="Texture2D" uid="uid://3a7wlxbyn60s" path="res://assets/sprites/happy_dream/tiles.png" id="1_g8k8r"]
@@ -767,6 +767,9 @@ size = Vector2(64, 2363)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_01tn4"]
 size = Vector2(1569, 62)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e6eup"]
+size = Vector2(225.5, 193)
+
 [node name="happy_dream" type="Node2D"]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
@@ -1004,6 +1007,17 @@ shape = SubResource("RectangleShape2D_rppgh")
 [node name="CollisionShape2D7" type="CollisionShape2D" parent="Collisions"]
 position = Vector2(856.5, -1236)
 shape = SubResource("RectangleShape2D_01tn4")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisions"]
+polygon = PackedVector2Array(814, -314, 974, -314, 1038, -377, 1038, -442, 877, -442, 814, -378)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Collisions"]
+position = Vector2(-31, -656)
+polygon = PackedVector2Array(925, -234, 1117, -234, 1117, -394, 1070, -442, 877, -442, 877, -281)
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Collisions"]
+position = Vector2(766.25, -665.5)
+shape = SubResource("RectangleShape2D_e6eup")
 
 [node name="Loop" parent="." instance=ExtResource("19_y27by")]
 position = Vector2(-251, -791)

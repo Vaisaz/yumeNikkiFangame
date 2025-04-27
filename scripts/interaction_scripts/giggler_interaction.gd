@@ -8,7 +8,7 @@ var player_current_health = Combat.player_current_health
 func _on_area_entered(area):
 	if area.is_in_group("Player"):
 		Combat.combat_sound.stream = load("res://assets/audio/combat_music.mp3")
-		Inventory.add_coins = 2
+		Inventory.add_coins = 10
 		Combat.add_xp = 50
 		GlobalVariables.in_combat = true
 		Transition.combat_transition_animation.visible = true
