@@ -132,6 +132,7 @@ func leveling():
 		player_current_health = player_max_health
 		
 
+@warning_ignore("shadowed_variable")
 func combat(player_attack, damaged):
 	var turn = rng.randi_range(1, 2)
 	fight_button.disabled = true
