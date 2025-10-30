@@ -6,7 +6,8 @@ var item_texture = [
 	preload("res://assets/inventory/items/wnp.png"),
 	preload("res://assets/inventory/items/lemonade.png"),
 	preload("res://assets/inventory/items/dice.png"),
-	preload("res://assets/inventory/items/corruption.png")
+	preload("res://assets/inventory/items/corruption.png"),
+	preload("res://assets/inventory/items/ring.png")
 ]
 
 var item_texture_hover = [
@@ -15,7 +16,8 @@ var item_texture_hover = [
 	preload("res://assets/inventory/items/wnp_hover.png"),
 	preload("res://assets/inventory/items/lemonade_hover.png"),
 	preload("res://assets/inventory/items/dice_hover.png"),
-	preload("res://assets/inventory/items/corruption_hover.png")
+	preload("res://assets/inventory/items/corruption_hover.png"),
+	preload("res://assets/inventory/items/ring_hover.png")
 ]
 
 @onready var items = [
@@ -60,6 +62,7 @@ var watches_has_interacted: bool = false
 var wnp_has_interacted: bool = false
 var dice_has_interacted:bool = false
 var corruption_has_interacted:bool = false
+var ring_has_interacted:bool = false
 var rng = RandomNumberGenerator.new()
 
 var lemonade_has_interacted: bool = false
