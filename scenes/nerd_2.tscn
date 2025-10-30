@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://ccch66qpt262x"]
 
 [ext_resource type="Texture2D" uid="uid://d26636y4yrobb" path="res://assets/sprites/number_dream/nerd_2_sprite_sheet.png" id="1_x5dwe"]
-[ext_resource type="Script" path="res://scripts/interaction_scripts/nerd_2_interaction.gd" id="2_72gxi"]
+[ext_resource type="Script" uid="uid://d4mung30bt1pd" path="res://scripts/interaction_scripts/nerd_2_interaction.gd" id="2_72gxi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iwkkj"]
 atlas = ExtResource("1_x5dwe")

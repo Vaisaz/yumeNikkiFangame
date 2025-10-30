@@ -7,10 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://d1jbh8q1vrdd6" path="res://scenes/jon.tscn" id="5_5g3il"]
 [ext_resource type="PackedScene" uid="uid://05a57gvmwbkl" path="res://dice_dance.tscn" id="6_2g7qc"]
 [ext_resource type="PackedScene" uid="uid://bbubvd8amhhsf" path="res://scenes/gambler.tscn" id="6_anpnb"]
-[ext_resource type="Script" path="res://scripts/interaction_scripts/dice_dance_interaction.gd" id="7_q2c1u"]
+[ext_resource type="Script" uid="uid://d8e4mvtgj0k5" path="res://scripts/interaction_scripts/dice_dance_interaction.gd" id="7_q2c1u"]
 [ext_resource type="PackedScene" uid="uid://c1s8mfal8dbj3" path="res://assets/audio/sound.tscn" id="9_kvt2f"]
 [ext_resource type="AudioStream" uid="uid://b4yapjbcjsajm" path="res://assets/audio/random_loop.mp3" id="10_mld2l"]
-[ext_resource type="Script" path="res://scripts/loopsound.gd" id="11_8em1w"]
+[ext_resource type="Script" uid="uid://dx52ljqm7y252" path="res://scripts/loopsound.gd" id="11_8em1w"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_tpv4h"]
 tile_data = PackedInt32Array(0, 0, 0, 65536, 0, 1, 1, 65536, 0, 65537, 65536, 1)

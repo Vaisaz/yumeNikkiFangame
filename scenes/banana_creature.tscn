@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cl4eyxqadwqqk" path="res://assets/sprites/happy_dream/banana_creature.png" id="1_gf7jc"]
 [ext_resource type="Texture2D" uid="uid://beh4pnr72b2sx" path="res://assets/blank_frame_bigger.png" id="2_3k247"]
 [ext_resource type="FontFile" uid="uid://b5lqlis8c3a4k" path="res://assets/I-pixel-u.ttf" id="3_426ix"]
-[ext_resource type="Script" path="res://scripts/interaction_scripts/item_give/banana_creature_interaction.gd" id="4_6pdmq"]
+[ext_resource type="Script" uid="uid://c308fjbkfat6r" path="res://scripts/interaction_scripts/item_give/banana_creature_interaction.gd" id="4_6pdmq"]
 [ext_resource type="PackedScene" uid="uid://c1s8mfal8dbj3" path="res://assets/audio/sound.tscn" id="5_uqf1r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k2vsp"]

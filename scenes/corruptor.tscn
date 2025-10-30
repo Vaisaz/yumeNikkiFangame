@@ -1,0 +1,64 @@
+[gd_scene load_steps=8 format=3 uid="uid://c0c554dukuunq"]
+
+[ext_resource type="Texture2D" uid="uid://dem4xy14p5qif" path="res://assets/sprites/corruption/corruptor.png" id="1_ktyyk"]
+[ext_resource type="FontFile" uid="uid://b5lqlis8c3a4k" path="res://assets/I-pixel-u.ttf" id="2_k1vbg"]
+[ext_resource type="Script" uid="uid://k8jj82igq777" path="res://scripts/interaction_scripts/corruptor_interaction.gd" id="2_sky85"]
+[ext_resource type="PackedScene" uid="uid://c1s8mfal8dbj3" path="res://assets/audio/sound.tscn" id="4_akrbf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wcka7"]
+size = Vector2(15, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_85hul"]
+size = Vector2(32, 38)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fneu4"]
+load_path = "res://.godot/imported/blank_frame_bigger.png-fb9d2b5753b8aed6ce299d13d72e1522.ctex"
+
+[node name="StaticBody2D" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1, -15)
+texture = ExtResource("1_ktyyk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -15)
+shape = SubResource("RectangleShape2D_wcka7")
+
+[node name="interaction" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("2_sky85")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interaction"]
+position = Vector2(-1, -16)
+shape = SubResource("RectangleShape2D_85hul")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="BlankFrameBigger" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(578, 524)
+scale = Vector2(4, 3.01563)
+texture = SubResource("CompressedTexture2D_fneu4")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/BlankFrameBigger"]
+offset_left = -126.0
+offset_top = -30.0
+offset_right = 126.0
+offset_bottom = 30.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="CanvasLayer/BlankFrameBigger"]
+offset_left = -122.0
+offset_top = -25.865
+offset_right = -17.0
+offset_bottom = -14.865
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_k1vbg")
+theme_override_font_sizes/font_size = 8
+
+[node name="Sound" parent="." instance=ExtResource("4_akrbf")]
+position = Vector2(-1, -14)
+
+[connection signal="area_entered" from="interaction" to="interaction" method="_on_area_entered"]
+[connection signal="area_exited" from="interaction" to="interaction" method="_on_area_exited"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://cm5j2xpqapq2b"]
 
 [ext_resource type="Texture2D" uid="uid://d0gq7vdktbpwx" path="res://assets/sprites/happy_dream/dark_dream_warp.png" id="1_f2d8c"]
-[ext_resource type="Script" path="res://scripts/interaction_scripts/dark_dream_warp.gd" id="2_ed12y"]
+[ext_resource type="Script" uid="uid://c5rqneqbeyeyf" path="res://scripts/interaction_scripts/dark_dream_warp.gd" id="2_ed12y"]
 [ext_resource type="PackedScene" uid="uid://c1s8mfal8dbj3" path="res://assets/audio/sound.tscn" id="3_mh0wn"]
 [ext_resource type="AudioStream" uid="uid://cukph5fc4tjge" path="res://assets/audio/door_sound.mp3" id="4_cv05w"]
 

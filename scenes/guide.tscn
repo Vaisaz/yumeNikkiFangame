@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://b1s51gffgnc10"]
 
-[ext_resource type="Script" path="res://scripts/guide.gd" id="1_salb2"]
+[ext_resource type="Script" uid="uid://hhqt2fmp3bgj" path="res://scripts/guide.gd" id="1_salb2"]
 [ext_resource type="Texture2D" uid="uid://c53ac8dbormin" path="res://assets/guide/god/stare.png" id="2_8kgwf"]
 [ext_resource type="FontFile" uid="uid://b5lqlis8c3a4k" path="res://assets/I-pixel-u.ttf" id="3_65ncp"]
 [ext_resource type="PackedScene" uid="uid://c1s8mfal8dbj3" path="res://assets/audio/sound.tscn" id="3_pdjf1"]

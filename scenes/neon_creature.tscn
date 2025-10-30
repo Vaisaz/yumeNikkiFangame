@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://c2r75xjwrmnl1"]
 
 [ext_resource type="Texture2D" uid="uid://caeyivrq2a7f8" path="res://assets/sprites/neon_dream/neon_creature.png" id="1_klk2k"]
-[ext_resource type="Script" path="res://scripts/interaction_scripts/neon_creature_interaction.gd" id="2_0c1df"]
+[ext_resource type="Script" uid="uid://be5vw1wep01j4" path="res://scripts/interaction_scripts/neon_creature_interaction.gd" id="2_0c1df"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_60xyk"]
 atlas = ExtResource("1_klk2k")

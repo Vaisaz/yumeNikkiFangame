@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://xc2xhvu62mnx"]
 
 [ext_resource type="Texture2D" uid="uid://ck34dqpc4fmy6" path="res://assets/sprites/neon_dream/spritesheet.png" id="1_of380"]
-[ext_resource type="Script" path="res://scripts/interaction_scripts/neon_blob_interaction.gd" id="2_oq0ts"]
+[ext_resource type="Script" uid="uid://c5b4t81ceheje" path="res://scripts/interaction_scripts/neon_blob_interaction.gd" id="2_oq0ts"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5ur6j"]
 atlas = ExtResource("1_of380")

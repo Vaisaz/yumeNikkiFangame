@@ -1,7 +1,7 @@
 [gd_scene load_steps=23 format=3 uid="uid://bbubvd8amhhsf"]
 
 [ext_resource type="Texture2D" uid="uid://xc2gcgquggae" path="res://assets/sprites/random_dream/Gambler.png" id="1_5u835"]
-[ext_resource type="Script" path="res://scripts/interaction_scripts/item_give/gambler_interaction.gd" id="2_ed0fa"]
+[ext_resource type="Script" uid="uid://hdjgscqscvxi" path="res://scripts/interaction_scripts/item_give/gambler_interaction.gd" id="2_ed0fa"]
 [ext_resource type="Texture2D" uid="uid://beh4pnr72b2sx" path="res://assets/blank_frame_bigger.png" id="4_5g8uh"]
 [ext_resource type="FontFile" uid="uid://b5lqlis8c3a4k" path="res://assets/I-pixel-u.ttf" id="5_vshcv"]
 [ext_resource type="PackedScene" uid="uid://c1s8mfal8dbj3" path="res://assets/audio/sound.tscn" id="6_8pnht"]

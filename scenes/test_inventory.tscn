@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://xyib0c1l8y3v"]
 
 [ext_resource type="Texture2D" uid="uid://c8e568grtiifk" path="res://assets/no_use/menu/me.png" id="1_gwjkd"]
-[ext_resource type="Script" path="res://scripts/interaction_scripts/item_give/test_inventory_inveraction.gd" id="2_1ym45"]
+[ext_resource type="Script" uid="uid://crel4qc1ojv6m" path="res://scripts/interaction_scripts/item_give/test_inventory_inveraction.gd" id="2_1ym45"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tveh7"]
 size = Vector2(281, 467)

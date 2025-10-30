@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://xh5egcbkopwb" path="res://scenes/old_man.tscn" id="5_h07cr"]
 [ext_resource type="Texture2D" uid="uid://cy56owv8x13fs" path="res://assets/sprites/dark_dream/fading_door.png" id="6_qvq16"]
 [ext_resource type="PackedScene" uid="uid://d1jbh8q1vrdd6" path="res://scenes/jon.tscn" id="7_j5qqt"]
-[ext_resource type="Script" path="res://scripts/light_disappear_script.gd" id="8_2ca1x"]
+[ext_resource type="Script" uid="uid://byvgeuxftwt1a" path="res://scripts/light_disappear_script.gd" id="8_2ca1x"]
 [ext_resource type="Texture2D" uid="uid://hftb10gxnkrl" path="res://assets/2d_lights_and_shadows_neutral_point_light.webp" id="9_ypusn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0wdiy"]

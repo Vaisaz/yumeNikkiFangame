@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bknchp3vfcgrx"]
 
-[ext_resource type="Script" path="res://scripts/next_room.gd" id="1_3m1rh"]
+[ext_resource type="Script" uid="uid://xhok23sxfp2g" path="res://scripts/next_room.gd" id="1_3m1rh"]
 
 [node name="NextRoom" type="Area2D"]
 collision_layer = 8

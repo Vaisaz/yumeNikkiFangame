@@ -6,66 +6,42 @@
 [ext_resource type="Texture2D" uid="uid://dmdruls5m2sbw" path="res://assets/sprites/neon_dream/barrier.png" id="2_gcn4v"]
 [ext_resource type="PackedScene" uid="uid://xc2xhvu62mnx" path="res://scenes/neon_blob.tscn" id="3_235o3"]
 [ext_resource type="PackedScene" uid="uid://cweeavkt0lr32" path="res://scenes/neon_enemy.tscn" id="4_ofhwr"]
-[ext_resource type="Script" path="res://scripts/enemy_combat_scripts/neon_enemy/neon_enemy_follow.gd" id="5_kh1fd"]
+[ext_resource type="Script" uid="uid://dkjqn4x242xcx" path="res://scripts/enemy_combat_scripts/neon_enemy/neon_enemy_follow.gd" id="5_kh1fd"]
 [ext_resource type="Texture2D" uid="uid://wscbak5wmg1a" path="res://assets/sprites/neon_dream/neon_dream_background_1.png" id="6_3j0ur"]
 [ext_resource type="PackedScene" uid="uid://c2r75xjwrmnl1" path="res://scenes/neon_creature.tscn" id="6_tab1d"]
-[ext_resource type="Script" path="res://scripts/enemy_combat_scripts/neon_creature/neon_creature_follow.gd" id="7_sg8d7"]
-[ext_resource type="Script" path="res://scripts/interaction_scripts/neon_warp_interaction.gd" id="9_trtq5"]
+[ext_resource type="Script" uid="uid://dtg7uevyypbv7" path="res://scripts/enemy_combat_scripts/neon_creature/neon_creature_follow.gd" id="7_sg8d7"]
+[ext_resource type="Script" uid="uid://cf66ce2sqdrgi" path="res://scripts/interaction_scripts/neon_warp_interaction.gd" id="9_trtq5"]
 [ext_resource type="PackedScene" uid="uid://27qeq0ii1oby" path="res://scenes/neon_warp_back.tscn" id="11_r62nw"]
 [ext_resource type="PackedScene" uid="uid://c1s8mfal8dbj3" path="res://assets/audio/sound.tscn" id="13_6a8p3"]
 [ext_resource type="AudioStream" uid="uid://vhfvs1yeumbw" path="res://assets/audio/neon_loop.mp3" id="14_p04mv"]
-[ext_resource type="Script" path="res://scripts/loopsound.gd" id="15_lp71i"]
+[ext_resource type="Script" uid="uid://dx52ljqm7y252" path="res://scripts/loopsound.gd" id="15_lp71i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aqpve"]
 texture = ExtResource("2_31o3t")
 0:0/animation_columns = 1
 0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
 1:0/animation_columns = 2
 1:0/animation_separation = Vector2i(1, 0)
 1:0/0 = 0
-1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-1:0/0/physics_layer_0/angular_velocity = 0.0
 0:1/animation_columns = 1
 0:1/0 = 0
-0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:1/0/physics_layer_0/angular_velocity = 0.0
 1:1/animation_columns = 2
 1:1/animation_separation = Vector2i(1, 0)
 1:1/0 = 0
-1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-1:1/0/physics_layer_0/angular_velocity = 0.0
 2:0/0 = 0
-2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-2:0/0/physics_layer_0/angular_velocity = 0.0
 2:1/0 = 0
-2:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-2:1/0/physics_layer_0/angular_velocity = 0.0
 3:1/0 = 0
-3:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-3:1/0/physics_layer_0/angular_velocity = 0.0
 3:0/0 = 0
-3:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-3:0/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i5n00"]
 texture = ExtResource("2_gcn4v")
 0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:0/0 = 0
-1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-1:0/0/physics_layer_0/angular_velocity = 0.0
 1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 0:1/0 = 0
-0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:1/0/physics_layer_0/angular_velocity = 0.0
 0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:1/0 = 0
-1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-1:1/0/physics_layer_0/angular_velocity = 0.0
 1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSet" id="TileSet_nckas"]

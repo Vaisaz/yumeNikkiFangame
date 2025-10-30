@@ -1,6 +1,6 @@
 [gd_scene load_steps=98 format=3 uid="uid://bhh6s6a2ilw0o"]
 
-[ext_resource type="Script" path="res://scripts/interaction.gd" id="1_8u8o2"]
+[ext_resource type="Script" uid="uid://cmr0ser72lmee" path="res://scripts/interaction.gd" id="1_8u8o2"]
 [ext_resource type="Texture2D" uid="uid://flbkixwwrmrj" path="res://assets/sprites/transition_animation.png" id="1_75xnl"]
 [ext_resource type="Texture2D" uid="uid://3o5jjcyndcfs" path="res://assets/sprites/main/falling_sheet.png" id="3_m8ipy"]
 [ext_resource type="Texture2D" uid="uid://bc4jp4ikiqko" path="res://assets/sprites/waking_sleeping_animation.png" id="3_npa6v"]

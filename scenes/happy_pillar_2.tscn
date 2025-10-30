@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://nfkj6a66qd7d"]
 
 [ext_resource type="Texture2D" uid="uid://rsj0pvpbnm0m" path="res://assets/combat/happy_pillar_2.png" id="1_yqn1b"]
-[ext_resource type="Script" path="res://scripts/interaction_scripts/neon_enemy_interaction.gd" id="2_s3ybl"]
+[ext_resource type="Script" uid="uid://vdcn1gmkpys8" path="res://scripts/interaction_scripts/neon_enemy_interaction.gd" id="2_s3ybl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3ukkq"]
 size = Vector2(14, 32)

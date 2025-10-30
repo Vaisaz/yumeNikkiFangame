@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://cweeavkt0lr32"]
 
 [ext_resource type="Texture2D" uid="uid://c3i6oxqeougbs" path="res://assets/sprites/neon_dream/neon_enemy.png" id="1_sd6ps"]
-[ext_resource type="Script" path="res://scripts/interaction_scripts/neon_enemy_interaction.gd" id="2_4oy5b"]
+[ext_resource type="Script" uid="uid://vdcn1gmkpys8" path="res://scripts/interaction_scripts/neon_enemy_interaction.gd" id="2_4oy5b"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jghsx"]
 atlas = ExtResource("1_sd6ps")

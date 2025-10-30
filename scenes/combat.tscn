@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=3 uid="uid://cee12bto8qsua"]
 
-[ext_resource type="Script" path="res://scripts/combat.gd" id="1_5fjro"]
+[ext_resource type="Script" uid="uid://bnc6x7a808yul" path="res://scripts/combat.gd" id="1_5fjro"]
 [ext_resource type="Texture2D" uid="uid://b8fabkydvdqry" path="res://assets/combat/combat_frame.png" id="2_6qdto"]
 [ext_resource type="FontFile" uid="uid://b5lqlis8c3a4k" path="res://assets/I-pixel-u.ttf" id="3_xqqe6"]
 [ext_resource type="Texture2D" uid="uid://co1plrjdjp3mh" path="res://assets/combat/combat_buttons/run.png" id="4_0ak0y"]
