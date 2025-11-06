@@ -42,6 +42,7 @@ var item_texture_hover = [
 @onready var at = $InventoryLayer/SoulChoosed/ATLabel
 @onready var xp = $InventoryLayer/SoulChoosed/XPLabel
 @onready var co = $InventoryLayer/SoulChoosed/COLabel
+@onready var lvitem = $InventoryLayer/SoulChoosed/LVItemLabel
 
 @onready var soul_button = $InventoryLayer/Buttons/Soul
 @onready var inventory_button = $InventoryLayer/Buttons/Inventory
@@ -169,6 +170,8 @@ func item_on_equip(item_index):
 		watches_equipped = false
 		wnp_equipped = false
 		dice_equipped = false
+		
+		lvitem.visible = true
 	elif equipped.texture == load("res://assets/inventory/items/wnp.png") and !watches_equipped:
 		normal_health()
 		Combat.player_attack += 25
@@ -176,12 +179,16 @@ func item_on_equip(item_index):
 		watches_equipped = true	
 		wnp_equipped = false
 		dice_equipped = false
+		
+		lvitem.visible = true
 	elif equipped.texture == load("res://assets/inventory/items/dice.png") and !dice_equipped:
 		normal_health()
 		banana_equipped = false
 		watches_equipped = false	
 		wnp_equipped = false
 		dice_equipped = true
+		
+		lvitem.visible = true
 	
 func item_on_unequip():
 	equipped_unequipped_sound.stream = load("res://assets/audio/unequipped.wav")
@@ -195,6 +202,8 @@ func item_on_unequip():
 	watches_equipped = false
 	wnp_equipped = false
 	equipped.texture = null
+	
+	lvitem.visible = false
 	
 var equip: bool = false
 
