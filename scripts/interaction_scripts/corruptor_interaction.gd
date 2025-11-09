@@ -76,6 +76,8 @@ func _input(event):
 		canvas_layer.visible = true
 		if index == 0:
 			item_give()
+			Inventory.corruption_interaction()
+			Inventory.corruption_has_interacted = true
 		if index == 0:
 			canvas_layer.visible = false
 			interaction_times = 1

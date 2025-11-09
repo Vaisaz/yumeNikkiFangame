@@ -272,6 +272,19 @@ func _process(_delta):
 		set_process(false)
 		await get_tree().create_timer(0.1).timeout
 		set_process(true)
+	if corruption_has_interacted:
+		var characters = [
+			"!@#", "@#$", "#$%", "$%^", "%^&", "^&*", "&*(", "*()", "()!", ")!@"
+		]
+		$InventoryLayer/SoulChoosed/SoulLabel.text = characters[rng.randi_range(0,9)]
+		lv.text = characters[rng.randi_range(0,9)]
+		hp.text = characters[rng.randi_range(0,9)]
+		at.text = characters[rng.randi_range(0,9)]
+		xp.text = characters[rng.randi_range(0,9)]
+		co.text = characters[rng.randi_range(0,9)]
+		set_process(false)
+		await get_tree().create_timer(0.1).timeout
+		set_process(true)
 		
 var all_items_enabled: bool = false
 		
@@ -282,3 +295,8 @@ func items_disabled_checker():
 		elif items[n].disabled:
 			all_items_enabled = false
 			return
+			
+func corruption_interaction():
+	$InventoryLayer/SoulChoosed/AnimatedSprite2D.play("corruption")
+	$InventoryLayer/SoulChoosed/FrameKozetsuBigger.visible = false
+	$InventoryLayer/SoulChoosed/AnimatedSprite2D.speed_scale = 2
