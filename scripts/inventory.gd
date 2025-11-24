@@ -69,7 +69,7 @@ var rng = RandomNumberGenerator.new()
 var lemonade_has_interacted: bool = false
 var trash_has_interacted: bool = false
 
-var coins = 0
+var coins = 350
 var add_coins
 
 func _ready():
@@ -140,6 +140,9 @@ func normal_health():
 
 @onready var equipped_unequipped_sound = $EquipUnequipSound
 
+var banana_at = 5
+var banana_hp = 50
+
 func item_on_equip(item_index):
 	soul_choosed.visible = false
 	inventory_choosed.visible = false
@@ -164,8 +167,8 @@ func item_on_equip(item_index):
 	equipped_unequipped_sound.play()
 	if equipped.texture == load("res://assets/inventory/items/banana.png") and !banana_equipped:
 		normal_health()
-		Combat.player_attack -= 5
-		Combat.player_max_health += 50
+		Combat.player_attack -= banana_at
+		Combat.player_max_health += banana_hp
 		banana_equipped = true
 		watches_equipped = false
 		wnp_equipped = false
@@ -207,23 +210,57 @@ func item_on_unequip():
 	
 var equip: bool = false
 
+var banana_level = 0
+var dice_level = 0
+var wnp_level = 0
+
 func on_pressed_structure(num):
-	Inventory.index = 0
-	if items[num].texture_normal == load("res://assets/inventory/items/lemonade.png"):
-		item_on_equip(num)
-	elif num == 0 and Combat.items[0].texture_normal == load("res://assets/inventory/items/hope.png"):
-		Combat.turn = 1
-	else:
-		if !equip:
+	if GlobalVariables.wp_lv_enable == 0:
+		Inventory.index = 0
+		if items[num].texture_normal == load("res://assets/inventory/items/lemonade.png"):
 			item_on_equip(num)
-			equip = true
-		elif equip:
-			if items[num].texture_normal == equipped.texture:
-				item_on_unequip()
-				equip = false	
-			elif !items[num].texture_normal == equipped.texture:
+		elif num == 0 and Combat.items[0].texture_normal == load("res://assets/inventory/items/hope.png"):
+			Combat.turn = 1
+		else:
+			if !equip:
 				item_on_equip(num)
-				equip = true	
+				equip = true
+			elif equip:
+				if items[num].texture_normal == equipped.texture:
+					item_on_unequip()
+					equip = false	
+				elif !items[num].texture_normal == equipped.texture:
+					item_on_equip(num)
+					equip = true	
+	elif GlobalVariables.wp_lv_enable == 1:
+		print("WEAPON LEVELING IS ENABLED")
+		if items[num].texture_normal == load("res://assets/inventory/items/banana.png"):
+			if banana_level == 0 and coins >= 100:
+				banana_level = 1
+				equipped_unequipped_sound.stream = load("res://assets/audio/lemonade_blips/register.wav")
+				equipped_unequipped_sound.play()
+				normal_health()
+				coins -= 100
+				banana_hp = 55
+				Combat.player_attack -= banana_at
+				Combat.player_max_health += banana_hp
+			elif banana_level == 1 and coins >= 250:
+				equipped_unequipped_sound.stream = load("res://assets/audio/lemonade_blips/register.wav")
+				equipped_unequipped_sound.play()
+				normal_health()
+				coins -= 250
+				banana_at = 10
+				banana_hp = 70
+				Combat.player_attack -= banana_at
+				Combat.player_max_health += banana_hp
+			else:
+				equipped_unequipped_sound.stream = load("res://assets/audio/trashed.wav")
+				equipped_unequipped_sound.play()
+		if items[num].texture_normal == load("res://assets/inventory/items/dice.png"):
+			equipped_unequipped_sound.stream = load("res://assets/audio/lemonade_blips/register.wav")
+			equipped_unequipped_sound.play()
+		if items[num].texture_normal == load("res://assets/inventory/items/wnp.png"):
+			pass
 
 func _on_first_pressed():
 	on_pressed_structure(0)
@@ -274,7 +311,7 @@ func _process(_delta):
 		set_process(true)
 	if corruption_has_interacted:
 		var characters = [
-			"!@#", "@#$", "#$%", "$%^", "%^&", "^&*", "&*(", "*()", "()!", ")!@"
+			"!@#$", "@#$%", "#$%^", "$%^&", "%^&", "^&*", "&*(", "*()", "()!", ")!@"
 		]
 		$InventoryLayer/SoulChoosed/SoulLabel.text = characters[rng.randi_range(0,9)]
 		lv.text = characters[rng.randi_range(0,9)]

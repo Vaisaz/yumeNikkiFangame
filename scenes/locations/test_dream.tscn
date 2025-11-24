@@ -1,14 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://bmatq2vdbkosg"]
+[gd_scene load_steps=8 format=3 uid="uid://bmatq2vdbkosg"]
 
 [ext_resource type="PackedScene" uid="uid://d1jbh8q1vrdd6" path="res://scenes/jon.tscn" id="1_x7e81"]
 [ext_resource type="PackedScene" uid="uid://c0c554dukuunq" path="res://scenes/corruptor.tscn" id="2_js3kr"]
 [ext_resource type="PackedScene" uid="uid://bbubvd8amhhsf" path="res://scenes/gambler.tscn" id="3_ug0gb"]
 [ext_resource type="PackedScene" uid="uid://ct2g6k4cpkgla" path="res://scenes/juliet.tscn" id="4_gd3r2"]
+[ext_resource type="PackedScene" uid="uid://b2gh7yvit1v4d" path="res://scenes/lv_creature.tscn" id="5_1r7tb"]
+[ext_resource type="PackedScene" uid="uid://dvwhyousdnx72" path="res://scenes/trash_guy.tscn" id="6_jshus"]
+[ext_resource type="PackedScene" uid="uid://60h65rjg1pd3" path="res://scenes/banana_creature.tscn" id="7_o5rbb"]
 
 [node name="test_dream" type="Node2D"]
 
 [node name="Gambler" parent="." instance=ExtResource("3_ug0gb")]
-position = Vector2(-47, -11)
+position = Vector2(-47, -4)
 
 [node name="Corruptor" parent="." instance=ExtResource("2_js3kr")]
 position = Vector2(57, -7)
@@ -16,8 +19,17 @@ position = Vector2(57, -7)
 [node name="Juliet" parent="." instance=ExtResource("4_gd3r2")]
 position = Vector2(-39, 53)
 
+[node name="LevelingCreature" parent="." instance=ExtResource("5_1r7tb")]
+position = Vector2(54, 68)
+
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_x7e81")]
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 position = Vector2(-1, -26)
 zoom = Vector2(5, 5)
+
+[node name="StaticBody2D" parent="." instance=ExtResource("6_jshus")]
+position = Vector2(12, 48)
+
+[node name="StaticBody2D2" parent="." instance=ExtResource("7_o5rbb")]
+position = Vector2(108, 48)

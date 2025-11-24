@@ -88,6 +88,7 @@ func _input(event):
 		show_message()
 
 func item_give():
+	Inventory.equipped.texture = load("res://assets/inventory/items/corruption.png")
 	Inventory.index = 0
 	for item_count in 12:
 		if !Inventory.items[item_count].texture_normal == null:
