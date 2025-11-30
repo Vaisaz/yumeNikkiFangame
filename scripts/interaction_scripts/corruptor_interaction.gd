@@ -89,6 +89,13 @@ func _input(event):
 
 func item_give():
 	Inventory.equipped.texture = load("res://assets/inventory/items/corruption.png")
+	Inventory.normal_health()
+	Combat.player_attack += 50
+	Combat.player_max_health += 50
+	Inventory.banana_equipped = false
+	Inventory.watches_equipped = false	
+	Inventory.wnp_equipped = false
+	Inventory.dice_equipped = false
 	Inventory.index = 0
 	for item_count in 12:
 		if !Inventory.items[item_count].texture_normal == null:

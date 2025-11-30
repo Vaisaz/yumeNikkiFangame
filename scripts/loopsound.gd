@@ -8,7 +8,8 @@ func _process(_delta):
 		$".".stop()
 		is_playing = false
 	elif !is_playing:
+		if Inventory.corruption_has_interacted:
+			$".".stream = load("res://assets/audio/corrupted.wav")
 		$".".play()
 		is_playing = true
-		
 	

@@ -63,7 +63,7 @@ func _input(event):
 			message_displayed = false
 			index += 1
 			show_message()
-	elif interaction_times == 1 and message_displayed and event.is_action_pressed("interact") and interact and Transition.canvas_layer.visible == false and Inventory.inventory_layer.visible == false:
+	elif interaction_times == 1 and message_displayed and event.is_action_pressed("interact") and interact and Transition.canvas_layer.visible == false and Inventory.inventory_layer.visible == false and Inventory.corruption_has_interacted == false:
 		Inventory.index = 0
 		for item_count in 12:
 			if !Inventory.items[item_count].texture_normal == null:

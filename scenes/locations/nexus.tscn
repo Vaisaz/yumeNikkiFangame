@@ -1,14 +1,23 @@
-[gd_scene load_steps=14 format=3 uid="uid://dr21yfhjoldoo"]
+[gd_scene load_steps=25 format=3 uid="uid://dr21yfhjoldoo"]
 
 [ext_resource type="Texture2D" uid="uid://bkwg4d84vpwnn" path="res://assets/sprites/main/pixel_tiles.png" id="1_hfvtc"]
 [ext_resource type="Texture2D" uid="uid://b4g07ub54tlj2" path="res://assets/sprites/main/black.jpg" id="1_r6exr"]
 [ext_resource type="PackedScene" uid="uid://cjwndxthtkfak" path="res://scenes/main_dream_doors.tscn" id="3_hu4mw"]
+[ext_resource type="PackedScene" uid="uid://d1jbh8q1vrdd6" path="res://scenes/jon.tscn" id="4_1wn3d"]
 [ext_resource type="Script" uid="uid://co4d1gvv6e252" path="res://scripts/interaction_scripts/door_dream_interaction.gd" id="4_f0p0w"]
 [ext_resource type="Script" uid="uid://cf66ce2sqdrgi" path="res://scripts/interaction_scripts/neon_warp_interaction.gd" id="4_y6onf"]
 [ext_resource type="Script" uid="uid://srjsdf8afiaj" path="res://scripts/interaction_scripts/happy_warp_intearction.gd" id="5_f1g08"]
 [ext_resource type="PackedScene" uid="uid://ccea0vhxlnlp4" path="res://scenes/neon_warp.tscn" id="7_e5u10"]
 [ext_resource type="PackedScene" uid="uid://bbv0r40mh2fmf" path="res://scenes/happy_warp.tscn" id="8_0nmn3"]
 [ext_resource type="PackedScene" uid="uid://c1s8mfal8dbj3" path="res://assets/audio/sound.tscn" id="9_2qw35"]
+[ext_resource type="PackedScene" uid="uid://soo5rpy2bpqo" path="res://scenes/number_warp.tscn" id="10_0csyf"]
+[ext_resource type="AudioStream" uid="uid://cukph5fc4tjge" path="res://assets/audio/door_sound.mp3" id="10_1233v"]
+[ext_resource type="Script" uid="uid://dx8qpr2shvmjq" path="res://scripts/interaction_scripts/number_warp_interaction.gd" id="11_n0jro"]
+[ext_resource type="PackedScene" uid="uid://xyib0c1l8y3v" path="res://scenes/test_inventory.tscn" id="15_wvg0s"]
+[ext_resource type="AudioStream" uid="uid://d0jfef2wdjivl" path="res://assets/audio/nexus.mp3" id="16_4mxub"]
+[ext_resource type="PackedScene" uid="uid://7qlcvxsvyst5" path="res://scenes/lemonade_stand.tscn" id="16_qhsxs"]
+[ext_resource type="PackedScene" uid="uid://dvwhyousdnx72" path="res://scenes/trash_guy.tscn" id="17_2skrs"]
+[ext_resource type="Script" uid="uid://dx52ljqm7y252" path="res://scripts/loopsound.gd" id="17_4mxub"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bpo8m"]
 texture = ExtResource("1_hfvtc")
@@ -52,6 +61,12 @@ size = Vector2(19, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_27h8x"]
 size = Vector2(16, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u2nhb"]
+size = Vector2(34, 555)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oyc15"]
+size = Vector2(581.5, 35)
 
 [node name="nexus" type="Node2D"]
 
@@ -105,3 +120,67 @@ position = Vector2(-48, -62)
 shape = SubResource("RectangleShape2D_27h8x")
 
 [node name="DoorSound" parent="dream_doors/interaction" instance=ExtResource("9_2qw35")]
+stream = ExtResource("10_1233v")
+
+[node name="number_warp" parent="." instance=ExtResource("10_0csyf")]
+position = Vector2(0, 180)
+
+[node name="interaction" type="Area2D" parent="number_warp"]
+position = Vector2(48, 62)
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("11_n0jro")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="number_warp/interaction"]
+position = Vector2(-47.5, -70)
+shape = SubResource("RectangleShape2D_w6rhi")
+
+[node name="LemonadeStand" parent="." instance=ExtResource("16_qhsxs")]
+position = Vector2(81, -54)
+scale = Vector2(0.6, 0.6)
+
+[node name="StaticBody2D" parent="." instance=ExtResource("17_2skrs")]
+position = Vector2(146, -35)
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("4_1wn3d")]
+position = Vector2(1, -24)
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+position = Vector2(-1, -26)
+zoom = Vector2(5, 5)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("16_4mxub")
+script = ExtResource("17_4mxub")
+
+[node name="Test" parent="." instance=ExtResource("15_wvg0s")]
+visible = false
+position = Vector2(-8, -542)
+scale = Vector2(0.5, 0.5)
+
+[node name="Collisions" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions"]
+position = Vector2(-277, 25)
+shape = SubResource("RectangleShape2D_u2nhb")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Collisions"]
+position = Vector2(270, 25)
+shape = SubResource("RectangleShape2D_u2nhb")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Collisions"]
+position = Vector2(-4, -236)
+shape = SubResource("RectangleShape2D_oyc15")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Collisions/CollisionShape2D3"]
+position = Vector2(1, 521)
+shape = SubResource("RectangleShape2D_oyc15")
+
+[connection signal="area_entered" from="neon_warp/interaction" to="neon_warp/interaction" method="_on_area_entered"]
+[connection signal="area_exited" from="neon_warp/interaction" to="neon_warp/interaction" method="_on_area_exited"]
+[connection signal="area_entered" from="happy_warp/interaction" to="happy_warp/interaction" method="_on_area_entered"]
+[connection signal="area_exited" from="happy_warp/interaction" to="happy_warp/interaction" method="_on_area_exited"]
+[connection signal="area_entered" from="dream_doors/interaction" to="dream_doors/interaction" method="_on_area_entered"]
+[connection signal="area_exited" from="dream_doors/interaction" to="dream_doors/interaction" method="_on_area_exited"]
+[connection signal="area_entered" from="number_warp/interaction" to="number_warp/interaction" method="_on_area_entered"]
+[connection signal="area_exited" from="number_warp/interaction" to="number_warp/interaction" method="_on_area_exited"]

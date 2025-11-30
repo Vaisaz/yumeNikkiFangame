@@ -140,8 +140,12 @@ func normal_health():
 
 @onready var equipped_unequipped_sound = $EquipUnequipSound
 
+var item_equipped: bool = false
+
 var banana_at = 5
 var banana_hp = 50
+
+var wnp_at = 25
 
 func item_on_equip(item_index):
 	soul_choosed.visible = false
@@ -161,6 +165,7 @@ func item_on_equip(item_index):
 		healed_sound.play()
 	else: 
 		equipped.texture = items[item_index].texture_normal
+		item_equipped = 1
 	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_HIDDEN)
 	inventory_button.grab_focus()
 	equipped_unequipped_sound.stream = load("res://assets/audio/equipped.wav")
@@ -177,7 +182,7 @@ func item_on_equip(item_index):
 		lvitem.visible = true
 	elif equipped.texture == load("res://assets/inventory/items/wnp.png") and !watches_equipped:
 		normal_health()
-		Combat.player_attack += 25
+		Combat.player_attack += wnp_at
 		banana_equipped = false
 		watches_equipped = true	
 		wnp_equipped = false
@@ -192,21 +197,32 @@ func item_on_equip(item_index):
 		dice_equipped = true
 		
 		lvitem.visible = true
-	
+		
+	#elif equipped.texture == load("res://assets/inventory/items/corruption.png") and corruption_has_interacted:
+		#normal_health()
+		#Combat.player_attack += 50
+		#Combat.player_max_health += 50
+		#banana_equipped = false
+		#watches_equipped = false	
+		#wnp_equipped = false
+		#dice_equipped = false
+		
 func item_on_unequip():
-	equipped_unequipped_sound.stream = load("res://assets/audio/unequipped.wav")
-	equipped_unequipped_sound.play()
-	soul_choosed.visible = false
-	inventory_choosed.visible = false
-	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_HIDDEN)
-	inventory_button.grab_focus()
-	normal_health()
-	banana_equipped = false
-	watches_equipped = false
-	wnp_equipped = false
-	equipped.texture = null
-	
-	lvitem.visible = false
+	if !corruption_has_interacted:
+		item_equipped = 0
+		equipped_unequipped_sound.stream = load("res://assets/audio/unequipped.wav")
+		equipped_unequipped_sound.play()
+		soul_choosed.visible = false
+		inventory_choosed.visible = false
+		DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_HIDDEN)
+		inventory_button.grab_focus()
+		normal_health()
+		banana_equipped = false
+		watches_equipped = false
+		wnp_equipped = false
+		equipped.texture = null
+		
+		lvitem.visible = false
 	
 var equip: bool = false
 
@@ -242,23 +258,45 @@ func on_pressed_structure(num):
 				normal_health()
 				coins -= 100
 				banana_hp = 55
-				Combat.player_attack -= banana_at
-				Combat.player_max_health += banana_hp
+				if item_equipped == true:
+					Combat.player_attack -= banana_at
+					Combat.player_max_health += banana_hp
 			elif banana_level == 1 and coins >= 250:
+				banana_level = 2
 				equipped_unequipped_sound.stream = load("res://assets/audio/lemonade_blips/register.wav")
 				equipped_unequipped_sound.play()
 				normal_health()
 				coins -= 250
 				banana_at = 10
 				banana_hp = 70
-				Combat.player_attack -= banana_at
-				Combat.player_max_health += banana_hp
+				if item_equipped == true:
+					Combat.player_attack -= banana_at
+					Combat.player_max_health += banana_hp
 			else:
 				equipped_unequipped_sound.stream = load("res://assets/audio/trashed.wav")
 				equipped_unequipped_sound.play()
 		if items[num].texture_normal == load("res://assets/inventory/items/dice.png"):
-			equipped_unequipped_sound.stream = load("res://assets/audio/lemonade_blips/register.wav")
-			equipped_unequipped_sound.play()
+			if wnp_level == 0 and coins >= 150:
+				wnp_level = 1
+				equipped_unequipped_sound.stream = load("res://assets/audio/lemonade_blips/register.wav")
+				equipped_unequipped_sound.play()
+				normal_health()
+				coins -= 150
+				wnp_at = 30
+				if item_equipped == true:
+					Combat.player_attack -= wnp_at
+			elif wnp_level == 1 and coins >= 350:
+				wnp_level = 2
+				equipped_unequipped_sound.stream = load("res://assets/audio/lemonade_blips/register.wav")
+				equipped_unequipped_sound.play()
+				normal_health()
+				coins -= 350
+				wnp_at = 40
+				if item_equipped == true:
+					Combat.player_attack -= wnp_at
+			else:
+				equipped_unequipped_sound.stream = load("res://assets/audio/trashed.wav")
+				equipped_unequipped_sound.play()
 		if items[num].texture_normal == load("res://assets/inventory/items/wnp.png"):
 			pass
 
