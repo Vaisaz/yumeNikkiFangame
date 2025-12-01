@@ -166,7 +166,7 @@ func combat(player_attack, damaged):
 				items_button.disabled = false
 				DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_HIDDEN)
 		else:
-			player_current_health = player_current_health - enemy_attack
+			player_current_health = player_current_health - enemy_attack * Inventory.ring_fortune
 			player_health()
 			damaged_sound.play()
 			you.visible = false
@@ -199,7 +199,7 @@ func combat(player_attack, damaged):
 				else:
 					get_tree().quit()
 	if turn == 2:
-		player_current_health = player_current_health - enemy_attack
+		player_current_health = player_current_health - enemy_attack * Inventory.ring_fortune
 		player_health()
 		damaged_sound.play()
 		you.visible = false

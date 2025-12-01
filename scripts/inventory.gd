@@ -150,6 +150,8 @@ var banana_lv = 0
 var wnp_at = 25
 var wnp_lv = 0
 
+var ring_fortune = 1
+
 func item_on_equip(item_index):
 	soul_choosed.visible = false
 	inventory_choosed.visible = false
@@ -167,6 +169,7 @@ func item_on_equip(item_index):
 		index = 0
 		healed_sound.play()
 	elif items[item_index].texture_normal == load("res://assets/inventory/items/ring.png"):
+		ring_fortune = 0.8
 		equipped_fortune.texture = items[item_index].texture_normal
 	else: 
 		equipped.texture = items[item_index].texture_normal
@@ -231,6 +234,7 @@ func item_on_unequip():
 		lvitem.visible = false
 		
 	elif equipped_fortune.texture != null and !corruption_has_interacted:
+		ring_fortune = 1
 		equipped_unequipped_sound.stream = load("res://assets/audio/unequipped.wav")
 		equipped_unequipped_sound.play()
 		soul_choosed.visible = false
