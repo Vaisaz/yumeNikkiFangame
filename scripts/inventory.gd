@@ -145,8 +145,10 @@ var item_equipped: bool = false
 
 var banana_at = 5
 var banana_hp = 50
+var banana_lv = 0
 
 var wnp_at = 25
+var wnp_lv = 0
 
 func item_on_equip(item_index):
 	soul_choosed.visible = false
@@ -182,6 +184,7 @@ func item_on_equip(item_index):
 		wnp_equipped = false
 		dice_equipped = false
 		
+		lvitem.text = "LV: %d" % banana_lv
 		lvitem.visible = true
 	elif equipped.texture == load("res://assets/inventory/items/wnp.png") and !watches_equipped:
 		normal_health()
@@ -191,6 +194,7 @@ func item_on_equip(item_index):
 		wnp_equipped = false
 		dice_equipped = false
 		
+		lvitem.text = "LV: %d" % wnp_lv
 		lvitem.visible = true
 	elif equipped.texture == load("res://assets/inventory/items/dice.png") and !dice_equipped:
 		normal_health()
@@ -199,8 +203,7 @@ func item_on_equip(item_index):
 		wnp_equipped = false
 		dice_equipped = true
 		
-		lvitem.visible = true
-		
+		lvitem.visible = false
 	#elif equipped.texture == load("res://assets/inventory/items/corruption.png") and corruption_has_interacted:
 		#normal_health()
 		#Combat.player_attack += 50
@@ -250,7 +253,7 @@ func on_pressed_structure(num):
 			item_on_equip(num)
 		elif num == 0 and Combat.items[0].texture_normal == load("res://assets/inventory/items/hope.png"):
 			Combat.turn = 1
-		elif items[num].texture_normal != null: 
+		elif items[num].texture_normal == load("res://assets/inventory/items/ring.png"):
 			if !equip_fortune:
 				item_on_equip(num)
 				equip_fortune = true
@@ -284,6 +287,9 @@ func on_pressed_structure(num):
 				normal_health()
 				coins -= 100
 				banana_hp = 55
+				banana_lv = 1
+				if equipped.texture == load("res://assets/inventory/items/banana.png"):
+					lvitem.text = "LV: %d" % banana_lv
 				if item_equipped == true:
 					Combat.player_attack -= banana_at
 					Combat.player_max_health += banana_hp
@@ -295,13 +301,16 @@ func on_pressed_structure(num):
 				coins -= 250
 				banana_at = 10
 				banana_hp = 70
+				banana_lv = 2
+				if equipped.texture == load("res://assets/inventory/items/banana.png"):
+					lvitem.text = "LV: %d" % banana_lv
 				if item_equipped == true:
 					Combat.player_attack -= banana_at
 					Combat.player_max_health += banana_hp
 			else:
 				equipped_unequipped_sound.stream = load("res://assets/audio/trashed.wav")
 				equipped_unequipped_sound.play()
-		if items[num].texture_normal == load("res://assets/inventory/items/dice.png"):
+		if items[num].texture_normal == load("res://assets/inventory/items/wnp.png"):
 			if wnp_level == 0 and coins >= 150:
 				wnp_level = 1
 				equipped_unequipped_sound.stream = load("res://assets/audio/lemonade_blips/register.wav")
@@ -309,6 +318,9 @@ func on_pressed_structure(num):
 				normal_health()
 				coins -= 150
 				wnp_at = 30
+				wnp_lv = 1
+				if equipped.texture == load("res://assets/inventory/items/wnp.png"):
+					lvitem.text = "LV: %d" % wnp_lv
 				if item_equipped == true:
 					Combat.player_attack -= wnp_at
 			elif wnp_level == 1 and coins >= 350:
@@ -318,12 +330,15 @@ func on_pressed_structure(num):
 				normal_health()
 				coins -= 350
 				wnp_at = 40
+				wnp_lv = 2
+				if equipped.texture == load("res://assets/inventory/items/wnp.png"):
+					lvitem.text = "LV: %d" % wnp_lv
 				if item_equipped == true:
 					Combat.player_attack -= wnp_at
 			else:
 				equipped_unequipped_sound.stream = load("res://assets/audio/trashed.wav")
 				equipped_unequipped_sound.play()
-		if items[num].texture_normal == load("res://assets/inventory/items/wnp.png"):
+		if items[num].texture_normal == load("res://assets/inventory/items/dice.png"):
 			pass
 
 func _on_first_pressed():
