@@ -36,6 +36,7 @@ var item_texture_hover = [
 ]
 
 @onready var equipped = $InventoryLayer/SoulChoosed/Equipped
+@onready var equipped_fortune = $InventoryLayer/SoulChoosed/EquippedFortune
 @onready var soul = $InventoryLayer/SoulChoosed/SoulLabel
 @onready var lv = $InventoryLayer/SoulChoosed/LVLabel
 @onready var hp = $InventoryLayer/SoulChoosed/HPLabel
@@ -163,6 +164,8 @@ func item_on_equip(item_index):
 			Combat.player_current_health = Combat.player_max_health
 		index = 0
 		healed_sound.play()
+	elif items[item_index].texture_normal == load("res://assets/inventory/items/ring.png"):
+		equipped_fortune.texture = items[item_index].texture_normal
 	else: 
 		equipped.texture = items[item_index].texture_normal
 		item_equipped = 1
@@ -208,7 +211,7 @@ func item_on_equip(item_index):
 		#dice_equipped = false
 		
 func item_on_unequip():
-	if !corruption_has_interacted:
+	if !corruption_has_interacted and equipped_fortune.texture == null:
 		item_equipped = 0
 		equipped_unequipped_sound.stream = load("res://assets/audio/unequipped.wav")
 		equipped_unequipped_sound.play()
@@ -223,8 +226,18 @@ func item_on_unequip():
 		equipped.texture = null
 		
 		lvitem.visible = false
+		
+	elif equipped_fortune.texture != null and !corruption_has_interacted:
+		equipped_unequipped_sound.stream = load("res://assets/audio/unequipped.wav")
+		equipped_unequipped_sound.play()
+		soul_choosed.visible = false
+		inventory_choosed.visible = false
+		DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_HIDDEN)
+		inventory_button.grab_focus()
+		equipped_fortune.texture = null
 	
 var equip: bool = false
+var equip_fortune: bool = false
 
 var banana_level = 0
 var dice_level = 0
@@ -237,6 +250,18 @@ func on_pressed_structure(num):
 			item_on_equip(num)
 		elif num == 0 and Combat.items[0].texture_normal == load("res://assets/inventory/items/hope.png"):
 			Combat.turn = 1
+		elif items[num].texture_normal != null: 
+			if !equip_fortune:
+				item_on_equip(num)
+				equip_fortune = true
+			elif equip_fortune:
+				if items[num].texture_normal == equipped_fortune.texture:
+					item_on_unequip()
+					equip_fortune = false	
+				elif !items[num].texture_normal == equipped_fortune.texture:
+					item_on_equip(num)
+					equip_fortune = true
+			print("equip_fortune: %s" % equip_fortune)
 		else:
 			if !equip:
 				item_on_equip(num)
@@ -248,6 +273,7 @@ func on_pressed_structure(num):
 				elif !items[num].texture_normal == equipped.texture:
 					item_on_equip(num)
 					equip = true	
+			print("equip: %s" % equip)
 	elif GlobalVariables.wp_lv_enable == 1:
 		print("WEAPON LEVELING IS ENABLED")
 		if items[num].texture_normal == load("res://assets/inventory/items/banana.png"):

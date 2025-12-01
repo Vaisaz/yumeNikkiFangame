@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bmatq2vdbkosg"]
+[gd_scene load_steps=9 format=3 uid="uid://bmatq2vdbkosg"]
 
 [ext_resource type="PackedScene" uid="uid://d1jbh8q1vrdd6" path="res://scenes/jon.tscn" id="1_x7e81"]
 [ext_resource type="PackedScene" uid="uid://c0c554dukuunq" path="res://scenes/corruptor.tscn" id="2_js3kr"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://dvwhyousdnx72" path="res://scenes/trash_guy.tscn" id="6_jshus"]
 [ext_resource type="PackedScene" uid="uid://60h65rjg1pd3" path="res://scenes/banana_creature.tscn" id="7_o5rbb"]
 [ext_resource type="Script" uid="uid://dx52ljqm7y252" path="res://scripts/loopsound.gd" id="8_mbj7q"]
-[ext_resource type="AudioStream" uid="uid://bqhprd8a5owgh" path="res://assets/audio/happy_dream_beat.mp3" id="8_o84ie"]
 
 [node name="test_dream" type="Node2D"]
 
@@ -37,5 +36,4 @@ position = Vector2(-1, -26)
 zoom = Vector2(5, 5)
 
 [node name="Loop" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("8_o84ie")
 script = ExtResource("8_mbj7q")
