@@ -234,17 +234,37 @@ func item_on_unequip():
 		lvitem.visible = false
 		
 	elif equipped_fortune.texture != null and !corruption_has_interacted:
-		ring_fortune = 1
-		equipped_unequipped_sound.stream = load("res://assets/audio/unequipped.wav")
-		equipped_unequipped_sound.play()
-		soul_choosed.visible = false
-		inventory_choosed.visible = false
-		DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_HIDDEN)
-		inventory_button.grab_focus()
-		equipped_fortune.texture = null
+		if on_fortune_click:
+			print(on_fortune_click)
+			ring_fortune = 1
+			equipped_unequipped_sound.stream = load("res://assets/audio/unequipped.wav")
+			equipped_unequipped_sound.play()
+			soul_choosed.visible = false
+			inventory_choosed.visible = false
+			DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_HIDDEN)
+			inventory_button.grab_focus()
+			equipped_fortune.texture = null
+			on_fortune_click = false
+		else:
+			item_equipped = 0
+			equipped_unequipped_sound.stream = load("res://assets/audio/unequipped.wav")
+			equipped_unequipped_sound.play()
+			soul_choosed.visible = false
+			inventory_choosed.visible = false
+			DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_HIDDEN)
+			inventory_button.grab_focus()
+			normal_health()
+			banana_equipped = false
+			watches_equipped = false
+			wnp_equipped = false
+			equipped.texture = null
+			
+			lvitem.visible = false
+		
 	
 var equip: bool = false
 var equip_fortune: bool = false
+var on_fortune_click: bool = false
 
 var banana_level = 0
 var dice_level = 0
@@ -263,6 +283,9 @@ func on_pressed_structure(num):
 				equip_fortune = true
 			elif equip_fortune:
 				if items[num].texture_normal == equipped_fortune.texture:
+					print(on_fortune_click)
+					on_fortune_click = true
+					print(on_fortune_click)
 					item_on_unequip()
 					equip_fortune = false	
 				elif !items[num].texture_normal == equipped_fortune.texture:
