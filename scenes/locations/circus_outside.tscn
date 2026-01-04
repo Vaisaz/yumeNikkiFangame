@@ -1,0 +1,108 @@
+[gd_scene load_steps=11 format=3 uid="uid://bnhsmsvkl71er"]
+
+[ext_resource type="Texture2D" uid="uid://bkwg4d84vpwnn" path="res://assets/sprites/main/pixel_tiles.png" id="1_y3ai7"]
+[ext_resource type="Texture2D" uid="uid://cui7psmy0qugt" path="res://assets/sprites/circus_dream/property_of_clown.png" id="2_ubgsd"]
+[ext_resource type="PackedScene" uid="uid://d1jbh8q1vrdd6" path="res://scenes/jon.tscn" id="3_qh6j0"]
+[ext_resource type="AudioStream" uid="uid://cmh08m4hrpsac" path="res://assets/audio/circus_outside.wav" id="4_ubgsd"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4t2ak"]
+load_path = "res://.godot/imported/black.jpg-4191cea5f160e11c6c978b4ed839dfa0.ctex"
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mj0ua"]
+texture = ExtResource("1_y3ai7")
+0:0/animation_columns = 2
+0:0/animation_speed = 2.0
+0:0/animation_frame_0/duration = 1.0
+0:0/animation_frame_1/duration = 1.0
+0:0/0 = 0
+2:0/animation_columns = 2
+2:0/animation_speed = 1.5
+2:0/animation_frame_0/duration = 1.0
+2:0/animation_frame_1/duration = 1.0
+2:0/0 = 0
+4:0/animation_columns = 2
+4:0/animation_speed = 1.75
+4:0/animation_frame_0/duration = 1.0
+4:0/animation_frame_1/duration = 1.0
+4:0/0 = 0
+7:0/animation_columns = 2
+7:0/animation_separation = Vector2i(1, 0)
+7:0/animation_frame_0/duration = 1.0
+7:0/animation_frame_1/duration = 1.0
+7:0/0 = 0
+6:0/animation_columns = 2
+6:0/animation_separation = Vector2i(1, 0)
+6:0/animation_speed = 0.5
+6:0/animation_frame_0/duration = 1.0
+6:0/animation_frame_1/duration = 1.0
+6:0/0 = 0
+10:0/animation_columns = 2
+10:0/animation_speed = 2.0
+10:0/animation_frame_0/duration = 1.0
+10:0/animation_frame_1/duration = 1.0
+10:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_l4grq"]
+sources/0 = SubResource("TileSetAtlasSource_mj0ua")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y3ai7"]
+size = Vector2(1161.5, 51.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ubgsd"]
+size = Vector2(52, 826.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qh6j0"]
+size = Vector2(191, 192)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="black" type="Sprite2D" parent="."]
+position = Vector2(-1.00001, 1)
+scale = Vector2(1.36963, 1.52486)
+texture = SubResource("CompressedTexture2D_4t2ak")
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_l4grq")
+format = 2
+layer_0/tile_data = PackedInt32Array(-56, 0, 0, 262090, 131072, 0, 196552, 262144, 0, 131014, 262144, 0, 262085, 458752, 0, -131124, 131072, 0, 458703, 131072, 0, 327628, 0, 0, -65584, 0, 0, -51, 0, 0, 327634, 0, 0, 327630, 393216, 0, 65488, 393216, 0, 131021, 393216, 0, 327633, 393216, 0, 458706, 393216, 0, 196559, 655360, 0, -131122, 655360, 0, -327727, 655360, 0, -46, 655360, 0, -327729, 655360, 0, -53, 655360, 0, 458699, 655360, 0, 524237, 655360, 0, 655311, 655360, 0, 720850, 655360, 0, 131026, 0, 0, 262099, 0, 0, -196654, 0, 0, -196655, 0, 0, 262100, 0, 0, 589780, 0, 0, 720851, 0, 0, 589777, 0, 0, -327730, 0, 0, -458797, 0, 0, -65580, 0, 0, 131028, 0, 0, -327723, 0, 0, -41, 0, 0, 327638, 0, 0, 655318, 0, 0, 196568, 0, 0, 524245, 393216, 0, 65494, 393216, 0, 458711, 393216, 0, 458708, 393216, 0, -262188, 393216, 0, 458705, 0, 0, 589779, 131072, 0, 393168, 131072, 0, -131115, 131072, 0, -327721, 131072, 0, 327622, 393216, 0, 655320, 0, 0, 720855, 0, 0, -131119, 131072, 0, 131025, 131072, 0, 196560, 131072, 0, -196653, 131072, 0, 196562, 131072, 0, 393171, 131072, 0, 524240, 131072, 0, -49, 131072, 0, 655313, 393216, 0, 65486, 393216, 0, -131118, 393216, 0, 65491, 393216, 0, 327637, 393216, 0, -42, 393216, 0, -43, 393216, 0, -327725, 393216, 0, -393262, 393216, 0, 327632, 655360, 0, -47, 655360, 0, -327726, 655360, 0, 524242, 655360, 0, 786387, 655360, 0, 720848, 655360, 0)
+
+[node name="Clown\'s property" type="Sprite2D" parent="."]
+position = Vector2(-360, -131)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_ubgsd")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("3_qh6j0")]
+position = Vector2(-1045, 33)
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+position = Vector2(-1, -26)
+zoom = Vector2(5, 5)
+
+[node name="collisions" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="collisions"]
+position = Vector2(-581.75, -385)
+shape = SubResource("RectangleShape2D_y3ai7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collisions"]
+position = Vector2(-27, 1)
+shape = SubResource("RectangleShape2D_ubgsd")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="collisions"]
+position = Vector2(-1137, 0.5)
+shape = SubResource("RectangleShape2D_ubgsd")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="collisions"]
+position = Vector2(-582, 388)
+shape = SubResource("RectangleShape2D_y3ai7")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="collisions"]
+position = Vector2(-360, -130.5)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_qh6j0")
+
+[node name="CircusOutside" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-360, -93)
+stream = ExtResource("4_ubgsd")
+autoplay = true
+max_distance = 500.0
