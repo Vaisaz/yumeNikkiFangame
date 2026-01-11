@@ -7,7 +7,8 @@ var item_texture = [
 	preload("res://assets/inventory/items/lemonade.png"),
 	preload("res://assets/inventory/items/dice.png"),
 	preload("res://assets/inventory/items/corruption.png"),
-	preload("res://assets/inventory/items/ring.png")
+	preload("res://assets/inventory/items/ring.png"),
+	preload("res://assets/inventory/items/toy_revolver.png")
 ]
 
 var item_texture_hover = [
@@ -17,7 +18,8 @@ var item_texture_hover = [
 	preload("res://assets/inventory/items/lemonade_hover.png"),
 	preload("res://assets/inventory/items/dice_hover.png"),
 	preload("res://assets/inventory/items/corruption_hover.png"),
-	preload("res://assets/inventory/items/ring_hover.png")
+	preload("res://assets/inventory/items/ring_hover.png"),
+	preload("res://assets/inventory/items/toy_revolver_hover.png")
 ]
 
 @onready var items = [
@@ -65,12 +67,13 @@ var wnp_has_interacted: bool = false
 var dice_has_interacted:bool = false
 var corruption_has_interacted:bool = false
 var ring_has_interacted:bool = false
+var revolver_has_interacted:bool = false
 var rng = RandomNumberGenerator.new()
 
 var lemonade_has_interacted: bool = false
 var trash_has_interacted: bool = false
 
-var coins = 350
+var coins = 500
 var add_coins
 
 func _ready():
@@ -121,6 +124,7 @@ var banana_equipped = false
 var watches_equipped = false
 var wnp_equipped = false
 var dice_equipped = false
+var revolver_equipped = false
 
 func normal_health():
 	if Combat.lv == 1:
@@ -149,6 +153,8 @@ var banana_lv = 0
 
 var wnp_at = 25
 var wnp_lv = 0
+
+var revolver_at = 50
 
 var ring_fortune = 1
 
@@ -186,6 +192,7 @@ func item_on_equip(item_index):
 		watches_equipped = false
 		wnp_equipped = false
 		dice_equipped = false
+		revolver_equipped = false
 		
 		lvitem.text = "LV: %d" % banana_lv
 		lvitem.visible = true
@@ -196,15 +203,27 @@ func item_on_equip(item_index):
 		watches_equipped = true	
 		wnp_equipped = false
 		dice_equipped = false
+		revolver_equipped = false
 		
 		lvitem.text = "LV: %d" % wnp_lv
 		lvitem.visible = true
 	elif equipped.texture == load("res://assets/inventory/items/dice.png") and !dice_equipped:
 		normal_health()
 		banana_equipped = false
-		watches_equipped = false	
+		watches_equipped = false
 		wnp_equipped = false
 		dice_equipped = true
+		revolver_equipped = false
+		
+		lvitem.visible = false
+	elif equipped.texture == load("res://assets/inventory/items/toy_revolver.png") and !revolver_equipped:
+		normal_health()
+		Combat.player_attack += revolver_at
+		banana_equipped = false
+		watches_equipped = false	
+		wnp_equipped = false
+		dice_equipped = false
+		revolver_equipped = true
 		
 		lvitem.visible = false
 	#elif equipped.texture == load("res://assets/inventory/items/corruption.png") and corruption_has_interacted:
@@ -229,6 +248,7 @@ func item_on_unequip():
 		banana_equipped = false
 		watches_equipped = false
 		wnp_equipped = false
+		revolver_equipped = false
 		equipped.texture = null
 		
 		lvitem.visible = false
@@ -257,6 +277,7 @@ func item_on_unequip():
 			banana_equipped = false
 			watches_equipped = false
 			wnp_equipped = false
+			revolver_equipped = false
 			equipped.texture = null
 			
 			lvitem.visible = false
