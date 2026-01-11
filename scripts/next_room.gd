@@ -32,4 +32,3 @@ func _input(_event):
 		await Transition.animated_sprite_2d.animation_finished
 		Transition.ending_animation()
 		get_tree().change_scene_to_file("res://scenes/locations/name.tscn")
-
