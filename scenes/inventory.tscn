@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bq4vht3ts2avk" path="res://assets/inventory/quit_bigger.png" id="6_s8scw"]
 [ext_resource type="Texture2D" uid="uid://eepycb27dr8x" path="res://assets/inventory/quit_bigger_hover.png" id="7_n4dys"]
 [ext_resource type="Texture2D" uid="uid://ye0kpsgym586" path="res://assets/inventory/frame_kozetsu_bigger.png" id="9_hhqae"]
-[ext_resource type="Texture2D" uid="uid://dfdgeultcewv6" path="res://assets/sprites/corruption/New Piskel(4).png" id="10_k86sa"]
+[ext_resource type="Texture2D" uid="uid://dfdgeultcewv6" path="res://assets/sprites/corruption/corruption_devoured.png" id="10_k86sa"]
 [ext_resource type="Texture2D" uid="uid://bvhnrj63o8vr3" path="res://assets/inventory/dream_eye/dream_eye.png" id="10_ymfx7"]
 [ext_resource type="FontFile" uid="uid://b5lqlis8c3a4k" path="res://assets/I-pixel-u.ttf" id="11_pu7wn"]
 [ext_resource type="Texture2D" uid="uid://crkdkhpy0yrss" path="res://assets/large_frame.png" id="12_ebbbx"]

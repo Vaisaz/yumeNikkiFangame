@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bnhsmsvkl71er"]
+[gd_scene load_steps=10 format=3 uid="uid://bnhsmsvkl71er"]
 
 [ext_resource type="Texture2D" uid="uid://bkwg4d84vpwnn" path="res://assets/sprites/main/pixel_tiles.png" id="1_y3ai7"]
 [ext_resource type="Texture2D" uid="uid://cui7psmy0qugt" path="res://assets/sprites/circus_dream/property_of_clown.png" id="2_ubgsd"]
@@ -51,10 +51,8 @@ size = Vector2(1161.5, 51.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ubgsd"]
 size = Vector2(52, 826.5)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qh6j0"]
-size = Vector2(191, 192)
-
 [node name="Node2D" type="Node2D"]
+position = Vector2(367, -37)
 
 [node name="black" type="Sprite2D" parent="."]
 position = Vector2(-1.00001, 1)
@@ -96,10 +94,8 @@ shape = SubResource("RectangleShape2D_ubgsd")
 position = Vector2(-582, 388)
 shape = SubResource("RectangleShape2D_y3ai7")
 
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="collisions"]
-position = Vector2(-360, -130.5)
-rotation = 1.5708
-shape = SubResource("RectangleShape2D_qh6j0")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="collisions"]
+polygon = PackedVector2Array(-456, -52, -444, -44, -425, -40, -390, -36, -334, -35, -304, -39, -270, -48, -266, -53, -265, -116, -274, -142, -271, -178, -277, -180, -314, -189, -343, -215, -361, -229, -377, -214, -403, -190, -427, -181, -445, -180, -448, -177, -442, -161, -446, -134, -456, -113)
 
 [node name="CircusOutside" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(-360, -93)
