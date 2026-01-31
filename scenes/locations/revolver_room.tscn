@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://duyaqlku4h6sf" path="res://assets/sprites/revolver_room/some_image_right.png" id="5_k6qni"]
 [ext_resource type="Texture2D" uid="uid://d3qtsayv0xroq" path="res://assets/sprites/revolver_room/revolver_table.png" id="8_n7rem"]
 [ext_resource type="PackedScene" uid="uid://bd4wan8sg87fp" path="res://scenes/toy_revolver.tscn" id="9_n7rem"]
-[ext_resource type="AudioStream" uid="uid://rq3yk45yh52o" path="res://assets/audio/toy_revolver_room_theme.wav" id="10_flp6v"]
+[ext_resource type="AudioStream" uid="uid://cbniv085feyww" path="res://assets/audio/toy_revolver_room_dream.wav" id="10_flp6v"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_n7rem"]
 load_path = "res://.godot/imported/black.jpg-4191cea5f160e11c6c978b4ed839dfa0.ctex"
