@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://wkrok4g8lepd"]
+[gd_scene load_steps=11 format=3 uid="uid://wkrok4g8lepd"]
 
 [ext_resource type="Texture2D" uid="uid://1u8wrihc80h4" path="res://assets/sprites/prospect_dream/spritesheet_prospect_dream.png.png" id="1_oqdy0"]
-[ext_resource type="Texture2D" uid="uid://beygc7w5v4aax" path="res://assets/sprites/prospect_dream/pixil-frame-0(185).png" id="2_t8j2y"]
-[ext_resource type="Texture2D" uid="uid://ckckqjil4lpos" path="res://assets/sprites/prospect_dream/pixil-frame-0(180).png" id="2_xp50g"]
+[ext_resource type="Texture2D" uid="uid://beygc7w5v4aax" path="res://assets/sprites/prospect_dream/tree.png" id="2_t8j2y"]
+[ext_resource type="Texture2D" uid="uid://ckckqjil4lpos" path="res://assets/sprites/prospect_dream/minerals.png" id="2_xp50g"]
 [ext_resource type="PackedScene" uid="uid://d1jbh8q1vrdd6" path="res://scenes/jon.tscn" id="3_t8j2y"]
 [ext_resource type="AudioStream" uid="uid://b78x26aucqm2s" path="res://assets/audio/in_another_universe.wav" id="4_hkeid"]
+[ext_resource type="PackedScene" uid="uid://ct2g6k4cpkgla" path="res://scenes/juliet.tscn" id="6_mapl7"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_hkeid"]
 load_path = "res://.godot/imported/black.jpg-4191cea5f160e11c6c978b4ed839dfa0.ctex"
@@ -75,3 +76,6 @@ zoom = Vector2(2, 2)
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_hkeid")
 autoplay = true
+
+[node name="StaticBody2D" parent="." instance=ExtResource("6_mapl7")]
+position = Vector2(-115, -158)

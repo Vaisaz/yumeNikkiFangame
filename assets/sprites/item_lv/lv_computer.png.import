@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ckckqjil4lpos"
-path="res://.godot/imported/pixil-frame-0(180).png-beb5393dc1a16c4b0d7af6579efc46f7.ctex"
+uid="uid://c3bsnxuvh4dpx"
+path="res://.godot/imported/lv_computer.png-25ad96245d42ca0d0429f4aef4623244.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/prospect_dream/pixil-frame-0(180).png"
-dest_files=["res://.godot/imported/pixil-frame-0(180).png-beb5393dc1a16c4b0d7af6579efc46f7.ctex"]
+source_file="res://assets/sprites/item_lv/lv_computer.png"
+dest_files=["res://.godot/imported/lv_computer.png-25ad96245d42ca0d0429f4aef4623244.ctex"]
 
 [params]
 

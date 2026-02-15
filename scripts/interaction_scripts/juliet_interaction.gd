@@ -1,7 +1,7 @@
 extends Area2D
 
 var messages = [
-	""
+	"",
 ]
 
 var blips = [

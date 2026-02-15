@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://beygc7w5v4aax"
-path="res://.godot/imported/pixil-frame-0(185).png-cc9ed3d0d12f0a65017cc8eaec7c2cc5.ctex"
+uid="uid://bab8857j15a5a"
+path="res://.godot/imported/juliet.png-c31cb1e1fb3569f5389e791418b69a88.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/prospect_dream/pixil-frame-0(185).png"
-dest_files=["res://.godot/imported/pixil-frame-0(185).png-cc9ed3d0d12f0a65017cc8eaec7c2cc5.ctex"]
+source_file="res://assets/sprites/prospect_dream/juliet.png"
+dest_files=["res://.godot/imported/juliet.png-c31cb1e1fb3569f5389e791418b69a88.ctex"]
 
 [params]
 

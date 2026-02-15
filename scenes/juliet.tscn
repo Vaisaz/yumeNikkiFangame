@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://ct2g6k4cpkgla"]
+[gd_scene load_steps=14 format=3 uid="uid://ct2g6k4cpkgla"]
 
-[ext_resource type="Texture2D" uid="uid://bxcwrct82erft" path="res://assets/sprites/love_dream/Juliet.png" id="1_oj6nu"]
+[ext_resource type="Texture2D" uid="uid://bxcwrct82erft" path="res://assets/sprites/love_dream/juliet.png" id="1_oj6nu"]
 [ext_resource type="Script" uid="uid://cv4ek4r1sobvh" path="res://scripts/interaction_scripts/juliet_interaction.gd" id="2_ng103"]
 [ext_resource type="Texture2D" uid="uid://beh4pnr72b2sx" path="res://assets/blank_frame_bigger.png" id="2_qnkgk"]
 [ext_resource type="FontFile" uid="uid://b5lqlis8c3a4k" path="res://assets/I-pixel-u.ttf" id="3_ng103"]
 [ext_resource type="PackedScene" uid="uid://c1s8mfal8dbj3" path="res://assets/audio/sound.tscn" id="4_aftt5"]
+[ext_resource type="Texture2D" uid="uid://bab8857j15a5a" path="res://assets/sprites/prospect_dream/juliet.png" id="6_ng103"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bwprl"]
 atlas = ExtResource("1_oj6nu")
@@ -46,11 +47,13 @@ animations = [{
 size = Vector2(16, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yx5ud"]
-size = Vector2(27, 38)
+size = Vector2(26, 38)
 
 [node name="StaticBody2D" type="StaticBody2D"]
+position = Vector2(2, 0)
 
 [node name="Juliet" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(-1, -16)
 sprite_frames = SubResource("SpriteFrames_6bbky")
 autoplay = "default"
@@ -66,7 +69,7 @@ collision_mask = 8
 script = ExtResource("2_ng103")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="interaction"]
-position = Vector2(-1.5, -16)
+position = Vector2(-2, -16)
 shape = SubResource("RectangleShape2D_yx5ud")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -95,6 +98,10 @@ theme_override_font_sizes/font_size = 8
 
 [node name="Sound" parent="." instance=ExtResource("4_aftt5")]
 position = Vector2(-1, -14)
+
+[node name="Pixil-frame-0(181)" type="Sprite2D" parent="."]
+position = Vector2(-2, -16)
+texture = ExtResource("6_ng103")
 
 [connection signal="area_entered" from="interaction" to="interaction" method="_on_area_entered"]
 [connection signal="area_exited" from="interaction" to="interaction" method="_on_area_exited"]

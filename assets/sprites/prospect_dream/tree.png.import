@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxcwrct82erft"
-path="res://.godot/imported/juliet.png-376fdac09dcc223513fc5f4acbfabc10.ctex"
+uid="uid://beygc7w5v4aax"
+path="res://.godot/imported/tree.png-c81601f556e92d414a4177f0a96c843c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/love_dream/juliet.png"
-dest_files=["res://.godot/imported/juliet.png-376fdac09dcc223513fc5f4acbfabc10.ctex"]
+source_file="res://assets/sprites/prospect_dream/tree.png"
+dest_files=["res://.godot/imported/tree.png-c81601f556e92d414a4177f0a96c843c.ctex"]
 
 [params]
 

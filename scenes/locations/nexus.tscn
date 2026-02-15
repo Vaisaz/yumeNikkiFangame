@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dr21yfhjoldoo"]
+[gd_scene load_steps=27 format=3 uid="uid://dr21yfhjoldoo"]
 
 [ext_resource type="Texture2D" uid="uid://bkwg4d84vpwnn" path="res://assets/sprites/main/pixel_tiles.png" id="1_hfvtc"]
 [ext_resource type="PackedScene" uid="uid://cjwndxthtkfak" path="res://scenes/main_dream_doors.tscn" id="3_hu4mw"]
@@ -12,11 +12,13 @@
 [ext_resource type="PackedScene" uid="uid://soo5rpy2bpqo" path="res://scenes/number_warp.tscn" id="10_0csyf"]
 [ext_resource type="AudioStream" uid="uid://cukph5fc4tjge" path="res://assets/audio/door_sound.mp3" id="10_1233v"]
 [ext_resource type="Script" uid="uid://dx8qpr2shvmjq" path="res://scripts/interaction_scripts/number_warp_interaction.gd" id="11_n0jro"]
+[ext_resource type="PackedScene" uid="uid://db0d7l337ufsh" path="res://scenes/lv_computer.tscn" id="15_0df55"]
 [ext_resource type="PackedScene" uid="uid://xyib0c1l8y3v" path="res://scenes/test_inventory.tscn" id="15_wvg0s"]
 [ext_resource type="AudioStream" uid="uid://d0jfef2wdjivl" path="res://assets/audio/nexus.mp3" id="16_4mxub"]
 [ext_resource type="PackedScene" uid="uid://7qlcvxsvyst5" path="res://scenes/lemonade_stand.tscn" id="16_qhsxs"]
 [ext_resource type="PackedScene" uid="uid://dvwhyousdnx72" path="res://scenes/trash_guy.tscn" id="17_2skrs"]
 [ext_resource type="Script" uid="uid://dx52ljqm7y252" path="res://scripts/loopsound.gd" id="17_4mxub"]
+[ext_resource type="PackedScene" uid="uid://b2gh7yvit1v4d" path="res://scenes/lv_creature.tscn" id="18_4mxub"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_csaqv"]
 load_path = "res://.godot/imported/black.jpg-4191cea5f160e11c6c978b4ed839dfa0.ctex"
@@ -143,6 +145,12 @@ scale = Vector2(0.6, 0.6)
 
 [node name="StaticBody2D" parent="." instance=ExtResource("17_2skrs")]
 position = Vector2(146, -35)
+
+[node name="StaticBody2D2" parent="." instance=ExtResource("18_4mxub")]
+position = Vector2(-117, -59)
+
+[node name="StaticBody2D3" parent="." instance=ExtResource("15_0df55")]
+position = Vector2(-65, -62)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("4_1wn3d")]
 position = Vector2(1, -24)
