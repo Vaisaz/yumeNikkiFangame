@@ -68,9 +68,11 @@ func _input(event):
 		GlobalVariables.debounce = true
 		print(index)
 		canvas_layer.visible = true
+		GlobalVariables.interacting = true
 		if index == 3:
 			item_give()
 		if index == 5:
+			GlobalVariables.interacting = false
 			canvas_layer.visible = false
 			interaction_times = 1
 			GlobalVariables.debounce = false

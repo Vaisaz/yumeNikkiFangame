@@ -372,6 +372,8 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -4.0
+offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_g2hi5")
@@ -383,20 +385,22 @@ visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 1.0
+offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="InventoryFrame" type="Sprite2D" parent="InventoryLayer"]
-position = Vector2(576, 326)
+position = Vector2(576, 322)
 scale = Vector2(4.608, 5.192)
 texture = ExtResource("1_y1dyy")
 
 [node name="Buttons" type="VBoxContainer" parent="InventoryLayer"]
 offset_left = 29.0
-offset_top = 26.0
+offset_top = 22.0
 offset_right = 93.0
-offset_bottom = 130.0
+offset_bottom = 126.0
 scale = Vector2(3, 3)
 
 [node name="Soul" type="TextureButton" parent="InventoryLayer/Buttons"]

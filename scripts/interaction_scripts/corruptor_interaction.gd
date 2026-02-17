@@ -13,11 +13,11 @@ var messages = [
 	"SATISFIED, RIGHT?",
 	"BUT YOU WILL BE STARVING AND NOTHING WILL
 	PLEASE YOU ENTIRELY",
-	"SO YOU WILL FEAST ON ALL OF THOSE REACHED DREAMS
-	LIKE A PIG ONLY FOR THEM TO BE LEFT TO ROT IN A
-	BURNING MEMORY OF YOURS",
-	"NOT CARING AND HAVING ANY THOUGHT ON HOW THEY
-	TASTED BACK THEN",
+	"SO YOU WILL FEAST ON ALL OF THOSE REACHED
+	DREAMS LIKE A PIG ONLY FOR THEM TO BE LEFT
+	TO ROT IN A BURNING MEMORY OF YOURS",
+	"NOT CARING AND HAVING ANY THOUGHT ON HOW
+	THEY TASTED BACK THEN",
 	"THAT IS NOTHING NEW HOWEVER, IS IT?",
 	"I CAN SEE IT IN YOUR EYES THAT YOU HAVE BEEN
 	PUSHED INTO THE VOID",
@@ -33,6 +33,12 @@ var messages = [
 
 var blips = [
 	load("res://assets/audio/corruptor_blips/blip.wav")
+]
+
+var soul_blips = [
+	load("res://assets/audio/soul_blips/soul1.wav"),
+	load("res://assets/audio/soul_blips/soul2.wav"),
+	load("res://assets/audio/soul_blips/soul3.wav")
 ]
 
 var interact: bool = false
@@ -63,6 +69,15 @@ func show_message():
 		label.text = ""
 		for character in messages[index]:
 			if index <= 13:
+				label.add_theme_color_override("font_color", Color8(165, 0, 0))
+				sound.stream = blips[0]
+				sound.play()
+			if index > 13 and index < 16:
+				label.add_theme_color_override("font_color", Color8(255, 255, 255))
+				sound.stream = soul_blips[random_blips.randi_range(0, 2)]
+				sound.play()
+			if index == 16:
+				label.add_theme_color_override("font_color", Color8(165, 0, 0))
 				sound.stream = blips[0]
 				sound.play()
 			label.text += character
@@ -70,17 +85,31 @@ func show_message():
 		message_displayed = true
 
 func _input(event):
-	if event.is_action_pressed("interact") and message_displayed and interact and Input.is_action_just_pressed("interact") and Transition.canvas_layer.visible == false and Inventory.inventory_layer.visible == false:
+	if interaction_times == 0 and event.is_action_pressed("interact") and message_displayed and interact and Input.is_action_just_pressed("interact") and Transition.canvas_layer.visible == false and Inventory.inventory_layer.visible == false:
 		GlobalVariables.debounce = true
 		print(index)
 		canvas_layer.visible = true
-		if index == 0:
+		GlobalVariables.interacting = true
+		if index == 13:
+			GlobalVariables.interacting = false
+			canvas_layer.visible = false
+			interaction_times = 1
+			GlobalVariables.debounce = false
+			return
+		message_displayed = false
+		index += 1
+		show_message()
+	if interaction_times == 1 and event.is_action_pressed("interact") and message_displayed and interact and Input.is_action_just_pressed("interact") and Transition.canvas_layer.visible == false and Inventory.inventory_layer.visible == false:
+		GlobalVariables.debounce = true
+		print(index)
+		canvas_layer.visible = true
+		GlobalVariables.interacting = true
+		if index == 16:
 			item_give()
 			Inventory.corruption_interaction()
 			Inventory.corruption_has_interacted = true
-		if index == 0:
+			GlobalVariables.interacting = false
 			canvas_layer.visible = false
-			interaction_times = 1
 			GlobalVariables.debounce = false
 			return
 		message_displayed = false

@@ -129,7 +129,7 @@ func _input(_event):
 			GlobalVariables.in_combat = false
 			GlobalVariables.debounce = false
 			Transition.ending_animation()
-	if Input.is_action_just_pressed("inventory") and !get_tree().current_scene.scene_file_path == "res://scenes/locations/room.tscn" and !GlobalVariables.in_combat:
+	if Input.is_action_just_pressed("inventory") and !get_tree().current_scene.scene_file_path == "res://scenes/locations/room.tscn" and !GlobalVariables.in_combat and !GlobalVariables.interacting:
 		if !inventory_pressed:
 			GlobalVariables.debounce = true
 			Inventory.inventory_layer.visible = true

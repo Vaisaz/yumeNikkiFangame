@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://ct2g6k4cpkgla"]
 
 [ext_resource type="Texture2D" uid="uid://bxcwrct82erft" path="res://assets/sprites/love_dream/juliet.png" id="1_oj6nu"]
-[ext_resource type="Script" uid="uid://cv4ek4r1sobvh" path="res://scripts/interaction_scripts/juliet_interaction.gd" id="2_ng103"]
+[ext_resource type="Script" uid="uid://cv4ek4r1sobvh" path="res://scripts/interaction_scripts/item_give/juliet_interaction.gd" id="2_ng103"]
 [ext_resource type="Texture2D" uid="uid://beh4pnr72b2sx" path="res://assets/blank_frame_bigger.png" id="2_qnkgk"]
 [ext_resource type="FontFile" uid="uid://b5lqlis8c3a4k" path="res://assets/I-pixel-u.ttf" id="3_ng103"]
 [ext_resource type="PackedScene" uid="uid://c1s8mfal8dbj3" path="res://assets/audio/sound.tscn" id="4_aftt5"]

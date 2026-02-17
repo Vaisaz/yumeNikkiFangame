@@ -75,13 +75,13 @@ func _input(event):
 			return
 		print("works")
 		GlobalVariables.debounce = true
-		GlobalVariables.in_combat = true
+		GlobalVariables.interacting = true
 		canvas_layer.visible = true
 		print(index)
 		if index == 4:
 			canvas_layer.visible = false
 			GlobalVariables.debounce = false
-			GlobalVariables.in_combat = false
+			GlobalVariables.interacting = false
 			interaction_times = 1
 			message_displayed = true
 		else:

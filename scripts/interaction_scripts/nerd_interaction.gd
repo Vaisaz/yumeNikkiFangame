@@ -31,4 +31,3 @@ func _on_area_entered(area):
 		Combat.combat_layer.visible = true
 		DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_VISIBLE)
 		Combat.combat_sound.play()
-
