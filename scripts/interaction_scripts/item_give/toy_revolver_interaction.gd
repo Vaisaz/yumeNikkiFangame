@@ -3,7 +3,7 @@ extends Area2D
 var messages = [
 	"",
 	"YOU HAVE ACQUIRED:
-	REVOLVER",
+	TOY REVOLVER",
 	"GIVES AND TAKES:
 	0 HP
 	+50 AT"

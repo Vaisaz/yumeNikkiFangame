@@ -1,9 +1,12 @@
-[gd_scene load_steps=32 format=3 uid="uid://db0d7l337ufsh"]
+[gd_scene load_steps=41 format=3 uid="uid://db0d7l337ufsh"]
 
 [ext_resource type="Texture2D" uid="uid://c3bsnxuvh4dpx" path="res://assets/sprites/item_lv/lv_computer.png" id="1_eswdw"]
 [ext_resource type="Texture2D" uid="uid://dmuwiisbxwv13" path="res://assets/sprites/item_lv/loading_pc_animation.png" id="1_y5rp6"]
+[ext_resource type="FontFile" uid="uid://b5lqlis8c3a4k" path="res://assets/I-pixel-u.ttf" id="2_eswdw"]
 [ext_resource type="Script" uid="uid://drobok2ow3w0c" path="res://scripts/interaction_scripts/lv_computer_interaction.gd" id="2_r64fc"]
+[ext_resource type="Texture2D" uid="uid://b2ar7kt3lu1gj" path="res://assets/another_computer_frame.png" id="2_so4kt"]
 [ext_resource type="PackedScene" uid="uid://c1s8mfal8dbj3" path="res://assets/audio/sound.tscn" id="5_80yak"]
+[ext_resource type="AudioStream" uid="uid://rlh0pimmwsly" path="res://assets/audio/computer_theme.wav" id="7_so4kt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eswdw"]
 atlas = ExtResource("1_y5rp6")
@@ -111,6 +114,23 @@ animations = [{
 "speed": 14.0
 }]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r64fc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_so4kt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ic34p"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eswdw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ncv54"]
+
+[sub_resource type="Theme" id="Theme_381nw"]
+VScrollBar/styles/grabber = SubResource("StyleBoxEmpty_r64fc")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxEmpty_so4kt")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxEmpty_ic34p")
+VScrollBar/styles/scroll = SubResource("StyleBoxEmpty_eswdw")
+VScrollBar/styles/scroll_focus = SubResource("StyleBoxEmpty_ncv54")
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_ncv54"]
 atlas = ExtResource("1_eswdw")
 region = Rect2(0, 0, 32, 32)
@@ -206,11 +226,89 @@ sprite_frames = SubResource("SpriteFrames_685j4")
 frame = 13
 frame_progress = 1.0
 
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer"]
+visible = false
+offset_left = 354.0
+offset_top = 94.0
+offset_right = 809.0
+offset_bottom = 549.0
+vertical_scroll_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = SubResource("Theme_381nw")
+
+[node name="WNP" type="TextureRect" parent="CanvasLayer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_so4kt")
+
+[node name="WNPLabel" type="Label" parent="CanvasLayer/ScrollContainer/VBoxContainer/WNP"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 4.0
+offset_right = 224.0
+offset_bottom = 251.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_eswdw")
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/ScrollContainer/VBoxContainer/WNP"]
+layout_mode = 0
+offset_top = 255.0
+offset_right = 455.0
+offset_bottom = 260.0
+
+[node name="Banana" type="TextureRect" parent="CanvasLayer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_so4kt")
+
+[node name="BananaLabel" type="Label" parent="CanvasLayer/ScrollContainer/VBoxContainer/Banana"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 4.0
+offset_right = 224.0
+offset_bottom = 251.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_eswdw")
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/ScrollContainer/VBoxContainer/Banana"]
+offset_top = 255.0
+offset_right = 455.0
+offset_bottom = 260.0
+
+[node name="ToyRevolver" type="TextureRect" parent="CanvasLayer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_so4kt")
+
+[node name="ToyRevolverLabel" type="Label" parent="CanvasLayer/ScrollContainer/VBoxContainer/ToyRevolver"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 4.0
+offset_right = 224.0
+offset_bottom = 251.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_eswdw")
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/ScrollContainer/VBoxContainer/ToyRevolver"]
+offset_top = 255.0
+offset_right = 455.0
+offset_bottom = 260.0
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_n4ylm")
 autoplay = "default"
-frame_progress = 0.480612
+frame_progress = 0.352029
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -17)
@@ -228,6 +326,7 @@ shape = SubResource("RectangleShape2D_dxaty")
 
 [node name="Sound" parent="." instance=ExtResource("5_80yak")]
 position = Vector2(-1, -14)
+stream = ExtResource("7_so4kt")
 
 [connection signal="area_entered" from="interaction" to="interaction" method="_on_area_entered"]
 [connection signal="area_exited" from="interaction" to="interaction" method="_on_area_exited"]
