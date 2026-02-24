@@ -2,13 +2,36 @@ extends Area2D
 
 var messages = [
 	"",
+	"HELLO",
+	"I DO NOT GET MUCH VISITORS AROUND HERE",
+	"THAT'S WHY I LIKE TO COME HERE OFTEN",
+	".  .  .",
+	"I FEEL LIKE I KNOW YOU",
+	"I'M PRETTY SURE THIS IS THE FIRST TIME
+	WE EVER MET",
+	".  .  .",
+	"I'LL GIVE YOU AN ITEM",
+	"I DON'T WANT YOU TO GET HURT",
+	"YOU HAVE ACQUIRED:
+	RING",
+	"GIVES AND TAKES
+	10 HP
+	0 AT",
+	"YOUR HEART BLISSFULLY THROBS IN A
+	MELODY",
+	"THE STARS SHINING THROUGH YOUR RETINA
+	MAKES YOU RELAX COMFORTABLY",
+	"MILLIONS OF HOMES WHERE YOUR SCATTERED
+	SOULS RESIDE",
+	"WITH THE FEMALE SOUL YOU FEEL LIKE YOU
+	SHOULD UNITE",
+	"AND ALL THE SCATTERED SOULS HAVE THE
+	SAME DESTINY",
+	"TOWARDS THIS ONE SINGLE ENTITY",
+	"YOU HAVE RECOVERED YOUR HEALTH",
 ]
 
-var blips = [
-	load("res://assets/audio/number_enthusiast_blips/1.wav"),
-	load("res://assets/audio/number_enthusiast_blips/2.wav"),
-	load("res://assets/audio/number_enthusiast_blips/3.wav")
-]
+var blips = load("res://assets/audio/juliet_blips/juliet_blip.wav")
 
 var soul_blips = [
 	load("res://assets/audio/soul_blips/soul1.wav"),
@@ -42,14 +65,11 @@ func show_message():
 	if index < messages.size():
 		label.text = ""
 		for character in messages[index]:
-			if index <= 2:
-				sound.stream = blips[random_blips.randi_range(0, 2)]
+			if index <= 9:
+				sound.stream = blips
 				sound.play()
-			elif index > 2 and index < 5:
+			else:
 				sound.stream = soul_blips[random_blips.randi_range(0, 2)]
-				sound.play()
-			elif index == 5:
-				sound.stream = blips[random_blips.randi_range(0, 2)]
 				sound.play()
 			label.text += character
 			await get_tree().create_timer(0.05).timeout
@@ -60,9 +80,9 @@ func _input(event):
 		GlobalVariables.debounce = true
 		print(index)
 		canvas_layer.visible = true
-		if index == 0:
+		if index == 11:
 			item_give()
-		if index == 0:
+		if index == 18:
 			canvas_layer.visible = false
 			interaction_times = 1
 			GlobalVariables.debounce = false
