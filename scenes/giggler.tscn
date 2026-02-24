@@ -1,60 +1,67 @@
-[gd_scene load_steps=9 format=3 uid="uid://cn7t5qquv062e"]
+[gd_scene load_steps=11 format=3 uid="uid://cn7t5qquv062e"]
 
 [ext_resource type="Texture2D" uid="uid://jxohybkec4pl" path="res://assets/sprites/happy_dream/giggler_sprite_sheet.png" id="1_3i3v7"]
+[ext_resource type="Texture2D" uid="uid://bd36b4moy2hg5" path="res://assets/combat/giggler.png" id="1_hpjcf"]
 [ext_resource type="Script" uid="uid://cqqjbufphkk6y" path="res://scripts/interaction_scripts/giggler_interaction.gd" id="2_qt60r"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vtqbg"]
-atlas = ExtResource("1_3i3v7")
-region = Rect2(64, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_qhore"]
+atlas = ExtResource("1_hpjcf")
+region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_x6w2l"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_qwuy6"]
+atlas = ExtResource("1_3i3v7")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e3ffy"]
 atlas = ExtResource("1_3i3v7")
 region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_njbv3"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_85tsu"]
 atlas = ExtResource("1_3i3v7")
-region = Rect2(0, 0, 32, 32)
+region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_deupr"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vtqbg")
+"texture": SubResource("AtlasTexture_qhore")
 }],
 "loop": true,
 "name": &"new_animation",
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 0.35,
-"texture": SubResource("AtlasTexture_x6w2l")
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qwuy6")
 }, {
-"duration": 0.35,
-"texture": SubResource("AtlasTexture_njbv3")
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e3ffy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_85tsu")
 }],
 "loop": true,
 "name": &"run",
 "speed": 2.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uwg8y"]
-size = Vector2(28, 32)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t8eno"]
+size = Vector2(28.5, 32)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0y0nk"]
-size = Vector2(35, 39)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xrotx"]
+size = Vector2(35.5, 39)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_deupr")
-animation = &"run"
+animation = &"new_animation"
 autoplay = "run"
-frame_progress = 0.121028
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, -14.375)
-shape = SubResource("RectangleShape2D_uwg8y")
+position = Vector2(0.25, -16)
+shape = SubResource("RectangleShape2D_t8eno")
 
 [node name="interaction" type="Area2D" parent="."]
 collision_layer = 8
@@ -62,8 +69,8 @@ collision_mask = 8
 script = ExtResource("2_qt60r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="interaction"]
-position = Vector2(0, -16.5)
-shape = SubResource("RectangleShape2D_0y0nk")
+position = Vector2(-0.25, -16.5)
+shape = SubResource("RectangleShape2D_xrotx")
 
 [connection signal="area_entered" from="interaction" to="interaction" method="_on_area_entered"]
 [connection signal="area_exited" from="interaction" to="interaction" method="_on_area_exited"]

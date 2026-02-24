@@ -22,6 +22,7 @@ func _on_area_entered(area):
 		$"..".queue_free()
 		GlobalVariables.debounce = true
 		Combat.enemy_texture.texture = load("res://assets/combat/nerd_1.png")
+		Combat.enemy_texture.scale = Vector2(6, 6)
 		Combat.enemy_max_health = 50
 		Combat.enemy_current_health = 50
 		Combat.enemy_attack = 10

@@ -22,6 +22,7 @@ func _on_area_entered(area):
 		$"..".queue_free()
 		GlobalVariables.debounce = true
 		Combat.enemy_texture.texture = load("res://assets/combat/neon_creature.png")
+		Combat.enemy_texture.scale = Vector2(6, 6)
 		Combat.enemy_max_health = 75
 		Combat.enemy_current_health = 75
 		Combat.enemy_attack = 25
@@ -31,4 +32,3 @@ func _on_area_entered(area):
 		Combat.combat_layer.visible = true
 		DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_VISIBLE)
 		Combat.combat_sound.play()
-
