@@ -1,0 +1,71 @@
+[gd_scene load_steps=10 format=3 uid="uid://cy7me034hey7u"]
+
+[ext_resource type="Script" uid="uid://dxdsva75sou6f" path="res://scripts/creature_game_movement.gd" id="1_g38p3"]
+[ext_resource type="Texture2D" uid="uid://bsfprr2p070si" path="res://assets/sprites/game/creature_spritesheet.png" id="2_g38p3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ypuij"]
+atlas = ExtResource("2_g38p3")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ue8i"]
+atlas = ExtResource("2_g38p3")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g38p3"]
+atlas = ExtResource("2_g38p3")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ic364"]
+atlas = ExtResource("2_g38p3")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ic364"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ypuij")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ue8i")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_g38p3")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_ic364")
+}],
+"loop": true,
+"name": &"run",
+"speed": 2.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ue8i"]
+size = Vector2(24, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ic364"]
+size = Vector2(22, 8)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_g38p3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_ic364")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -12)
+shape = SubResource("RectangleShape2D_0ue8i")
+
+[node name="interaction" type="Area2D" parent="."]
+position = Vector2(0, -16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interaction"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_ic364")

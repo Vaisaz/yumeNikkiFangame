@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://beu0lhrwq0fra"]
+
+[ext_resource type="Texture2D" uid="uid://b27qr4pjodxx3" path="res://assets/sprites/game/grass.png" id="1_blpmo"]
+[ext_resource type="PackedScene" uid="uid://cy7me034hey7u" path="res://scenes/creature_game.tscn" id="2_on5ra"]
+[ext_resource type="Texture2D" uid="uid://crb0byvnoqu6t" path="res://assets/sprites/game/frame.png" id="3_on5ra"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5uss4"]
+texture = ExtResource("1_blpmo")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 8, 8, 8, -8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 8, 8, 8, -8)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 8, 8, 8, -8)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 8, 8, 8, -8)
+
+[sub_resource type="TileSet" id="TileSet_23cs5"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_5uss4")
+
+[node name="Node2D" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -199.0
+offset_top = -112.0
+offset_right = 199.0
+offset_bottom = 112.0
+color = Color(0, 0, 0, 1)
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_23cs5")
+format = 2
+layer_0/tile_data = PackedInt32Array(327684, 0, 0, 393220, 0, 0, 327685, 65536, 0, 393221, 0, 0, 327682, 0, 0, 393218, 0, 1, 327683, 0, 0, 393219, 0, 0, 327680, 0, 0, 393216, 0, 1, 327681, 65536, 0, 393217, 65536, 1, 393209, 65536, 0, 458745, 65536, 1, 393210, 0, 0, 458746, 0, 1, 393211, 65536, 0, 458747, 65536, 1, 393212, 0, 0, 458748, 0, 1, 393213, 65536, 0, 458749, 65536, 1, 393214, 0, 0, 458750, 0, 1, 393215, 65536, 0, 458751, 65536, 1, 327673, 65536, 1, 262138, 0, 0, 327674, 0, 1, 262139, 65536, 0, 327675, 65536, 1, 262140, 0, 0, 327676, 0, 1, 262141, 65536, 0, 327677, 65536, 1, 262142, 0, 0, 327678, 0, 1, 262143, 65536, 0, 327679, 65536, 1, 196608, 0, 0, 262144, 0, 1, 196609, 65536, 0, 262145, 65536, 1, 196610, 0, 0, 262146, 0, 1, 196611, 65536, 0, 262147, 0, 0, 196612, 0, 0, 262148, 0, 0, 196613, 0, 0, 262149, 65536, 1, 262137, 0, 0, 196601, 0, 0, 131065, 0, 0, 65529, 0, 0, -7, 0, 0, -65543, 0, 0, -131079, 0, 0, -196615, 0, 0, -262151, 0, 0, -327687, 0, 0, -393223, 0, 0, -393222, 0, 0, -393221, 0, 0, -393220, 0, 0, -393219, 0, 0, -393218, 0, 0, -393217, 0, 0, -458752, 0, 0, -458751, 0, 0, -458750, 0, 0, -458749, 0, 0, -458748, 0, 0, -458747, 0, 0, -458746, 0, 0, -393210, 0, 0, -327674, 0, 0, -262138, 0, 0, -196602, 0, 0, -131066, 0, 0, -65530, 0, 0, 6, 0, 0, 65542, 0, 0, 131078, 0, 0, 196614, 0, 0, 262150, 0, 0, 327686, 0, 0, 393222, 0, 0)
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_on5ra")]
+position = Vector2(0, 48)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2.9, 2.9)
+
+[node name="Frame" type="Sprite2D" parent="."]
+position = Vector2(-1.52588e-05, -1.52588e-05)
+scale = Vector2(7, 7)
+texture = ExtResource("3_on5ra")
