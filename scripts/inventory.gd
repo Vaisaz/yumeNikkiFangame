@@ -8,7 +8,8 @@ var item_texture = [
 	preload("res://assets/inventory/items/dice.png"),
 	preload("res://assets/inventory/items/corruption.png"),
 	preload("res://assets/inventory/items/ring.png"),
-	preload("res://assets/inventory/items/toy_revolver.png")
+	preload("res://assets/inventory/items/toy_revolver.png"),
+	preload("res://assets/inventory/items/cheese.png")
 ]
 
 var item_texture_hover = [
@@ -19,7 +20,8 @@ var item_texture_hover = [
 	preload("res://assets/inventory/items/dice_hover.png"),
 	preload("res://assets/inventory/items/corruption_hover.png"),
 	preload("res://assets/inventory/items/ring_hover.png"),
-	preload("res://assets/inventory/items/toy_revolver_hover.png")
+	preload("res://assets/inventory/items/toy_revolver_hover.png"),
+	preload("res://assets/inventory/items/cheese_hover.png")
 ]
 
 @onready var items = [
@@ -68,6 +70,7 @@ var dice_has_interacted:bool = false
 var corruption_has_interacted:bool = false
 var ring_has_interacted:bool = false
 var revolver_has_interacted:bool = false
+var cheese_has_interacted: bool = false
 var rng = RandomNumberGenerator.new()
 
 var lemonade_has_interacted: bool = false
@@ -157,6 +160,7 @@ var wnp_lv = 0
 var revolver_at = 50
 
 var ring_fortune = 1
+var cheese_fortune = 1
 
 func item_on_equip(item_index):
 	soul_choosed.visible = false
@@ -169,13 +173,18 @@ func item_on_equip(item_index):
 		Combat.items[item_index].texture_normal = null
 		Combat.items[item_index].texture_hover = null
 		if Combat.player_current_health <= Combat.player_max_health:
-			Combat.player_current_health += 25
+			Combat.player_current_health += 25 * cheese_fortune
 		if Combat.player_current_health > Combat.player_max_health:
 			Combat.player_current_health = Combat.player_max_health
 		index = 0
 		healed_sound.play()
 	elif items[item_index].texture_normal == load("res://assets/inventory/items/ring.png"):
 		ring_fortune = 0.8
+		cheese_fortune = 1
+		equipped_fortune.texture = items[item_index].texture_normal
+	elif items[item_index].texture_normal == load("res://assets/inventory/items/cheese.png"):
+		ring_fortune = 1
+		cheese_fortune = 1.2
 		equipped_fortune.texture = items[item_index].texture_normal
 	else: 
 		equipped.texture = items[item_index].texture_normal
@@ -254,9 +263,20 @@ func item_on_unequip():
 		lvitem.visible = false
 		
 	elif equipped_fortune.texture != null and !corruption_has_interacted:
-		if on_fortune_click:
+		if on_fortune_click and ring_fortune == 0.8:
 			print(on_fortune_click)
 			ring_fortune = 1
+			equipped_unequipped_sound.stream = load("res://assets/audio/unequipped.wav")
+			equipped_unequipped_sound.play()
+			soul_choosed.visible = false
+			inventory_choosed.visible = false
+			DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_HIDDEN)
+			inventory_button.grab_focus()
+			equipped_fortune.texture = null
+			on_fortune_click = false
+		elif on_fortune_click and cheese_fortune == 1.2:
+			print(on_fortune_click)
+			cheese_fortune = 1
 			equipped_unequipped_sound.stream = load("res://assets/audio/unequipped.wav")
 			equipped_unequipped_sound.play()
 			soul_choosed.visible = false
@@ -298,7 +318,7 @@ func on_pressed_structure(num):
 			item_on_equip(num)
 		elif num == 0 and Combat.items[0].texture_normal == load("res://assets/inventory/items/hope.png"):
 			Combat.turn = 1
-		elif items[num].texture_normal == load("res://assets/inventory/items/ring.png"):
+		elif items[num].texture_normal == load("res://assets/inventory/items/ring.png") or items[num].texture_normal == load("res://assets/inventory/items/cheese.png"):
 			if !equip_fortune:
 				item_on_equip(num)
 				equip_fortune = true

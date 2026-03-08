@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bmatq2vdbkosg"]
+[gd_scene load_steps=14 format=3 uid="uid://bmatq2vdbkosg"]
 
 [ext_resource type="PackedScene" uid="uid://d1jbh8q1vrdd6" path="res://scenes/jon.tscn" id="1_x7e81"]
 [ext_resource type="PackedScene" uid="uid://c0c554dukuunq" path="res://scenes/corruptor.tscn" id="2_js3kr"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://db0d7l337ufsh" path="res://scenes/lv_computer.tscn" id="10_nhmit"]
 [ext_resource type="PackedScene" uid="uid://bh562ayvwf3l" path="res://scenes/number_enthusiast.tscn" id="11_8ojwr"]
 [ext_resource type="PackedScene" uid="uid://mi03x3jobsbd" path="res://scenes/witches_head.tscn" id="12_meisw"]
+[ext_resource type="PackedScene" uid="uid://73mjrqcqxhs4" path="res://scenes/cheese_creature.tscn" id="13_qvlad"]
 
 [node name="test_dream" type="Node2D"]
 
@@ -62,3 +63,6 @@ position = Vector2(-107, 82)
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 position = Vector2(-1, -26)
 zoom = Vector2(5, 5)
+
+[node name="StaticBody2D3" parent="." instance=ExtResource("13_qvlad")]
+position = Vector2(-24, 102)
