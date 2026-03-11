@@ -6,7 +6,7 @@ var messages = [
 	TOY REVOLVER",
 	"GIVES AND TAKES:
 	0 HP
-	+50 AT"
+	+35 AT"
 ]
 
 var soul_blips = [

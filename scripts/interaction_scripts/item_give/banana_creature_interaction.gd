@@ -5,7 +5,7 @@ var messages = [
 	"YOU HAVE ACQUIRED:
 	BANANA",
 	"GIVES AND TAKES:
-	+25 HP
+	+50 HP
 	-5 AT"
 ]
 

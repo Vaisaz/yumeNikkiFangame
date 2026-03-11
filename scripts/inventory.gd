@@ -76,7 +76,7 @@ var rng = RandomNumberGenerator.new()
 var lemonade_has_interacted: bool = false
 var trash_has_interacted: bool = false
 
-var coins = 500
+var coins = 2000
 var add_coins
 
 func _ready():
@@ -150,14 +150,15 @@ func normal_health():
 
 var item_equipped: bool = false
 
-var banana_at = 5
+var banana_at = -5
 var banana_hp = 50
 var banana_lv = 0
 
 var wnp_at = 25
 var wnp_lv = 0
 
-var revolver_at = 50
+var toy_revolver_at = 35
+var toy_revolver_lv = 0
 
 var ring_fortune = 1
 var cheese_fortune = 1
@@ -195,7 +196,7 @@ func item_on_equip(item_index):
 	equipped_unequipped_sound.play()
 	if equipped.texture == load("res://assets/inventory/items/banana.png") and !banana_equipped:
 		normal_health()
-		Combat.player_attack -= banana_at
+		Combat.player_attack += banana_at
 		Combat.player_max_health += banana_hp
 		banana_equipped = true
 		watches_equipped = false
@@ -227,7 +228,7 @@ func item_on_equip(item_index):
 		lvitem.visible = false
 	elif equipped.texture == load("res://assets/inventory/items/toy_revolver.png") and !revolver_equipped:
 		normal_health()
-		Combat.player_attack += revolver_at
+		Combat.player_attack += toy_revolver_at
 		banana_equipped = false
 		watches_equipped = false	
 		wnp_equipped = false
@@ -310,6 +311,7 @@ var on_fortune_click: bool = false
 var banana_level = 0
 var dice_level = 0
 var wnp_level = 0
+var toy_revolver_level = 0
 
 func on_pressed_structure(num):
 	if GlobalVariables.wp_lv_enable == 0:
@@ -403,6 +405,22 @@ func on_pressed_structure(num):
 					lvitem.text = "LV: %d" % wnp_lv
 				if item_equipped == true:
 					Combat.player_attack -= wnp_at
+			else:
+				equipped_unequipped_sound.stream = load("res://assets/audio/trashed.wav")
+				equipped_unequipped_sound.play()
+		if items[num].texture_normal == load("res://assets/inventory/items/toy_revolver.png"):
+			if toy_revolver_level == 0 and coins >= 500:
+				toy_revolver_level = 1
+				equipped_unequipped_sound.stream = load("res://assets/audio/lemonade_blips/register.wav")
+				equipped_unequipped_sound.play()
+				normal_health()
+				coins -= 500
+				toy_revolver_at = 0
+				toy_revolver_lv = 1
+				if equipped.texture == load("res://assets/inventory/items/wnp.png"):
+					lvitem.text = "LV: %d" % toy_revolver_lv
+				if item_equipped == true:
+					Combat.player_attack -= toy_revolver_at
 			else:
 				equipped_unequipped_sound.stream = load("res://assets/audio/trashed.wav")
 				equipped_unequipped_sound.play()
