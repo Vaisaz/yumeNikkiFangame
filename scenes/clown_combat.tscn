@@ -1,0 +1,289 @@
+[gd_scene load_steps=28 format=3 uid="uid://cpouqbcl2h411"]
+
+[ext_resource type="Texture2D" uid="uid://sysqw366lb7e" path="res://assets/sprites/circus_dream/clown_combat/1.png" id="1_gqn83"]
+[ext_resource type="Script" uid="uid://ckpji7wuvk6k7" path="res://scripts/clown_combat.gd" id="1_p2t5h"]
+[ext_resource type="Shader" uid="uid://b807ydqoygva5" path="res://shaders/scroll.gdshader" id="2_8iguo"]
+[ext_resource type="Texture2D" uid="uid://lin8vf3y1xbi" path="res://assets/sprites/circus_dream/circus_background.png" id="2_bjgvf"]
+[ext_resource type="Texture2D" uid="uid://b8fabkydvdqry" path="res://assets/combat/combat_frame.png" id="2_p2t5h"]
+[ext_resource type="PackedScene" uid="uid://c1s8mfal8dbj3" path="res://assets/audio/sound.tscn" id="4_0tey1"]
+[ext_resource type="AudioStream" uid="uid://vixrae60piee" path="res://assets/audio/old_man_blips/ringsuf.mp3" id="5_8iguo"]
+[ext_resource type="Texture2D" uid="uid://dm8mx3l7wetf0" path="res://assets/sprites/circus_dream/clown_combat/2.png" id="5_kwrem"]
+[ext_resource type="Texture2D" uid="uid://crkdkhpy0yrss" path="res://assets/large_frame.png" id="6_5sfxm"]
+[ext_resource type="Texture2D" uid="uid://c8ha7paquam3g" path="res://assets/sprites/circus_dream/clown_combat/3.png" id="6_v2h8b"]
+[ext_resource type="Texture2D" uid="uid://bcslu47o53ps4" path="res://assets/sprites/revolver_room/revolver.png" id="7_8iguo"]
+[ext_resource type="Texture2D" uid="uid://o2bo58v7wbdg" path="res://assets/sprites/circus_dream/closing_eyes/1.png" id="9_dwrni"]
+[ext_resource type="Texture2D" uid="uid://d3qtsayv0xroq" path="res://assets/sprites/revolver_room/revolver_table.png" id="10_5sfxm"]
+[ext_resource type="Texture2D" uid="uid://oaku241dum3x" path="res://assets/sprites/circus_dream/closing_eyes/2.png" id="10_lm4tc"]
+[ext_resource type="Texture2D" uid="uid://d3f515llf45sp" path="res://assets/sprites/circus_dream/closing_eyes/3.png" id="11_ljmf5"]
+[ext_resource type="AudioStream" uid="uid://yjde5ngwijam" path="res://assets/audio/clown_combat.mp3" id="12_8iguo"]
+[ext_resource type="Texture2D" uid="uid://becvvuwf5780r" path="res://assets/sprites/circus_dream/closing_eyes/4.png" id="12_m3ejl"]
+[ext_resource type="AudioStream" uid="uid://00y8xnrhho0a" path="res://assets/audio/empty.mp3" id="17_dwrni"]
+[ext_resource type="AudioStream" uid="uid://bfprkq84tpc6m" path="res://assets/audio/heart_beat.mp3" id="19_lm4tc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kwrem"]
+shader = ExtResource("2_8iguo")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jp1ke"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_gqn83")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_kwrem")
+}, {
+"duration": 5.0,
+"texture": ExtResource("6_v2h8b")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xwg25"]
+atlas = ExtResource("2_p2t5h")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_seqem"]
+atlas = ExtResource("2_p2t5h")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_afoxk"]
+atlas = ExtResource("2_p2t5h")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dhr7j"]
+atlas = ExtResource("2_p2t5h")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bdyli"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xwg25")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_seqem")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_afoxk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dhr7j")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_86r3l"]
+animations = [{
+"frames": [{
+"duration": 0.5,
+"texture": ExtResource("9_dwrni")
+}, {
+"duration": 0.5,
+"texture": ExtResource("10_lm4tc")
+}, {
+"duration": 0.5,
+"texture": ExtResource("11_ljmf5")
+}, {
+"duration": 6.0,
+"texture": ExtResource("12_m3ejl")
+}],
+"loop": false,
+"name": &"default",
+"speed": 4.0
+}]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_p2t5h")
+
+[node name="Combat" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="Combat"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_kwrem")
+offset_right = 1152.0
+offset_bottom = 648.0
+pivot_offset = Vector2(2, 0)
+texture = ExtResource("2_bjgvf")
+stretch_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Enemy" type="AnimatedSprite2D" parent="Combat"]
+position = Vector2(590, 235)
+scale = Vector2(0.55, 0.55)
+sprite_frames = SubResource("SpriteFrames_jp1ke")
+
+[node name="RevolverTable" type="Sprite2D" parent="Combat"]
+position = Vector2(567, 547)
+scale = Vector2(17, 17)
+texture = ExtResource("10_5sfxm")
+
+[node name="CombatFrame" type="AnimatedSprite2D" parent="Combat"]
+visible = false
+position = Vector2(572, 246)
+scale = Vector2(19.875, 13.6875)
+sprite_frames = SubResource("SpriteFrames_bdyli")
+autoplay = "default"
+
+[node name="ClosingEyes" type="AnimatedSprite2D" parent="Combat"]
+visible = false
+position = Vector2(576, 320)
+scale = Vector2(10.1053, 8)
+sprite_frames = SubResource("SpriteFrames_86r3l")
+frame = 3
+frame_progress = 1.0
+
+[node name="ShootButton" type="TextureButton" parent="Combat"]
+visible = false
+offset_left = 540.0
+offset_top = 477.0
+offset_right = 547.0
+offset_bottom = 482.0
+scale = Vector2(10, 10)
+texture_normal = ExtResource("7_8iguo")
+texture_hover = ExtResource("7_8iguo")
+
+[node name="CombatSound" parent="Combat" instance=ExtResource("4_0tey1")]
+stream = ExtResource("5_8iguo")
+max_distance = 10000.0
+
+[node name="ItemsLayer" type="CanvasLayer" parent="Combat"]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="Combat/ItemsLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 89.0
+offset_top = 84.0
+offset_right = -79.0
+offset_bottom = -82.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="FrameKozetsuBigger" type="Sprite2D" parent="Combat/ItemsLayer"]
+position = Vector2(581.5, 327.432)
+scale = Vector2(3.94, 3.864)
+texture = ExtResource("6_5sfxm")
+
+[node name="first" type="TextureButton" parent="Combat/ItemsLayer"]
+offset_left = 168.0
+offset_top = 126.0
+offset_right = 232.0
+offset_bottom = 166.0
+scale = Vector2(3, 3)
+mouse_filter = 1
+disabled = true
+
+[node name="second" type="TextureButton" parent="Combat/ItemsLayer"]
+offset_left = 375.0
+offset_top = 126.0
+offset_right = 439.0
+offset_bottom = 166.0
+scale = Vector2(3, 3)
+disabled = true
+
+[node name="third" type="TextureButton" parent="Combat/ItemsLayer"]
+offset_left = 582.0
+offset_top = 126.0
+offset_right = 646.0
+offset_bottom = 166.0
+scale = Vector2(3, 3)
+disabled = true
+
+[node name="fourth" type="TextureButton" parent="Combat/ItemsLayer"]
+offset_left = 791.0
+offset_top = 125.0
+offset_right = 855.0
+offset_bottom = 165.0
+scale = Vector2(3, 3)
+disabled = true
+
+[node name="fifth" type="TextureButton" parent="Combat/ItemsLayer"]
+offset_left = 170.0
+offset_top = 273.0
+offset_right = 234.0
+offset_bottom = 313.0
+scale = Vector2(3, 3)
+mouse_filter = 1
+disabled = true
+
+[node name="sixth" type="TextureButton" parent="Combat/ItemsLayer"]
+offset_left = 377.0
+offset_top = 273.0
+offset_right = 441.0
+offset_bottom = 313.0
+scale = Vector2(3, 3)
+disabled = true
+
+[node name="seventh" type="TextureButton" parent="Combat/ItemsLayer"]
+offset_left = 584.0
+offset_top = 273.0
+offset_right = 648.0
+offset_bottom = 313.0
+scale = Vector2(3, 3)
+disabled = true
+
+[node name="eighth" type="TextureButton" parent="Combat/ItemsLayer"]
+offset_left = 793.0
+offset_top = 272.0
+offset_right = 857.0
+offset_bottom = 312.0
+scale = Vector2(3, 3)
+disabled = true
+
+[node name="ninth" type="TextureButton" parent="Combat/ItemsLayer"]
+offset_left = 172.0
+offset_top = 430.0
+offset_right = 236.0
+offset_bottom = 470.0
+scale = Vector2(3, 3)
+mouse_filter = 1
+disabled = true
+
+[node name="tenth" type="TextureButton" parent="Combat/ItemsLayer"]
+offset_left = 379.0
+offset_top = 430.0
+offset_right = 443.0
+offset_bottom = 470.0
+scale = Vector2(3, 3)
+disabled = true
+
+[node name="eleventh" type="TextureButton" parent="Combat/ItemsLayer"]
+offset_left = 586.0
+offset_top = 430.0
+offset_right = 650.0
+offset_bottom = 470.0
+scale = Vector2(3, 3)
+disabled = true
+
+[node name="twelfth" type="TextureButton" parent="Combat/ItemsLayer"]
+offset_left = 795.0
+offset_top = 429.0
+offset_right = 859.0
+offset_bottom = 469.0
+scale = Vector2(3, 3)
+disabled = true
+
+[node name="Sound" parent="." instance=ExtResource("4_0tey1")]
+stream = ExtResource("17_dwrni")
+max_distance = 10000.0
+
+[node name="ClowningAround" parent="." instance=ExtResource("4_0tey1")]
+stream = ExtResource("12_8iguo")
+autoplay = true
+max_distance = 10000.0
+
+[node name="HeartBeat" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("19_lm4tc")
+
+[connection signal="pressed" from="Combat/ShootButton" to="." method="_on_shoot_button_pressed"]

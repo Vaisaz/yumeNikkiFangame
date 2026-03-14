@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://lin8vf3y1xbi"
-path="res://.godot/imported/circus_background.png-69568e0bbddfe02125f850e2178ee8df.ctex"
+uid="uid://c8ha7paquam3g"
+path="res://.godot/imported/3.png-b9730dcbde6b69711ae2c32623be2502.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/circus_dream/circus_background.png"
-dest_files=["res://.godot/imported/circus_background.png-69568e0bbddfe02125f850e2178ee8df.ctex"]
+source_file="res://assets/sprites/circus_dream/clown_combat/3.png"
+dest_files=["res://.godot/imported/3.png-b9730dcbde6b69711ae2c32623be2502.ctex"]
 
 [params]
 

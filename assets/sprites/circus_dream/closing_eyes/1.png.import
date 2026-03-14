@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://lin8vf3y1xbi"
-path="res://.godot/imported/circus_background.png-69568e0bbddfe02125f850e2178ee8df.ctex"
+uid="uid://o2bo58v7wbdg"
+path="res://.godot/imported/1.png-e4a8a4368c50470494560bb381e3a07d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/circus_dream/circus_background.png"
-dest_files=["res://.godot/imported/circus_background.png-69568e0bbddfe02125f850e2178ee8df.ctex"]
+source_file="res://assets/sprites/circus_dream/closing_eyes/1.png"
+dest_files=["res://.godot/imported/1.png-e4a8a4368c50470494560bb381e3a07d.ctex"]
 
 [params]
 

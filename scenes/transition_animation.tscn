@@ -670,6 +670,9 @@ script = ExtResource("1_8u8o2")
 position = Vector2(575, 324)
 scale = Vector2(6.07368, 6.01852)
 sprite_frames = SubResource("SpriteFrames_qxyj5")
+animation = &"second"
+frame = 18
+frame_progress = 1.0
 
 [node name="WakingSleeping" type="AnimatedSprite2D" parent="."]
 visible = false
@@ -677,8 +680,6 @@ position = Vector2(567, 327)
 scale = Vector2(6, 6)
 sprite_frames = SubResource("SpriteFrames_x2oo3")
 animation = &"falling"
-frame = 8
-frame_progress = 1.0
 
 [node name="CombatTransitionAnimation" type="AnimatedSprite2D" parent="."]
 visible = false

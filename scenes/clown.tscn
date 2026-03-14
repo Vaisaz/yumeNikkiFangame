@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://c4isoycylsd4u"]
+
+[ext_resource type="Texture2D" uid="uid://coplmg7v87ava" path="res://assets/sprites/circus_dream/clown.png" id="1_b5aj4"]
+[ext_resource type="Script" uid="uid://dvahev44sdy8d" path="res://scripts/interaction_scripts/clown_interaction.gd" id="2_b7cvb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oxv38"]
+size = Vector2(16, 38)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k1s8o"]
+size = Vector2(25, 45)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -24)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("1_b5aj4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -25)
+shape = SubResource("RectangleShape2D_oxv38")
+
+[node name="interaction" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("2_b7cvb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interaction"]
+position = Vector2(-0.5, -25.5)
+shape = SubResource("RectangleShape2D_k1s8o")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 0)
+
+[connection signal="area_entered" from="interaction" to="interaction" method="_on_area_entered"]
+[connection signal="area_exited" from="interaction" to="interaction" method="_on_area_exited"]
