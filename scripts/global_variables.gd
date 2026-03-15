@@ -7,3 +7,5 @@ var current_scene
 var outfit = 1
 var wp_lv_enable = 0
 var interacting: bool = false
+var cake_falling: bool = true
+var cake_score = 0

@@ -1,6 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://beu0lhrwq0fra"]
+[gd_scene load_steps=9 format=3 uid="uid://beu0lhrwq0fra"]
 
+[ext_resource type="Script" uid="uid://ddtdnbd0t1bxf" path="res://scripts/minigame.gd" id="1_23cs5"]
 [ext_resource type="Texture2D" uid="uid://b27qr4pjodxx3" path="res://assets/sprites/game/grass.png" id="1_blpmo"]
+[ext_resource type="FontFile" uid="uid://b5lqlis8c3a4k" path="res://assets/I-pixel-u.ttf" id="2_23cs5"]
 [ext_resource type="PackedScene" uid="uid://cy7me034hey7u" path="res://scenes/creature_game.tscn" id="2_on5ra"]
 [ext_resource type="Texture2D" uid="uid://crb0byvnoqu6t" path="res://assets/sprites/game/frame.png" id="3_on5ra"]
 
@@ -19,14 +21,29 @@ texture = ExtResource("1_blpmo")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_5uss4")
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_23cs5"]
+size = Vector2(182, 14)
+
+[node name="Minigame" type="Node2D"]
+script = ExtResource("1_23cs5")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -199.0
 offset_top = -112.0
 offset_right = 199.0
 offset_bottom = 112.0
+mouse_filter = 2
 color = Color(0, 0, 0, 1)
+
+[node name="ScoreLabel" type="Label" parent="."]
+offset_left = -194.0
+offset_top = -107.0
+offset_right = -130.0
+offset_bottom = -84.0
+scale = Vector2(0.75, 0.75)
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("2_23cs5")
+text = "SCORE:"
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_23cs5")
@@ -43,3 +60,9 @@ zoom = Vector2(2.9, 2.9)
 position = Vector2(-1.52588e-05, -1.52588e-05)
 scale = Vector2(7, 7)
 texture = ExtResource("3_on5ra")
+
+[node name="Collision" type="Area2D" parent="." groups=["Grass"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision"]
+position = Vector2(0, 55)
+shape = SubResource("RectangleShape2D_23cs5")

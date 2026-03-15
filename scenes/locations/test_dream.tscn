@@ -67,7 +67,7 @@ position = Vector2(-24, 102)
 position = Vector2(71, 99)
 
 [node name="CharacterBody2D6" parent="." instance=ExtResource("15_wk3ka")]
-position = Vector2(-83, -36)
+position = Vector2(-87, -10)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_x7e81")]
 

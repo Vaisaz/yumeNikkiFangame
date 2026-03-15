@@ -63,9 +63,11 @@ autoplay = "idle"
 position = Vector2(0, -12)
 shape = SubResource("RectangleShape2D_0ue8i")
 
-[node name="interaction" type="Area2D" parent="."]
+[node name="interaction" type="Area2D" parent="." groups=["Creature"]]
 position = Vector2(0, -16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="interaction"]
 position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_ic364")
+
+[connection signal="area_entered" from="interaction" to="." method="_on_interaction_area_entered"]

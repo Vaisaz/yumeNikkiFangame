@@ -5,19 +5,16 @@ extends Area2D
 
 var interact: bool = false
 
-var player_max_health = Combat.player_max_health
-var player_current_health = Combat.player_current_health
-
 func _on_area_entered(area):
 	if area.is_in_group("Player"):
 		interact = true
 		print("eh")
 
-func _on_area_exited(_area):
+func _on_area_exited():
 	interact = false
 
-func _input(area):
-	if Input.is_action_just_pressed("interact") and interact:
+func _input(event):
+	if event.is_action_pressed("interact") and interact and Input.is_action_just_pressed("interact") and Transition.canvas_layer.visible == false and Inventory.inventory_layer.visible == false:
 		for n in 128:
 			color_rect.color = Color8(0, 0, 0, n*2)
 			set_process(false)
