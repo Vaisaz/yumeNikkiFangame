@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dplfm51axd8qa" path="res://assets/sprites/main/bed.png" id="1_78e0n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3b5tt"]
-size = Vector2(32, 10)
+size = Vector2(32, 12)
 
 [node name="StaticBody2D" type="StaticBody2D"]
 collision_layer = 2
@@ -13,5 +13,5 @@ collision_mask = 0
 texture = ExtResource("1_78e0n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -2)
+position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_3b5tt")

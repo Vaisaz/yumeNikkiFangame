@@ -11,4 +11,5 @@ func _on_area_entered(area: Area2D):
 		GlobalVariables.cake_score += 10
 		
 	if area.is_in_group("Grass"):
-		get_tree().quit()
+		GlobalVariables.player_position = Vector2(15, -46)
+		get_tree().change_scene_to_file("res://scenes/locations/room.tscn")

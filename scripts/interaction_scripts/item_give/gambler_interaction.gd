@@ -119,7 +119,6 @@ func item_give():
 				item_give_structure()
 			if !Inventory.dice_has_interacted:
 				Inventory.index += 1
-		Inventory.index
 
 func _process(_delta):
 	if index > 2 and index < 5:

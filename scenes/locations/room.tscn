@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://becvkf33de065"]
+[gd_scene load_steps=71 format=3 uid="uid://becvkf33de065"]
 
 [ext_resource type="Texture2D" uid="uid://b4g07ub54tlj2" path="res://assets/sprites/main/black.jpg" id="1_hgo00"]
 [ext_resource type="Texture2D" uid="uid://cpwubbf4cjm7w" path="res://assets/sprites/main/line_for_doors.png" id="2_mxfs6"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://ckmeq7qgc7rwm" path="res://scripts/interaction_scripts/bed_interaction.gd" id="14_fffuy"]
 [ext_resource type="PackedScene" uid="uid://bd2kl6dw5vh6y" path="res://scenes/table.tscn" id="15_bcbwc"]
 [ext_resource type="Texture2D" uid="uid://flbkixwwrmrj" path="res://assets/sprites/transition_animation.png" id="16_b4a5b"]
+[ext_resource type="PackedScene" uid="uid://dy4ns35gm8w41" path="res://scenes/console.tscn" id="16_snvw3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_575h7"]
 texture = ExtResource("2_mxfs6")
@@ -505,6 +506,9 @@ position = Vector2(-48, -62)
 [node name="Table" parent="." instance=ExtResource("15_bcbwc")]
 position = Vector2(32, -69)
 
+[node name="StaticBody2D3" parent="." instance=ExtResource("16_snvw3")]
+position = Vector2(14, -78)
+
 [node name="CharacterBody2D" parent="." instance=ExtResource("7_4mhao")]
 position = Vector2(-47, -43)
 
@@ -520,7 +524,6 @@ sprite_frames = SubResource("SpriteFrames_utux7")
 autoplay = "default"
 
 [node name="StaticBody2D2" parent="." instance=ExtResource("11_0hkut")]
-position = Vector2(40, 16)
 
 [node name="interaction" type="Area2D" parent="StaticBody2D2" groups=["Interactable"]]
 position = Vector2(48, 62)

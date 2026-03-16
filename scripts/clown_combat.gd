@@ -14,8 +14,8 @@ var death = random.randi_range(3, 6)
 var n = 2
 
 func _ready() -> void:
-	for n in 130:
-		clown.modulate = Color8(255, 255, 255, n*2)
+	for m in 130:
+		clown.modulate = Color8(255, 255, 255, m*2)
 		set_process(false)
 		await get_tree().create_timer(0.00001).timeout
 		set_process(true)
@@ -34,9 +34,9 @@ func _on_shoot_button_pressed() -> void:
 	closing_eyes.visible = true
 	closing_eyes.play("default")
 	heart_beat.play()
-	for n in 11:
-		heart_beat.volume_db = n
-		clowning_around.volume_db = -n
+	for m in 11:
+		heart_beat.volume_db = m
+		clowning_around.volume_db = -m
 		set_process(false)
 		await get_tree().create_timer(0.1).timeout
 		set_process(true)
@@ -52,9 +52,9 @@ func _on_shoot_button_pressed() -> void:
 	closing_eyes.play_backwards("default")
 	await closing_eyes.animation_finished
 	closing_eyes.visible = false
-	for n in 11:
-		heart_beat.volume_db = -n
-		clowning_around.volume_db = n-10
+	for m in 11:
+		heart_beat.volume_db = -m
+		clowning_around.volume_db = m-10
 		set_process(false)
 		await get_tree().create_timer(0.1).timeout
 		set_process(true)

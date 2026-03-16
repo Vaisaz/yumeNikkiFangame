@@ -127,4 +127,3 @@ func item_give():
 				item_give_structure()
 			if !Inventory.ring_has_interacted:
 				Inventory.index += 1
-		Inventory.index

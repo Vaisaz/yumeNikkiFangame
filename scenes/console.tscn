@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://dy4ns35gm8w41"]
+
+[ext_resource type="Texture2D" uid="uid://cdxlp81xekomg" path="res://assets/sprites/main/console.png" id="1_xil4p"]
+[ext_resource type="Script" uid="uid://b8qh0ekw026gr" path="res://scripts/interaction_scripts/console_interaction.gd" id="2_t6k7n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gf67r"]
+size = Vector2(24, 56.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xil4p"]
+size = Vector2(24, 33.3333)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+scale = Vector2(0.3, 0.3)
+collision_layer = 2
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_xil4p")
+
+[node name="Interaction" type="Area2D" parent="."]
+position = Vector2(0, -1)
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("2_t6k7n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interaction"]
+position = Vector2(0, 12.75)
+shape = SubResource("RectangleShape2D_gf67r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1.98682e-07)
+shape = SubResource("RectangleShape2D_xil4p")
+
+[connection signal="area_entered" from="Interaction" to="Interaction" method="_on_area_entered"]
+[connection signal="area_exited" from="Interaction" to="Interaction" method="_on_area_exited"]
+[connection signal="input_event" from="Interaction" to="Interaction" method="_on_input_event"]
