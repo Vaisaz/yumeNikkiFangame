@@ -11,7 +11,7 @@ func _ready():
 	GlobalVariables.cake_falling = true
 	GlobalVariables.cake_score = 0
 
-func _process(delta: float) -> void:
+func _process(_delta):
 	
 	score_label.text = "SCORE: %d" % GlobalVariables.cake_score
 	

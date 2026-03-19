@@ -183,7 +183,6 @@ zoom = Vector2(5, 5)
 [node name="AudioStreamPlayer" parent="." instance=ExtResource("8_b5tge")]
 
 [node name="StaticBody2D2" parent="." instance=ExtResource("11_t80xo")]
-position = Vector2(40, 16)
 
 [node name="interaction" type="Area2D" parent="StaticBody2D2"]
 position = Vector2(48, 62)

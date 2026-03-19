@@ -254,6 +254,7 @@ offset_right = 199.0
 offset_bottom = 112.0
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="WakeUp2" type="Label" parent="."]
 visible = false
@@ -290,6 +291,7 @@ scale = Vector2(0.55, 0.55)
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_fonts/font = SubResource("FontFile_6jpdm")
 text = "SCORE:"
+metadata/_edit_use_anchors_ = true
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_23cs5")

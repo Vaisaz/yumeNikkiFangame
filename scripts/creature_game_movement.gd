@@ -3,7 +3,7 @@ extends CharacterBody2D
 @onready var animated_sprite = $AnimatedSprite2D
 const SPEED = 45.0
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta):
 	var direction := Input.get_axis("ui_left", "ui_right")
 	
 	if direction > 0:
