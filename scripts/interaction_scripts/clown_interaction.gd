@@ -4,6 +4,7 @@ extends Area2D
 @onready var color_rect = $"../CanvasLayer/ColorRect"
 
 var interact: bool = false
+var debounce: bool = false
 
 func _on_area_entered(area):
 	if area.is_in_group("Player"):
@@ -14,7 +15,8 @@ func _on_area_exited():
 	interact = false
 
 func _input(event):
-	if event.is_action_pressed("interact") and interact and Input.is_action_just_pressed("interact") and Transition.canvas_layer.visible == false and Inventory.inventory_layer.visible == false:
+	if event.is_action_pressed("interact") and !debounce and interact and Input.is_action_just_pressed("interact") and Transition.canvas_layer.visible == false and Inventory.inventory_layer.visible == false:
+		debounce = true
 		for n in 128:
 			color_rect.color = Color8(0, 0, 0, n*2)
 			set_process(false)

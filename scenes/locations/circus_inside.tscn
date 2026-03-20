@@ -1,13 +1,142 @@
-[gd_scene load_steps=4 format=3 uid="uid://b8xmlksh20e6j"]
+[gd_scene load_steps=26 format=3 uid="uid://b8xmlksh20e6j"]
 
 [ext_resource type="PackedScene" uid="uid://d1jbh8q1vrdd6" path="res://scenes/jon.tscn" id="1_4f54l"]
+[ext_resource type="Texture2D" uid="uid://c6e5pk40p23u6" path="res://assets/sprites/circus_dream/circus_inside_spritesheet.png" id="1_qq3pe"]
+[ext_resource type="Texture2D" uid="uid://vupffvc0hhua" path="res://assets/sprites/circus_dream/improved_tile_circus.png" id="2_wd6dp"]
 [ext_resource type="AudioStream" uid="uid://bep0co3ve7fm7" path="res://assets/audio/circus_inside.wav" id="3_5meid"]
+[ext_resource type="Texture2D" uid="uid://1hlcasr324wv" path="res://assets/sprites/circus_dream/crying_eye_circus_inside.png" id="3_q0y6q"]
+[ext_resource type="Texture2D" uid="uid://c8tutnmy00crk" path="res://assets/sprites/circus_dream/desk_clown.png" id="5_q0y6q"]
+[ext_resource type="Texture2D" uid="uid://dtjqllrmy535d" path="res://assets/sprites/circus_dream/bed_clown.png" id="6_v3cc7"]
+[ext_resource type="PackedScene" uid="uid://c4isoycylsd4u" path="res://scenes/clown.tscn" id="7_wd6dp"]
+[ext_resource type="Texture2D" uid="uid://d3qtsayv0xroq" path="res://assets/sprites/revolver_room/revolver_table.png" id="9_v3cc7"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vh6hp"]
+texture = ExtResource("1_qq3pe")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, 8, 8, 8, -8, -8, -8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, 8, 8, 8, -8, -8, -8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rnh14"]
+texture = ExtResource("2_wd6dp")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, 8, 8, 8, -8, -8, -8)
+
+[sub_resource type="TileSet" id="TileSet_x8vey"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_vh6hp")
+sources/1 = SubResource("TileSetAtlasSource_rnh14")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vh6hp"]
+size = Vector2(26, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v3cc7"]
+atlas = ExtResource("3_q0y6q")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vh6hp"]
+atlas = ExtResource("3_q0y6q")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rnh14"]
+atlas = ExtResource("3_q0y6q")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x8vey"]
+atlas = ExtResource("3_q0y6q")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2u142"]
+atlas = ExtResource("3_q0y6q")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8mpel"]
+atlas = ExtResource("3_q0y6q")
+region = Rect2(256, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mvr7o"]
+atlas = ExtResource("3_q0y6q")
+region = Rect2(0, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f4t76"]
+atlas = ExtResource("3_q0y6q")
+region = Rect2(128, 256, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2obij"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v3cc7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vh6hp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rnh14")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x8vey")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2u142")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8mpel")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mvr7o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f4t76")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4f54l"]
 load_path = "res://.godot/imported/circus_background.png-69568e0bbddfe02125f850e2178ee8df.ctex"
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qq3pe"]
+size = Vector2(48, 57)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wd6dp"]
+size = Vector2(64, 31)
+
 [node name="Node2D" type="Node2D"]
 position = Vector2(-7, -2)
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_x8vey")
+format = 2
+layer_0/tile_data = PackedInt32Array(-917510, 0, 0, -851974, 65536, 0, -786438, 65536, 0, -720902, 65536, 0, -655366, 65536, 0, -589830, 65536, 0, -524294, 65536, 0, -458758, 65536, 0, -393222, 65536, 0, -327686, 65536, 0, -262150, 65536, 0, -196614, 65536, 0, -131078, 65536, 0, -65542, 65536, 0, -6, 65536, 0, 65530, 65536, 0, 131066, 1, 1610612736, -917509, 65536, 1610612736, -458757, 65536, 1610612736, 131067, 65536, 1610612736, -917508, 65536, 1610612736, -458756, 65536, 1610612736, 131068, 65536, 1610612736, -917507, 65536, 1610612736, -458755, 65536, 1610612736, 131069, 65536, 1610612736, -917506, 65536, 1610612736, -458754, 65536, 1610612736, 131070, 65536, 1610612736, -917505, 65536, 1610612736, -458753, 65536, 1610612736, 131071, 65536, 1610612736, -983040, 65536, 1610612736, -524288, 65536, 1610612736, 65536, 65536, 1610612736, -983039, 65536, 1610612736, -524287, 65536, 1610612736, 65537, 65536, 1610612736, -983038, 65536, 1610612736, -524286, 65536, 1610612736, 65538, 65536, 1610612736, -983037, 65536, 1610612736, -524285, 65536, 1610612736, 65539, 65536, 1610612736, -983036, 65536, 1610612736, -524284, 65536, 1610612736, 65540, 65536, 1610612736, -983035, 0, 1342177280, -917499, 65536, 0, -851963, 65536, 0, -786427, 65536, 0, -720891, 65536, 0, -655355, 65536, 0, -589819, 65536, 0, -524283, 65536, 0, -458747, 65536, 0, -393211, 65536, 0, -327675, 65536, 0, -262139, 65536, 0, -196603, 65536, 0, -131067, 65536, 0, -65531, 65536, 0, 5, 65536, 0, 65541, 1, 805306368)
+
+[node name="RevolverTable" type="StaticBody2D" parent="."]
+position = Vector2(53, -45)
+
+[node name="RevolverTable" type="Sprite2D" parent="RevolverTable"]
+texture = ExtResource("9_v3cc7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RevolverTable"]
+position = Vector2(0, 3.5)
+shape = SubResource("RectangleShape2D_vh6hp")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-30, -161)
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_2obij")
+autoplay = "default"
+
+[node name="DeskClown" type="Sprite2D" parent="."]
+position = Vector2(41, -129)
+texture = ExtResource("5_q0y6q")
+
+[node name="BedClown" type="Sprite2D" parent="."]
+position = Vector2(-56, -80)
+texture = ExtResource("6_v3cc7")
+
+[node name="CharacterBody2D2" parent="." instance=ExtResource("7_wd6dp")]
+position = Vector2(2, -29)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_4f54l")]
 position = Vector2(7, 2)
@@ -34,3 +163,13 @@ texture = SubResource("CompressedTexture2D_4f54l")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_5meid")
 autoplay = true
+
+[node name="Collisions" type="StaticBody2D" parent="."]
+position = Vector2(41, -112.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions"]
+position = Vector2(-97, 28)
+shape = SubResource("RectangleShape2D_qq3pe")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Collisions"]
+shape = SubResource("RectangleShape2D_wd6dp")
