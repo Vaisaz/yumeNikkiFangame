@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://d0jh7omnvfxod"]
+[gd_scene load_steps=49 format=3 uid="uid://d0jh7omnvfxod"]
 
 [ext_resource type="Texture2D" uid="uid://bqua316ypuuok" path="res://assets/sprites/happy_dream/happy_background.png" id="1_d4nht"]
 [ext_resource type="Texture2D" uid="uid://3a7wlxbyn60s" path="res://assets/sprites/happy_dream/tiles.png" id="1_g8k8r"]
@@ -26,6 +26,8 @@
 [ext_resource type="FontFile" uid="uid://b5lqlis8c3a4k" path="res://assets/I-pixel-u.ttf" id="21_0tkt5"]
 [ext_resource type="AudioStream" uid="uid://bqhprd8a5owgh" path="res://assets/audio/happy_dream_beat.mp3" id="23_rw7nq"]
 [ext_resource type="Script" uid="uid://dx52ljqm7y252" path="res://scripts/loopsound.gd" id="24_mmu80"]
+[ext_resource type="PackedScene" uid="uid://de6yvytvd43c1" path="res://scenes/dessert_warp.tscn" id="27_u0pw3"]
+[ext_resource type="Script" uid="uid://c1dpusgrw1jcl" path="res://scripts/interaction_scripts/dessert_warp_interaction.gd" id="28_o8mls"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ffa6v"]
 texture = ExtResource("1_g8k8r")
@@ -309,6 +311,9 @@ radius = 94.4299
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o0d3n"]
 size = Vector2(16, 32)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5gcmf"]
+size = Vector2(22, 20)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6nyar"]
 size = Vector2(87, 2360)
 
@@ -391,7 +396,7 @@ position = Vector2(0, -14)
 shape = SubResource("CircleShape2D_0mrly")
 
 [node name="Giggler3" parent="." instance=ExtResource("10_42bvy")]
-position = Vector2(805, -129)
+position = Vector2(842, -119)
 script = ExtResource("9_q8dq6")
 
 [node name="EnemyRadius" type="Area2D" parent="Giggler3"]
@@ -524,6 +529,19 @@ stream = ExtResource("20_ubb45")
 [node name="StaticBody2D3" parent="." instance=ExtResource("18_kb8fy")]
 position = Vector2(2914, -1715)
 
+[node name="StaticBody2D5" parent="." instance=ExtResource("27_u0pw3")]
+position = Vector2(-151, 228)
+
+[node name="interaction" type="Area2D" parent="StaticBody2D5"]
+position = Vector2(48, 62)
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("28_o8mls")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D5/interaction"]
+position = Vector2(-47, -77)
+shape = SubResource("RectangleShape2D_5gcmf")
+
 [node name="CharacterBody2D" parent="." instance=ExtResource("4_6p538")]
 position = Vector2(1, 23)
 
@@ -600,3 +618,5 @@ script = ExtResource("24_mmu80")
 [connection signal="area_exited" from="StaticBody2D2/interaction2" to="StaticBody2D2/interaction2" method="_on_area_exited"]
 [connection signal="area_entered" from="StaticBody2D4/interaction2" to="StaticBody2D4/interaction2" method="_on_area_entered"]
 [connection signal="area_exited" from="StaticBody2D4/interaction2" to="StaticBody2D4/interaction2" method="_on_area_exited"]
+[connection signal="area_entered" from="StaticBody2D5/interaction" to="StaticBody2D5/interaction" method="_on_area_entered"]
+[connection signal="area_exited" from="StaticBody2D5/interaction" to="StaticBody2D5/interaction" method="_on_area_exited"]

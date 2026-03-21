@@ -14,20 +14,23 @@ var death = random.randi_range(3, 6)
 var n = 2
 
 func _ready() -> void:
-	for m in 130:
-		clown.modulate = Color8(255, 255, 255, m*2)
-		set_process(false)
-		await get_tree().create_timer(0.00001).timeout
-		set_process(true)
-	enemy.play("shoot")
-	await enemy.animation_finished
-	sound.play()
-	enemy.play_backwards("shoot")
-	await enemy.animation_finished
-	enemy.play("default")
-	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_VISIBLE)
-	##DisplayServer.cursor_set_custom_image(preload("res://assets/sprites/circus_dream/clown_combat/hand.png"))
-	shoot.visible = true
+	if Inventory.toy_revolver_lv == 1:
+		for m in 130:
+			clown.modulate = Color8(255, 255, 255, m*2)
+			set_process(false)
+			await get_tree().create_timer(0.00001).timeout
+			set_process(true)
+		enemy.play("shoot")
+		await enemy.animation_finished
+		sound.play()
+		enemy.play_backwards("shoot")
+		await enemy.animation_finished
+		enemy.play("default")
+		DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_VISIBLE)
+		##DisplayServer.cursor_set_custom_image(preload("res://assets/sprites/circus_dream/clown_combat/hand.png"))
+		shoot.visible = true
+	else:
+		get_tree().quit()
 
 func _on_shoot_button_pressed() -> void:
 	shoot.visible = false

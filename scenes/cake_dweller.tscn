@@ -1,0 +1,66 @@
+[gd_scene load_steps=9 format=3 uid="uid://cmvvsts7r86po"]
+
+[ext_resource type="Texture2D" uid="uid://rl3v7w70bemd" path="res://assets/sprites/dessert_dream/cake_dweller_spritesheet.png" id="1_36yab"]
+[ext_resource type="Texture2D" uid="uid://dart3mscbaeps" path="res://assets/combat/cake_dweller.png" id="1_x2t6i"]
+[ext_resource type="Script" uid="uid://5b0kmxjg78w3" path="res://scripts/interaction_scripts/cake_dweller_interaction.gd" id="3_36yab"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bjbsd"]
+atlas = ExtResource("1_36yab")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0iwh6"]
+atlas = ExtResource("1_36yab")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rc4v7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_x2t6i")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_bjbsd")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_0iwh6")
+}],
+"loop": true,
+"name": &"run",
+"speed": 2.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jkrhw"]
+size = Vector2(28.5, 27)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ppfeh"]
+size = Vector2(29, 27)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_rc4v7")
+animation = &"run"
+autoplay = "run"
+frame_progress = 0.926381
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.25, -13.5)
+shape = SubResource("RectangleShape2D_jkrhw")
+
+[node name="interaction" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("3_36yab")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interaction"]
+position = Vector2(-0.5, -13.5)
+shape = SubResource("RectangleShape2D_ppfeh")
+
+[connection signal="area_entered" from="interaction" to="interaction" method="_on_area_entered"]
+[connection signal="area_exited" from="interaction" to="interaction" method="_on_area_exited"]

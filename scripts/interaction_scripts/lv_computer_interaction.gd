@@ -2,6 +2,7 @@ extends Area2D
 
 var interact: bool = false
 var debounce: bool = false
+var animation_debounce: bool = false
 @onready var loading_animation = $"../CanvasLayer/AnimatedSprite2D"
 @onready var canvas_layer = $"../CanvasLayer"
 @onready var scroll_container = $"../CanvasLayer/ScrollContainer"
@@ -74,14 +75,16 @@ REVOLVER"
 		canvas_layer.visible = true
 		loading_animation.play("default")
 		await loading_animation.animation_finished
+		animation_debounce = true
 		scroll_container.visible = true
 		audio.play()
 		DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_VISIBLE)
 			
-	elif event.is_action_pressed("ui_cancel") and debounce:
+	elif event.is_action_pressed("ui_cancel") and debounce and animation_debounce:
 		audio.stop()
 		scroll_container.visible = false
 		debounce = false
+		animation_debounce = false
 		GlobalVariables.in_combat = false
 		GlobalVariables.debounce = false
 		GlobalVariables.interacting = false

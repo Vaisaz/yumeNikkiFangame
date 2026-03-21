@@ -79,5 +79,10 @@ func _input(event):
 			Inventory.watches_has_interacted = false
 			Inventory.dice_has_interacted = false
 			Inventory.wnp_has_interacted = false
+			Inventory.revolver_has_interacted = false
+			Inventory.cheese_has_interacted = false
+			Inventory.ring_has_interacted = false
+			Inventory.equipped.texture = null
+			Inventory.equipped_fortune.texture = null
 			print(item_count)
 		print(Inventory.index)

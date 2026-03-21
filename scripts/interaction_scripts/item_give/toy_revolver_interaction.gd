@@ -99,4 +99,4 @@ func item_give_structure():
 		Inventory.items[Inventory.index].texture_hover = Inventory.item_texture_hover[7]
 		Inventory.items[Inventory.index].disabled = false
 		Inventory.revolver_has_interacted = true
-		$"../Sprite2D".visible = false
+		$"..".visible = false

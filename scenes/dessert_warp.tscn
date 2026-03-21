@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://de6yvytvd43c1"]
+
+[ext_resource type="Texture2D" uid="uid://c1nncfxorppnc" path="res://assets/sprites/game/cake.png" id="1_pnfh5"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tw0aj"]
+radius = 8.0
+height = 25.421
+
+[node name="StaticBody2D" type="StaticBody2D"]
+
+[node name="Cake" type="Sprite2D" parent="."]
+position = Vector2(2, -14)
+texture = ExtResource("1_pnfh5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -15)
+rotation = 0.837758
+shape = SubResource("CapsuleShape2D_tw0aj")

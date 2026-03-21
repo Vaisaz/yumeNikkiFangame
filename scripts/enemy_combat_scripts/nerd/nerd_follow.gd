@@ -15,10 +15,11 @@ func _on_enemy_radius_area_exited(_area):
 	print("exited")
 
 func _physics_process(_delta):
-	var direction = (player.position-position).normalized()
-	if interact:
-		velocity = direction * speed
-	if !interact:
-		velocity = direction * 0
-	if !GlobalVariables.in_combat and !GlobalVariables.debounce:
-		move_and_slide()
+	if Transition.canvas_layer.visible == false and Inventory.inventory_layer.visible == false:
+		var direction = (player.position-position).normalized()
+		if interact:
+			velocity = direction * speed
+		if !interact:
+			velocity = direction * 0
+		if !GlobalVariables.in_combat and !GlobalVariables.debounce:
+			move_and_slide()
