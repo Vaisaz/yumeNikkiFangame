@@ -38,7 +38,6 @@ var soul_blips = [
 ]
 
 var interact: bool = false
-var interaction_times = 0
 
 var random = RandomNumberGenerator.new()
 var index = 0
@@ -72,9 +71,11 @@ func show_message():
 			label.text += character
 			await get_tree().create_timer(0.05).timeout
 		message_displayed = true
+		
+var message_debounce: bool = false
 
 func _input(event):
-	if event.is_action_pressed("interact") and message_displayed and interact and Input.is_action_just_pressed("interact") and Transition.canvas_layer.visible == false and Inventory.inventory_layer.visible == false:
+	if !Inventory.ring_has_interacted and event.is_action_pressed("interact") and message_displayed and interact and Input.is_action_just_pressed("interact") and Transition.canvas_layer.visible == false and Inventory.inventory_layer.visible == false:
 		GlobalVariables.debounce = true
 		print(index)
 		canvas_layer.visible = true
@@ -82,11 +83,27 @@ func _input(event):
 			item_give()
 		if index == 18:
 			canvas_layer.visible = false
-			interaction_times = 1
 			GlobalVariables.debounce = false
+			Combat.player_current_health = Combat.player_max_health
 			return
 		message_displayed = false
 		index += 1
+		show_message()
+		
+	elif Inventory.ring_has_interacted and event.is_action_pressed("interact") and message_displayed and interact and Input.is_action_just_pressed("interact") and Transition.canvas_layer.visible == false and Inventory.inventory_layer.visible == false:
+		if !message_debounce:
+			index = 17
+		GlobalVariables.debounce = true
+		canvas_layer.visible = true
+		if index == 18:
+			message_debounce = false
+			canvas_layer.visible = false
+			GlobalVariables.debounce = false
+			Combat.player_current_health = Combat.player_max_health
+			return
+		message_displayed = false
+		index += 1
+		message_debounce = true
 		show_message()
 		
 func item_give_structure():

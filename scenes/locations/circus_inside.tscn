@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://b8xmlksh20e6j"]
+[gd_scene load_steps=29 format=3 uid="uid://b8xmlksh20e6j"]
 
 [ext_resource type="PackedScene" uid="uid://d1jbh8q1vrdd6" path="res://scenes/jon.tscn" id="1_4f54l"]
 [ext_resource type="Texture2D" uid="uid://c6e5pk40p23u6" path="res://assets/sprites/circus_dream/circus_inside_spritesheet.png" id="1_qq3pe"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://dtjqllrmy535d" path="res://assets/sprites/circus_dream/bed_clown.png" id="6_v3cc7"]
 [ext_resource type="PackedScene" uid="uid://c4isoycylsd4u" path="res://scenes/clown.tscn" id="7_wd6dp"]
 [ext_resource type="Texture2D" uid="uid://d3qtsayv0xroq" path="res://assets/sprites/revolver_room/revolver_table.png" id="9_v3cc7"]
+[ext_resource type="Texture2D" uid="uid://due6pj2mtvklb" path="res://assets/sprites/circus_dream/circus_door.png" id="10_vh6hp"]
+[ext_resource type="Script" uid="uid://ddl1h7apj3ygo" path="res://scripts/interaction_scripts/circus_door.gd" id="11_rnh14"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vh6hp"]
 texture = ExtResource("1_qq3pe")
@@ -103,8 +105,11 @@ size = Vector2(48, 57)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wd6dp"]
 size = Vector2(64, 31)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rnh14"]
+size = Vector2(159, 22)
+
 [node name="Node2D" type="Node2D"]
-position = Vector2(-7, -2)
+position = Vector2(0, -14)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_x8vey")
@@ -139,7 +144,7 @@ texture = ExtResource("6_v3cc7")
 position = Vector2(2, -29)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_4f54l")]
-position = Vector2(7, 2)
+position = Vector2(0, 14)
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 position = Vector2(-1, -26)
@@ -151,7 +156,7 @@ transform = Transform2D(0.5, 0, 0, 0.5, 0, 0)
 scroll_base_scale = Vector2(100, 100)
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(-14, -4)
+position = Vector2(0, -28)
 motion_scale = Vector2(0.1, 0.1)
 motion_mirroring = Vector2(550, 630)
 
@@ -173,3 +178,21 @@ shape = SubResource("RectangleShape2D_qq3pe")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Collisions"]
 shape = SubResource("RectangleShape2D_wd6dp")
+
+[node name="CircusDoor" type="Sprite2D" parent="."]
+position = Vector2(-2.74181e-06, 23.7931)
+scale = Vector2(5.78571, 0.413793)
+texture = ExtResource("10_vh6hp")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(360, 73)
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("11_rnh14")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-360.5, -52)
+shape = SubResource("RectangleShape2D_rnh14")
+
+[connection signal="area_entered" from="Area2D" to="Area2D" method="_on_area_entered"]
+[connection signal="area_exited" from="Area2D" to="Area2D" method="_on_area_exited"]

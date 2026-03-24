@@ -64,7 +64,7 @@ func show_message():
 		message_displayed = true
 
 func _input(event):
-	if event.is_action_pressed("interact") and message_displayed and interact and Input.is_action_just_pressed("interact") and Transition.canvas_layer.visible == false and Inventory.inventory_layer.visible == false:
+	if event.is_action_pressed("interact") and !Inventory.dice_has_interacted and message_displayed and interact and Input.is_action_just_pressed("interact") and Transition.canvas_layer.visible == false and Inventory.inventory_layer.visible == false:
 		GlobalVariables.debounce = true
 		print(index)
 		canvas_layer.visible = true

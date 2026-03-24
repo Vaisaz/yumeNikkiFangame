@@ -23,7 +23,7 @@ func _process(_delta):
 		cake.position.x = randf_range(-84, 84)
 		add_child(cake)
 		
-	if GlobalVariables.cake_score >= 50:
+	if GlobalVariables.cake_score >= 10:
 		wake_up_label.visible = true
 		wake_up_label_2.visible = true
 		ready_to_wake_up = true
@@ -39,4 +39,6 @@ func _input(event):
 		get_tree().change_scene_to_file("res://scenes/locations/room.tscn")
 	
 	if event.is_action_pressed("wake_up") and Input.is_action_just_pressed("wake_up") and ready_to_wake_up:
+		print("waking up")
+		ready_to_wake_up = false
 		get_tree().change_scene_to_file("res://scenes/locations/circus_outside.tscn")

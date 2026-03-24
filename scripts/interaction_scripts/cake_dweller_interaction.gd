@@ -24,7 +24,7 @@ func _on_area_entered(area):
 		Combat.enemy_texture.texture = load("res://assets/combat/cake_dweller.png")
 		Combat.enemy_texture.scale = Vector2(6, 6)
 		Combat.enemy_max_health = 20
-		Combat.enemy_current_health = 15
+		Combat.enemy_current_health = 20
 		Combat.enemy_attack = 15
 		Combat.enemy_health(Combat.enemy_current_health, Combat.enemy_max_health)
 		Combat.player_health()

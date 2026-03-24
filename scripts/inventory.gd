@@ -76,7 +76,7 @@ var rng = RandomNumberGenerator.new()
 var lemonade_has_interacted: bool = false
 var trash_has_interacted: bool = false
 
-var coins = 2000
+var coins = 0
 var add_coins
 
 func _ready():

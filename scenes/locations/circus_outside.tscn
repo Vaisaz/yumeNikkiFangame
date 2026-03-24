@@ -1,15 +1,17 @@
-[gd_scene load_steps=10 format=3 uid="uid://bnhsmsvkl71er"]
+[gd_scene load_steps=13 format=3 uid="uid://bnhsmsvkl71er"]
 
-[ext_resource type="Texture2D" uid="uid://bkwg4d84vpwnn" path="res://assets/sprites/main/pixel_tiles.png" id="1_y3ai7"]
-[ext_resource type="Texture2D" uid="uid://cui7psmy0qugt" path="res://assets/sprites/circus_dream/property_of_clown.png" id="2_ubgsd"]
-[ext_resource type="PackedScene" uid="uid://d1jbh8q1vrdd6" path="res://scenes/jon.tscn" id="3_qh6j0"]
-[ext_resource type="AudioStream" uid="uid://cmh08m4hrpsac" path="res://assets/audio/circus_outside.wav" id="4_ubgsd"]
+[ext_resource type="Texture2D" uid="uid://bkwg4d84vpwnn" path="res://assets/sprites/main/pixel_tiles.png" id="1_qh6j0"]
+[ext_resource type="Texture2D" uid="uid://cui7psmy0qugt" path="res://assets/sprites/circus_dream/property_of_clown.png" id="2_4t2ak"]
+[ext_resource type="PackedScene" uid="uid://d1jbh8q1vrdd6" path="res://scenes/jon.tscn" id="3_mj0ua"]
+[ext_resource type="AudioStream" uid="uid://cmh08m4hrpsac" path="res://assets/audio/circus_outside.wav" id="4_l4grq"]
+[ext_resource type="PackedScene" uid="uid://73mjrqcqxhs4" path="res://scenes/cheese_creature.tscn" id="5_vml17"]
+[ext_resource type="Script" uid="uid://ddl1h7apj3ygo" path="res://scripts/interaction_scripts/circus_door.gd" id="6_4t2ak"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4t2ak"]
 load_path = "res://.godot/imported/black.jpg-4191cea5f160e11c6c978b4ed839dfa0.ctex"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mj0ua"]
-texture = ExtResource("1_y3ai7")
+texture = ExtResource("1_qh6j0")
 0:0/animation_columns = 2
 0:0/animation_speed = 2.0
 0:0/animation_frame_0/duration = 1.0
@@ -51,11 +53,14 @@ size = Vector2(1161.5, 51.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ubgsd"]
 size = Vector2(52, 826.5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qh6j0"]
+size = Vector2(40.5, 26)
+
 [node name="Node2D" type="Node2D"]
-position = Vector2(367, -37)
+position = Vector2(1045, -33)
 
 [node name="black" type="Sprite2D" parent="."]
-position = Vector2(-1.00001, 1)
+position = Vector2(-1.00001, 3)
 scale = Vector2(1.36963, 1.52486)
 texture = SubResource("CompressedTexture2D_4t2ak")
 
@@ -67,9 +72,12 @@ layer_0/tile_data = PackedInt32Array(-56, 0, 0, 262090, 131072, 0, 196552, 26214
 [node name="Clown\'s property" type="Sprite2D" parent="."]
 position = Vector2(-360, -131)
 scale = Vector2(1.5, 1.5)
-texture = ExtResource("2_ubgsd")
+texture = ExtResource("2_4t2ak")
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("3_qh6j0")]
+[node name="StaticBody2D" parent="." instance=ExtResource("5_vml17")]
+position = Vector2(-245, 51)
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("3_mj0ua")]
 position = Vector2(-1045, 33)
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
@@ -95,10 +103,22 @@ position = Vector2(-582, 388)
 shape = SubResource("RectangleShape2D_y3ai7")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="collisions"]
-polygon = PackedVector2Array(-456, -52, -444, -44, -425, -40, -390, -36, -334, -35, -304, -39, -270, -48, -266, -53, -265, -116, -274, -142, -271, -178, -277, -180, -314, -189, -343, -215, -361, -229, -377, -214, -403, -190, -427, -181, -445, -180, -448, -177, -442, -161, -446, -134, -456, -113)
+polygon = PackedVector2Array(-456, -52, -444, -44, -425, -40, -390, -36, -380, -35, -380, -41, -340, -41, -340, -35, -334, -35, -304, -39, -270, -48, -266, -53, -265, -116, -274, -142, -271, -178, -277, -180, -314, -189, -343, -215, -361, -229, -377, -214, -403, -190, -427, -181, -445, -180, -448, -177, -442, -161, -446, -134, -456, -113)
 
 [node name="CircusOutside" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(-360, -93)
-stream = ExtResource("4_ubgsd")
+stream = ExtResource("4_l4grq")
 autoplay = true
 max_distance = 500.0
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("6_4t2ak")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-360.25, -54)
+shape = SubResource("RectangleShape2D_qh6j0")
+
+[connection signal="area_entered" from="Area2D" to="Area2D" method="_on_area_entered"]
+[connection signal="area_exited" from="Area2D" to="Area2D" method="_on_area_exited"]
