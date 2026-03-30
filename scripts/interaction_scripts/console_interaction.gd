@@ -7,7 +7,7 @@ func _on_area_entered(area):
 		print("test")
 		interact = true
 
-func _on_area_exited(area):
+func _on_area_exited(_area):
 	interact = false
 	
 func _input(event):

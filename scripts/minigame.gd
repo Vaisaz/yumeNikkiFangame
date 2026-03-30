@@ -23,7 +23,7 @@ func _process(_delta):
 		cake.position.x = randf_range(-84, 84)
 		add_child(cake)
 		
-	if GlobalVariables.cake_score >= 10:
+	if GlobalVariables.cake_score >= 100:
 		wake_up_label.visible = true
 		wake_up_label_2.visible = true
 		ready_to_wake_up = true

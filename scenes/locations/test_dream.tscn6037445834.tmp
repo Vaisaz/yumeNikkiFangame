@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://bmatq2vdbkosg"]
+[gd_scene load_steps=18 format=3 uid="uid://bmatq2vdbkosg"]
 
 [ext_resource type="Script" uid="uid://ckgwfxb4mmixk" path="res://scripts/test_dream.gd" id="1_fv6bm"]
 [ext_resource type="PackedScene" uid="uid://d1jbh8q1vrdd6" path="res://scenes/jon.tscn" id="1_x7e81"]
+[ext_resource type="PackedScene" uid="uid://c0c554dukuunq" path="res://scenes/corruptor.tscn" id="2_js3kr"]
 [ext_resource type="PackedScene" uid="uid://bbubvd8amhhsf" path="res://scenes/gambler.tscn" id="3_ug0gb"]
 [ext_resource type="PackedScene" uid="uid://ct2g6k4cpkgla" path="res://scenes/juliet.tscn" id="4_gd3r2"]
 [ext_resource type="PackedScene" uid="uid://b2gh7yvit1v4d" path="res://scenes/lv_creature.tscn" id="5_1r7tb"]
@@ -28,6 +29,9 @@ position = Vector2(119, 97)
 
 [node name="Gambler" parent="." instance=ExtResource("3_ug0gb")]
 position = Vector2(-47, -4)
+
+[node name="Corruptor" parent="." instance=ExtResource("2_js3kr")]
+position = Vector2(57, -7)
 
 [node name="Juliet" parent="." instance=ExtResource("4_gd3r2")]
 position = Vector2(-39, 53)
@@ -69,7 +73,7 @@ position = Vector2(71, 99)
 position = Vector2(-87, -10)
 
 [node name="StaticBody2D5" parent="." instance=ExtResource("16_iow46")]
-position = Vector2(82, -8)
+position = Vector2(-86, 142)
 scale = Vector2(0.6, 0.6)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_x7e81")]

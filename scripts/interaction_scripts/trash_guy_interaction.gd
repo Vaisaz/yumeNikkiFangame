@@ -84,5 +84,13 @@ func _input(event):
 			Inventory.ring_has_interacted = false
 			Inventory.equipped.texture = null
 			Inventory.equipped_fortune.texture = null
+			
+			Inventory.normal_health()
+		
+			if Inventory.equipped.texture == load("res://assets/inventory/items/ring.png"):
+				Inventory.ring_fortune = 1
+				
+			if Inventory.equipped.texture == load("res://assets/inventory/items/cheese.png"):
+				Inventory.cheese_fortune = 1
 			print(item_count)
 		print(Inventory.index)

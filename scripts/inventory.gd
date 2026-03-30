@@ -145,6 +145,9 @@ func normal_health():
 	elif Combat.lv == 5:
 		Combat.player_max_health = 100
 		Combat.player_attack = 60
+		
+	if Combat.player_current_health >= Combat.player_max_health:
+		Combat.player_current_health = Combat.player_max_health
 
 @onready var equipped_unequipped_sound = $EquipUnequipSound
 
@@ -256,6 +259,7 @@ func item_on_unequip():
 		inventory_button.grab_focus()
 		normal_health()
 		banana_equipped = false
+		dice_equipped = false
 		watches_equipped = false
 		wnp_equipped = false
 		revolver_equipped = false
@@ -296,6 +300,7 @@ func item_on_unequip():
 			inventory_button.grab_focus()
 			normal_health()
 			banana_equipped = false
+			dice_equipped = false
 			watches_equipped = false
 			wnp_equipped = false
 			revolver_equipped = false
@@ -360,8 +365,7 @@ func on_pressed_structure(num):
 				banana_lv = 1
 				if equipped.texture == load("res://assets/inventory/items/banana.png"):
 					lvitem.text = "LV: %d" % banana_lv
-				if item_equipped == true:
-					Combat.player_attack -= banana_at
+					Combat.player_attack += banana_at
 					Combat.player_max_health += banana_hp
 			elif banana_level == 1 and coins >= 250:
 				banana_level = 2
@@ -374,8 +378,7 @@ func on_pressed_structure(num):
 				banana_lv = 2
 				if equipped.texture == load("res://assets/inventory/items/banana.png"):
 					lvitem.text = "LV: %d" % banana_lv
-				if item_equipped == true:
-					Combat.player_attack -= banana_at
+					Combat.player_attack += banana_at
 					Combat.player_max_health += banana_hp
 			else:
 				equipped_unequipped_sound.stream = load("res://assets/audio/trashed.wav")
@@ -391,8 +394,7 @@ func on_pressed_structure(num):
 				wnp_lv = 1
 				if equipped.texture == load("res://assets/inventory/items/wnp.png"):
 					lvitem.text = "LV: %d" % wnp_lv
-				if item_equipped == true:
-					Combat.player_attack -= wnp_at
+					Combat.player_attack += wnp_at
 			elif wnp_level == 1 and coins >= 350:
 				wnp_level = 2
 				equipped_unequipped_sound.stream = load("res://assets/audio/lemonade_blips/register.wav")
@@ -403,8 +405,7 @@ func on_pressed_structure(num):
 				wnp_lv = 2
 				if equipped.texture == load("res://assets/inventory/items/wnp.png"):
 					lvitem.text = "LV: %d" % wnp_lv
-				if item_equipped == true:
-					Combat.player_attack -= wnp_at
+					Combat.player_attack += wnp_at
 			else:
 				equipped_unequipped_sound.stream = load("res://assets/audio/trashed.wav")
 				equipped_unequipped_sound.play()
@@ -419,8 +420,7 @@ func on_pressed_structure(num):
 				toy_revolver_lv = 1
 				if equipped.texture == load("res://assets/inventory/items/wnp.png"):
 					lvitem.text = "LV: %d" % toy_revolver_lv
-				if item_equipped == true:
-					Combat.player_attack -= toy_revolver_at
+					Combat.player_attack += toy_revolver_at
 			else:
 				equipped_unequipped_sound.stream = load("res://assets/audio/trashed.wav")
 				equipped_unequipped_sound.play()
